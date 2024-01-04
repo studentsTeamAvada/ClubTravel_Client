@@ -2,6 +2,14 @@ import { resolve } from "path";
 
 const pages = [
   {
+    name: "404",
+    path: resolve(__dirname, "404.html"),
+  },
+  {
+    name: "authorization",
+    path: resolve(__dirname, "authorization.html"),
+  },
+  {
     name: "index",
     path: resolve(__dirname, "index.html"),
   },
@@ -40,6 +48,14 @@ const pages = [
   {
     name: "tour_request",
     path: resolve(__dirname, "tour_request.html"),
+  },
+  {
+    name: "password_recovery",
+    path: resolve(__dirname, "password_recovery.html"),
+  },
+  {
+    name: "registration",
+    path: resolve(__dirname, "registration.html"),
   },
 ];
 
