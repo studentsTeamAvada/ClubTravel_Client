@@ -6,10 +6,21 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "gh-pages": "^6.1.1",
+    "jquery": "^3.7.1",
+    "just-validate": "^4.3.0",
+    "sass": "^1.69.7",
+    "swiper": "^11.0.5",
     "typescript": "^5.2.2",
-    "vite": "^5.0.8"
+    "vite": "^5.0.8",
+    "vite-plugin-full-reload": "^1.1.0",
+    "vite-plugin-handlebars": "^1.6.0",
+    "vite-plugin-html-inject": "^1.0.4",
+    "vite-plugin-static-copy": "^1.0.0"
   }
 }
