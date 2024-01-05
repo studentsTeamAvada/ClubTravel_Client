@@ -6,56 +6,56 @@ const pages = [
     path: resolve(__dirname, "404.html"),
   },
   {
-    name: "authorization",
-    path: resolve(__dirname, "authorization.html"),
+    name: "Authorization",
+    path: resolve(__dirname, "Authorization.html"),
   },
   {
     name: "index",
     path: resolve(__dirname, "index.html"),
   },
   {
-    name: "hot_offers",
-    path: resolve(__dirname, "hot_offers.html"),
+    name: "Hot_offers",
+    path: resolve(__dirname, "Hot_offers.html"),
   },
   {
-    name: "campaigns",
-    path: resolve(__dirname, "campaigns.html"),
+    name: "Campaigns",
+    path: resolve(__dirname, "Campaigns.html"),
   },
   {
-    name: "client's_personal_account",
-    path: resolve(__dirname, "client's_personal_account.html"),
+    name: "Account",
+    path: resolve(__dirname, "Account.html"),
   },
   {
-    name: "contacts",
-    path: resolve(__dirname, "contacts.html"),
+    name: "Contacts",
+    path: resolve(__dirname, "Contacts.html"),
   },
   {
-    name: "directions",
-    path: resolve(__dirname, "directions.html"),
+    name: "Directions",
+    path: resolve(__dirname, "Directions.html"),
   },
   {
-    name: "hotel",
-    path: resolve(__dirname, "hotel.html"),
+    name: "Hotel",
+    path: resolve(__dirname, "Hotel.html"),
   },
   {
-    name: "search_results",
-    path: resolve(__dirname, "search_results.html"),
+    name: "Search_results",
+    path: resolve(__dirname, "Search_results.html"),
   },
   {
-    name: "text_page",
-    path: resolve(__dirname, "text_page.html"),
+    name: "Text_page",
+    path: resolve(__dirname, "Text_page.html"),
   },
   {
-    name: "tour_request",
-    path: resolve(__dirname, "tour_request.html"),
+    name: "Tour_request",
+    path: resolve(__dirname, "Tour_request.html"),
   },
   {
-    name: "password_recovery",
-    path: resolve(__dirname, "password_recovery.html"),
+    name: "Password_recovery",
+    path: resolve(__dirname, "Password_recovery.html"),
   },
   {
-    name: "registration",
-    path: resolve(__dirname, "registration.html"),
+    name: "Registration",
+    path: resolve(__dirname, "Registration.html"),
   },
 ];
 
