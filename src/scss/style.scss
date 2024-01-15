@@ -1,0 +1,29 @@
+@import "./config/fonts.scss";
+@import "./config/media-breakpoints.scss";
+@import "./config/mixins.scss";
+@import "./config/reset.scss";
+
+body {
+   font-family: "Open Sans", sans-serif;
+   font-weight: 400;
+   color: #222;
+}
+
+
+[class*="__container"] {
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 0 15px;
+ }
+ 
+
+
+.wrapper {
+   display: flex;
+   flex-direction: column;
+   min-height: 100%;
+}
+
+.page {
+   flex: 1 1 auto;
+}
