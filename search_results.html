@@ -1,12 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <load
-    ="./src/html/head.htm"
-    title="Результаты поиска"
-    styles="search_results"
-  />
-  <body>
-    <load ="./src/html/header.htm" />
-    <load ="./src/html/footer.htm" />
-  </body>
+<load="./src/html/head.htm" title="Результаты поиска" styles="search_results" />
+
+<body>
+  <div class="wrapper">
+    <load="./src/html/header.htm" />
+    <main class="page">
+      <section class="banner">
+        <div class="banner__oval">
+          <img src="./src/images/oval.png" alt="">
+        </div>
+       </section>
+       <section class="tour">
+        <div class="tour__container">
+          <load="./src/html/components/ui/find.html"
+          title="Результаты поиска"
+          
+        />
+        </div>
+        
+
+       </section>
+
+  </main>
+  <load="./src/html/footer.htm" />
+  </div>
+  <script type="module"  src="src/ts/pages/search_results.ts"></script>
+</body>
+
 </html>

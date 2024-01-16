@@ -1,0 +1,307 @@
+.find {
+   &__row {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+      background: #fff;
+      &-title {
+         font-size: 18px;
+         font-weight: 700;
+         line-height: normal;
+         letter-spacing: 0.9px;
+         text-transform: uppercase;
+         padding: 17px 0 11px 32px;
+      }
+   }
+   &__bg {
+      width: 100%;
+      height: 89px;
+      background: linear-gradient(180deg, #fccb04 0%, #ee901b 100%);
+      box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15) inset;
+      padding: 15px 32px 14px;
+      display: flex;
+   }
+   &__panel {
+      width: 100%;
+      background: #fff;
+      border-radius: 6px 0px 0px 6px;
+      height: 60px;
+      display: flex;
+
+      &-direction {
+         max-width: 259px;
+         width: 100%;
+         height: 100%;
+         border-right: 1px solid #e2e2e2;
+      }
+      &-duration,
+      &-date {
+         max-width: 180px;
+         width: 100%;
+         height: 100%;
+         border-right: 1px solid #e2e2e2;
+      }
+      &-guests {
+         max-width: 316px;
+         width: 100%;
+         height: 100%;
+      }
+   }
+
+   &__btn {
+      max-width: 171px;
+      width: 100%;
+      height: 60px;
+      border-radius: 0px 6px 6px 0px;
+      background: #13882d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
+
+      svg {
+         width: 16px;
+         height: 16px;
+         fill: #fff;
+         margin-right: 4px;
+      }
+   }
+}
+
+.direction,
+.duration,
+.data {
+   &__text {
+      padding: 9px 0 5px 16px;
+      color: #c0c0c0;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 100%;
+   }
+   &__select {
+      position: relative;
+      cursor: pointer;
+   }
+   &__row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0 8px 0 16px;
+   }
+   &__icon {
+      width: 24px;
+      height: 24px;
+      fill: #a9a9a9;
+   }
+   &__item,
+   &__current {
+      font-family: Roboto;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: normal;
+   }
+
+   &__list {
+      background: #fff;
+      box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
+      position: absolute;
+      top: 140%;
+      left: 16px;
+      transition:
+         opacity 0.9s,
+         visibility 0.9s;
+      z-index: 5;
+      opacity: 0;
+      visibility: hidden;
+      padding: 10px;
+      border-radius: 12px;
+      max-height: 200px;
+      height: auto;
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+         display: none;
+      }
+
+      &_show {
+         opacity: 1;
+         visibility: visible;
+         max-width: 234px;
+         width: 100%;
+         cursor: pointer;
+         // background: #fff;
+         transition: 0.9s ease;
+         transition:
+            opacity 0.9s,
+            visibility 0.9s;
+      }
+   }
+
+   &__item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      &:last-child {
+         margin-bottom: 0px;
+      }
+      svg {
+         width: 25px;
+         height: 25px;
+         fill: #a9a9a9;
+         margin-right: 5px;
+      }
+   }
+}
+
+.data {
+   &__list {
+      opacity: 1;
+      visibility: visible;
+      left: 0;
+      max-width: 100%;
+      width: 100%;
+      background: none;
+      padding: 0;
+      border-radius: 0;
+      overflow: hidden;
+      max-height: auto;
+   }
+
+   &__item {
+      width: 100%;
+   }
+}
+#calendar {
+   width: 100%;
+}
+
+.air-datepicker {
+   width: 100%;
+   height: 100%;
+   overflow: auto;
+   border-radius: 10px;
+   border: 1px solid #e2e2e2;
+   background: #fff;
+   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
+
+   &-inline- {
+      border: none;
+   }
+
+   &-nav {
+      width: 180px;
+      height: 28px;
+      border: none;
+      margin: 10px auto;
+      &--title {
+         color: #222;
+         text-align: center;
+         font-family: "Open Sans";
+         font-size: 16px;
+         font-weight: 400;
+         line-height: normal;
+
+         i {
+            font-style: normal;
+         }
+
+         // &:hover {
+         //    // border: 2px solid $yellow300;
+         //    background: #816c23;
+         //    border-radius: 2px;
+         // }
+      }
+      &--action {
+         display: none;
+         width: 28px;
+         height: 28px;
+         svg {
+            path {
+               //   stroke: $gray500;
+            }
+         }
+
+         &:hover {
+            // border: 2px solid $yellow300;
+            // background: #816c23;
+            border-radius: 2px;
+         }
+      }
+   }
+   &-body {
+      &--cells {
+         display: grid;
+         grid-template-columns: repeat(7, 20px);
+         grid-template-rows: repeat(6, 20px);
+         padding: 0 5px;
+
+         &-days- {
+            grid-row-gap: 10px;
+            text-align: center;
+         }
+      }
+      &--day {
+         padding: 0 5px;
+         &-names {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 5px;
+         }
+      }
+   }
+
+   &-cell {
+      // display: flex;
+      // padding: 6.42px 11.693px 5.35px 12.862px;
+      //   color: $gray500;
+      &.-day {
+         width: fit-content;
+      }
+      &.-selected-.-current- {
+         //  color: $gray25;
+         background: #816c23;
+      }
+      &.-selected- {
+         //  color: $gray25;
+         border-radius: 2px;
+         //  border: 2px solid $yellow300;
+         background: #816c23;
+      }
+      &.-range-to- {
+         //  border: 2px solid $yellow300;
+         background: #816c23;
+         border-radius: 2px;
+      }
+      &.-selected-.-focus- {
+         background: #816c23;
+         // border-radius: 2px;
+      }
+      &.-in-range- {
+         background: #816c23;
+         color: #f8f8f8;
+         // border-radius: 2px;
+      }
+      &.-year-.-other-decade-,
+      &.-day-.-other-month- {
+         //  color: $gray500;
+      }
+      &.-focus- {
+         //  border: 2px solid $yellow300;
+         background: #816c23;
+         border-radius: 2px;
+      }
+      &.-current- {
+         //  color: $yellow300;
+      }
+   }
+   &--content {
+      // padding: 0 32px;
+   }
+}
+
+//  .air-datepicker-body--day-names{
+//    display: flex;
+//  }

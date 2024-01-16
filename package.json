@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@types/jquery": "^3.5.29",
     "gh-pages": "^6.1.1",
     "jquery": "^3.7.1",
     "just-validate": "^4.3.0",
@@ -19,5 +20,8 @@
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
     "vite-plugin-html-inject": "^1.0.4"
+  },
+  "dependencies": {
+    "air-datepicker": "^3.4.0"
   }
 }
