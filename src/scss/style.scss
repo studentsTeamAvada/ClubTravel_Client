@@ -2,6 +2,8 @@
 @import "./config/media-breakpoints.scss";
 @import "./config/mixins.scss";
 @import "./config/reset.scss";
+@import "./components/header";
+@import "./components/footer";
 
 body {
    font-family: "Open Sans", sans-serif;
