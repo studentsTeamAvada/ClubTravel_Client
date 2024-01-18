@@ -9,6 +9,7 @@ export class Header{
         this.body = $('body');
         this.header = $('.header');
         this.burger();
+        this.scroll();
     }
     burger(): void{
         const context = this
@@ -27,6 +28,16 @@ export class Header{
                     overflow: "unset",
                     height: "auto"
                 });
+            }
+        });
+    }
+    scroll(){
+        window.addEventListener("scroll", () => {
+            if(window.scrollY > 50 || window.pageYOffset > 50){
+                console.log(true)
+                this.body.addClass('scroll');
+            }else{
+                this.body.removeClass('scroll');
             }
         })
     }
