@@ -1,3 +1,3 @@
-import { Header } from "./components/header";
+import { Header } from "../components/header";
 
 new Header();

@@ -1,5 +1,7 @@
 import $ from "jquery";
 import AirDatepicker from "air-datepicker";
+// import noUiSlider from 'nouislider';
+
 export class Find {
   directionSelect: JQuery<HTMLDivElement>;
   directionList: JQuery<HTMLUListElement>;
@@ -30,6 +32,10 @@ export class Find {
   guestsIcon: JQuery<HTMLOrSVGElement>;
   guestsItem: JQuery<HTMLLIElement>;
 
+  findRowSub: JQuery<HTMLDivElement>;
+  slider: JQuery<HTMLElement>
+
+
   constructor() {
     this.directionSelect = $(".direction__select");
     this.directionList = $(".direction__list");
@@ -59,6 +65,10 @@ export class Find {
     this.guestsIcon = $(".guests__icon");
     this.guestsItem = $(".guests__item");
 
+    this.findRowSub = $(".find__row_sub");
+    this.slider = $('#slider') 
+    
+
     this.init();
   }
 
@@ -70,9 +80,12 @@ export class Find {
     this.updateCounterAdults();
     this.updateCounterKids();
     this.selectGuests();
+     this.accordion();
+    // this.sliderMoney();
+
   }
 
-  selectDirection() {
+  selectDirection(): void {
     const context = this;
     this.directionSelect.on("click", () => {
       this.directionList.addClass("direction__list_show").toggle();
@@ -85,7 +98,7 @@ export class Find {
       });
     });
   }
-  selectDuration() {
+  selectDuration(): void {
     const context = this;
     this.durationSelect.on("click", () => {
       this.durationList.addClass("duration__list_show").toggle();
@@ -99,7 +112,7 @@ export class Find {
     });
   }
 
-  selectData() {
+  selectData(): void {
     const context = this;
 
     this.dataSelect.on("click", () => {
@@ -123,7 +136,7 @@ export class Find {
     new AirDatepicker("#calendar");
   }
 
-  updateCounterAdults() {
+  updateCounterAdults(): void {
     let adultsCounter = $(".guests__current-counter");
 
     this.guestsItemAdults.each(function () {
@@ -148,7 +161,7 @@ export class Find {
       });
     });
   }
-  updateCounterKids() {
+  updateCounterKids(): void {
     let kidsCounter = $(".guests__current-subcounter");
     this.guestsItemKids.each(function () {
       let minusBtn = $(this).find(".guests__btn-kids-minus");
@@ -201,19 +214,52 @@ export class Find {
                 <option value="17">17 лет</option>
             </select>
             </li>`;
-            $(".guests__list").append(yearsHtml);
+          $(".guests__list").append(yearsHtml);
 
-            for(let i = 0; i < $(".guests__item_years").length; i++) {
-              $(".guests__num").eq(i).text(i + 1);
-            }
+          for (let i = 0; i < $(".guests__item_years").length; i++) {
+            $(".guests__num")
+              .eq(i)
+              .text(i + 1);
+          }
         }
       });
     });
   }
 
-  selectGuests() {
+  selectGuests(): void {
     this.guestsSelect.on("click", () => {
       this.guestsList.addClass("guests__list_show");
     });
   }
+
+    accordion():void {
+     $(".find__row-btn").on("click", function () {
+        $('.find__row-sub').addClass('find__row-sub_act')
+        $(".find__row-btn").addClass('find__row-btn_act')
+        $('.find__row-line').removeClass('find__row-line_act')
+        $('.find__row-btn-close').removeClass('find__row-btn-close_act')
+
+     });
+
+     $('.find__row-btn-close').on('click',function(){
+        $('.find__row-sub').removeClass('find__row-sub_act')
+        $(".find__row-btn").removeClass('find__row-btn_act')
+        $('.find__row-line').addClass('find__row-line_act')
+        $('.find__row-btn-close').addClass('find__row-btn-close_act')
+     })
+   }
+
+  // sliderMoney(){
+
+  //   noUiSlider.create(this.slider[0], {
+  //     start: [20, 80],
+  //     connect: true,
+  //     range: {
+  //         'min': 0,
+  //         'max': 100
+  //     }
+  // });
+  // }
+
+
 }

@@ -1,2 +1,2 @@
-import {Find} from "./components/find"
+import {Find} from "../components/find"
 new Find()
