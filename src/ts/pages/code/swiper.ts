@@ -13,3 +13,34 @@ export function heroSwiper() {
       },
     });
   }
+
+
+export function companySwiper() {
+   new Swiper('.company__swiper', {
+      slidesPerView: 'auto',
+      speed: 1100,
+      spaceBetween: 15,
+
+      // breakpoints: {
+      //   320: {
+      //     slidesPerView: 'auto',
+          
+      //   },
+      //   375: {
+      //     slidesPerView: 'auto',
+      //   },
+      //   768: {
+      //     slidesPerView: 'auto',
+      //   },
+      //   991: {
+      //     slidesPerView: 'auto',
+      //   },
+       
+      // },
+
+      navigation: {
+        nextEl: '.company__swiper-button-next',
+        prevEl: '.company__swiper-button-prev',
+      },
+    });
+  }
