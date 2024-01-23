@@ -171,4 +171,9 @@
         <path d="M1366 61H0C107.057 40.6667 389.727 0 663.956 0C938.186 0 1246.25 40.6667 1366 61Z"
             fill="white" />
     </symbol>
+    <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 91" fill="none" id="elips">
+        <ellipse cx="54.891" cy="40.3808" rx="54.9893" ry="49.7792" transform="rotate(-16.5502 54.891 40.3808)" fill="white"/>
+    </symbol>
 </svg>
+
+
