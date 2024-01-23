@@ -17,10 +17,10 @@ export async function companyProduct() {
 
       let url = null;
 
-      const photos = img.data;
-      photos.forEach((photo) => {
-        url = photo.attributes.url;
-      });
+    //   const photos = img.data;
+    //   photos.forEach((photo) => {
+    //     url = photo.attributes.url;
+    //   });
 
       let template = `
       <div class="swiper-slide company__swiper-slide">
