@@ -1,45 +1,39 @@
 @import "./../style";
-
+// *{
+//    outline: 1px solid red;
+// }
 .error {
   margin-top: 101px;
-  position: relative;
+  background-image: url(../../images/404/404.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  // height:clamp(689px, 100vh,68vh);
+  height: 689px;
 
-  &__bg {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 689px;
-    z-index: -1;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+&__container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
 
-    }
-  }
-  &__content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-  }
 
   &__title {
     color: #fff;
     text-align: center;
     font-weight: 700;
-    line-height: normal;
+    // line-height: normal;
     font-size: clamp(26px, 9vw, 84px);
     margin: 0 0 13px;
   }
   &__text {
-    color: #fff;
+    color: #fff;    
     text-align: center;
     font-size: 24px;
-    line-height: normal;
     margin-bottom: 46px;
+    // line-height: normal;
 
     &_sub {
       font-size: 14px;
@@ -59,7 +53,7 @@
     color: #fff;
     text-align: center;
     font-size: 16px;
-    line-height: normal;
+    // line-height: normal;
     text-decoration-line: underline;
   }
 }

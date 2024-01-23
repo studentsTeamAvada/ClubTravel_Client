@@ -22,6 +22,9 @@
     "vite-plugin-html-inject": "^1.0.4"
   },
   "dependencies": {
-    "air-datepicker": "^3.4.0"
+    "air-datepicker": "^3.4.0",
+    "axios": "^1.6.5",
+    "nouislider": "^15.7.1",
+    "strapi-plugin-populate-deep": "^3.0.1"
   }
 }
