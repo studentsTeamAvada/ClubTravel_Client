@@ -17,7 +17,7 @@
     align-items: center;
     justify-content: center;
     gap: 7px;
-    margin-bottom: 40px;
+    margin-bottom: 38px;
 
     @include media-breakpoint-down(xs) {
       flex-direction: column;
@@ -32,6 +32,11 @@
       height: 35px;
       fill: rgba(241, 93, 40, 1);
     }
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
   }
 
   &__swiper-wrapper {
@@ -69,6 +74,7 @@
     position: relative;
     img {
       height: 250px;
+      border-radius: 10px 10px 0px 0px;
     }
   }
 
@@ -147,11 +153,14 @@
   &__swiper-round {
     position: relative;
 
-    &:hover {
-      &::before {
-        opacity: 0.4;
+    @media(min-width: 1024px) {
+      &:hover {
+        &::before {
+          opacity: 0.4;
+        }
       }
     }
+   
 
     &::before {
       position: absolute;
@@ -166,6 +175,11 @@
       opacity: 0.1;
       border-radius: 50%;
       transition: opacity 0.2s ease;
+
+      @include media-breakpoint-down(md) {
+        opacity: 1;
+        background: #fff;
+      }
     }
   }
 
@@ -173,18 +187,22 @@
   &__swiper-button-next {
     position: absolute;
     top: 47%;
-    z-index: 1;
+    z-index: 2;
     cursor: pointer;
 
     svg {
       width: 32px;
       height: 32px;
-      fill: #3e7739;
+      color: #3e7739;
     }
   }
 
   &__swiper-button-next {
     right: 2%;
+
+    @include media-breakpoint-down(md) {
+      right: 3%;
+    }
 
     svg {
       transform: rotate(180deg);
@@ -193,6 +211,10 @@
 
   &__swiper-button-prev {
     left: 2%;
+
+    @include media-breakpoint-down(md) {
+      left: 3%;
+    }
   }
 
   &__button-wrapper {

@@ -49,6 +49,10 @@
       border-radius: 50%;
       transition: opacity 0.2s ease;
     }
+
+    svg {
+      color: #fff;
+    }
   }
 
   &__swiper-button-prev,
