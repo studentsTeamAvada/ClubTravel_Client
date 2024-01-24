@@ -1,19 +1,21 @@
 import { Tours } from '../../type';
 
-export async function companyProduct() {
-  const companyWrapper = document.querySelector(".company__swiper-wrapper");
+export async function hotDealsProduct() {
+  const hotDealsWrapper = document.querySelector(".hot-deals__swiper-wrapper");
 
   const fetchResults = async () => {
     const response = await fetch(
-      `http://localhost:1337/api/tours?populate=deep`
+      `http://localhost:1337/api/hot-dealses?populate=deep`
     );
     const data = await response.json();
+    console.log(data);
+    
     const products: Array<{ attributes: Tours }> = data.data;
       
     products.forEach((product) => {
       const content = product.attributes;
 
-      const { title, data, price, img, webP } = content;
+      const { title, place, data, price, oldPrice, stars, discount, img, webP } = content;
 
       let url = null;
       let urlWebP = null;
@@ -30,9 +32,9 @@ export async function companyProduct() {
 
       
       let template = `
-      <div class="swiper-slide company__swiper-slide">
-        <div class="company__card">
-        <div class="company__card-img">
+      <div class="swiper-slide hot-deals__swiper-slide">
+        <div class="hot-deals__card">
+        <div class="hot-deals__card-img">
           <picture class="hero__bg-img">
             <source srcset=${urlWebP} type="image/webp" />
             <img src=${url} alt="bg" />
@@ -41,32 +43,40 @@ export async function companyProduct() {
 
       if (price) {
         template += `
-            <div class="company__card-line">
+            <div class="hot-deals__card-line">
             <svg>
               <use xlink:href="./src/images/sprite.svg#company-line"></use>
             </svg>
-            <div class="company__card-line-wrapper">
-              <p class="company__card-line-price">от ${price}€</p>
+            <div class="hot-deals__card-line-wrapper">
+              <p class="hot-deals__card-line-price">от ${price}€</p>
             </div>
           </div>
             `;
       }
 
       template += `
-          <div class="company__card-data-wrapper">
+          <div class="hot-deals__card-data-wrapper">
             <svg>
               <use xlink:href="./src/images/sprite.svg#clock"></use>
             </svg>
-            <p class="company__card-data">${data}</p>
+            <p class="hot-deals__card-data">${data}</p>
           </div>
         </div>
-        <p class="company__card-text">${title}</p>
+        <div class="hot-deals__card-text-wrapper">
+            <p class="hot-deals__card-text">${title}</p>
+            <div class="hot-deals__card-stars-wrapper">
+                <svg>
+                    <use xlink:href="./src/images/sprite.svg#star"></use>
+                </svg>
+            </div>
+        </div>
+        
       </div>
       </div>
         `;
 
-      if (companyWrapper) {
-        companyWrapper.insertAdjacentHTML("beforeend", template);
+      if (hotDealsWrapper) {
+        hotDealsWrapper.insertAdjacentHTML("beforeend", template);
       }
     });
   };

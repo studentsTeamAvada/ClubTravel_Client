@@ -1,352 +1,9 @@
-<!-- <div class="find">
-   <div class="find__row">
-      <h1 class="find__row-title">{=$title}</h1>
+<div class="search">
+   <div class="search__row search__row_top">
+      <h1 class="search__row-title">{=$title}</h1>
    </div>
-   <div class="find__bg">
-      <div class="find__panel">
-         <div class="find__panel-direction direction">
-            <p class="direction__text">Направление</p>
-            <div class="direction__select">
-               <div class="direction__row">
-                  <p class="direction__current">Все направления</p>
-                  <svg class="direction__icon">
-                     <use xlink:href="./src/images/sprite.svg#chevron-left"></use>
-                  </svg>
-               </div>
-               <ul class="direction__list">
-                  <li class="direction__item">
-                     Все направления
-                  </li>
-                  <li class="direction__item">
-                     Египет
-                  </li>
-                  <li class="direction__item">
-                     АОЭ
-                  </li>
-                  <li class="direction__item">
-                      <svg>
-                        <use xlink:href="./src/images/sprite.svg#point"></use>
-                     </svg> 
-                     Тайланд
-                  </li>
-                  <li class="direction__item">
-                     <svg>
-                        <use xlink:href="./src/images/sprite.svg#point"></use>
-                     </svg>
-                     Болгария
-                  </li>  <li class="direction__item">Тенерифе</li>
-                  </li>  <li class="direction__item">Бали</li>
-                  </li>  <li class="direction__item">Грузия</li>
-                  </li>  <li class="direction__item">Греция</li>
-                  </li>  <li class="direction__item">Турция</li>
-                  </li>  <li class="direction__item">Кипр</li>
-               </ul>
-            </div>
-
-
-         </div>
-         <div class="find__panel-duration duration">
-            <p class="duration__text">Длительность тура</p>
-            <div class="duration__select">
-               <div class="duration__row">
-                  <p class="duration__current"> 1 неделя</p>
-                  <svg class="duration__icon">
-                     <use xlink:href="./src/images/sprite.svg#chevron-left"></use>
-                  </svg>
-               </div>
-               <ul class="duration__list">
-                  <li class="duration__item">
-                     1 неделя
-                  </li>
-                  <li class="duration__item">
-                     2 неделя
-                  </li>
-                  <li class="duration__item">
-                     3 неделя
-                  </li>
-                  <li class="duration__item">
-                     4 неделя
-                  </li>
-                  <li class="duration__item">
-                     5 неделя
-                  </li>
-               </ul>
-            </div>
-         </div>
-         <div class="find__panel-date data">
-            <p class="data__text">Дата вылета</p>
-            <div class="data__select">
-               <div class="data__row">
-                  <p class="data__current">
-                     <span class="data__current-day">5</span>
-                     <span class="data__current-month">январь</span>
-                  </p>
-                  <svg class="data__icon">
-                     <use xlink:href="./src/images/sprite.svg#calendar"></use>
-                  </svg>
-               </div>
-               <ul class="data__list">
-                  <li class="data__item">
-                     <div class="calendar" id="calendar"></div>
-                  </li>
-
-               </ul>
-            </div>
-         </div>
-         <div class="find__panel-guests ">
-            <p class="guests__text">Гости</p>
-            <div class="guests__select">
-               <div class="guests__row">
-                  <p class="guests__current">
-                     <span class="guests__current-adults">Взрослых:</span>
-                     <span class="guests__current-counter">0</span>
-                     <span class="guests__current-kids">детей:</span>
-                     <span class="guests__current-subcounter">0</span>
-                  </p>
-                  <svg class="guests__icon">
-                     <use xlink:href="./src/images/sprite.svg#chevron-left"></use>
-                  </svg>
-               </div>
-               <ul class="guests__list">
-                  <li class="guests__item guests__item_adults">
-                     Взрослых
-                     <div class="guests__item-row">
-                        <button class="guests__btn-adults-minus">
-                           <svg>
-                              <use xlink:href="./src/images/sprite.svg#drop-down"></use>
-                           </svg>
-                        </button>
-                        <span class="guests__item-adults-counter">0</span>
-                        <button class="guests__btn-adults-plus">
-                           <svg>
-                              <use xlink:href="./src/images/sprite.svg#drop-down"></use>
-                           </svg>
-                        </button>
-                     </div>
-                  </li>
-                  <li class="guests__item guests__item_kids">
-                     Детей
-                     <div class="guests__item-row">
-                        <button class="guests__btn-kids-minus">
-                           <svg>
-                              <use xlink:href="./src/images/sprite.svg#drop-down"></use>
-                           </svg>
-                        </button>
-                        <span class="guests__item-kids-counter">0</span>
-                        <button class="guests__btn-kids-plus">
-                           <svg>
-                              <use xlink:href="./src/images/sprite.svg#drop-down"></use>
-                           </svg>
-                        </button>
-                     </div>
-                  </li>
-               </ul>
-            </div>
-         </div>
-
-      </div>
-      <button class="find__btn">
-         <svg class="find__btn-icon">
-            <use xlink:href="./src/images/sprite.svg#search"></use>
-         </svg>
-         Найти
-      </button>
-   </div>
-   <div class="find__row-sub find__row-sub_act">
-      <div class="find__row-item">
-         <button class="find__row-btn">
-            <svg class="find__row-btn-icon">
-               <use xlink:href="./src/images/sprite.svg#zoom"></use>
-            </svg>
-            Расширенный поиск
-         </button>
-         <hr class="find__row-line find__row-line_act">
-         <button class="find__row-btn-close find__row-btn-close_act">
-            <svg>
-               <use xlink:href="./src/images/sprite.svg#minus-circle"></use>
-            </svg>
-            Закрыть
-         </button>
-      </div>
-
-      <div class="find__column">
-         <div class="find__rating rating">
-            <h2 class="rating__title">Категория размещения</h2>
-            <div class="rating__star">
-               <button class="rating__star-btn rating__star-btn_two">
-                  <svg>
-                     <use xlink:href="./src/images/sprite.svg#star"></use>
-                  </svg>
-                  <svg>
-                     <use xlink:href="./src/images/sprite.svg#star"></use>
-                  </svg>
-               </button>
-               <button class="rating__star-btn rating__star-btn_three">
-                  <svg>
-                     <use xlink:href="./src/images/sprite.svg#star"></use>
-                  </svg>
-                  <svg>
-                     <use xlink:href="./src/images/sprite.svg#star"></use>
-                  </svg>
-                  <svg>
-                     <use xlink:href="./src/images/sprite.svg#star"></use>
-                  </svg>
-               </button>
-               <button class="rating__star-btn rating__star-btn_four">
-                  <svg>
-                     <use xlink:href="./src/images/sprite.svg#star"></use>
-                  </svg>
-                  <svg>
-                     <use xlink:href="./src/images/sprite.svg#star"></use>
-                  </svg>
-                  <svg>
-                     <use xlink:href="./src/images/sprite.svg#star"></use>
-                  </svg>
-                  <svg>
-                     <use xlink:href="./src/images/sprite.svg#star"></use>
-                  </svg>
-               </button>
-               <button class="rating__star-btn rating__star-btn_five">
-                  <svg>
-                     <use xlink:href="./src/images/sprite.svg#star"></use>
-                  </svg>
-                  <svg>
-                     <use xlink:href="./src/images/sprite.svg#star"></use>
-                  </svg>
-                  <svg>
-                     <use xlink:href="./src/images/sprite.svg#star"></use>
-                  </svg>
-                  <svg>
-                     <use xlink:href="./src/images/sprite.svg#star"></use>
-                  </svg>
-                  <svg>
-                     <use xlink:href="./src/images/sprite.svg#star"></use>
-                  </svg>
-               </button>
-               <button class="rating__star-btn rating__star-btn_apart">
-                  <svg>
-                     <use xlink:href="./src/images/sprite.svg#house"></use>
-                  </svg>
-                  Апартаменты
-               </button>
-            </div>
-            <h2 class="rating__title">Питание</h2>
-            <div class="rating__food ">
-               <div class="rating__food-without">
-                  <button class="rating__food-btn">
-                     <svg>
-                        <use xlink:href="./src/images/sprite.svg#check-circle"></use>
-                     </svg>
-                     Без питания
-                  </button>
-               </div>
-               <div class="rating__food-breakfast">
-                  <button class="rating__food-btn">
-                     <svg>
-                        <use xlink:href="./src/images/sprite.svg#check-circle"></use>
-                     </svg>
-                     Завтрак
-                  </button>
-               </div>
-            
-               <div class="rating__food-bd">
-                  <button class="rating__food-btn">
-                     <svg>
-                        <use xlink:href="./src/images/sprite.svg#check-circle"></use>
-                     </svg>
-                     Затрак и ужин
-                  </button>
-               </div>
-              
-               <div class="rating__food-bld">
-                  <button class="rating__food-btn">
-                     <svg>
-                        <use xlink:href="./src/images/sprite.svg#check-circle"></use>
-                     </svg>
-                     Завтрак, обед, ужин
-                  </button>
-               </div>
-               <div class="rating__food-all">
-                  <button class="rating__food-btn">
-                     <svg>
-                        <use xlink:href="./src/images/sprite.svg#check-circle"></use>
-                     </svg>
-                     Всё включено
-                  </button>
-               </div>
-               <div class="rating__food-ultra">
-                  <button class="rating__food-btn">
-                     <svg>
-                        <use xlink:href="./src/images/sprite.svg#check-circle"></use>
-                     </svg>
-                     Ультра: всё включено
-                  </button>
-               </div>
-
-            </div>
-
-
-
-
-         </div>
-         <div class="find__lineup lineup">
-            <h2 class="rating__title">Категория размещения</h2>
-            <div class="lineup__item">
-               <button class="lineup__btn">
-                  <svg>
-                     <use xlink:href="./src/images/sprite.svg#check-circle"></use>
-                  </svg>
-                  Туристический пакет
-               </button>
-               <button class="lineup__btn">
-                  <svg>
-                     <use xlink:href="./src/images/sprite.svg#check-circle"></use>
-                  </svg>
-                  Только перелет
-               </button>
-               <h2 class="rating__title">Вылет из</h2>
-               <button class="lineup__btn">
-                  <svg>
-                     <use xlink:href="./src/images/sprite.svg#check-circle"></use>
-                  </svg>
-                  Таллин
-               </button>
-               <button class="lineup__btn">
-                  <svg>
-                     <use xlink:href="./src/images/sprite.svg#check-circle"></use>
-                  </svg>
-                  Рига
-               </button>
-               <button class="lineup__btn">
-                  <svg>
-                     <use xlink:href="./src/images/sprite.svg#check-circle"></use>
-                  </svg>
-                  Вильнюс
-               </button>
-            </div>
-            <div class="lineup__slider" id="slider"></div>
-
-
-         </div>
-         <div class="find__location"></div>
-         <div class="find__location"></div>
-      </div>
-
-
-
-   </div>
-
-
-</div> -->
-
-
-
-<div class="find">
-   <div class="find__row find__row_top">
-      <h1 class="find__row-title">{=$title}</h1>
-   </div>
-   <div class="find__panel find__panel_bg">
-      <div class="find__panel-info info">
+   <div class="search__panel search__panel_bg">
+      <div class="search__panel-info info">
          <div class="info__destination">
             <p class="info__destination-text">Направление</p>
             <div class="info__destination-select dropdown">
@@ -372,18 +29,102 @@
                <ul class="info__duration-list  dropdown__list"></ul>
             </div>
          </div>
-         <div class="info__data"></div>
-         <div class="info__guests"></div>
+
+         <div class="info__date">
+            <p class="info__date-text info__destination-text">Дата вылета</p>
+            <div class="info__date-select dropdown">
+               <div class="info__date-row dropdown__row">
+                  <p class="info__date-current dropdown__current">
+                     <span class="info__date-day"></span>
+                     <span class="info__date-month"></span>
+                  </p>
+                  <svg class="info__date-icon dropdown__icon">
+                     <use xlink:href="./src/images/sprite.svg#chevron-left"></use>
+                  </svg>
+               </div>
+               <ul class="info__date-list  dropdown__list">
+                  <li class="info__date-item">
+                     <div class="info__date-calendar" id="calendar"></div>
+                  </li>
+
+               </ul>
+            </div>
+         </div>
+
+         <div class="info__guests">
+            <p class="info__guests-text info__destination-text">Гости</p>
+            <div class="info__guests-select dropdown">
+               <div class="info__guests-row dropdown__row">
+                  <p class="info__guests-current dropdown__current">
+                     <span class="info__guests-adults">Взрослых:</span>
+                     <span class="info__guests-counter">0</span>
+                     <span class="info__guests-kids">детей:</span>
+                     <span class="info__guests-subcounter">0</span>
+                  </p>
+                  <svg class="info__guests-icon dropdown__icon">
+                     <use xlink:href="./src/images/sprite.svg#chevron-left"></use>
+                  </svg>
+               </div>
+               <ul class="info__guests-list   dropdown__list"></ul>
+            </div>
+         </div>
+
       </div>
-      <button class="find__panel-btn">
+      <button class="search__panel-btn">
          <svg>
             <use xlink:href="./src/images/sprite.svg#search"></use>
          </svg>
          Найти
       </button>
    </div>
-</div>
-<div class="find__row find__row_bottom">
+   <div class="search__row search__row_bottom">
+      <div class="search__row-sub">
+         <button class="search__btn">
+            <svg>
+               <use xlink:href="./src/images/sprite.svg#zoom"></use>
+            </svg>
+            Расширенный поиск
+         </button>
+         <hr class="search__line search__line_act">
+         <button class="search__btn-close search__btn-close_act">
+            <svg>
+               <use xlink:href="./src/images/sprite.svg#minus-circle"></use>
+            </svg>
+            Закрыть
+         </button>
+      </div>
+      <div class="search__category category">
+         <div class="category__rating">
+            <div class="category__rating-stars">
+               <h2 class="category__title">Категория размещения</h2>
+            </div>
+            <div class="category__rating-meal">
+               <h2 class="category__title">Питание</h2>
+            </div>
+         </div>
 
-</div>
+         <div class="category__fly">
+            <div class="category__lineup">
+               <h2 class="category__title">Состав тура</h2>
+            </div>
+            <div class="category__departure">
+               <h2 class="category__title">Вылет из</h2>
+            </div>
+            <div class="category__price">
+               <h2 class="category__title">Цена на одного человека</h2>  
+               <div class="category__slider"></div>
+            </div>
+            
+         </div>
+         <div class="category__regions">
+            <h2 class="category__title">Регион</h2>
+            <div class="category__regions-item"></div>
+                    
+         </div> 
+         
+      </div>
+      
+
+
+   </div>
 </div>
