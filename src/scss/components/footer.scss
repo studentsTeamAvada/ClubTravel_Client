@@ -10,11 +10,17 @@
         grid-template-columns: auto minmax(auto, 67px) auto minmax(20px, 1fr) 1px minmax(20px, 64px) auto;
         grid-template-rows: auto;
         @include media-breakpoint-down(md){
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            justify-items: center;
+            gap: 30px;
+        }
+        @include media-breakpoint-down(xs){
             display: block;
-            max-width: 360px;
+            max-width: 330px;
             margin: 0 auto;
         }
-        @include media-breakpoint-down(md){
+        @include media-breakpoint-down(xs){
             padding: 43px 0 60px;
         }
     }
@@ -23,7 +29,10 @@
         grid-column: 5;
         width: 1px;
         height: 100%;
-        background-color: red;
+        background-color: rgba(0,0,0, 0.15);
+        @include media-breakpoint-down(md){
+            display: none;
+        }
     }
 
     &__bottom-line {
@@ -32,7 +41,7 @@
         line-height: 48px;
         width: 100%;
         text-align: center;
-        @include media-breakpoint-down(sm){
+        @include media-breakpoint-down(xs){
             margin-bottom: 241px;
         }
     }
@@ -49,7 +58,7 @@
         font-size: 14px;
         font-weight: 400;
         text-decoration-line: underline;
-        @include media-breakpoint-down(sm){
+        @include media-breakpoint-down(xs){
             display: none;
         }
     }
@@ -81,14 +90,17 @@
         font-size: 18px;
         font-weight: 400;
         transition: color 300ms ease 0s;
-        @include media-breakpoint-up(md){
+        @include media-breakpoint-up(xs){
             &:hover{
                 color: #F68521;
             }
         }
     }
-
     @include media-breakpoint-down(md){
+        grid-column: 1;
+        grid-row: 1;
+    }
+    @include media-breakpoint-down(xs){
         margin-bottom: 58px;
         padding: 0 9px;
     }
@@ -108,7 +120,7 @@
         font-size: 16px;
         font-weight: 700;
         margin-bottom: 28px;
-        @include media-breakpoint-down(md){
+        @include media-breakpoint-down(xs){
             margin-bottom: 23px;
         }
     }
@@ -131,8 +143,11 @@
         opacity: 0.5;
         margin-right: 12px;
     }
-
     @include media-breakpoint-down(md){
+        grid-column: 2;
+        grid-row: 1;
+    }
+    @include media-breakpoint-down(xs){
         margin-bottom: 67px;
         padding: 0 9px;
     }
@@ -154,7 +169,7 @@
             line-height: normal;
             color: #ED3D51;
         }
-        @include media-breakpoint-down(md){
+        @include media-breakpoint-down(xs){
             margin: 0 0 22px 11px;
         }
     }
@@ -165,11 +180,23 @@
         background-color: #F68521;
         @include media-breakpoint-down(md){
             width: 100%;
+            height: 300px;
         }
     }
 
     svg{
         display: none;
+    }
+
+    @include media-breakpoint-down(md){
+        padding: 0 8vw;
+        width: 100%;
+        height: 300px;
+        grid-column: 1/3;
+        grid-row: 2;
+    }
+    @include media-breakpoint-down(xs){
+        padding: 0;
     }
 }
 
