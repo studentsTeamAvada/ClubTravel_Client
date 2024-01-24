@@ -48,3 +48,37 @@ export function companySwiper() {
       },
     });
   }
+
+  export function hotDealsSwiper() {
+    new Swiper('.hot-deals__swiper', {
+       slidesPerView: 'auto',
+       speed: 1100,
+       spaceBetween: 15,
+ 
+       breakpoints: {
+         320: {
+           slidesPerView: 1,
+         },
+         375: {
+           slidesPerView: 1,
+         },
+         768: {
+           slidesPerView: 2,
+         },
+         991: {
+           slidesPerView: 3,
+         },
+         1440: {
+           slidesPerView: 3
+         },
+         1920: {
+           slidesPerView: 3
+         }
+       },
+ 
+       navigation: {
+         nextEl: '.hot-deals__swiper-button-next',
+         prevEl: '.hot-deals__swiper-button-prev',
+       },
+     });
+   }
