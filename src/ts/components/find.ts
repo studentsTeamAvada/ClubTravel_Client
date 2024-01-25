@@ -1,6 +1,7 @@
 import $ from "jquery";
 import AirDatepicker from "air-datepicker";
 import axios from "axios";
+// @ts-ignore
 import Sprite from "../../images/sprite.svg" ;
 import noUiSlider from 'nouislider';
 import 'nouislider/dist/nouislider.css';

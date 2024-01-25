@@ -15,7 +15,7 @@ export async function hotDealsProduct() {
     products.forEach((product) => {
       const content = product.attributes;
 
-      const { title, place, data, price, oldPrice, stars, discount, img, webP } = content;
+      const { title, data, price,img, webP }   = content;
 
       let url = null;
       let urlWebP = null;
