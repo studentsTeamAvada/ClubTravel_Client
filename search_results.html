@@ -11,8 +11,6 @@
           <img src="./src/images/oval.png" alt="">
         </div>
        </section>
-
-
        <section class="tour">
         <div class="tour__container">
           <load="./src/html/components/ui/find.html"
@@ -21,9 +19,16 @@
         
         </div>
        </section>
+       <section>
+        <form id="form">
+          <input type="file" id="photo" accept="image/*">
+          <button type="submit">Upload</button>
+        </form>
+       </section>
   </main>
   <load="./src/html/footer.htm" />
   </div>
+  <script type="module"  src="src/ts/modules/firebase.ts"></script>
   <script type="module"  src="src/ts/pages/search_results.ts"></script>
 </body>
 

@@ -1,8 +1,7 @@
 import $ from "jquery";
 import AirDatepicker from "air-datepicker";
 import axios from "axios";
-// @ts-ignore
-import Sprite from "./../../../src/images/sprite.svg" ;
+import Sprite from "../../images/sprite.svg" ;
 import noUiSlider from 'nouislider';
 import 'nouislider/dist/nouislider.css';
 export class Find {
@@ -342,7 +341,7 @@ export class Find {
       const btnsHtml = stars.map((item: { name: any }, index: number) => {
       const starIcons = Array.from({ length: +item.name + 1 },() => `
           <svg class="advanced__icon">
-            <use xlink:href="${Sprite}#star"></use>
+            <use xlink:href="${Sprite}#start"></use>
           </svg>`
         ).join("");
 
@@ -499,9 +498,4 @@ export class Find {
   // }
 }
 
-// // const key = "6a2aeec3d56b84ca847c777ad636794030245464ab122a17a422b0001d7691dfa6dd0829410077e996e8da83b9ba506716c05bb89505c5141046ef8d5a0cfc2e23ee7e4abfa53077aeeb736e29b484a78a631b3a2b6617883eae8e5f40c878c726042792683c9f44829b1647dd51d63e301889cae7b1ba2ef5af6fcb6a3c1771";
-// const API_URL = "https://clubtravel.onrender.com/api/find-infos";
-// axios.get(API_URL).then(
-//   (response) => {
-//     console.log(response.data);
-//   });
+
