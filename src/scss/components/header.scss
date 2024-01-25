@@ -86,7 +86,6 @@
             }
         }
     }
-    &__menu {}
     @include media-breakpoint-down(md){
         height: 50px;
     }
@@ -328,14 +327,22 @@
     order: 1;
     min-height: 60px;
     &__link-offer {
-        color: #F15D28;
+        span{
+            @include media-breakpoint-up(md){
+                color: #F15D28;
+            }
+        }
         svg{
             width: 24px;
             margin-right: 6px;
         }
     }
     &__link-timer {
-        color: #F15D28;
+        span{
+            @include media-breakpoint-up(md){
+                color: #F15D28;
+            }
+        }
         svg{
             width: 27px;
             margin-right: 5px;
@@ -362,13 +369,15 @@
             background: #F68521;
         }
         &:hover{
-            color: #F68521;
-            svg{
-                fill: #F68521;
-            }
-            &::after{
-                transform: translateX(-50%) scale(1);
-            }
+            @include media-breakpoint-up(md){
+                color: #F68521;
+                svg{
+                    fill: #F68521;
+                }
+                &::after{
+                    transform: translateX(-50%) scale(1);
+                }
+            }            
         }
         @include media-breakpoint-down(md){
             height: 38px;

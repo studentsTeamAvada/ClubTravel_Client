@@ -17,7 +17,7 @@ export class Header{
     }
     scroll(){
         window.addEventListener("scroll", () => {
-            if(window.scrollY > 50 || window.pageYOffset > 50){
+            if(window.scrollY > 70 || window.pageYOffset > 70){
                 this.body.addClass('scroll');
             }else{
                 this.body.removeClass('scroll');
