@@ -86,7 +86,6 @@
             }
         }
     }
-    &__menu {}
     @include media-breakpoint-down(md){
         height: 50px;
     }
