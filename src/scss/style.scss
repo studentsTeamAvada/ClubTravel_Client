@@ -30,3 +30,31 @@ body {
 .page {
    flex: 1 1 auto;
 }
+
+::-webkit-scrollbar {
+   width: 10px;
+   @include media-breakpoint-down(sm){
+      width: 8px;
+   }
+}
+
+::-webkit-scrollbar-thumb {
+   background-color: #255296;
+   border-radius: 3px;
+
+}
+
+::-ms-scrollbar {
+   width: 10px;
+   @include media-breakpoint-down(sm){
+      width: 8px;
+   }
+}
+
+::-ms-scrollbar-thumb {
+   background-color: #255296;
+   border-radius: 3px;
+}
+
+
+

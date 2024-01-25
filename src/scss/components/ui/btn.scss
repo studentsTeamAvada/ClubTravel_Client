@@ -12,15 +12,18 @@
     text-transform: uppercase;
     border-radius: 6px;
     transition: background-color 300ms ease 0s;
+
     &:hover{
         background-color:rgba(246, 133, 33, 0.9) ;
     }
+
     &:active{
         background-color: #FFF;
         color: rgba(246, 133, 33, 1);
         border: 2px solid rgba(246, 133, 33, 1);
         font-weight: 600;
     }
+    
     &_min{
         font-size: 12px;
     }

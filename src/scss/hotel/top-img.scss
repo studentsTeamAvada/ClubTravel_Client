@@ -1,13 +1,8 @@
-.trash{
-    height: 1500px;
-
-}
-
 .top-img {
     overflow: hidden;
     position: relative;
     width: 100%;
-    height: 420px;
+    height: 421px;
     &__bg{
         &-img {
             position: absolute;
@@ -30,7 +25,7 @@
                 height: 56px;
                 left: 50%;
                 transform: translateX(-50%);
-                bottom: 0;
+                bottom: -1px;
                 z-index: 1;
             }
             @include media-breakpoint-down(sm){
@@ -52,7 +47,13 @@
             border-radius: 8px;
             background: #FFF;
             padding: 12px 19px 13px;
+            transition: transform 300ms ease 0s;
             cursor: pointer;
+            &:hover{
+                @include media-breakpoint-up(md){
+                    transform: scale(1.02);
+                }
+            }
             @include media-breakpoint-down(xs){
                 bottom: 17px;
                 height: 74px;
@@ -118,6 +119,7 @@
             }
         }
         &-sity{
+            color: #222;
             white-space: nowrap;
             font-size: 14px;
             @include media-breakpoint-down(xs){
