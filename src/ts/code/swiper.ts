@@ -1,6 +1,6 @@
 import Swiper from 'swiper';
-import { Navigation, Pagination, Autoplay, Scrollbar } from 'swiper/modules'
-Swiper.use([Navigation, Pagination, Autoplay, Scrollbar]);
+import { Navigation, Pagination, Autoplay, Scrollbar, Thumbs } from 'swiper/modules'
+Swiper.use([Navigation, Pagination, Autoplay, Scrollbar, Thumbs]);
 
 export function heroSwiper() {
    new Swiper('.hero-swiper', {
@@ -81,4 +81,25 @@ export function companySwiper() {
          prevEl: '.hot-deals__swiper-button-prev',
        },
      });
+   }
+
+   export function hotel() {
+    var swiper2 = new Swiper(".hotel-swiper-one", {
+      loop: true,
+      spaceBetween: 10,
+      slidesPerView: 4,
+      freeMode: true,
+      watchSlidesProgress: true,
+    });
+    new Swiper(".hotel-swiper-two", {
+      loop: true,
+      spaceBetween: 10,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      thumbs: {
+        swiper: swiper2,
+      },
+    });
    }
