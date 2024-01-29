@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getStorage, ref,  uploadBytesResumable,getDownloadURL } from "firebase/storage";
+// import { getStorage, ref,  uploadBytesResumable,getDownloadURL } from "firebase/storage";
 const firebaseConfig = {
   apiKey: "AIzaSyAVwhQr2zeNEAr1FSrD6ygo5dJeLkxjtRk",
   authDomain: "clubtravel-6eff6.firebaseapp.com",
@@ -10,25 +10,25 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const storage = getStorage(app);
+// const storage = getStorage(app);
 
-const photo = document.querySelector("#photo") as HTMLInputElement;
-const form = document.querySelector("#form") as HTMLFormElement;
+// const photo = document.querySelector("#photo") as HTMLInputElement;
+// const form = document.querySelector("#form") as HTMLFormElement;
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const file = photo.files ? photo.files[0] : null;
-  if (file) {
-    const storageRef = ref(storage, `images/${file.name}`);
-    const uploadTask = uploadBytesResumable(storageRef, file);
-    uploadTask.then(() => {
-      console.log('Upload successful');
+// form.addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   const file = photo.files ? photo.files[0] : null;
+//   if (file) {
+//     const storageRef = ref(storage, `images/${file.name}`);
+//     const uploadTask = uploadBytesResumable(storageRef, file);
+//     uploadTask.then(() => {
+//       console.log('Upload successful');
 
-      getDownloadURL(uploadTask.snapshot.ref).then((downloadURL: string) => {
-        console.table(downloadURL);
-      });
-    }).catch((error) => {
-      console.error('Upload failed:', error);
-    });
-  }
-});
+//       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL: string) => {
+//         console.table(downloadURL);
+//       });
+//     }).catch((error) => {
+//       console.error('Upload failed:', error);
+//     });
+//   }
+// });
