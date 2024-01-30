@@ -13,6 +13,10 @@ const firebaseConfig = {
 const companyWrapper = document.querySelector(".company__swiper-wrapper");
 
 export class CompanyProduct {  
+  private app: any;
+  private db: any;
+  private productsArray: Tours[];
+
   constructor() {
     this.app = initializeApp(firebaseConfig);
     this.db = getFirestore(this.app);
@@ -23,7 +27,7 @@ export class CompanyProduct {
    
     const querySnapshot = await getDocs(collection(this.db, 'hotels'));
     querySnapshot.forEach((doc) => {
-      const product = doc.data();
+      const product = doc.data() as Tours;
       
       this.productsArray.push(product);
     });
@@ -37,8 +41,7 @@ export class CompanyProduct {
     products.forEach((product) => {
       const content = product;
       const { name, date, price, img} = content;
-      console.log(content);
-
+      
       if (img && Array.isArray(img) && img.length > 0) {
         const { url, urlWebp } = img[0];
 
@@ -47,7 +50,7 @@ export class CompanyProduct {
         <div class="company__card">
         <div class="company__card-img">
           <picture class="hero__bg-img">
-            <source srcset=${urlWebp } type="image/webp" />
+            <source srcset=${urlWebp} type="image/webp" />
             <img src=${url} alt="bg" />
           </picture>
           `;
