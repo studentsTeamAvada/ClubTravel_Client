@@ -24,10 +24,7 @@
 
     &:active{
         @include media-breakpoint-up(md){
-            background-color: #FFF;
-            color: rgba(246, 133, 33, 1);
-            border: 2px solid rgba(246, 133, 33, 1);
-            font-weight: 600;
+            transform: scale(0.98);
         }
     }
     

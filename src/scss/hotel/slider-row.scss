@@ -1,5 +1,5 @@
 .slider-row {
-    margin-bottom: 500px;
+    margin-bottom: 16px;
     &__wrapper {
         display: grid;
         gap: 69px;
@@ -15,15 +15,16 @@
         }
     }
     @include media-breakpoint-down(md){
-        margin-top: 15px;
+        margin: 15px 0 5px 0;
     }
 }
 
 .slider {
+    // display: none;
     overflow: hidden;
     margin-top: 46px;
     max-width: 730px;
-    aspect-ratio: 1.10/1;
+    aspect-ratio: 1.163/1;
     @include media-breakpoint-down(md){
         margin-top: 20px;
         aspect-ratio: 1.1353/1;
@@ -39,19 +40,23 @@
     }
     
     .hotel-swiper-two {
-        height: 75%;
+        height: 79.4%;
         width: 100%;
         margin-bottom: 16px;
         @include media-breakpoint-down(md){
             margin-bottom: 10px;
         }
         @include media-breakpoint-down(sm){
+            height: 75%;
             margin-bottom: 7px;
         }
     }
     
     .hotel-swiper-one {
-        height: 14.5%;
+        height: 15.6%;
+        @include media-breakpoint-down(sm){
+            height: 14.5%;
+        }
     }
     
     .hotel-swiper-one .swiper-slide {
@@ -94,6 +99,26 @@
         &-select {
             color: #F68521;
             font-size: 14px;
+            cursor: pointer;
+            position: relative;
+            &::after{
+                content: '';
+                position: absolute;
+                height: 1px;
+                left: 50%;
+                width: 98%;
+                background:#F68521 ;
+                bottom: 0;
+                transition: transform 150ms ease 0s;
+                transform: translateX(-50%) scaleX(0) ;
+            }
+            &:hover{
+                @include media-breakpoint-up(md){
+                    &::after{
+                        transform: translateX(-50%) scaleX(1);
+                    }
+                }
+            }
         }
     }
     &__list {
@@ -143,6 +168,22 @@
         &-tegs {
             min-height: 68px;
             margin-bottom: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            overflow: auto;
+            max-height: 200px;
+            gap: 8px;
+            li{
+                color: #222;
+                font-size: 12px;
+                line-height: 16px;
+                padding: 3px 10px;
+                height: 22px;
+                border-radius: 6px;
+                border: 1px solid #E2E2E2;
+                background: #FFF;
+                box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.10);
+            }
         }
     }
 
@@ -163,6 +204,12 @@
     &__button {
         height: 42px;
         margin-bottom: 16px;
+        position: relative;
+    }
+    &__error{
+        position: absolute;
+        bottom: -15px;
+        font-size: 12px;
     }
     &__btn {}
     &__bottom {
@@ -186,6 +233,9 @@
             }
         }
     }
+    @include media-breakpoint-up(md){
+        box-shadow:0px 5px 10px rgba(0, 0, 0, 0.10) ;
+    }
     @include media-breakpoint-down(md){
         grid-row: 1;
         padding: 14px 6px 0;
@@ -198,6 +248,25 @@
         max-width: 600px;
         margin: 0 auto;
     }
+    ::-webkit-scrollbar {
+        width: 6px;
+     }
+     ::-ms-scrollbar {
+        width: 6px;
+     }
+     ::-webkit-scrollbar-thumb {
+        background-color: rgba(246, 133, 33, 0.8);
+        &:hover{
+            background-color: rgba(246, 133, 33, 1);
+        }
+     }
+     
+     ::-ms-scrollbar-thumb {
+        background-color: rgba(246, 133, 33, 0.8);
+        &:hover{
+            background-color: rgba(246, 133, 33, 1);
+        }
+     }
 }
 
 

@@ -82,38 +82,55 @@ export function companySwiper() {
        },
      });
    }
-  export class HotelSlider{
-    swiperOne : Swiper;
-    swiperTwo : Swiper;
-    constructor(){
-      this.swiperTwo = new Swiper(".hotel-swiper-one", {
-        loop: true,
-        spaceBetween: 7,
-        slidesPerView: 4,
-        freeMode: true,
-        watchSlidesProgress: true,
-  
-        breakpoints: {
-          768: {
-            spaceBetween: 10,
-          },
-          1024: {
-            slidesPerView: 4,
-            spaceBetween: 16,
-          }
-        },
-      });
+export class HotelSlider{
+  swiperOne : Swiper;
+  swiperTwo : Swiper;
+  constructor(){
+    this.swiperTwo = new Swiper(".hotel-swiper-one", {
+      loop: true,
+      spaceBetween: 7,
+      slidesPerView: 4,
+      freeMode: true,
+      watchSlidesProgress: true,
 
-      this.swiperOne = new Swiper(".hotel-swiper-two", {
-        loop: true,
-        spaceBetween: 10,
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
+      breakpoints: {
+        768: {
+          spaceBetween: 10,
         },
-        thumbs: {
-          swiper: this.swiperTwo,
-        },
-      });
-    }
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 16,
+        }
+      },
+    });
+
+    this.swiperOne = new Swiper(".hotel-swiper-two", {
+      loop: true,
+      spaceBetween: 10,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      thumbs: {
+        swiper: this.swiperTwo,
+      },
+    });
   }
+}
+
+export class HotelSecondSlider{
+  swiper : Swiper;
+  constructor(){
+    this.swiper = new Swiper(".similars__slider", {
+      loop: true,
+      spaceBetween: 26,
+      slidesPerView: 3,
+      freeMode: true,
+      // breakpoints: {
+      //   768: {
+      //     spaceBetween: 10,
+      //   },
+      // },
+    });
+  }
+}

@@ -51,7 +51,7 @@
             cursor: pointer;
             &:hover{
                 @include media-breakpoint-up(md){
-                    transform: scale(1.02);
+                    transform: scale(1.01);
                 }
             }
             @include media-breakpoint-down(xs){

@@ -81,7 +81,7 @@
                         <li><svg><use xlink:href="./src/images/sprite.svg#house"></use></svg><span class="tour__li-info">Стандарт</span></li>
                     </ul>
                     <div class="tour__price">
-                        <span class="tour__price-sum">429</span><span class="tour__price-euro">€</span><span class="tour__price-people">/чел</span>
+                        <span data-price="429" class="tour__price-sum">429</span><span class="tour__price-euro">€</span><span class="tour__price-people">/чел</span>
                     </div>
                     <div class="tour__price-info">
                         <span class="tour__price-info-bold">Цена на одного человека</span>
@@ -94,13 +94,16 @@
                     <div class="tour__quantity-drop">
                         <load ="/src/html/components/ui/dropdown.html" />
                     </div>
-                    <div class="tour__quantity-tegs"></div>
+                    <ul class="tour__quantity-tegs">
+
+                    </ul>
                     <div class="tour__total-sum">
                         <span class="tour__total-info">Общая стоимость тура:</span>
-                        <span class="tour__total-price">1 429</span><span class="tour__total-euro">€</span>
+                        <span class="tour__total-price">0</span><span class="tour__total-euro">€</span>
                     </div>
                     <div class="tour__button">
                         <div class="tour__btn btn">Бронировать</div>
+                        <div class="tour__error"></div>
                     </div>
                     <div class="tour__bottom">
                         <div class="tour__bottom-icon">
