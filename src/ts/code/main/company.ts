@@ -73,7 +73,7 @@ export class CompanyProduct {
             <svg>
               <use xlink:href="./src/images/sprite.svg#clock"></use>
             </svg>
-            <p class="company__card-data">${date}</p>
+            <p class="company__card-data">22.11.2020</p>
           </div>
         </div>
         <p class="company__card-text">${name}</p>

@@ -10,9 +10,9 @@ const firebaseConfig = {
   appId: "1:883499742498:web:b0bf6b06d8073d249a217b",
 };
 
-const winterTourWrapper = document.querySelector(".winter-tour__swiper-wrapper");
+const summerTourWrapper = document.querySelector(".summer-tour__swiper-wrapper");
 
-export class WinterTourProduct {
+export class SummerTourProduct {
   private app: any;
   private db: any;
   private productsArray: Tours[];
@@ -24,14 +24,14 @@ export class WinterTourProduct {
   }
 
   async loadCards() {
-    const filterWinterTour = query(
+    const filterSummerTours = query(
       collection(this.db, 'hotels'),
       where('hotTour', '==', true)
     );
-    console.log(filterWinterTour);
+    console.log(filterSummerTours);
     
    
-    const querySnapshot = await getDocs(filterWinterTour);
+    const querySnapshot = await getDocs(filterSummerTours);
     querySnapshot.forEach((doc) => {
       const product = doc.data() as Tours;
 
@@ -56,29 +56,29 @@ export class WinterTourProduct {
 
       
       let template = `
-      <div class="swiper-slide winter-tour__swiper-slide">
-        <div class="winter-tour__card">
-        <div class="winter-tour__card-img">
+      <div class="swiper-slide summer-tour__swiper-slide">
+        <div class="summer-tour__card">
+        <div class="summer-tour__card-img">
           <picture class="hero__bg-img">
             <source srcset=${urlWebp} type="image/webp" />
             <img src=${url} alt="bg" />
           </picture>
         </div>
-        <div class="winter-tour__card-text-wrapper">
-            <div class="winter-tour__card-place-wrapper">
+        <div class="summer-tour__card-text-wrapper">
+            <div class="summer-tour__card-place-wrapper">
                 <svg>
                     <use xlink:href="./src/images/sprite.svg#map-marker"></use>
                 </svg>
-                <p class="winter-tour__card-place">${country}</p>
+                <p class="summer-tour__card-place">${country}</p>
             </div>  
-            <p class="winter-tour__card-price-new">от <span>509€</span>/чел</p>
+            <p class="summer-tour__card-price-new">от <span>509€</span>/чел</p>
             
         </div>
-        <a href="#" class="winter-tour__btn btn">Выбрать тур</a>
+        <a href="#" class="summer-tour__btn btn">Выбрать тур</a>
         `;
 
-      if (winterTourWrapper) {
-        winterTourWrapper.insertAdjacentHTML("beforeend", template);
+      if (summerTourWrapper) {
+        summerTourWrapper.insertAdjacentHTML("beforeend", template);
       }
     }
     });

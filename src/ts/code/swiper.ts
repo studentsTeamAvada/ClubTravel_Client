@@ -104,7 +104,7 @@ export function companySwiper() {
            slidesPerView: 3,
          },
          1200: {
-          slidesPerView: 3,
+          slidesPerView: 4,
         },
          1440: {
            slidesPerView: 4
@@ -117,6 +117,44 @@ export function companySwiper() {
        navigation: {
          nextEl: '.winter-tour__swiper-button-next',
          prevEl: '.winter-tour__swiper-button-prev',
+       },
+     });
+   }
+
+
+  export function summerTourSwiper() {
+    new Swiper('.summer-tour__swiper', {
+       slidesPerView: 'auto',
+       speed: 1100,
+       spaceBetween: 15,
+ 
+       breakpoints: {
+         320: {
+           slidesPerView: 1,
+         },
+         375: {
+           slidesPerView: 1,
+         },
+         768: {
+           slidesPerView: 2,
+         },
+         991: {
+           slidesPerView: 3,
+         },
+         1200: {
+          slidesPerView: 4,
+        },
+         1440: {
+           slidesPerView: 4
+         },
+         1920: {
+           slidesPerView: 4
+         }
+       },
+ 
+       navigation: {
+         nextEl: '.summer-tour__swiper-button-next',
+         prevEl: '.summer-tour__swiper-button-prev',
        },
      });
    }

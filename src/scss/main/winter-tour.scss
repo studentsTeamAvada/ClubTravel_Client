@@ -1,5 +1,11 @@
 .winter-tour {
   position: relative;
+
+  margin-bottom: 104px;
+
+  @include media-breakpoint-down(xs) {
+    margin-bottom: 84px;
+  }
   // .company__container
 
   &__container {
@@ -121,8 +127,8 @@
     align-items: center;
     gap: 10px;
     svg {
-      width: 14px;
-      height: 14px;
+      width: 24px;
+      height: 24px;
       fill: #3e7739;
     }
   }
@@ -220,10 +226,10 @@
   &__swiper-button-next {
     display: none;
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       display: block;
       position: absolute;
-      top: 55%;
+      top: 41%;
       z-index: 2;
       cursor: pointer;
     }
@@ -293,5 +299,9 @@
     max-width: 248px;
     height: 42px;
     margin: 0 auto;
+
+    @include media-breakpoint-down(xs) {
+      max-width: 306px;
+    }
   }
 }

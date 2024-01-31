@@ -68,7 +68,7 @@ export class HotDealsProduct {
             <svg>
               <use xlink:href="./src/images/sprite.svg#clock"></use>
             </svg>
-            <p class="hot-deals__card-data">${date}</p>
+            <p class="hot-deals__card-data">22.11.2020</p>
           </div>
           <div class="hot-deals__card-place-wrapper">
             <svg>
