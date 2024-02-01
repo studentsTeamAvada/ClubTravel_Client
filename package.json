@@ -25,7 +25,6 @@
   },
   "dependencies": {
     "air-datepicker": "^3.4.0",
-    "axios": "^1.6.5",
     "firebase": "^10.7.2",
     "nouislider": "^15.7.1",
     "strapi-plugin-populate-deep": "^3.0.1"

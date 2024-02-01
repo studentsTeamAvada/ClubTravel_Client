@@ -122,6 +122,43 @@
             transform: scale(0.97);
         }
     }
+    &__error-for-kids {
+        display: none;
+    }
+    &__error-for-abduls {
+        display: none;
+    }
+    &__error{
+        font-size: 10px;
+        position: absolute;
+        bottom: 2px;
+        color: rgb(199, 41, 41);
+        opacity: 0;
+        transition: opacity 300ms ease 0s;
+        &_active-kids{
+            opacity: 1;
+        }
+        &_active-kids{
+            opacity: 1;
+            .dropdown {
+                &__error-for-kids {
+                    display: block;
+                }
+            }
+        }
+        &_active-abduls{
+            opacity: 1;
+            .dropdown {
+                &__error-for-abduls {
+                    display: block;
+                }
+                &__error-for-kids {
+                    display: none;
+                }
+            }
+        }
+    }
+
 
     &_active{
         .dropdown {
@@ -159,11 +196,14 @@
 }
 
 .children {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 40px;
     gap: 5px;
     width: 100%;
     margin-bottom: 15px;
+    height: 0px;
+    transition: all 300ms ease 0s;
 
     &__btn {
         width: 100%;
@@ -203,9 +243,10 @@
     }
 
     &__drop{
+        transition: all 400ms ease 0s;
         position: relative;
-        flex: 1 0 49%;
-        max-width: 49%;
+        max-width: 100%;
+        opacity: 0;
         &_active{
             .children {
                 &__list {
@@ -218,6 +259,16 @@
                 }
             }
         }
+        &_opacity{
+            opacity: 1;
+        }
+        &_error{
+            .children {
+                &__btn {
+                    border: 1px solid rgb(199, 41, 41);
+                }
+            }
+        }
     }
 
     &__list {
@@ -226,13 +277,13 @@
         left: -1px;
         width: calc(100% + 2px);
         position: absolute;
+        z-index: 10;
         font-size: 12px;
         text-align: left;
         border: 1px solid #E2E2E2;
         border-radius: 3px;
         max-height: 300px;
         overflow: auto;
-        z-index: 2;
         background-color: #FFF;
         transform: scaleY(0);
 

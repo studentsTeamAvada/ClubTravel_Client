@@ -4,32 +4,204 @@
 
 <body>
   <div class="wrapper">
-    <load="./src/html/header.htm" />
+    <load="./src/html/header.htm"/>
     <main class="page">
       <section class="banner">
         <div class="banner__oval">
           <img src="./src/images/oval.png" alt="">
         </div>
-       </section>
-       <section class="tour">
+      </section>
+      <section class="tour">
         <div class="tour__container">
-          <load="./src/html/components/ui/find.html"
-            title="Найти тур"
-          />
-        
+          <load="./src/html/components/ui/search.html" title="Найти тур" />
+
         </div>
-       </section>
-       <section>
-        <form id="form">
-          <input type="file" id="photo" accept="image/*">
-          <button type="submit">Upload</button>
-        </form>
-       </section>
-  </main>
-  <load="./src/html/footer.htm" />
+      </section>
+      <section class="result">
+
+        <div class="result__container">
+          <div class="result__top">
+            <h3 class="result__top-title">
+              Найдено <span class="result__top-offers"></span> предложения в <span class="result__top-hotel"></span>
+              отелях
+            </h3>
+            <div class="result__top-calendar"></div>
+            <div class="result__top-sort">
+              <p class="result__top-text">Сортировать:</p>
+              <section>
+                <option value="Цена"></option>
+                <option value=""></option>
+                <option value=""></option>
+              </section>
+              <section>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+              </section>
+
+            </div>
+          </div>
+
+          <div class="result__content ">
+
+            <!-- <div class="result__hotel">
+
+              <div class="result__slider">
+                <div class="swiper result__swiper">
+                  <div class="swiper-wrapper result__wrapper">
+
+                    <div class="swiper-slide result__slide">
+                      <picture>
+                        <source srcset="./src/images/404/404.webp" type="image/webp">
+                        <img src="./src/images/404/404.png" alt="photo">c
+                      </picture>
+                    </div>
+
+                    <div class="swiper-slide result__slide">
+                      <picture>
+                        <source srcset="./src/images/404/404.webp" type="image/webp">
+                        <img src="./src/images/404/404.png" alt="photo">
+                      </picture>
+                    </div>
+
+                    <div class="swiper-slide result__slide">
+                      <picture>
+                        <source srcset="./src/images/404/404.webp" type="image/webp">
+                        <img src="./src/images/404/404.png" alt="photo">
+                      </picture>
+                    </div>
+
+                    <div class="swiper-slide result__slide">
+                      <picture>
+                        <source srcset="./src/images/404/404.webp" type="image/webp">
+                        <img src="./src/images/404/404.png" alt="photo">
+                      </picture>
+                    </div>
+
+                    <div class="swiper-slide result__slide">
+                      <picture>
+                        <source srcset="./src/images/404/404.webp" type="image/webp">
+                        <img src="./src/images/404/404.png" alt="photo">
+                      </picture>
+                    </div>
+
+                    <div class="swiper-slide result__slide">
+                      <picture>
+                        <source srcset="./src/images/404/404.webp" type="image/webp">
+                        <img src="./src/images/404/404.png" alt="photo">
+                      </picture>
+                    </div>
+
+                    <div class="swiper-slide result__slide">
+                      <picture>
+                        <source srcset="./src/images/404/404.webp" type="image/webp">
+                        <img src="./src/images/404/404.png" alt="photo">
+                      </picture>
+                    </div>
+
+                    <div class="swiper-slide result__slide">
+                      <picture>
+                        <source srcset="./src/images/404/404.webp" type="image/webp">
+                        <img src="./src/images/404/404.png" alt="photo">
+                      </picture>
+                    </div>
+
+                    <div class="swiper-slide result__slide">
+                      <picture>
+                        <source srcset="./src/images/404/404.webp" type="image/webp">
+                        <img src="./src/images/404/404.png" alt="photo">
+                      </picture>
+                    </div>
+
+                  </div>
+
+                  <div class="swiper-button-next result__btn-next">
+                    <svg>
+                      <use xlink:href="./src/images/sprite.svg#chevron-left"></use>
+                    </svg>
+                  </div>
+
+                  <div class="swiper-button-prev result__btn-prev">
+                    <svg>
+                      <use xlink:href="./src/images/sprite.svg#chevron-left"></use>
+                    </svg>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="result__row">
+
+                <div class="result__info">
+                  <h4 class="result__info-title"></h4>
+
+                  <div class="result__info-location">
+                    <svg>
+                      <use xlink:href="./src/images/sprite.svg#point"></use>
+                    </svg>
+                    <p class="result__info-country"></p>
+                    <p class="result__info-region"></p>
+                  </div>
+
+                  <p class="result__info-descript"></p>
+                  <a class="result__info-link"  href="hotel.html"> 
+                    Подробнее об отеле
+                    <svg>
+                      <use xlink:href="./src/images/sprite.svg#arrow-right"></use>
+                    </svg> 
+                  </a>                  
+                </div>
+
+                <div class="result__rating">
+                  <div class="result__rating-star">
+                    <img src="" alt="star">
+                  </div>
+
+                  <p class="result__rating-duration">
+                    <svg>
+                      <use xlink:href="./src/images/sprite.svg#clock"></use>
+                    </svg>
+                  </p>
+
+                  <p class="result__rating-meal">
+                    <svg>
+                      <use xlink:href="./src/images/sprite.svg#food"></use>
+                    </svg>
+                  </p>
+
+                  <p class="result__rating-room">
+                    <svg>
+                      <use xlink:href="./src/images/sprite.svg#house"></use>
+                    </svg>
+                  </p>
+
+                  <p class="result__rating-beach">
+                    <svg>
+                      <use xlink:href="./src/images/sprite.svg#sun"></use>
+                    </svg>
+                  </p>
+                </div>
+
+                <div class="result__price">
+                  <p class="result__price-num"></p>
+                </div>
+
+              </div>
+
+            </div> -->
+
+          </div>
+
+
+
+
+        </div>
+      </section>
+
+    </main>
+    <load="./src/html/footer.htm" />
   </div>
-  <script type="module"  src="src/ts/modules/firebase.ts"></script>
-  <script type="module"  src="src/ts/pages/search_results.ts"></script>
+  <script type="module" src="src/ts/pages/search_results.ts"></script>
 </body>
 
 </html>

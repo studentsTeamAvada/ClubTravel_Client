@@ -182,16 +182,42 @@ export function companySwiper() {
         },
       });
 
-      this.swiperOne = new Swiper(".hotel-swiper-two", {
-        loop: true,
-        spaceBetween: 10,
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        thumbs: {
-          swiper: this.swiperTwo,
-        },
-      });
-    }
+    this.swiperOne = new Swiper(".hotel-swiper-two", {
+      loop: true,
+      spaceBetween: 10,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      thumbs: {
+        swiper: this.swiperTwo,
+      },
+    });
   }
+}
+
+export class HotelSecondSlider{
+  swiper : Swiper;
+  constructor(){
+    this.swiper = new Swiper(".similars__slider", {
+      loop: true,
+      spaceBetween: 10,
+      slidesPerView: 1,
+      freeMode: true,
+      breakpoints: {
+        576: {
+          spaceBetween: 10,
+          slidesPerView: 2,
+        },
+        768: {
+          spaceBetween: 20,
+          slidesPerView: 2,
+        },
+        1024: {
+          spaceBetween: 26,
+          slidesPerView: 3,
+        },
+      },
+    });
+  }
+}

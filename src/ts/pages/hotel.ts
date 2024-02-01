@@ -1,16 +1,31 @@
 import { Header } from "../components/header";
-import { HotelSlider } from '../code/swiper';
-import { DropDown } from '../components/dropDown';
+import { Footer } from "../components/footer";
+import { HotelSlider, HotelSecondSlider } from '../code/swiper';
+import { InfoBlock } from '../code/hotel/info-block';
 
-new Header();
+
+
 
 class Hotel{
     swiper: HotelSlider;
-    dropDown: DropDown;
+    bottomSlider: HotelSecondSlider;
+    infoBlock: InfoBlock;
+    header: Header;
+    footer: Footer;
     constructor(){
-        this.swiper = new HotelSlider()
-        this.dropDown = new DropDown('.tour__quantity-drop');
+        this.swiper = new HotelSlider();
+        this.bottomSlider = new HotelSecondSlider()
+        this.infoBlock = new InfoBlock();
+        this.header = new Header();
+        this.footer = new Footer();
+        this.init()
     }
+    init(){
+        
+    }
+
 }
 
 new Hotel()
+
+

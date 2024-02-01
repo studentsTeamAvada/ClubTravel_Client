@@ -1,5 +1,13 @@
-import {Find} from "../components/find"
-new Find()
-import { Header } from "../components/header"
-new Header()
+import {Search} from "../components/search"
 
+
+import { Header } from "../components/header"
+
+
+document.addEventListener("DOMContentLoaded", async () => {
+  new Header()
+  new Search()
+
+})
+
+ 

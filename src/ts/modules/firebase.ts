@@ -17,18 +17,43 @@ export const app = initializeApp(firebaseConfig);
 
 // form.addEventListener("submit", (e) => {
 //   e.preventDefault();
-//   const file = photo.files ? photo.files[0] : null;
-//   if (file) {
-//     const storageRef = ref(storage, `images/${file.name}`);
-//     const uploadTask = uploadBytesResumable(storageRef, file);
-//     uploadTask.then(() => {
-//       console.log('Upload successful');
 
-//       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL: string) => {
-//         console.table(downloadURL);
-//       });
-//     }).catch((error) => {
-//       console.error('Upload failed:', error);
-//     });
+//   const files = photo.files;
+//   if (files && files.length > 0) {
+//     for (let i = 0; i < files.length; i++) {
+//       const file = files[i];
+//       const storageRef = ref(
+//         storage,
+//         `Грузия/Батумі/Black Sea Star/${file.name}`
+//       );
+//       const uploadTask = uploadBytesResumable(storageRef, file);
+
+//       uploadTask
+//         .then((snapshot) => {
+//           console.log("Upload successful for", file.name);
+
+//           getDownloadURL(snapshot.ref).then((downloadURL: string) => {
+//             console.table(downloadURL);
+//           });
+//         })
+//         .catch((error) => {
+//           console.error("Upload failed for", file.name, error);
+//         });
+//     }
 //   }
 // });
+
+
+// const hotelsCollection = collection(getFirestore(app), "hotels");
+
+// hotels.forEach(function (hotel){
+// addDoc(hotelsCollection,hotel).then(
+//   function(){
+//     console.log("Document successfully written!");
+//   }
+// )
+// .catch(function(error){
+//   console.error("Error writing document: ", error);
+// })
+// })
+

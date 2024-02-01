@@ -1,8 +1,8 @@
 <div class="dropdown">
     <div class="dropdown__btn">
         <span class="dropdown__btn-info">
-            <span class="dropdown__adults">Взрослых: <span>2</span>;</span> 
-            <span class="dropdown__kids">детей: <span>5</span></span>
+            <span class="dropdown__adults">Взрослых: <span id="adults-quantity">0</span>;</span> 
+            <span class="dropdown__kids">детей: <span id="kids-quantity">0</span></span>
         </span>
         <svg class="dropdown__arrow"><use xlink:href="./src/images/sprite.svg#chevron-left"></use></svg> 
     </div>
@@ -25,116 +25,13 @@
             </div>
         </div>
         <div class="dropdown__children children">
-            <div id="drop-1" class="children__drop">
-                <button class="children__btn">
-                    <span class="children__current">Укажите возраст</span>
-                    <svg><use xlink:href="./src/images/sprite.svg#chevron-left"></use></svg> 
-                </button>
-                <ul class="children__list">
-                    <li>Укажите возраст</li>
-                    <li>&lt; 1 год</li>
-                    <li>1 год</li>
-                    <li>2 года</li>
-                    <li>3 года</li>
-                    <li>4 года</li>
-                    <li>5 лет</li>
-                    <li>6 лет</li>
-                    <li>7 лет</li>
-                    <li>8 лет</li>
-                    <li>9 лет</li>
-                    <li>10 лет</li>
-                    <li>11 лет</li>
-                    <li>12 лет</li>
-                    <li>13 лет</li>
-                    <li>14 лет</li>
-                    <li>15 лет</li>
-                    <li>16 лет</li>
-                    <li>17 лет</li>
-                </ul>
-            </div>
-            <div id="drop-2" class="children__drop">
-                <button class="children__btn">
-                    <span class="children__current">Укажите возраст</span>
-                    <svg><use xlink:href="./src/images/sprite.svg#chevron-left"></use></svg> 
-                </button>
-                <ul class="children__list">
-                    <li>Укажите возраст</li>
-                    <li>&lt; 1 год</li>
-                    <li>1 год</li>
-                    <li>2 года</li>
-                    <li>3 года</li>
-                    <li>4 года</li>
-                    <li>5 лет</li>
-                    <li>6 лет</li>
-                    <li>7 лет</li>
-                    <li>8 лет</li>
-                    <li>9 лет</li>
-                    <li>10 лет</li>
-                    <li>11 лет</li>
-                    <li>12 лет</li>
-                    <li>13 лет</li>
-                    <li>14 лет</li>
-                    <li>15 лет</li>
-                    <li>16 лет</li>
-                    <li>17 лет</li>
-                </ul>
-            </div>
-            <div id="drop-3" class="children__drop">
-                <button class="children__btn">
-                    <span class="children__current">Укажите возраст</span>
-                    <svg><use xlink:href="./src/images/sprite.svg#chevron-left"></use></svg> 
-                </button>
-                <ul class="children__list">
-                    <li>Укажите возраст</li>
-                    <li>&lt; 1 год</li>
-                    <li>1 год</li>
-                    <li>2 года</li>
-                    <li>3 года</li>
-                    <li>4 года</li>
-                    <li>5 лет</li>
-                    <li>6 лет</li>
-                    <li>7 лет</li>
-                    <li>8 лет</li>
-                    <li>9 лет</li>
-                    <li>10 лет</li>
-                    <li>11 лет</li>
-                    <li>12 лет</li>
-                    <li>13 лет</li>
-                    <li>14 лет</li>
-                    <li>15 лет</li>
-                    <li>16 лет</li>
-                    <li>17 лет</li>
-                </ul>
-            </div>
-            <div id="drop-4" class="children__drop">
-                <button class="children__btn">
-                    <span class="children__current">Укажите возраст</span>
-                    <svg><use xlink:href="./src/images/sprite.svg#chevron-left"></use></svg> 
-                </button>
-                <ul class="children__list">
-                    <li>Укажите возраст</li>
-                    <li>&lt; 1 год</li>
-                    <li>1 год</li>
-                    <li>2 года</li>
-                    <li>3 года</li>
-                    <li>4 года</li>
-                    <li>5 лет</li>
-                    <li>6 лет</li>
-                    <li>7 лет</li>
-                    <li>8 лет</li>
-                    <li>9 лет</li>
-                    <li>10 лет</li>
-                    <li>11 лет</li>
-                    <li>12 лет</li>
-                    <li>13 лет</li>
-                    <li>14 лет</li>
-                    <li>15 лет</li>
-                    <li>16 лет</li>
-                    <li>17 лет</li>
-                </ul>
-            </div>
+
         </div>
 
         <button class="dropdown__button-add">Добавить</button>
+        <div class="dropdown__error">
+            <span class="dropdown__error-for-kids">Укажите возраст для всех детей!</span>
+            <span class="dropdown__error-for-abduls">Должен быть как минимум один взрослый</span>
+        </div>
     </div>
 </div>
