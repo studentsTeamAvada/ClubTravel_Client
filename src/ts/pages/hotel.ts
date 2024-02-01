@@ -10,14 +10,10 @@ class Hotel{
     swiper: HotelSlider;
     bottomSlider: HotelSecondSlider;
     infoBlock: InfoBlock;
-    header: Header;
-    footer: Footer;
     constructor(){
         this.swiper = new HotelSlider();
         this.bottomSlider = new HotelSecondSlider()
         this.infoBlock = new InfoBlock();
-        this.header = new Header();
-        this.footer = new Footer();
         this.init()
     }
     init(){
@@ -26,6 +22,9 @@ class Hotel{
 
 }
 
-new Hotel()
-
+document.addEventListener('DOMContentLoaded', () => {
+    new Footer();
+    new Header()
+    new Hotel()
+});
 

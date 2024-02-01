@@ -1,4 +1,4 @@
-import * as $ from 'jquery';
+import $ from 'jquery';
 import { DropDown } from '../../components/dropDown';
 
 export class InfoBlock{
