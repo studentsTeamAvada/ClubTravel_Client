@@ -50,7 +50,7 @@ export class HotDealsProduct {
       console.log(content);
       
 
-      const { name, date, price, country, region, star, img} = content;
+      const { name, price, country, region, star, img} = content;
 
       if (img && Array.isArray(img) && img.length > 0) {
         const { url, urlWebp } = img[0];
