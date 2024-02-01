@@ -1,4 +1,5 @@
-import * as $ from 'jquery';
+import $ from 'jquery';
+
 
 export class DropDown{
     dropDown: JQuery<HTMLElement>;
@@ -95,7 +96,7 @@ export class DropDown{
                     <div id="drop-${i}" class="children__drop">
                         <button class="children__btn">
                             <span class="children__current">Укажите возраст</span>
-                            <svg><use xlink:href="./src/images/sprite.svg#chevron-left"></use></svg> 
+                            <svg><use xlink:href="#chevron-left"></use></svg> 
                         </button>
                         <ul class="children__list">
                             <li>Укажите возраст</li>

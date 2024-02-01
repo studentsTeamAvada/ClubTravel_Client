@@ -66,13 +66,13 @@ export class HotDealsProduct {
           </picture>
           <div class="hot-deals__card-data-wrapper hot-deals__card-data-top">
             <svg>
-              <use xlink:href="./src/images/sprite.svg#clock"></use>
+              <use xlink:href="#clock"></use>
             </svg>
             <p class="hot-deals__card-data">22.11.2020</p>
           </div>
           <div class="hot-deals__card-place-wrapper">
             <svg>
-              <use xlink:href="./src/images/sprite.svg#place"></use>
+              <use xlink:href="#place"></use>
             </svg>
             <p class="hot-deals__card-place">${country}, ${region}</p>
           </div>
@@ -85,7 +85,7 @@ export class HotDealsProduct {
             for (let i = 0; i < star; i++) {
               template += `
               <svg>
-                <use xlink:href="./src/images/sprite.svg#star"></use>
+                <use xlink:href="#star"></use>
               </svg>
               `;
             }
@@ -103,7 +103,7 @@ export class HotDealsProduct {
               template += `
                   <div class="hot-deals__card-line">
                   <svg>
-                    <use xlink:href="./src/images/sprite.svg#company-line"></use>
+                    <use xlink:href="#company-line"></use>
                   </svg>
                   <div class="hot-deals__card-line-wrapper">
                     <p class="hot-deals__card-line-price">-30%</p>

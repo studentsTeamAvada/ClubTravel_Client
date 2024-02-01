@@ -58,7 +58,7 @@ export class CompanyProduct {
         template += `
             <div class="company-company__card-line">
             <svg>
-              <use xlink:href="./src/images/sprite.svg#company-line"></use>
+              <use xlink:href="#company-line"></use>
             </svg>
             <div class="company-company__card-line-wrapper">
               <p class="company-company__card-line-price">от ${price[1]}€</p>
@@ -70,7 +70,7 @@ export class CompanyProduct {
       template += `
           <div class="company-company__card-data-wrapper">
             <svg>
-              <use xlink:href="./src/images/sprite.svg#clock"></use>
+              <use xlink:href="#clock"></use>
             </svg>
             <p class="company-company__card-data">22.11.2020</p>
           </div>
