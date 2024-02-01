@@ -10,7 +10,7 @@ const firebaseConfig = {
   appId: "1:883499742498:web:b0bf6b06d8073d249a217b",
 };
 
-const companyWrapper = document.querySelector(".company__swiper-wrapper");
+const companyWrapper = document.querySelector(".company-company__wrapper");
 
 export class CompanyProduct {  
   private app: any;
@@ -46,9 +46,8 @@ export class CompanyProduct {
         const { url, urlWebp } = img[0];
 
       let template = `
-      <div class="swiper-slide company__swiper-slide">
-        <div class="company__card">
-        <div class="company__card-img">
+        <div class="company-company__card">
+        <div class="company-company__card-img">
           <picture class="hero__bg-img">
             <source srcset=${urlWebp} type="image/webp" />
             <img src=${url} alt="bg" />
@@ -57,27 +56,26 @@ export class CompanyProduct {
 
       if (price[1]) {
         template += `
-            <div class="company__card-line">
+            <div class="company-company__card-line">
             <svg>
               <use xlink:href="./src/images/sprite.svg#company-line"></use>
             </svg>
-            <div class="company__card-line-wrapper">
-              <p class="company__card-line-price">от ${price[1]}€</p>
+            <div class="company-company__card-line-wrapper">
+              <p class="company-company__card-line-price">от ${price[1]}€</p>
             </div>
           </div>
             `;
       }
 
       template += `
-          <div class="company__card-data-wrapper">
+          <div class="company-company__card-data-wrapper">
             <svg>
               <use xlink:href="./src/images/sprite.svg#clock"></use>
             </svg>
-            <p class="company__card-data">22.11.2020</p>
+            <p class="company-company__card-data">22.11.2020</p>
           </div>
         </div>
-        <p class="company__card-text">${name}</p>
-      </div>
+        <p class="company-company__card-text">${name}</p>
       </div>
         `;
 
@@ -88,5 +86,3 @@ export class CompanyProduct {
     });
   };
 }
-
-

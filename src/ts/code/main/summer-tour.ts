@@ -49,7 +49,7 @@ export class SummerTourProduct {
       console.log(content);
       
 
-      const { price, country, img} = content;
+      const { country, img} = content;
 
       if (img && Array.isArray(img) && img.length > 0) {
         const { url, urlWebp } = img[0];
