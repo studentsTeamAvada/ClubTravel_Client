@@ -18,8 +18,8 @@ const pages = [
     path: resolve(__dirname, "Hot_offers.html"),
   },
   {
-    name: "Campaigns",
-    path: resolve(__dirname, "Campaigns.html"),
+    name: "company.html",
+    path: resolve(__dirname, "company.html"),
   },
   {
     name: "Account",
