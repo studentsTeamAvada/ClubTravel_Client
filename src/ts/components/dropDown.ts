@@ -235,7 +235,6 @@ export class DropDown{
             const kidsObj: KidsObject = {};
 
 
-
             allSelects.each(function(_index, el) {
                 const thisCurrent: string  = String(el.querySelector('.children__current')?.textContent)
                 if(thisCurrent === 'Укажите возраст'){
