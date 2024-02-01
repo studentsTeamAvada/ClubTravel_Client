@@ -1,16 +1,30 @@
 .similars {
     margin-bottom: 97px;
+
     &__title {
         text-align: center;
         font-size: 26px;
         letter-spacing: 1.3px;
         text-transform: uppercase;
         margin-bottom: 38px;
+
+        @include media-breakpoint-down(sm){
+            font-weight: 700;
+            margin-bottom: 38px;
+        }
     }
+
     &__slider {
         width: 100%;
-        background-color: rgba(108, 110, 110, 0.4);
         user-select: none;
+
+        @include media-breakpoint-down(xs){
+            max-width: 80vw;
+        }
+
+        @include media-breakpoint-down(xxs){
+            max-width: 100%;
+        }
     }
 }
 
@@ -22,21 +36,24 @@
     overflow: hidden;
     display: grid;
     grid-template: 1fr auto / auto;
-    aspect-ratio: 1/1;
+    aspect-ratio: 0.947/1;
+
     &__image {
         grid-row: 1;
         height: 100%;
         position: relative;
-        background-color: red;
     }
+
     &__img {
         height: 100%;
+
         img{
             object-fit: cover;
             max-width: 100%;
             height: 100%;
         }
     }
+
     &__tag {
         position: absolute;
         left: 14px;
@@ -47,6 +64,7 @@
         font-size: 14px;
         display: flex;
         align-items: center;
+
         svg{
             width: 14px;
             height: 14px;
@@ -54,30 +72,46 @@
             margin-right: 6.4px;
         }
     }
+
     &__tag-date {
         bottom: 54px;
         cursor: default;
+
+        @include media-breakpoint-down(sm){
+            display: none;
+        }
     }
+
     &__tag-location {
         bottom: 14px;
         transition: background-color 300ms ease 0s;
         &:hover{
             background: rgba(0, 0, 0, 1);
         }
+
     }
+
     &__info {
         grid-row: 2;
         padding: 14px 16px 16px 16px;
         background: #fff;
+
+        @include media-breakpoint-down(sm){
+            padding: 14px;
+        }
     }
+
     &__row {
         display: flex;
         align-items: center;
     }
+
+
     &__row-one {
         justify-content: space-between;
         margin-bottom: 16px;
     }
+
     &__title {
         position: relative;
         white-space: nowrap; /* Запрет переноса текста на новую строку */
@@ -85,6 +119,7 @@
         text-overflow: ellipsis;
         max-width: 230px;
         cursor: pointer;
+
         &::after{
             content: '';
             position: absolute;
@@ -92,7 +127,7 @@
             left: 50%;
             width: 98%;
             background:#222 ;
-            bottom: 0;
+            bottom: 1px;
             transition: transform 150ms ease 0s;
             transform: translateX(-50%) scaleX(0) ;
         }
@@ -106,6 +141,7 @@
         }
 
     }
+
     &__stars {
         display: flex;
         align-items: center;
@@ -116,21 +152,29 @@
             fill: #F5C213;
         }
     }
+
     &__row-two {
         gap: 8px;
         position: relative;
         height: 31px;
     }
+
     &__price {
         span{
             font-weight: 700;
         }
+
+        @include media-breakpoint-down(xxs){
+            order: 2;   
+        }
     }
+
     &__old-price {
         color: #BFBFBF;
         font-size: 14px;
         text-decoration-line: strikethrough;
     }
+
     &__sale {
         position: absolute;
         right: -16px;
@@ -140,16 +184,24 @@
         font-weight: 700;
         width: 80px;
         height: 31px;
-        background: #F68521;
         display: flex;
         align-items: center;
         justify-content: center;
+
         svg{
             position: absolute;
             top: 0;
-            left: -3px;
-            width: 3px;
+            right: 0;
+            width: 83px;
             height: 31px;
         }
+        span{
+            position: relative;
+            z-index: 1;
+        }
+    }
+    
+    @include media-breakpoint-down(md){
+        max-height: 100%;
     }
 }

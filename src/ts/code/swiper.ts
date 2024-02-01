@@ -123,14 +123,23 @@ export class HotelSecondSlider{
   constructor(){
     this.swiper = new Swiper(".similars__slider", {
       loop: true,
-      spaceBetween: 26,
-      slidesPerView: 3,
+      spaceBetween: 10,
+      slidesPerView: 1,
       freeMode: true,
-      // breakpoints: {
-      //   768: {
-      //     spaceBetween: 10,
-      //   },
-      // },
+      breakpoints: {
+        576: {
+          spaceBetween: 10,
+          slidesPerView: 2,
+        },
+        768: {
+          spaceBetween: 20,
+          slidesPerView: 2,
+        },
+        1024: {
+          spaceBetween: 26,
+          slidesPerView: 3,
+        },
+      },
     });
   }
 }

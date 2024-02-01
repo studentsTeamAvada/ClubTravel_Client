@@ -237,6 +237,7 @@ export class DropDown{
 
 
             allSelects.each(function(index, el) {
+                console.log(index)
                 const thisCurrent: string  = String(el.querySelector('.children__current')?.textContent)
                 if(thisCurrent === 'Укажите возраст'){
                     el.classList.add('children__drop_error')
