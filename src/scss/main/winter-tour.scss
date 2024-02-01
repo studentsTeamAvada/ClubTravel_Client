@@ -1,8 +1,10 @@
-.company {
+.winter-tour {
   position: relative;
-  margin-bottom: 99px;
+
+  margin-bottom: 104px;
+
   @include media-breakpoint-down(xs) {
-    margin-bottom: 77px;
+    margin-bottom: 84px;
   }
   // .company__container
 
@@ -21,41 +23,24 @@
     align-items: center;
     justify-content: center;
     gap: 7px;
-    margin-bottom: 38px;
+    margin-bottom: 12px;
 
     @include media-breakpoint-down(xs) {
       flex-direction: column;
       gap: 4px;
       margin-bottom: 14px;
     }
-
-    span {
-      color: #f15d28;
-    }
-
-    svg {
-      width: 35px;
-      height: 35px;
-      fill: rgba(241, 93, 40, 1);
-    }
   }
 
   &__text {
-    display: none;
+    color: #888;
+    text-align: center;
+    font-size: 14px;
+    padding-bottom: 37px;
 
     @include media-breakpoint-down(xs) {
-      display: block;
-      color: #888;
-      text-align: center;
-      font-size: 14px;
       max-width: 316px;
       margin: 0 auto;
-      margin-bottom: 48px;
-    }
-    
-    svg {
-      width: 20px;
-      height: 20px;
     }
   }
 
@@ -75,7 +60,7 @@
     padding: 2px;
 
     @include media-breakpoint-down(xs) {
-      margin-bottom: 46px;
+      margin-bottom: 36px;
     }
   }
 
@@ -91,7 +76,7 @@
 
   &__card {
     width: 100%;
-    height: 330px;
+    height: 364px;
     border-radius: 10px;
     background: #fff;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
@@ -105,46 +90,6 @@
       height: 250px;
       border-radius: 10px 10px 0px 0px;
     }
-  }
-
-  // .company__card-line
-
-  &__card-line {
-    position: absolute;
-    top: 29px;
-    right: 20px;
-    display: flex;
-    svg {
-      width: 3px;
-      height: 31px;
-      fill: #f68521;
-    }
-  }
-
-  &__card-line-wrapper {
-    position: relative;
-
-    &::after {
-      position: absolute;
-      content: "";
-      top: 0;
-      left: 0;
-      width: 80px;
-      height: 31px;
-      background: #f68521;
-    }
-  }
-
-  // .company__card-line-price
-
-  &__card-line-price {
-    position: relative;
-    z-index: 1;
-    color: #fff;
-    font-weight: 700;
-    top: 50%;
-    left: 67%;
-    transform: translate(-50%, -50%);
   }
 
   // .company__card-data-wrapper
@@ -173,10 +118,76 @@
     font-size: 14px;
   }
 
+  &__card-data-top {
+    bottom: 56px;
+  }
+
+  &__card-place-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    svg {
+      width: 24px;
+      height: 24px;
+      fill: #3e7739;
+    }
+  }
+
+  &__card-place {
+    color: #222;
+    font-size: 16px;
+  }
+
+  &__card-stars-wrapper {
+    display: flex;
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__card-wrappers {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    max-height: 83px;
+  }
+
+  &__card-text-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 16px 18px 16px;
+  }
+
   // .company__card-text
 
   &__card-text {
-    padding: 16px 10px 5px 21px;
+  }
+
+  &__card-prices-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__card-price-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 16px;
+  }
+
+  &__card-price-new {
+    span {
+      color: #000;
+      font-weight: 700;
+    }
+  }
+
+  &__card-price-old {
+    color: #bfbfbf;
+    text-decoration: line-through;
   }
 
   &__swiper-round {
@@ -213,13 +224,14 @@
 
   &__swiper-button-prev,
   &__swiper-button-next {
-    position: absolute;
-    top: 47%;
-    z-index: 2;
-    cursor: pointer;
+    display: none;
 
-    @include media-breakpoint-down(xs) {
-      top: 55%;
+    @include media-breakpoint-down(md) {
+      display: block;
+      position: absolute;
+      top: 41%;
+      z-index: 2;
+      cursor: pointer;
     }
 
     svg {
@@ -279,6 +291,17 @@
     svg {
       width: 24px;
       height: 24px;
+    }
+  }
+
+  &__btn {
+    color: #fff;
+    max-width: 248px;
+    height: 42px;
+    margin: 0 auto;
+
+    @include media-breakpoint-down(xs) {
+      max-width: 306px;
     }
   }
 }

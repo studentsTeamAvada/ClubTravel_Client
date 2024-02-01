@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@types/firebase": "^3.2.1",
     "@types/jquery": "^3.5.29",
     "@types/jqueryui": "^1.12.21",
     "gh-pages": "^6.1.1",

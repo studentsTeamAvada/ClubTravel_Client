@@ -1,34 +1,59 @@
 import { Tours } from '../../type';
+import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
+import { initializeApp } from "firebase/app";
+const firebaseConfig = {
+  apiKey: "AIzaSyAVwhQr2zeNEAr1FSrD6ygo5dJeLkxjtRk",
+  authDomain: "clubtravel-6eff6.firebaseapp.com",
+  projectId: "clubtravel-6eff6",
+  storageBucket: "clubtravel-6eff6.appspot.com",
+  messagingSenderId: "883499742498",
+  appId: "1:883499742498:web:b0bf6b06d8073d249a217b",
+};
 
-export async function hotDealsProduct() {
-  const hotDealsWrapper = document.querySelector(".hot-deals__swiper-wrapper");
+const hotDealsWrapper = document.querySelector(".hot-deals__swiper-wrapper");
 
-  const fetchResults = async () => {
-    const response = await fetch(
-      `http://localhost:1337/api/hot-dealses?populate=deep`
+
+export class HotDealsProduct {
+  private app: any;
+  private db: any;
+  private productsArray: Tours[];
+
+  constructor() {
+    this.app = initializeApp(firebaseConfig);
+    this.db = getFirestore(this.app);
+    this.productsArray = [];
+  }
+
+  async loadCards() {
+    const filterHotDeals = query(
+      collection(this.db, 'hotels'),
+      where('hotTour', '==', true)
     );
-    const data = await response.json();
-    console.log(data);
+    console.log(filterHotDeals);
     
-    const products: Array<{ attributes: Tours }> = data.data;
+   
+    const querySnapshot = await getDocs(filterHotDeals);
+    querySnapshot.forEach((doc) => {
+      const product = doc.data() as Tours;
+
+      this.productsArray.push(product);
+    });
+
+    this.renderProducts();
+  }
+  
+  renderProducts() {
+    const products = this.productsArray;
       
     products.forEach((product) => {
-      const content = product.attributes;
+      const content = product;
+      console.log(content);
+      
 
-      const { title, data, price,img, webP }   = content;
+      const { name, date, price, country, region, star, img} = content;
 
-      let url = null;
-      let urlWebP = null;
-
-      const photos = img.data;
-      photos.forEach((photo) => {
-        url = photo.attributes.url;
-      });
-
-      const photosWebP = webP.data;
-      photosWebP.forEach((photoWebP) => {
-        urlWebP = photoWebP.attributes.url;
-      })
+      if (img && Array.isArray(img) && img.length > 0) {
+        const { url, urlWebp } = img[0];
 
       
       let template = `
@@ -36,50 +61,68 @@ export async function hotDealsProduct() {
         <div class="hot-deals__card">
         <div class="hot-deals__card-img">
           <picture class="hero__bg-img">
-            <source srcset=${urlWebP} type="image/webp" />
+            <source srcset=${urlWebp} type="image/webp" />
             <img src=${url} alt="bg" />
           </picture>
-          `;
-
-      if (price) {
-        template += `
-            <div class="hot-deals__card-line">
-            <svg>
-              <use xlink:href="./src/images/sprite.svg#company-line"></use>
-            </svg>
-            <div class="hot-deals__card-line-wrapper">
-              <p class="hot-deals__card-line-price">от ${price}€</p>
-            </div>
-          </div>
-            `;
-      }
-
-      template += `
-          <div class="hot-deals__card-data-wrapper">
+          <div class="hot-deals__card-data-wrapper hot-deals__card-data-top">
             <svg>
               <use xlink:href="./src/images/sprite.svg#clock"></use>
             </svg>
-            <p class="hot-deals__card-data">${data}</p>
+            <p class="hot-deals__card-data">22.11.2020</p>
+          </div>
+          <div class="hot-deals__card-place-wrapper">
+            <svg>
+              <use xlink:href="./src/images/sprite.svg#place"></use>
+            </svg>
+            <p class="hot-deals__card-place">${country}, ${region}</p>
           </div>
         </div>
+        <div class="hot-deals__card-wrappers">
         <div class="hot-deals__card-text-wrapper">
-            <p class="hot-deals__card-text">${title}</p>
+            <p class="hot-deals__card-text">${name}</p>
             <div class="hot-deals__card-stars-wrapper">
-                <svg>
-                    <use xlink:href="./src/images/sprite.svg#star"></use>
-                </svg>
+            `;
+            for (let i = 0; i < star; i++) {
+              template += `
+              <svg>
+                <use xlink:href="./src/images/sprite.svg#star"></use>
+              </svg>
+              `;
+            }
+
+            template += `
             </div>
-        </div>
-        
-      </div>
-      </div>
+          </div>
+          <div class="hot-deals__card-prices-wrapper">
+            <div class="hot-deals__card-price-wrapper">
+              <p class="hot-deals__card-price-new"><span>509€</span>/чел</p>
+              <p class="hot-deals__card-price-old">779 €/чел</p>
+            </div>
+            `;
+            if (price) {
+              template += `
+                  <div class="hot-deals__card-line">
+                  <svg>
+                    <use xlink:href="./src/images/sprite.svg#company-line"></use>
+                  </svg>
+                  <div class="hot-deals__card-line-wrapper">
+                    <p class="hot-deals__card-line-price">-30%</p>
+                  </div>
+                </div>
+                </div>
+                  `;
+            }
+
+            template += `
+            </div>
+            </div>
+            </div>
         `;
 
       if (hotDealsWrapper) {
         hotDealsWrapper.insertAdjacentHTML("beforeend", template);
       }
+    }
     });
   };
-
-  fetchResults();
 }
