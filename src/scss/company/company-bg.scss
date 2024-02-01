@@ -1,0 +1,33 @@
+.company-bg {
+  @include media-breakpoint-down(sm) {
+    margin-bottom: 52px;
+  }
+  // .company-bg__img
+
+  &__img {
+    position: relative;
+  }
+
+  &__image {
+    img {
+      width: 100%;
+      height: clamp(516px, 50%, 240px);
+      max-height: 100%;
+      object-fit: cover;
+      max-height: 516px;
+      min-height: 240px;
+    }
+  }
+
+  &__line {
+    position: absolute;
+    bottom: 96px;
+    left: 0;
+    height: 33px;
+    width: 100%;
+
+    @include media-breakpoint-down(sm) {
+        display: none;
+      }
+  }
+}

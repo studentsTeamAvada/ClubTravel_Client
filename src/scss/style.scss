@@ -39,9 +39,11 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-   background-color: #255296;
+   background-color: rgba(37, 82, 150, 0.9);
    border-radius: 3px;
-
+   &:hover{
+      background-color: rgba(37, 82, 150, 1);
+   }
 }
 
 ::-ms-scrollbar {
@@ -52,8 +54,11 @@ body {
 }
 
 ::-ms-scrollbar-thumb {
-   background-color: #255296;
+   background-color: rgba(37, 82, 150, 0.9);
    border-radius: 3px;
+   &:hover{
+      background-color: rgba(37, 82, 150, 1);
+   }
 }
 
 

@@ -1,6 +1,8 @@
 .btn{
     background-color:rgba(246, 133, 33, 1) ;
     display: flex;
+    user-select: none;
+    cursor: pointer;
     height: 100%;
     width: 100%;
     font-size: 14px;
@@ -14,14 +16,16 @@
     transition: background-color 300ms ease 0s;
 
     &:hover{
-        background-color:rgba(246, 133, 33, 0.9) ;
+        @include media-breakpoint-up(md){
+            background-color:rgba(246, 133, 33, 0.9) ;
+        }
+
     }
 
     &:active{
-        background-color: #FFF;
-        color: rgba(246, 133, 33, 1);
-        border: 2px solid rgba(246, 133, 33, 1);
-        font-weight: 600;
+        @include media-breakpoint-up(md){
+            transform: scale(0.98);
+        }
     }
     
     &_min{

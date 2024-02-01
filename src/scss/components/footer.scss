@@ -7,7 +7,7 @@
         width: 100%;
         min-height: 441px;
         display: grid;
-        grid-template-columns: auto minmax(auto, 67px) auto minmax(20px, 1fr) 1px minmax(20px, 64px) auto;
+        grid-template-columns: auto minmax(20px, 67px) auto minmax(20px, 1fr) 1px minmax(20px, 64px) auto;
         grid-template-rows: auto;
         @include media-breakpoint-down(md){
             grid-template-columns: 1fr 1fr;

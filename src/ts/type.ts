@@ -1,11 +1,12 @@
 export interface Tours {
-    title: string;
+    name: string;
     place: string;
-    price: number;
-    oldPrice: number;
-    data: string;
-    stars: number;
+    price: [number, number];
+    date: string;
+    star: number;
     discount: number;
-    img: { data: Array<{ attributes: { url: string } }> };
-    webP: { data: Array<{ attributes: { url: string } }> };
+    country: string;
+    region: string;
+    img: { url: string; urlWebp: string };
+
 }

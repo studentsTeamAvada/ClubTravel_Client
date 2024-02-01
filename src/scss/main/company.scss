@@ -1,5 +1,9 @@
 .company {
   position: relative;
+  margin-bottom: 99px;
+  @include media-breakpoint-down(xs) {
+    margin-bottom: 77px;
+  }
   // .company__container
 
   &__container {
@@ -47,6 +51,11 @@
       max-width: 316px;
       margin: 0 auto;
       margin-bottom: 48px;
+    }
+    
+    svg {
+      width: 20px;
+      height: 20px;
     }
   }
 

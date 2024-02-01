@@ -1,11 +1,19 @@
 <section class="hot-deals">
   <div class="hot-deals__container">
     <h1 class="hot-deals__title">
-      <svg><use xlink:href="./src/images/sprite.svg#offer"></use></svg>
-      <span>кампании </span> и новости
+      <div class="hot-deals__title-wrapper">
+        <svg class="hot-deals__title-wrapper-first"><use xlink:href="./src/images/sprite.svg#hot-deals-line"></use></svg>
+        <svg><use xlink:href="./src/images/sprite.svg#hot-deals"></use></svg>
+      </div>
+      
+      <span>горящие предложения</span>
     </h1>
     <p class="hot-deals__text">
-      Кто действует быстро - получает самые вкусные цены
+      Кто действует быстро - получает самые вкусные цены 
+      <picture>
+        <source srcset="/src/images/main/hot-deals/smile-webP.webp" type="image/webp" />
+        <img src="/src/images/main/hot-deals/smile.png" alt="bg" />
+      </picture>
     </p>
 
     <div class="hot-deals__wrapper">
@@ -29,7 +37,7 @@
     </div>
   </div>
   <div class="hot-deals__button-wrapper">
-    <a href="#">Все кампании и новости</a>
+    <a href="#">Все горящие предложения</a>
     <svg>
       <use xlink:href="./src/images/sprite.svg#company-arrow-link"></use>
     </svg>

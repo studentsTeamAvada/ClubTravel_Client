@@ -14,11 +14,11 @@ import {
   DocumentData,
 } from "firebase/firestore";
 import { ResultSwiper } from "../pages/code/swiper";
-import { Dropdown } from "./dropdown";
-new Dropdown(".info__destination-select");
-new Dropdown(".info__duration-select");
-new Dropdown(".info__date-select");
-new Dropdown(".info__guests-select");
+// import { Dropdown } from "./dropdown";
+// new Dropdown(".info__destination-select");
+// new Dropdown(".info__duration-select");
+// new Dropdown(".info__date-select");
+// new Dropdown(".info__guests-select");
 
 enum Destination {
   All = 0,
