@@ -243,7 +243,7 @@ export class DropDown{
                     context.error.addClass('dropdown__error_active-kids')
                 }else{
                     if(kidsObj.hasOwnProperty(thisCurrent)){
-                        kidsObj[thisCurrent] += 1;
+                        kidsObj[thisCurrent]++;
                     }else{
                         kidsObj[thisCurrent] = 1;
                     }
@@ -258,10 +258,7 @@ export class DropDown{
                 }else{
                     this.quatityAdults.html(String(this.currentAbdul));
 
-                    this.currentKids = Object.keys(kidsObj).reduce((acc, item) => {
-                        acc += kidsObj[item]
-                        return acc
-                    },0)
+                    this.currentKids = Object.keys(kidsObj).length
                     this.quatityKids.html(String(this.currentKids))
                     this.dropDown.removeClass('dropdown_active');
     
@@ -286,3 +283,4 @@ export class DropDown{
         return this.currentKids
     }
 }
+
