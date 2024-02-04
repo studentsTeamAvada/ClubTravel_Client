@@ -2,56 +2,43 @@
 @import "./../components/ui/find";
 @import "./../components/ui/offer";
 @import "./../config/media-breakpoints";
-@import "../libs/swiper.scss";
+@import "../libs/swiper";
 
 .banner {
-  background-image: url(../../../src/images/banner.webp);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 320px;
   position: relative;
   margin-top: 100px;
+  height: 320px;
+  background-image: url("../../../src/images/banner.webp");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 
   &__oval {
-    width: 100%;
     position: absolute;
     bottom: 0;
+    width: 100%;
+
+
+
+
     img {
       width: 100%;
       height: auto;
     }
 
-    // min-height: 100%;
-    // height: auto;
-    // svg {
-    //    width: 100%;
-    //    height: 100%;
-
-    //    // min-height: 100%;
-    //    // height: auto;
-    // }
   }
 }
 
-// .tour{
-//    position: relative;
-// }
+
 
 .result {
   &__slider {
-    border-radius: 8px;
+    position: relative;
     overflow: hidden;
-    max-width: 380px;
+    border-radius: 8px;
     width: 100%;
     height: 250px;
-    position: relative;
-  }
-
-  &__swiper,
-  &__wrapper {
-    display: flex;
-    height: 100%;
+    max-width: 380px;
   }
 
   &__slide {
@@ -61,97 +48,69 @@
     }
   }
 
-  &__btn-next,
-  &__btn-prev {
-    cursor: pointer;
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.2);
-    z-index: 50;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    transform: rotate(90deg);
-    svg {
-      width: 24px;
-      height: 24px;
-      fill: #fff;
-    }
-  }
-
   &__btn-next {
     left: auto;
     right: 10px;
     transform: rotate(-90deg);
   }
-  &__hotel,
-  &__row {
-    display: flex;
-  }
+
   &__hotel{
-    padding: 40px 0;
     border-top: 1px solid #E2E2E2;
+    padding: 40px 0;
+
     &:last-child{
       border-bottom: 1px solid #E2E2E2;
     }
   }
+
   &__info {
     margin-left: 40px;
+
     &-title {
-      color: #222;
-      font-size: 18px;
-      font-weight: 400;
       margin-bottom: 12px;
+      font-weight: 400;
+      font-size: 18px;
+      color: #222;
     }
 
     &-location {
       display: flex;
       align-items: center;
-      padding: 5px 10px;
+      margin-bottom: 16px;
       border: 1px solid #E2E2E2;
       border-radius: 8px;
+      padding: 5px 10px;
       width: fit-content;
-      margin-bottom: 16px;
+
       svg {
-        fill: #3e7739;
-        fill-opacity: 0.5;
         width: 10px;
         height: 15px;
+        fill: #3e7739;
+        fill-opacity: 0.5;
       }
     }
 
-    &-country,
-    &-region {
-      color: #222;
-      font-size: 14px;
-      font-weight: 400;
-      margin-left: 9px;
-      width: fit-content;
-    }
-
     &-descript {
-      color: #666;
-      font-size: 14px;
-      font-weight: 400;
-      max-width: 294px;
+      display: box;
+      overflow: hidden;
+      margin-bottom: 50px;
       width: 100%;
       height: 95px;
       min-width: 100px;
-      display: -webkit-box;
+      max-width: 294px;
+      font-weight: 400;
+      font-size: 14px;
+      color: #666;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 5;
-      overflow: hidden;
-      margin-bottom: 50px;
     }
 
     &-link {
       display: flex;
       align-items: center;
-      color: #555;
-      font-size: 16px;
       font-weight: 400;
+      font-size: 16px;
+      color: #555;
 
       svg {
         margin-left: 8px;
@@ -160,48 +119,92 @@
         fill: #f68521;
       }
     }
+
+    &-country,
+    &-region {
+      margin-left: 9px;
+      width: fit-content;
+      font-weight: 400;
+      font-size: 14px;
+      color: #222;
+    }
   }
 
   &__rating{
     margin-left: 40px;
+
     &-star{
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: fit-content;
       margin-bottom: 24px;
+      width: fit-content;
+
       svg{
         width: 18px;
         height: 18px;
         fill: #F5C213;
       }
     }
+
     &-duration,
     &-meal,
     &-room,
     &-beach{
       display: flex;
       align-items: center;
-      color: #222;
-      font-size: 14px;
-      font-weight: 400;
       margin-bottom: 24px;
+      font-weight: 400;
+      font-size: 14px;
+      color: #222;
+
       svg{
+        margin-right: 18px;
         width: 18px;
         height: 18px;
         fill:  #3E7739;
         fill-opacity: 0.5;
-        margin-right: 18px;
       }
     }
   }
 
   &-price{
     &-num{
-      color: #222;
-      font-size: 18px;
-      font-weight: 400;
       margin-bottom: 12px;
+      font-weight: 400;
+      font-size: 18px;
+      color: #222;
     }
+  }
+
+  &__swiper,
+  &__wrapper {
+    display: flex;
+    height: 100%;
+  }
+
+  &__btn-next,
+  &__btn-prev {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    z-index: 50;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    background: rgb(0 0 0 / 20%);
+    transform: rotate(90deg);
+    cursor: pointer;
+
+    svg {
+      width: 24px;
+      height: 24px;
+      fill: #fff;
+    }
+  }
+
+  &__hotel,
+  &__row {
+    display: flex;
   }
 }

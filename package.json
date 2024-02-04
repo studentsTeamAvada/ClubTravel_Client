@@ -8,7 +8,9 @@
     "build": "tsc && vite build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "stylelint": "stylelint 'src/**/*.{scss,css}'",
+    "stylelint:fix": "stylelint 'src/**/*.scss' --fix"
   },
   "devDependencies": {
     "@types/firebase": "^3.2.1",
@@ -17,7 +19,14 @@
     "gh-pages": "^6.1.1",
     "jquery": "^3.7.1",
     "just-validate": "^4.3.0",
+    "prettier": "^3.2.4",
     "sass": "^1.69.7",
+    "stylelint": "^16.2.1",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-config-standard-scss": "^13.0.0",
+    "stylelint-order": "^6.0.4",
+    "stylelint-prettier": "^5.0.0",
+    "stylelint-scss": "^6.1.0",
     "swiper": "^11.0.5",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
@@ -27,6 +36,7 @@
     "air-datepicker": "^3.4.0",
     "firebase": "^10.7.2",
     "nouislider": "^15.7.1",
-    "strapi-plugin-populate-deep": "^3.0.1"
+    "strapi-plugin-populate-deep": "^3.0.1",
+    "stylelint-declaration-block-no-ignored-properties": "^2.8.0"
   }
 }

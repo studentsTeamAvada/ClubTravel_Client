@@ -1,5 +1,5 @@
 import * as $ from 'jquery';
-import { DropDown } from '../../components/dropDown';
+import { DropDown } from './../../components/dropdown';
 
 export class InfoBlock{
     priceOnePerson: JQuery<HTMLElement>;

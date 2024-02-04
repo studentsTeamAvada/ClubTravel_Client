@@ -1,8 +1,12 @@
 .top-img {
-    overflow: hidden;
     position: relative;
+    overflow: hidden;
     width: 100%;
     height: 421px;
+    
+    @include media-breakpoint-down(sm){
+        height: 239px;
+    }
 
     &__bg{
         &-img {
@@ -12,100 +16,102 @@
             width: 100%;
 
             img{
-                object-fit: cover;
                 width: 100%;
                 min-height: 430px;
+                object-fit: cover;
 
                 @include media-breakpoint-down(sm){
                     min-height: 255px;
                 }
             }
         }
-        &-bottom{
-            svg{
-                position: absolute;
-                width: 1367px;
-                height: 56px;
-                left: 50%;
-                transform: translateX(-50%);
-                bottom: -1px;
-                z-index: 1;
-            }
 
+        &-bottom{
             @include media-breakpoint-down(sm){
                 display: none;
             }
+
+            svg{
+                position: absolute;
+                left: 50%;
+                bottom: -1px;
+                z-index: 1;
+                width: 1367px;
+                height: 56px;
+                transform: translateX(-50%);
+            }
         }
     }
+
     &__hotel{
         &-info {
-            color: #222;
             position: absolute;
-            z-index: 2;
             bottom: 41px;
-            min-width: 304px;
-            height: 85px;
+            z-index: 2;
             border-radius: 8px;
-            background: #FFF;
             padding: 12px 19px 13px;
+            height: 85px;
+            min-width: 304px;
+            color: #222;
+            background: #FFF;
             transition: transform 300ms ease 0s;
             cursor: pointer;
 
-            &:hover{
-                @include media-breakpoint-up(md){
-                    transform: scale(1.01);
-                }
-            }
-
             @include media-breakpoint-down(xs){
                 bottom: 17px;
-                height: 74px;
                 padding: 10px 21px 13px;
+                height: 74px;
             }
 
             @include media-breakpoint-down(xxs){
                 min-width: auto;
                 max-width: 86vw;
             }
+
+            &:hover{
+                @include media-breakpoint-up(md){
+                    transform: scale(1.01);
+                }
+            }
         }
+
         &-main {
             display: flex;
             margin-bottom: 6px;
 
             @include media-breakpoint-down(xs){
-                margin: 0px;
+                margin: 0;
             }
         }
+
         &-name {
-            font-size: 26px;
             font-weight: 700;
+            font-size: 26px;
 
             @include media-breakpoint-down(xs){
-                line-height: 32px;
-                max-width: 200px;
                 overflow: hidden;
+                max-width: 200px;
+                line-height: 32px;
             }
         }
+
         &-stars {
+            position: relative;
             display: flex;
             align-items: center;
             margin: 0 0 4px 12.8px;
-            position: relative;
 
-            svg{
-                width: 18px;
-                height: 18px;
-                fill: #F5C213;
-                margin-right: 4px;
+            @include media-breakpoint-down(xs){
+                margin: 0 0 10px 10px;
             }
 
             &::after{
                 content: "+";
                 position: absolute;
-                font-weight: 700;
-                color: #F5C213;
                 right: -9px;
                 top: -2px;
+                font-weight: 700;
+                color: #F5C213;
 
                 @include media-breakpoint-down(xs){
                     right: -8px;
@@ -113,36 +119,36 @@
                 }
             }
 
-            @include media-breakpoint-down(xs){
-                margin: 0 0 10px 10px;
+            svg{
+                margin-right: 4px;
+                width: 18px;
+                height: 18px;
+                fill: #F5C213;
             }
         }
+
         &-location {
             display: flex;
             align-items: center;
 
             svg{
+                margin-right: 9px;
                 width: 10.124px;
                 height: 14.628px;
                 fill:  #3E7739;
                 opacity: 0.5;
-                margin-right: 9px;
             }
         }
 
         &-sity{
-            color: #222;
-            white-space: nowrap;
             font-size: 14px;
+            white-space: nowrap;
+            color: #222;
 
             @include media-breakpoint-down(xs){
-                max-width: 280px;
                 overflow: hidden;
+                max-width: 280px;
             }
         }
-    }
-    
-    @include media-breakpoint-down(sm){
-        height: 239px;
     }
 }
