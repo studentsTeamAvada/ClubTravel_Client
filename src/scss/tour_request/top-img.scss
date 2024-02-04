@@ -1,0 +1,148 @@
+.top-img {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 421px;
+
+    &__bg{
+        &-img {
+            position: absolute;
+            top: -14px;
+            z-index: -1;
+            width: 100%;
+
+            img{
+                object-fit: cover;
+                width: 100%;
+                min-height: 430px;
+
+                @include media-breakpoint-down(sm){
+                    min-height: 255px;
+                }
+            }
+        }
+        &-bottom{
+            svg{
+                position: absolute;
+                width: 1367px;
+                height: 56px;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: -1px;
+                z-index: 1;
+            }
+
+            @include media-breakpoint-down(sm){
+                display: none;
+            }
+        }
+    }
+    &__hotel{
+        &-info {
+            color: #222;
+            position: absolute;
+            z-index: 2;
+            bottom: 41px;
+            min-width: 304px;
+            height: 85px;
+            border-radius: 8px;
+            background: #FFF;
+            padding: 12px 19px 13px;
+            transition: transform 300ms ease 0s;
+            cursor: pointer;
+
+            &:hover{
+                @include media-breakpoint-up(md){
+                    transform: scale(1.01);
+                }
+            }
+
+            @include media-breakpoint-down(xs){
+                bottom: 17px;
+                height: 74px;
+                padding: 10px 21px 13px;
+            }
+
+            @include media-breakpoint-down(xxs){
+                min-width: auto;
+                max-width: 86vw;
+            }
+        }
+        &-main {
+            display: flex;
+            margin-bottom: 6px;
+
+            @include media-breakpoint-down(xs){
+                margin: 0px;
+            }
+        }
+        &-name {
+            font-size: 26px;
+            font-weight: 700;
+
+            @include media-breakpoint-down(xs){
+                line-height: 32px;
+                max-width: 200px;
+                overflow: hidden;
+            }
+        }
+        &-stars {
+            display: flex;
+            align-items: center;
+            margin: 0 0 4px 12.8px;
+            position: relative;
+
+            svg{
+                width: 18px;
+                height: 18px;
+                fill: #F5C213;
+                margin-right: 4px;
+            }
+
+            &::after{
+                content: "+";
+                position: absolute;
+                font-weight: 700;
+                color: #F5C213;
+                right: -9px;
+                top: -2px;
+
+                @include media-breakpoint-down(xs){
+                    right: -8px;
+                    top: -5px;
+                }
+            }
+
+            @include media-breakpoint-down(xs){
+                margin: 0 0 10px 10px;
+            }
+        }
+        &-location {
+            display: flex;
+            align-items: center;
+
+            svg{
+                width: 10.124px;
+                height: 14.628px;
+                fill:  #3E7739;
+                opacity: 0.5;
+                margin-right: 9px;
+            }
+        }
+
+        &-sity{
+            color: #222;
+            white-space: nowrap;
+            font-size: 14px;
+
+            @include media-breakpoint-down(xs){
+                max-width: 280px;
+                overflow: hidden;
+            }
+        }
+    }
+    
+    @include media-breakpoint-down(sm){
+        height: 239px;
+    }
+}
