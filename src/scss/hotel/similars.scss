@@ -2,15 +2,15 @@
     margin-bottom: 97px;
 
     &__title {
-        text-align: center;
+        margin-bottom: 38px;
         font-size: 26px;
         letter-spacing: 1.3px;
+        text-align: center;
         text-transform: uppercase;
-        margin-bottom: 38px;
 
         @include media-breakpoint-down(sm){
-            font-weight: 700;
             margin-bottom: 38px;
+            font-weight: 700;
         }
     }
 
@@ -29,47 +29,50 @@
 }
 
 .slide {
+    display: grid;
+    flex-direction: column;
+    grid-template: 1fr auto / auto;
+    overflow: hidden;
     border-radius: 10px;
     max-height: 349px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    display: grid;
-    grid-template: 1fr auto / auto;
     aspect-ratio: 0.947/1;
+    
+    @include media-breakpoint-down(md){
+        max-height: 100%;
+    }
 
     &__image {
+        position: relative;
         grid-row: 1;
         height: 100%;
-        position: relative;
     }
 
     &__img {
         height: 100%;
 
         img{
-            object-fit: cover;
-            max-width: 100%;
             height: 100%;
+            max-width: 100%;
+            object-fit: cover;
         }
     }
 
     &__tag {
         position: absolute;
         left: 14px;
-        padding: 6px 6px 7px;
-        border-radius: 5px;
-        background: rgba(0, 0, 0, 0.5);
-        color: #FFF;
-        font-size: 14px;
         display: flex;
         align-items: center;
+        border-radius: 5px;
+        padding: 6px 6px 7px;
+        font-size: 14px;
+        color: #FFF;
+        background: rgb(0 0 0 / 50%);
 
         svg{
+            margin-right: 6.4px;
             width: 14px;
             height: 14px;
             fill: #fff;
-            margin-right: 6.4px;
         }
     }
 
@@ -85,15 +88,16 @@
     &__tag-location {
         bottom: 14px;
         transition: background-color 300ms ease 0s;
+
         &:hover{
-            background: rgba(0, 0, 0, 1);
+            background: rgb(0 0 0 / 100%);
         }
 
     }
 
     &__info {
         grid-row: 2;
-        padding: 14px 16px 16px 16px;
+        padding: 14px 16px 16px;
         background: #fff;
 
         @include media-breakpoint-down(sm){
@@ -114,22 +118,22 @@
 
     &__title {
         position: relative;
-        white-space: nowrap; /* Запрет переноса текста на новую строку */
         overflow: hidden; /* Скрытие лишнего текста, который не помещается в контейнер */
-        text-overflow: ellipsis;
         max-width: 230px;
+        white-space: nowrap; /* Запрет переноса текста на новую строку */
+        text-overflow: ellipsis;
         cursor: pointer;
 
         &::after{
             content: '';
             position: absolute;
-            height: 1px;
             left: 50%;
-            width: 98%;
-            background:#222 ;
             bottom: 1px;
-            transition: transform 150ms ease 0s;
+            width: 98%;
+            height: 1px;
+            background:#222 ;
             transform: translateX(-50%) scaleX(0) ;
+            transition: transform 150ms ease 0s;
         }
 
         &:hover{
@@ -146,6 +150,7 @@
         display: flex;
         align-items: center;
         gap: 4px;
+
         svg{
             width: 18px;
             height: 18px;
@@ -154,54 +159,51 @@
     }
 
     &__row-two {
-        gap: 8px;
         position: relative;
         height: 31px;
+        gap: 8px;
     }
 
     &__price {
-        span{
-            font-weight: 700;
-        }
-
         @include media-breakpoint-down(xxs){
             order: 2;   
+        }
+
+        span{
+            font-weight: 700;
         }
     }
 
     &__old-price {
-        color: #BFBFBF;
         font-size: 14px;
         text-decoration-line: strikethrough;
+        color: #BFBFBF;
     }
 
     &__sale {
         position: absolute;
         right: -16px;
         top: 0;
-        color: #FFF;
-        font-size: 16px;
-        font-weight: 700;
-        width: 80px;
-        height: 31px;
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 80px;
+        height: 31px;
+        font-weight: 700;
+        font-size: 16px;
+        color: #FFF;
 
         svg{
             position: absolute;
-            top: 0;
             right: 0;
+            top: 0;
             width: 83px;
             height: 31px;
         }
+
         span{
             position: relative;
             z-index: 1;
         }
-    }
-    
-    @include media-breakpoint-down(md){
-        max-height: 100%;
     }
 }

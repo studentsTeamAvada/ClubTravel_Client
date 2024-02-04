@@ -6,12 +6,51 @@
     margin-top: 46px;
   }
 
-  // .hero__bg
+  &__swiper-round {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 1;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      background: #fff;
+      opacity: 0.2;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.2s ease;
+    }
+
+    svg {
+      color: #fff;
+    }
+
+    &:hover {
+      &::before {
+        opacity: 0.4;
+      }
+    }
+  }
+
+  &__swiper-button-next {
+    right: 2%;
+
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__swiper-button-prev {
+    left: 2%;
+  }
+
 
   &__bg {
   }
 
-  // .hero__bg-img
 
   &__bg-img {
     img {
@@ -23,35 +62,6 @@
       @include media-breakpoint-down(xs) {
         height: 191px;
       }
-    }
-  }
-
-  &__swiper-round {
-    position: relative;
-
-    &:hover {
-      &::before {
-        opacity: 0.4;
-      }
-    }
-
-    &::before {
-      position: absolute;
-      content: "";
-      width: 48px;
-      height: 48px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 1;
-      background: #fff;
-      opacity: 0.2;
-      border-radius: 50%;
-      transition: opacity 0.2s ease;
-    }
-
-    svg {
-      color: #fff;
     }
   }
 
@@ -70,17 +80,5 @@
       width: 32px;
       height: 32px;
     }
-  }
-
-  &__swiper-button-next {
-    right: 2%;
-
-    svg {
-      transform: rotate(180deg);
-    }
-  }
-
-  &__swiper-button-prev {
-    left: 2%;
   }
 }

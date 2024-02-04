@@ -13,11 +13,12 @@ import {
   DocumentData,
 } from "firebase/firestore";
 import { ResultSwiper } from "../pages/code/swiper";
-// import { Dropdown } from "./dropdown";
-// new Dropdown(".info__destination-select");
-// new Dropdown(".info__duration-select");
-// new Dropdown(".info__date-select");
-// new Dropdown(".info__guests-select");
+import { DropdownSearch } from "./../components/dropSearch";
+
+new DropdownSearch(".info__destination-select");
+new DropdownSearch(".info__duration-select");
+new DropdownSearch(".info__date-select");
+new DropdownSearch(".info__guests-select");
 
 enum Destination {
   All = 0,
@@ -43,6 +44,46 @@ enum Duration {
   Fourteen = 4,
   TwentyOne = 5,
 }
+
+enum Regions {
+  SharmElSheikh = 1,
+  Hurghada = 2,
+  Dubai = 3,
+  AbuDhabi = 4,
+  Bangkok = 5,
+  KuahHin = 6,
+  SunnyBeach = 7,
+  GoldenSands = 8,
+  Budva = 9,
+  StefanBridge = 10,
+  Bali = 11,
+  Batumi = 13,
+  Rodos = 15,
+  Marmaris = 17,
+  Paphos = 19,
+  Suss = 21,
+  Tenerife = 23,
+  Majorca = 24,
+  Bukovyn = 25,
+  Uldag = 27,
+  Bansko = 28,
+  Borovets = 29,
+}
+
+// enum Meals {
+//   // Без питания
+//   ao = 0,
+//   // Завтрак
+//   bb = 1,
+//   // Завтрак и ужин
+//   hb = 2,
+//   //   Завтрак, обед, ужин
+//   fb = 3,
+//   // Всё включено
+//   ai = 4,
+//   // Ультра все включено
+//   uai = 5,
+// }
 
 export class Search {
   dropdown: JQuery<HTMLDivElement>;
@@ -76,21 +117,27 @@ export class Search {
     this.updateCounterKids();
     this.renderStars();
     this.priceSlider();
+    this.selectMeal();
   }
 
   readDataUrl(): void {
     this.urlParams = new URLSearchParams(window.location.search);
     this.hotelCounry = this.urlParams.get("isCountry");
     this.hotelRegion = this.urlParams.get("isRegion");
-  
+    this.hotelMeals = this.urlParams.get("isMeals");
+
+    console.log("hotelCounry:", this.hotelCounry);
+    console.log("hotelRegion:", this.hotelRegion);
+
     if (this.hotelCounry && this.hotelRegion) {
-      const destination = Destination[this.hotelCounry as keyof typeof Destination];
-      const region = this.hotelRegion;
+      const destination =
+        Destination[this.hotelCounry as keyof typeof Destination];
+      const region = Regions[this.hotelRegion as keyof typeof Regions];
       this.clickDestination(destination, region);
     }
   }
 
-  clickDestination(destination: Destination, region: string): void {
+  clickDestination(destination: Destination, region: Regions): void {
     this.getCountry(destination, region);
   }
 
@@ -101,10 +148,14 @@ export class Search {
   selectCountry(): void {
     $(".dropdown__item[data-destination]").on("click", (event) => {
       const destinationName = $(event.currentTarget).data("destination");
+
       if (destinationName) {
         const destination =
           Destination[destinationName as keyof typeof Destination];
-        this.clickDestination(destination as Destination, "Шарм-эль-Шейх");
+        this.clickDestination(
+          destination as Destination,
+          destination as unknown as Regions
+        );
       }
     });
   }
@@ -119,35 +170,40 @@ export class Search {
     });
   }
 
-  async getCountry(destinationName: Destination, region: string): Promise<void> {
+  async getCountry(
+    destinationName: Destination,
+    regionName: Regions
+  ): Promise<void> {
     const db = getFirestore(app);
     let q;
+
     const destinationVal = Destination[destinationName];
-  
+    const regionVal = Regions[regionName];
+
     const newUrl = new URL(window.location.href);
     newUrl.searchParams.set("isCountry", destinationVal.toString());
-    newUrl.searchParams.set("isRegion", region);
+    // newUrl.searchParams.set("isRegion", regionVal.toString());
     window.history.pushState({}, "", newUrl.toString());
-  
+
     this.cardHotel = [];
-  
+
     if (destinationName === Destination.All) {
       q = query(collection(db, "hotels"), where("isCountry", "!=", ""));
     } else {
       q = query(
         collection(db, "hotels"),
         where("isCountry", "==", +destinationName),
-        where("isRegion", "==", region)
+        where("isRegion", "==", +regionName)
       );
     }
-  
+
     try {
       const querySnapshot = await getDocs(q);
-  
+
       querySnapshot.forEach((doc) => {
         this.cardHotel.push(doc.data());
       });
-  
+
       this.renderHotels(this.cardHotel);
       new ResultSwiper();
       this.renderRegions(this.cardHotel);
@@ -461,6 +517,7 @@ export class Search {
   }
 
   renderRegions(region: DocumentData): void {
+    $(".category__regions-item").html("");
     region.forEach((item: DocumentData) => {
       const regionHtml = `
         <button data-region="${item.region}" class="category__btns category__btns-regions">
@@ -476,274 +533,111 @@ export class Search {
     $(".category__btns-regions").on("click", (event) => {
       const regionName = $(event.currentTarget).data("region");
       if (regionName) {
-        console.log(regionName);
-      }
+        // console.log(regionName);
 
-      switch (regionName) {
-        case "Шарм-эль-Шейх":
-        
-          break;
-      }
+        // this.urlParams = new URLSearchParams(window.location.search);
+        // this.hotelRegion = this.urlParams.get("isRegion");
+        // const region = Regions[this.hotelRegion as keyof typeof Regions];
+        const newUrl = new URL(window.location.href);
+        newUrl.searchParams.set("isRegion", regionName.toString());
+        window.history.pushState({}, "", newUrl.toString());
 
+        switch (regionName) {
+          case "Шарм-эль-Шейх":
+            this.clickDestination(Destination.Egypt, Regions.SharmElSheikh);
+            break;
+          case "Хургада":
+            this.clickDestination(Destination.Egypt, Regions.Hurghada);
+            break;
+          case "Дубай":
+            this.clickDestination(Destination.AOE, Regions.Dubai);
+            break;
+          case "Абу-Даби":
+            this.clickDestination(Destination.AOE, Regions.AbuDhabi);
+            break;
+          case "Бангкок":
+            this.clickDestination(Destination.Thailand, Regions.Bangkok);
+            break;
+          case "Хуа Хин":
+            this.clickDestination(Destination.Thailand, Regions.KuahHin);
+            break;
+          case "Солнечный берег":
+            this.clickDestination(Destination.Bulgaria, Regions.SunnyBeach);
+            break;
+          case "Золотые пески":
+            this.clickDestination(Destination.Bulgaria, Regions.GoldenSands);
+            break;
+          case "Будва":
+            this.clickDestination(Destination.Chornogoria, Regions.Budva);
+            break;
+          case "Свети Стефан":
+            this.clickDestination(
+              Destination.Chornogoria,
+              Regions.StefanBridge
+            );
+            break;
+          case "Бали":
+            this.clickDestination(Destination.Indonesia, Regions.Bali);
+            break;
+          case "Батумі":
+            this.clickDestination(Destination.Georgia, Regions.Batumi);
+            break;
+          case "Родос":
+            this.clickDestination(Destination.Greece, Regions.Rodos);
+            break;
+          case "Мармарис":
+            this.clickDestination(Destination.Turkey, Regions.Marmaris);
+            break;
+          case "Пафос":
+            this.clickDestination(Destination.Cyprus, Regions.Paphos);
+            break;
+          case "Сусс":
+            this.clickDestination(Destination.Tunisia, Regions.Suss);
+            break;
+          case "Тенерифе":
+            this.clickDestination(Destination.Spain, Regions.Tenerife);
+            break;
+          case "Майорка":
+            this.clickDestination(Destination.Spain, Regions.Majorca);
+            break;
+          case "Буковель":
+            this.clickDestination(Destination.Ukraine, Regions.Bukovyn);
+            break;
+          case "Улудаг":
+            this.clickDestination(Destination.Turkey, Regions.Uldag);
+            break;
+          case "Бансько":
+            this.clickDestination(Destination.Bulgaria, Regions.Bansko);
+            break;
+          case "Боровець":
+            this.clickDestination(Destination.Bulgaria, Regions.Borovets);
+            break;
+          case "":
+            this.clickDestination(Destination.All, Regions.SharmElSheikh);
+            break;
+          default:
+        }
+      }
     });
-
-
-
-
   }
 
+  selectMeal(): void {
+    $(".category__btns-meals[data-meals]").on("click", (event) => {
+      const mealName = $(event.currentTarget).data("meals");
+  
+      if (mealName) {
+        const newUrl = new URL(window.location.href);
+        newUrl.searchParams.set("isMeals", mealName.toString());
+        window.history.pushState({}, "", newUrl.toString());
+
+        switch (mealName) {
+          
+        }
+      }
+
+        // const meal = Meals[mealName as keyof typeof Meals];
+        // this.clickMeal(meal);
+      
+    });
+  }
 }
-
-// selectGuests(): void {
-//   this.guestsSelect.on("click", () => {
-//     this.guestsList.addClass("guests__list_show");
-//   });
-// }
-
-//   accordion(): void {
-//     this.advanced.on("click", () => {
-//       this.advanced.toggleClass("advanced_show");
-//       if (this.advanced.hasClass("advanced_show")) {
-//         $(".advanced__btn").addClass("advanced__btn_act");
-//         $(".advanced__line").removeClass("advanced__line_act");
-//         $(".advanced__btn-close").removeClass("advanced__btn-close_act");
-//       } else {
-//         $(".advanced__btn").removeClass("advanced__btn_act");
-//         $(".advanced__line").addClass("advanced__line_act");
-//         $(".advanced__btn-close").addClass("advanced__btn-close_act");
-//       }
-//     });
-//     //   $(".find__row-btn").on("click", function () {
-//     //     $(".find__row-sub").addClass("find__row-sub_act");
-//     //     $(".find__row-btn").addClass("find__row-btn_act");
-//     //     $(".find__row-line").removeClass("find__row-line_act");
-//     //     $(".find__row-btn-close").removeClass("find__row-btn-close_act");
-//     //   });
-
-//     //   $(".find__row-btn-close").on("click", function () {
-//     //     $(".find__row-sub").removeClass("find__row-sub_act");
-//     //     $(".find__row-btn").removeClass("find__row-btn_act");
-//     //     $(".find__row-line").addClass("find__row-line_act");
-//     //     $(".find__row-btn-close").addClass("find__row-btn-close_act");
-//     //   });
-//   }
-
-//   async getDestination() {
-//     const context = this;
-//     try {
-//       const API_URL = "https://clubtravel.onrender.com/api/find-infos";
-//       const response = await axios.get(API_URL);
-//       const destinations = response.data.data[0].attributes.search.destinations;
-
-//       const listItemHtml = destinations.map((item: any) => {
-//         return `
-//         <li class="info__destination-item dropdown__item">${item.name}</li>
-//         `;
-//       });
-//       $(".info__destination-list").append(listItemHtml.join(""));
-//       $(".info__destination-item").each(function (
-//         _index: number,
-//         element: HTMLElement
-//       ) {
-//         $(element).on("click", function () {
-//           let citySelected = $(this).text();
-//           context.destinationCurrent.text(citySelected);
-//           let newUrl = `search_results.html?destination=${citySelected}`;
-//           window.history.pushState(null, " ", newUrl);
-//         });
-//       });
-//     } catch (error) {
-//       console.error("Помилка при отриманні даних:", error);
-//     }
-//   }
-//   async getDuration() {
-//     const context = this;
-//     try {
-//       const API_URL = "https://clubtravel.onrender.com/api/find-infos";
-//       const response = await axios.get(API_URL);
-//       const destinations = response.data.data[0].attributes.search.duration;
-
-//       const listItemHtml = destinations.map((item: any) => {
-//         return `
-//         <li class="info__duration-item dropdown__item">${item.name}</li>
-//         `;
-//       });
-//       $(".info__duration-list").append(listItemHtml.join(""));
-//       $(".info__duration-item").on("click", function () {
-//         let daySelected = $(this).text();
-//         context.durationCurrent.text(daySelected);
-//         const daySelectedLength = daySelected.slice(0, 2);
-
-//         const urlParams = new URLSearchParams(window.location.search);
-//         const urlDestination = urlParams.get("destination");
-
-//         let newUrl = `search_results.html?${urlDestination}&duration=${daySelectedLength}`;
-//         window.history.pushState(null, "", newUrl);
-//       });
-//     } catch (error) {
-//       console.error("Помилка при отриманні даних:", error);
-//     }
-//   }
-//   async getRating() {
-//     try {
-//       const API_URL = "https://clubtravel.onrender.com/api/find-infos";
-//       const response = await axios.get(API_URL);
-//       const stars = response.data.data[0].attributes.search.stars;
-//       const meal = response.data.data[0].attributes.search.meal;
-//       const btnsHtml = stars.map((item: { name: any }, index: number) => {
-//       const starIcons = Array.from({ length: +item.name + 1 },() => `
-//           <svg class="advanced__icon">
-//             <use xlink:href="${Sprite}#start"></use>
-//           </svg>`
-//         ).join("");
-
-//         if (index === 4) {
-//           return `
-//             <button class="category__btns category__btns-flat">
-//               <svg>
-//                 <use xlink:href="${Sprite}#house"></use>
-//               </svg>
-//               Апартаменты
-//             </button>
-//           `;
-//         } else {
-//           return `
-//             <button class="category__btns category__btns-stars">
-//               ${starIcons}
-//             </button>
-//           `;
-//         }
-//       });
-//       const btnsHtmlMeal = meal.map((item: { name: any }) => {
-//         return `
-//           <button class="category__btns category__btns-meal">
-//           <svg>
-//             <use xlink:href="${Sprite}#check-circle"></use>
-//           </svg>
-//             ${item.name}
-//           </button>
-//         `;
-//       });
-
-//       $(".category__rating-stars").append(btnsHtml.join(""));
-//       $(".category__rating-meal").append(btnsHtmlMeal.join(""));
-//     } catch (error) {
-//       console.error("Помилка при отриманні даних:", error);
-//     }
-//   }
-//   async getFly() {
-//     try {
-//       const API_URL = "https://clubtravel.onrender.com/api/find-infos";
-//       const response = await axios.get(API_URL);
-//       console.log(response.data);
-//       const lineupTour = response.data.data[0].attributes.search.lineupTour;
-//       const departure = response.data.data[0].attributes.search.departure;
-//       const btnsHtml = lineupTour.map((item: { name: any }) => {
-//         return `
-//           <button class="category__btns category__btns-lineup">
-//           <svg>
-//             <use xlink:href="${Sprite}#check-circle"></use>
-//           </svg>
-//             ${item.name}
-//           </button>
-//         `;
-//       });
-//       const btnsHtmlDeparture = departure.map((item: { name: any }) => {
-//         return `
-//           <button class="category__btns category__btns-departure">
-//           <svg>
-//             <use xlink:href="${Sprite}#check-circle"></use>
-//           </svg>
-//             ${item.name}
-//           </button>
-//         `;
-//       });
-//       $(".category__lineup").append(btnsHtml.join(""));
-//       $(".category__departure").append(btnsHtmlDeparture.join(""));
-//     } catch (error) {
-//       console.error("Помилка при отриманні даних:", error);
-//     }
-//   }
-//   sliderMoney(){
-//     const slider = document.querySelector('.category__slider') as HTMLElement;
-//         noUiSlider.create(slider, {
-//           start: [600, 3700],
-//           connect: true,
-//           range: {
-//               'min': 400,
-//               'max': 4000
-//           },
-//           tooltips: true,
-//           format: {
-//             to: function (value) {
-//               return Math.round(+value) + '€'
-//             },
-//             from: function (value) {
-//               return Math.round(+value)
-//             },
-//           },
-//           step:200,
-//           pips: {
-//             // @ts-ignore
-//             mode: 'range',
-//             // stepped: true,
-//             density: 10
-//         }
-//       });
-//       $('.noUi-value').each(function() {
-//         $(this).text($(this).text() + '€');
-//       });
-
-//   }
-//   async getRegions() {
-//     try {
-//       const API_URL = "https://clubtravel.onrender.com/api/find-infos";
-//       const response = await axios.get(API_URL);
-//       console.log(response.data);
-//       const regions = response.data.data[0].attributes.search.regins;
-//       const btnsHtml = regions.slice(0, -2).map((item: any) => {
-//         return `
-//           <button class="category__btns category__btns-regions">
-//           <svg>
-//             <use xlink:href="${Sprite}#check-circle"></use>
-//           </svg>
-//             ${item.name}
-//           </button>
-//         `;
-//       });
-//       $(".category__regions-item").append(btnsHtml.join(""));
-//     } catch (error) {
-//       console.error("Помилка при отриманні даних:", error);
-//     }
-//   }
-
-//   // async getGuests() {
-//   //   const context = this;
-//   //   try {
-//   //     const API_URL = "https://clubtravel.onrender.com/api/find-infos";
-//   //     const response = await axios.get(API_URL);
-//   //     console.log(response.data);
-//   //     const destinations = response.data.data[0].attributes.search.duration;
-
-//   //     const listItemHtml = destinations.map((item: any) => {
-//   //       return `
-//   //       <li class="info__guests-item dropdown__item">${item.name}</li>
-//   //       `;
-//   //     });
-//   //     $(".info__guests-list").append(listItemHtml.join(""));
-//   //     // $(".info__duration-item").on("click", function () {
-//   //     //   let daySelected = $(this).text();
-//   //     //   context.durationCurrent.text(daySelected);
-//   //     //   const daySelectedLength = daySelected.slice(0, 2);
-
-//   //     //   // const urlParams = new URLSearchParams(window.location.search);
-//   //     //   // const urlDestination = urlParams.get("destination");
-
-//   //     //   let newUrl = `search_results.html&duration=${+daySelectedLength}`;
-//   //     //   window.history.pushState(null, "", newUrl);
-//   //     // });
-//   //   } catch (error) {
-//   //     console.error("Помилка при отриманні даних:", error);
-//   //   }
-//   // }
-// }
