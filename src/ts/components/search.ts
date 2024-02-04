@@ -1,7 +1,6 @@
 import $ from "jquery";
 import AirDatepicker from "air-datepicker";
 // @ts-ignore
-import Sprite from "../../images/sprite.svg";
 import noUiSlider from "nouislider";
 import "nouislider/dist/nouislider.css";
 import { app } from "../modules/firebase";
@@ -285,13 +284,13 @@ export class Search {
 
             <div class="swiper-button-next result__btn-next">
               <svg>
-                <use xlink:href="./src/images/sprite.svg#chevron-left"></use>
+                <use xlink:href="#chevron-left"></use>
               </svg>
             </div>
 
             <div class="swiper-button-prev result__btn-prev">
               <svg>
-                <use xlink:href="./src/images/sprite.svg#chevron-left"></use>
+                <use xlink:href="#chevron-left"></use>
               </svg>
             </div>
 
@@ -305,7 +304,7 @@ export class Search {
 
             <div class="result__info-location">
               <svg>
-                <use xlink:href="./src/images/sprite.svg#point"></use>
+                <use xlink:href="#point"></use>
               </svg>
               <p class="result__info-country">${item.country}</p>
               <p class="result__info-region">${item.region}</p>
@@ -315,7 +314,7 @@ export class Search {
             <a class="result__info-link"  href="hotel.html">
               Подробнее об отеле
               <svg>
-                <use xlink:href="./src/images/sprite.svg#arrow-right"></use>
+                <use xlink:href="#arrow-right"></use>
               </svg>
             </a>
           </div>
@@ -327,28 +326,28 @@ export class Search {
 
             <p class="result__rating-duration">
               <svg>
-                <use xlink:href="./src/images/sprite.svg#clock"></use>
+                <use xlink:href="#clock"></use>
               </svg>
               ${item.duration}
             </p>
 
             <p class="result__rating-meal">
               <svg>
-                <use xlink:href="./src/images/sprite.svg#food"></use>
+                <use xlink:href="#food"></use>
               </svg>
               ${item.meals}
             </p>
 
             <p class="result__rating-room">
               <svg>
-                <use xlink:href="./src/images/sprite.svg#house"></use>
+                <use xlink:href="#house"></use>
               </svg>
               ${item.room[0]}
             </p>
 
             <p class="result__rating-beach">
               <svg>
-                <use xlink:href="./src/images/sprite.svg#sun"></use>
+                <use xlink:href="#sun"></use>
               </svg>
               ${item.beach}
             </p>
@@ -476,7 +475,7 @@ export class Search {
         { length: num },
         () => `
         <svg>
-            <use xlink:href="./src/images/sprite.svg#start"></use>
+            <use xlink:href="#start"></use>
         </svg>`
       ).join("")
     );
@@ -523,7 +522,7 @@ export class Search {
       const regionHtml = `
         <button data-region="${item.region}" class="category__btns category__btns-regions">
           <svg>
-            <use xlink:href="${Sprite}#check-circle"></use>
+            <use xlink:href="#check-circle"></use>
           </svg>
           ${item.region}
         </button>`;
