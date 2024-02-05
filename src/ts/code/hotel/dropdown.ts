@@ -1,4 +1,5 @@
-import * as $ from 'jquery';
+import $ from 'jquery';
+
 
 export class DropDown{
     dropDown: JQuery<HTMLElement>;
@@ -95,7 +96,7 @@ export class DropDown{
                     <div id="drop-${i}" class="children__drop">
                         <button class="children__btn">
                             <span class="children__current">Укажите возраст</span>
-                            <svg><use xlink:href="./src/images/sprite.svg#chevron-left"></use></svg> 
+                            <svg><use xlink:href="#chevron-left"></use></svg> 
                         </button>
                         <ul class="children__list">
                             <li>Укажите возраст</li>
@@ -242,7 +243,7 @@ export class DropDown{
                     context.error.addClass('dropdown__error_active-kids')
                 }else{
                     if(kidsObj.hasOwnProperty(thisCurrent)){
-                        kidsObj[thisCurrent] += 1;
+                        kidsObj[thisCurrent]++;
                     }else{
                         kidsObj[thisCurrent] = 1;
                     }
@@ -257,10 +258,7 @@ export class DropDown{
                 }else{
                     this.quatityAdults.html(String(this.currentAbdul));
 
-                    this.currentKids = Object.keys(kidsObj).reduce((acc, item) => {
-                        acc += kidsObj[item]
-                        return acc
-                    },0)
+                    this.currentKids = Object.keys(kidsObj).length
                     this.quatityKids.html(String(this.currentKids))
                     this.dropDown.removeClass('dropdown_active');
     
@@ -285,3 +283,4 @@ export class DropDown{
         return this.currentKids
     }
 }
+

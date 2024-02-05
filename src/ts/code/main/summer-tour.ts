@@ -65,7 +65,7 @@ export class SummerTourProduct {
         <div class="summer-tour__card-text-wrapper">
             <div class="summer-tour__card-place-wrapper">
                 <svg>
-                    <use xlink:href="./src/images/sprite.svg#map-marker"></use>
+                    <use xlink:href="#map-marker"></use>
                 </svg>
                 <p class="summer-tour__card-place">${country}</p>
             </div>  

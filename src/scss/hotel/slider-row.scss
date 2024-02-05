@@ -1,21 +1,21 @@
 .slider-row {
     margin-bottom: 16px;
 
+    @include media-breakpoint-down(md){
+        margin: 15px 0 5px;
+    }
+
     &__wrapper {
         display: grid;
-        gap: 69px;
         grid-template: 1fr / 1fr  371px;
         margin-top: -6px;
+        gap: 69px;
 
         @include media-breakpoint-down(md){
             grid-template: auto auto / 1fr;
-            gap: 35px;
             margin: 0;
+            gap: 35px;
         }
-    }
-
-    @include media-breakpoint-down(md){
-        margin: 15px 0 5px 0;
     }
 }
 
@@ -27,31 +27,31 @@
 
     @include media-breakpoint-down(md){
         margin-top: 20px;
-        aspect-ratio: 1.1353/1;
         max-width: 100%;
+        aspect-ratio: 1.1353/1;
     }
 
     .swiper-slide {
         img {
+            border-radius: 8px;
             width: 100%;
             height: 100%;
-            border-radius: 8px;
             object-fit: cover;
         }
     }
     
     .hotel-swiper-two {
-        height: 79.4%;
-        width: 100%;
         margin-bottom: 16px;
+        width: 100%;
+        height: 79.4%;
 
         @include media-breakpoint-down(md){
             margin-bottom: 10px;
         }
 
         @include media-breakpoint-down(sm){
-            height: 75%;
             margin-bottom: 7px;
+            height: 75%;
         }
     }
     
@@ -77,12 +77,30 @@
     z-index: 2;
     padding: 0 24px;
 
+    @include media-breakpoint-up(md){
+        box-shadow:0 5px 10px rgb(0 0 0 / 10%) ;
+    }
+
+    @include media-breakpoint-down(md){
+        display: grid;
+        grid-row: 1;
+        grid-template: 1fr / 1fr 1fr;
+        padding: 14px 6px 0;
+        gap: 40px;
+    }
+
+    @include media-breakpoint-down(sm){
+        display: block;
+        margin: 0 auto;
+        max-width: 600px;
+    }
+
     svg{
+        margin-right: 15px;
         width: 18px;
         height: 18px;
         fill: #3E7739;
         opacity: 0.5;
-        margin-right: 15px;
     }
     
     &__column{
@@ -94,6 +112,7 @@
             padding: 0;
         }
     }
+
     &__setected {
         display: flex;
         align-items: center;
@@ -101,26 +120,26 @@
         margin-bottom: 24px;
 
         &-info {
-            color: #222;
             font-size: 20px;
+            color: #222;
         }
 
         &-select {
-            color: #F68521;
-            font-size: 14px;
-            cursor: pointer;
             position: relative;
+            font-size: 14px;
+            color: #F68521;
+            cursor: pointer;
 
             &::after{
                 content: '';
                 position: absolute;
-                height: 1px;
                 left: 50%;
-                width: 98%;
-                background:#F68521 ;
                 bottom: 0;
-                transition: transform 150ms ease 0s;
+                width: 98%;
+                height: 1px;
+                background:#F68521 ;
                 transform: translateX(-50%) scaleX(0) ;
+                transition: transform 150ms ease 0s;
             }
 
             &:hover{
@@ -134,9 +153,9 @@
     }
 
     &__list {
-        color: #222;
-        font-size: 16px;
         margin-bottom: 24px;
+        font-size: 16px;
+        color: #222;
 
         li{
             display: flex;
@@ -146,58 +165,60 @@
     }
 
     &__price {
-        color: #000;
-        font-size: 24px;
-        font-weight: 700;
         margin-bottom: 7px;
+        font-weight: 700;
+        font-size: 24px;
+        color: #000;
 
         &-people {
-            color: #222;
             font-weight: 400;
+            color: #222;
         }
 
         &-info {
-            color: #999;
-            font-size: 12px;
             margin-bottom: 30px;
-            &-bold {
-                font-weight: 700;
-            }
+            font-size: 12px;
+            color: #999;
 
             @include media-breakpoint-down(sm){
                 margin-bottom: 23px;
             }
+
+            &-bold {
+                font-weight: 700;
+            }
         }
     }
+
     &__quantity {
         &-title{
             margin-bottom: 8px;
         }
 
         &-drop {
-            width: 100%;
             margin-bottom: 8px;
+            width: 100%;
         }
 
         &-tegs {
-            min-height: 68px;
-            margin-bottom: 8px;
             display: flex;
             flex-wrap: wrap;
             overflow: auto;
+            margin-bottom: 8px;
+            min-height: 68px;
             max-height: 200px;
             gap: 8px;
 
             li{
-                color: #222;
-                font-size: 12px;
-                line-height: 16px;
+                border: 1px solid #E2E2E2;
+                border-radius: 6px;
                 padding: 3px 10px;
                 height: 22px;
-                border-radius: 6px;
-                border: 1px solid #E2E2E2;
+                box-shadow: 0 2px 3px 0 rgb(0 0 0 / 10%);
+                font-size: 12px;
+                line-height: 16px;
+                color: #222;
                 background: #FFF;
-                box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.10);
             }
         }
     }
@@ -205,22 +226,22 @@
     &__total {
         &-sum{
             margin-bottom: 16px;
-            color: #3E7739;
-            font-size: 24px;
             font-weight: 700;
+            font-size: 24px;
+            color: #3E7739;
         }
 
         &-info {
-            color: #222;
-            font-size: 16px;
             font-weight: 400;
+            font-size: 16px;
+            color: #222;
         }
     }
 
     &__button {
-        height: 42px;
-        margin-bottom: 16px;
         position: relative;
+        margin-bottom: 16px;
+        height: 42px;
     }
 
     &__error{
@@ -246,8 +267,8 @@
         }
 
         &-info {
-            color: #999;
             font-size: 12px;
+            color: #999;
 
             span{
                 color: #555;
@@ -255,42 +276,27 @@
         }
     }
 
-    @include media-breakpoint-up(md){
-        box-shadow:0px 5px 10px rgba(0, 0, 0, 0.10) ;
-    }
-
-    @include media-breakpoint-down(md){
-        grid-row: 1;
-        padding: 14px 6px 0;
-        display: grid;
-        gap: 40px;
-        grid-template: 1fr / 1fr 1fr;
-    }
-
-    @include media-breakpoint-down(sm){
-        display: block;
-        max-width: 600px;
-        margin: 0 auto;
-    }
-
     ::-webkit-scrollbar {
         width: 6px;
     }
+
     ::-ms-scrollbar {
         width: 6px;
     }
+
     ::-webkit-scrollbar-thumb {
-        background-color: rgba(246, 133, 33, 0.8);
+        background-color: rgb(246 133 33 / 80%);
 
         &:hover{
-            background-color: rgba(246, 133, 33, 1);
+            background-color: rgb(246 133 33 / 100%);
         }
     }
      
     ::-ms-scrollbar-thumb {
-        background-color: rgba(246, 133, 33, 0.8);
+        background-color: rgb(246 133 33 / 80%);
+
         &:hover{
-            background-color: rgba(246, 133, 33, 1);
+            background-color: rgb(246 133 33 / 100%);
         }
     }
 }

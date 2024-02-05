@@ -1,65 +1,63 @@
-@import "./config/fonts.scss";
-@import "./config/media-breakpoints.scss";
-@import "./config/mixins.scss";
-@import "./config/reset.scss";
+@import "./config/fonts";
+@import "./config/media-breakpoints";
+@import "./config/mixins";
+@import "./config/reset";
 @import "./components/header";
 @import "./components/footer";
 @import "./components/ui/btn";
 
 body {
-   font-family: "Open Sans", sans-serif;
-   font-weight: 400;
-   color: #222;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  color: #222;
 }
 
-
 [class*="__container"] {
-   max-width: 1200px;
-   margin: 0 auto;
-   padding: 0 15px;
- }
- 
-
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 1200px;
+}
 
 .wrapper {
-   display: flex;
-   flex-direction: column;
-   min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
 .page {
-   flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 ::-webkit-scrollbar {
-   width: 10px;
-   @include media-breakpoint-down(sm){
-      width: 8px;
-   }
+  width: 10px;
+
+  @include media-breakpoint-down(sm) {
+    width: 8px;
+  }
 }
 
 ::-webkit-scrollbar-thumb {
-   background-color: rgba(37, 82, 150, 0.9);
-   border-radius: 3px;
-   &:hover{
-      background-color: rgba(37, 82, 150, 1);
-   }
+  border-radius: 3px;
+  background-color: rgb(37 82 150 / 90%);
+
+  &:hover {
+    background-color: rgb(37 82 150 / 100%);
+  }
 }
 
 ::-ms-scrollbar {
-   width: 10px;
-   @include media-breakpoint-down(sm){
-      width: 8px;
-   }
+  width: 10px;
+
+  @include media-breakpoint-down(sm) {
+    width: 8px;
+  }
 }
 
 ::-ms-scrollbar-thumb {
-   background-color: rgba(37, 82, 150, 0.9);
-   border-radius: 3px;
-   &:hover{
-      background-color: rgba(37, 82, 150, 1);
-   }
+  border-radius: 3px;
+  background-color: rgb(37 82 150 / 90%);
+
+  &:hover {
+    background-color: rgb(37 82 150 / 100%);
+  }
 }
-
-
-
