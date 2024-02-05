@@ -15,7 +15,7 @@ const pages = [
   },
   {
     name: "Hot_offers",
-    path: resolve(__dirname, "Hot_offers.html"),
+    path: resolve(__dirname, "hot_offers.html"),
   },
   {
     name: "company",
@@ -23,39 +23,39 @@ const pages = [
   },
   {
     name: "Account",
-    path: resolve(__dirname, "Account.html"),
+    path: resolve(__dirname, "account.html"),
   },
   {
     name: "Contacts",
-    path: resolve(__dirname, "Contacts.html"),
+    path: resolve(__dirname, "contacts.html"),
   },
   {
     name: "Directions",
-    path: resolve(__dirname, "Directions.html"),
+    path: resolve(__dirname, "directions.html"),
   },
   {
     name: "Hotel",
-    path: resolve(__dirname, "Hotel.html"),
+    path: resolve(__dirname, "hotel.html"),
   },
   {
     name: "Search_results",
-    path: resolve(__dirname, "Search_results.html"),
+    path: resolve(__dirname, "search_results.html"),
   },
   {
     name: "Text_page",
-    path: resolve(__dirname, "Text_page.html"),
+    path: resolve(__dirname, "text_page.html"),
   },
   {
     name: "Tour_request",
-    path: resolve(__dirname, "Tour_request.html"),
+    path: resolve(__dirname, "tour_request.html"),
   },
   {
     name: "Password_recovery",
-    path: resolve(__dirname, "Password_recovery.html"),
+    path: resolve(__dirname, "password_recovery.html"),
   },
   {
     name: "Registration",
-    path: resolve(__dirname, "Registration.html"),
+    path: resolve(__dirname, "registration.html"),
   },
 ];
 

@@ -10,9 +10,9 @@ const firebaseConfig = {
   appId: "1:883499742498:web:b0bf6b06d8073d249a217b",
 };
 
-const companyWrapper = document.querySelector(".company__swiper-wrapper");
+const companyWrapper = document.querySelector(".directions__wrapper");
 
-export class CompanyProduct {  
+export class DirectionProduct {  
   private app: any;
   private db: any;
   private productsArray: Tours[];
@@ -40,44 +40,52 @@ export class CompanyProduct {
       
     products.forEach((product) => {
       const content = product;
-      const { name, price, img} = content;
+      
+      const { img, country, region } = content;
       
       if (img && Array.isArray(img) && img.length > 0) {
         const { url, urlWebp } = img[0];
 
       let template = `
-      <div class="swiper-slide company__swiper-slide">
-        <div class="company__card">
-        <div class="company__card-img">
+        <div class="directions__card">
+        <div class="directions__card-img">
           <picture class="hero__bg-img">
             <source srcset=${urlWebp} type="image/webp" />
             <img src=${url} alt="bg" />
           </picture>
-          `;
-
-      if (price[1]) {
-        template += `
-            <div class="company__card-line">
-            <svg>
-              <use xlink:href="#company-line"></use>
-            </svg>
-            <div class="company__card-line-wrapper">
-              <p class="company__card-line-price">от ${price[1]}€</p>
-            </div>
-          </div>
-            `;
-      }
-
-      template += `
-          <div class="company__card-data-wrapper">
-            <svg>
-              <use xlink:href="#clock"></use>
-            </svg>
-            <p class="company__card-data">22.11.2020</p>
-          </div>
         </div>
-        <p class="company__card-text">${name}</p>
-      </div>
+        <div class="directions__card-place-wrapper">
+            <div class="directions__card-place">
+            `;
+
+            if(region.length < 10) {
+                template += `
+                    <p class="directions__card-place-town">${region}</p>
+                `
+            } else {
+                template += `
+                    <p class="directions__card-place-town">${region.slice(0, 10) + "..."}</p>
+                `
+            }
+            
+              template += `
+                <p class="directions__card-place-country">${country}</p>
+            </div>
+            <div class="directions__card-price">
+                <p class="directions__card-price-person">от <span>319,00€</span>/чел</p>
+                <p class="directions__card-price-offer">214 предложения</p>
+            </div>
+        </div>
+        <div class="directions__card-season-wrapper">
+            <div class="directions__card-season">
+                <p class="directions__card-season-start-end">19 июня 2020 - 30 сентября 2020</p>
+                <p class="directions__card-season-start-end">08 июля 2020 - 05 апреля 2021</p>
+            </div>
+            <svg>
+              <use xlink:href="#directions-calendar"></use>
+            </svg>
+        </div>
+        <a href="#" class="directions__btn btn">Выбрать тур</a>
       </div>
         `;
 
@@ -88,5 +96,3 @@ export class CompanyProduct {
     });
   };
 }
-
-
