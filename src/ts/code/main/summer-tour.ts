@@ -28,7 +28,6 @@ export class SummerTourProduct {
       collection(this.db, 'hotels'),
       where('hotTour', '==', true)
     );
-    console.log(filterSummerTours);
     
    
     const querySnapshot = await getDocs(filterSummerTours);
@@ -46,7 +45,6 @@ export class SummerTourProduct {
       
     products.forEach((product) => {
       const content = product;
-      console.log(content);
       
 
       const { country, img} = content;
