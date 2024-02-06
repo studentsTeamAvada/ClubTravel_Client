@@ -1,9 +1,9 @@
-.registration {
+.authorization {
   position: relative;
-  height: 994px;
+  height: 900px;
   &__bg {
     margin-top: 101px;
-    height: 895px;
+    height: 800px;
     width: 100%;
     position: absolute;
     top: 0px;
@@ -19,11 +19,10 @@
 
   &__form {
     max-width: 427px;
-    min-height: 810px;
+    min-height: 736px;
     margin: 0 auto;
     padding-top: 218px;
-    margin-bottom: 18px;
-    
+    margin-bottom: 10px;
   }
 
   &__form-wrapper {
@@ -31,7 +30,6 @@
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-
   }
 
   &__form-title {
@@ -59,7 +57,6 @@
         background: #132b60;
         color: #dab7b7;
       }
-      
     }
 
     img {
@@ -79,15 +76,13 @@
     color: #222;
     margin-bottom: 32px;
     transition: all 0.3s ease;
-    
+
     @include media-breakpoint-up(md) {
       &:hover {
         background: #dab7b7;
         color: #132b60;
       }
-      
     }
-
 
     img {
       position: absolute;
@@ -149,7 +144,7 @@
     }
   }
 
-  &__form-mail {
+  &__form-input-mail {
     position: relative;
 
     .just-validate-error-label {
@@ -160,18 +155,7 @@
     }
   }
 
-  &__form-password {
-    position: relative;
-
-    .just-validate-error-label {
-      position: absolute;
-      bottom: -13px;
-      left: 4px;
-      font-size: 14px;
-    }
-  }
-
-  &__form-repeat-password {
+  &__form-input-password {
     position: relative;
 
     .just-validate-error-label {
@@ -179,6 +163,17 @@
       bottom: -17px;
       left: 4px;
       font-size: 14px;
+    }
+  }
+
+  &__form-input-text {
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      font-size: 13px;
+      text-decoration: underline;
+      padding-right: 8px;
     }
   }
 
@@ -209,12 +204,12 @@
       &:hover {
         color: #fff;
         background: #f68521;
-      } 
+      }
     }
 
     @include media-breakpoint-down(xs) {
-      font-size: 14px;
-    }
+        font-size: 14px;
+      }
   }
 
   &__btn-registration {
@@ -232,15 +227,15 @@
     @include media-breakpoint-up(md) {
       &:hover {
         color: #dab7b7;
-      }  
+      }
     }
   }
 }
 
-#registrationMail {
+#authorizationMail {
   margin-bottom: 7px;
 }
 
-#registrationRepeatPasswordText {
-  margin-bottom: 30px;
+#authorizationPasswordText {
+  margin-bottom: 28px;
 }
