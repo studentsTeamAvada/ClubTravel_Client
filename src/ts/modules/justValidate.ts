@@ -24,7 +24,7 @@ export function justValidateRegistration() {
         }, 
         { 
             rule: 'minLength', 
-            value: 3, 
+            value: 6, 
         }, 
         { 
             rule: 'maxLength', 
@@ -37,7 +37,7 @@ export function justValidateRegistration() {
         },
         { 
             rule: 'minLength', 
-            value: 3, 
+            value: 6, 
         }, 
         { 
             rule: 'maxLength', 
@@ -88,7 +88,7 @@ export function justValidateRegistration() {
         }, 
         { 
             rule: 'minLength', 
-            value: 3, 
+            value: 6, 
         }, 
         { 
             rule: 'maxLength', 
