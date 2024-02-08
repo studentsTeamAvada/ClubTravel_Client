@@ -8,7 +8,7 @@ import { Food } from "../code/tour_request/food";
 import JustValidate from "just-validate";
 
 import $ from "jquery";
-import Cleave from "cleave.js";
+// import Cleave from "cleave.js";
 // import JustValidate from "just-validate";
 
 document.addEventListener("DOMContentLoaded", () => {
