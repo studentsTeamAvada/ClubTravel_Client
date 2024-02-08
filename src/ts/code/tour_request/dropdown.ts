@@ -1,5 +1,9 @@
 import $ from "jquery";
 
+type MyObject = {
+  [key: string]: any;
+};
+
 export class DropDown {
   dropDown: JQuery<HTMLElement>;
   dropMain: JQuery<HTMLElement>;
@@ -12,6 +16,7 @@ export class DropDown {
   error: JQuery<HTMLElement>;
   currentAbdul: number;
   currentKids: number;
+  objKidsYears: MyObject;
 
   constructor(className: string) {
     this.dropDown = $(className).find(".dropdown");
@@ -22,16 +27,16 @@ export class DropDown {
     this.error = this.dropDown.find(".dropdown__error");
     this.btn = this.dropDown.find(".dropdown__btn");
     this.children = this.dropDown.find(".dropdown__children");
-    this.tegContainer = $(".tour__quantity-tegs");
-    this.currentAbdul = 0;
+    this.tegContainer = $(".form__drop-tags");
+    this.currentAbdul = 1;
     this.currentKids = 0;
+    this.objKidsYears = {};
     this.init();
   }
   init() {
     this.open();
     this.counter(this.dropDown.find(".dropdown__count-one"));
     this.counter(this.dropDown.find(".dropdown__count-two"), true);
-    this.removeAgeSelect(1);
     this.addPeople();
   }
   open() {
@@ -52,6 +57,34 @@ export class DropDown {
     const remove = el.find(".dropdown__count-remove");
     const total = el.find(".dropdown__count-current");
     const context = this;
+
+    function start(kids: boolean): void {
+      if (kids) {
+        const sessionKids = JSON.parse(String(sessionStorage.getItem("kids")));
+        if (sessionKids) {
+          context.currentKids = Object.keys(sessionKids).reduce((acc, item) => {
+            acc += +sessionKids[item];
+            return acc;
+          }, 0);
+
+          context.objKidsYears = sessionKids;
+          context.getTegs(context.objKidsYears);
+          total.html(String(context.currentKids));
+          context.quatityKids.html(String(context.currentKids));
+          context.timeout(context.currentKids, true, true);
+        }
+      } else {
+        const sessionAbduls = sessionStorage.getItem("abduls");
+        if (sessionAbduls) {
+          total.html(sessionAbduls);
+          context.quatityAdults.html(sessionAbduls);
+          context.currentAbdul = +sessionAbduls;
+        } else {
+          context.getTegs();
+        }
+      }
+    }
+    start(kids);
 
     function addOne(): void {
       let current = +total.text();
@@ -84,16 +117,26 @@ export class DropDown {
     remove.on("click", removeOne);
   }
 
-  addAgeSelect(current: number) {
+  addAgeSelect(current: number, startParam: boolean = false) {
     const allSelects = this.dropDown.find(".children__drop");
     const quantitySelect = allSelects.length;
+    console.log(quantitySelect);
+
+    const ageArr = [];
+    for (const key in this.objKidsYears) {
+      for (let i = 0; i < this.objKidsYears[key]; i++) {
+        ageArr.push(key);
+      }
+    }
+
+    console.log(ageArr);
 
     for (let i = 0; i < current; i++) {
       if (i > quantitySelect - 1) {
         this.children.append(`
                     <div id="drop-${i}" class="children__drop">
                         <button class="children__btn">
-                            <span class="children__current">Укажите возраст</span>
+                            <span class="children__current">${startParam ? ageArr[i] : "Укажите возраст"}</span>
                             <svg><use xlink:href="#chevron-left"></use></svg> 
                         </button>
                         <ul class="children__list">
@@ -196,9 +239,10 @@ export class DropDown {
     });
   }
 
-  timeout(current: number, action: boolean) {
+  timeout(current: number, action: boolean, start: boolean = false) {
     function height(): number {
       const rows = Math.ceil(current / 2);
+
       let currentHeight = 0;
       if (rows === 1) {
         currentHeight = 40;
@@ -208,16 +252,21 @@ export class DropDown {
       return currentHeight;
     }
 
-    if (action) {
-      if (current % 2 !== 0) {
-        this.children.css("height", `${height()}px`);
-      }
-      this.addAgeSelect(current);
+    if (start) {
+      this.children.css("height", `${height()}px`);
+      this.addAgeSelect(current, true);
     } else {
-      if (current % 2 === 0) {
-        this.children.css("height", `${height()}px`);
+      if (action) {
+        if (current % 2 !== 0) {
+          this.children.css("height", `${height()}px`);
+        }
+        this.addAgeSelect(current);
+      } else {
+        if (current % 2 === 0) {
+          this.children.css("height", `${height()}px`);
+        }
+        this.removeAgeSelect(current);
       }
-      this.removeAgeSelect(current);
     }
   }
 
@@ -253,25 +302,37 @@ export class DropDown {
           this.error.addClass("dropdown__error_active-abduls");
         } else {
           this.quatityAdults.html(String(this.currentAbdul));
+          sessionStorage.setItem("abduls", String(this.currentAbdul));
 
-          this.currentKids = Object.keys(kidsObj).length;
+          this.currentKids = Object.keys(kidsObj).reduce((acc, item) => {
+            acc += +kidsObj[item];
+            return acc;
+          }, 0);
+          console.log(this.currentKids);
           this.quatityKids.html(String(this.currentKids));
+          sessionStorage.setItem("kids", JSON.stringify(kidsObj));
+
           this.dropDown.removeClass("dropdown_active");
 
-          this.tegContainer.html(`
-                        <li>Взрослых x${this.currentAbdul}</li>
-                    `);
-          for (const key in kidsObj) {
-            this.tegContainer.append(`
-                            <li>${key} x${kidsObj[key]}</li>
-                        `);
-          }
+          this.getTegs(kidsObj);
           const customEvent = new CustomEvent("myCustomEvent");
           document.dispatchEvent(customEvent);
         }
       }
     });
   }
+
+  getTegs(kidsObj: MyObject = {}) {
+    this.tegContainer.html(`
+    <li>Взрослых x${this.currentAbdul}</li>
+  `);
+    for (const key in kidsObj) {
+      this.tegContainer.append(`
+        <li>${key} x${kidsObj[key]}</li>
+    `);
+    }
+  }
+
   getAbduls() {
     return this.currentAbdul;
   }
