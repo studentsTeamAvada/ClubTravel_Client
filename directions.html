@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/ico+xml" href="/ClubTravel.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>404</title>
-  <script type="module" crossorigin src="/assets/404-x4kPgKMk.js"></script>
+  <title>Направления</title>
+  <script type="module" crossorigin src="/assets/Directions-FMnxk8U5.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/header-o5Nvgfqe.js">
-  <link rel="stylesheet" crossorigin href="/assets/404-To8NUj2l.css">
+  <link rel="modulepreload" crossorigin href="/assets/index.esm-f6w6U5a0.js">
+  <link rel="modulepreload" crossorigin href="/assets/index.esm2017-6EBzZu0o.js">
+  <link rel="stylesheet" crossorigin href="/assets/Directions-Zt2Wx4uD.css">
 </head>
 
-
-<body>
-  <div class="wrapper">
-  <header class="header">
+  <body>
+    <div class="wrapper">
+      <header class="header">
   <div class="header__container">
     <div class="header__logo">
       <a
@@ -141,27 +142,24 @@
   </div>
 </header>
 
-  <main class="page">
-    <section class="error">
-      <div class="error__bg"></div>
-      <div class="error__container">
-        <div class="error__content">
-          <h1 class="error__title">Ой!</h1>
-          <p class="error__text">Ошибка 404. Похоже, страницы не существует.</p>
-          <p class="error__text error__text_sub">Вот несколько полезных ссылок:</p>
-          <ul class="error__list">
-            <li class="error__item"><a href="#" class="error__link">Поиск тура</a></li>
-            <li class="error__item"><a href="#" class="error__link">Направления</a></li>
-            <li class="error__item"><a href="#" class="error__link">Кампании</a></li>
-            <li class="error__item"><a href="#" class="error__link">Горящие предложения</a></li>
-            <li class="error__item"><a href="#" class="error__link">Запрос тура</a></li>
-            <li class="error__item"><a href="#" class="error__link">Контакты</a></li>
-          </ul> 
+      <div class="page">
+        <section class="directions-bg">
+    <div class="directions-bg__img">
+        <picture class="directions-bg__image">
+            <source srcset="/assets/banner-5tmXyVm0.webp " type="image/webp"/>
+            <img src="/assets/banner-NG-0nreI.png" alt="bg" />
+        </picture>
+        <img class="directions-bg__line" src="data:image/png;base64,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" alt="bg-line">
+    </div>
+</section>
+        <section class="directions">
+  <div class="directions__container">
+    <div class="directions__wrapper"></div>
+  </div>
+</section>
+
       </div>
-      </div>
-    </section>
-  </main>
-  <footer class="footer">
+      <footer class="footer">
   <div class="footer__container">
     <div class="footer__main">
       <div class="footer__popular popular">
@@ -608,7 +606,6 @@
 </svg>
 
 
-</div>
-</body>
-
+    </div>
+  </body>
 </html>
