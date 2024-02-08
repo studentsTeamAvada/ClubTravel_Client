@@ -29,7 +29,6 @@ export class HotDealsProduct {
       collection(this.db, 'hotels'),
       where('hotTour', '==', true)
     );
-    console.log(filterHotDeals);
     
    
     const querySnapshot = await getDocs(filterHotDeals);
@@ -47,7 +46,6 @@ export class HotDealsProduct {
       
     products.forEach((product) => {
       const content = product;
-      console.log(content);
       
 
       const { name, price, country, region, star, img} = content;

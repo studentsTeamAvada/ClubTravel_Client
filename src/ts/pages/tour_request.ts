@@ -6,9 +6,8 @@ import { DropDown } from "../code/tour_request/dropdown";
 import { Food } from "../code/tour_request/food";
 import $ from "jquery";
 import Cleave from "cleave.js";
-import JustValidate from "just-validate";
+// import JustValidate from "just-validate";
 
-new JustValidate("");
 document.addEventListener("DOMContentLoaded", () => {
   class TourRequest {
     header: Header;
