@@ -4,6 +4,8 @@ import { DropCountry } from "../code/tour_request/drop-country";
 import { Calendar } from "../code/tour_request/calendar";
 import { DropDown } from "../code/tour_request/dropdown";
 import { Food } from "../code/tour_request/food";
+import JustValidate from "just-validate";
+
 import $ from "jquery";
 import Cleave from "cleave.js";
 // import JustValidate from "just-validate";
@@ -24,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     DropPeople: DropDown;
     formBtn: JQuery<HTMLElement>;
     stars: JQuery<HTMLElement>;
+    inputForm: JQuery<HTMLElement>;
 
     constructor() {
       this.header = new Header();
@@ -38,18 +41,21 @@ document.addEventListener("DOMContentLoaded", () => {
       this.inputWrapper = $(".adviser__input");
       this.input = $("#adviser-inp");
       this.inputBtn = $(".adviser__btn");
+      this.inputForm = $("#adviser__form");
       this.tabsBtn = $(".form__tabs");
       this.form = $(".form");
+
       this.formBtn = this.form.find(".form__btn");
       this.tabsSlider = $(".form__tabs-slider");
 
       this.inputMask();
-      this.clickBtn();
+
       this.tabs();
       this.points();
       this.stopReload();
       this.clickFormBtn();
       this.SelectStars();
+      this.inputValidate();
     }
 
     SelectStars() {
@@ -162,14 +168,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     clickBtn() {
-      this.inputBtn.on("click", () => {
-        const value: number | undefined = this.input.val()?.length;
-        if (value && value === 13) {
-          alert("В скором времени вам позвонят.");
-          this.input.val("");
-          this.inputWrapper.removeClass("adviser__input_active");
-        }
-      });
+      alert("В скором времени вам позвонят.");
+      this.input.val("");
+      this.inputWrapper.removeClass("adviser__input_active");
     }
 
     inputMask() {
@@ -188,6 +189,37 @@ document.addEventListener("DOMContentLoaded", () => {
         uppercase: true,
       });
     }
+
+    inputValidate() {
+      const validate = new JustValidate("#adviser__form");
+      const ruleName = [
+        {
+          rule: "required",
+          errorMessage: "Введите имя",
+        },
+        {
+          rule: "minLength",
+          value: 13,
+          errorMessage: "Минимум 3 буквы",
+        },
+        {
+          rule: "customRegexp",
+          value: /[0-9]/,
+          errorMessage: "Три одинаковых буквы подряд",
+        },
+      ];
+      const settingName = {
+        errorsContainer: ".adviser__input-error",
+        errorLabelCssClass: ["invalid"],
+        errorFieldCssClass: ["error-focus"],
+      };
+      validate.addField("#adviser-inp", ruleName, settingName);
+
+      validate.onSuccess(() => {
+        this.clickBtn();
+      });
+    }
+
     counter() {
       const add = $(".form__counter-add");
       const remove = $(".form__counter-remove");
