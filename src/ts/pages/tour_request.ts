@@ -4,6 +4,7 @@ import { DropCountry } from "../code/tour_request/drop-country";
 import { Calendar } from "../code/tour_request/calendar";
 import { DropDown } from "../code/tour_request/dropdown";
 import { Food } from "../code/tour_request/food";
+//@ts-ignore
 import JustValidate from "just-validate";
 
 import $ from "jquery";

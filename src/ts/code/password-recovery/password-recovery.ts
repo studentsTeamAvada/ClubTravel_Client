@@ -1,20 +1,12 @@
-import { initializeApp } from "firebase/app";
+import { app } from "../../modules/firebase";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
-const firebaseConfig = {
-  apiKey: "AIzaSyAVwhQr2zeNEAr1FSrD6ygo5dJeLkxjtRk",
-  authDomain: "clubtravel-6eff6.firebaseapp.com",
-  projectId: "clubtravel-6eff6",
-  storageBucket: "clubtravel-6eff6.appspot.com",
-  messagingSenderId: "883499742498",
-  appId: "1:883499742498:web:b0bf6b06d8073d249a217b",
-};
 
 export class PasswordRecovery {
-  private app: any;
-  private auth: any;
+  app: any;
+  auth: any;
 
   constructor() {
-    this.app = initializeApp(firebaseConfig);
+    this.app = app;
     this.auth = getAuth();
   }
 
