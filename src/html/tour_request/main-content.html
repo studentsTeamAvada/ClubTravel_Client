@@ -1,0 +1,167 @@
+<section class="main-content">
+  <div class="main-content__container main-content__wrapper">
+    <section class="main-content__column main-content__column-one adviser">
+      <h1 class="adviser__main-title">Нет времени искать тур?</h1>
+      <p class="adviser__info">
+        Просто скажите нам как должен выглядеть отдых вашей мечты и мы найдём
+        лучший тур для вас!
+      </p>
+      <p class="adviser__info adviser__info-opacity">
+        Заполните короткую форму запроса на нашем сайте и мы свяжемся с вами в
+        течении 1 часа в рабочее время
+      </p>
+      <h3 class="adviser__title">
+        Оставьте свой номер телефона и мы вам перезвоним
+      </h3>
+      <form id="adviser__form" class="adviser__row-input">
+        <div class="adviser__input">
+          <input
+            id="adviser-inp"
+            type="text"
+            placeholder="Ваш номер телефона"
+          />
+        </div>
+        <div class="adviser__input-error"></div>
+        <button class="adviser__btn btn">перезвонить</button>
+        <button class="adviser__btn-form">заполнить форму</button>
+      </form>
+      <h3 class="adviser__title">Связаться с нашим консультантом</h3>
+      <div class="adviser__contacts">
+        <div class="adviser__contacts-image">
+          <picture>
+            <source
+              src="/src/images/tour_request/assistant.webp"
+              type="image/webp"
+            />
+            <img
+              src="/src/images/tour_request/assistant.jpg"
+              alt="Description of the image"
+              width="3000"
+              height="2000"
+            />
+          </picture>
+        </div>
+        <div class="adviser__contacts-main">
+          <h3 class="adviser__contacts-title">Марина Каасик</h3>
+          <p class="adviser__contacts-info">Специалист по подбору туров</p>
+          <ul class="adviser__contacts-list">
+            <li>
+              <svg><use xlink:href="#phone"></use></svg
+              ><a href="tel:+3726130633">+372 <span>61 30 633</span></a>
+            </li>
+            <li>
+              <svg><use xlink:href="#mail"></use></svg
+              ><a href="mailto:contact@email.ee">contact@email.ee</a>
+            </li>
+            <li>
+              <svg><use xlink:href="#messanger"></use></svg>Написать в Messenger
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <form class="main-content__column main-content__column-two form">
+      <div class="form__wrapper">
+        <div class="form__tabs">
+          <button class="form__tab form__tab-one">Основное</button>
+          <button class="form__tab form__tab-two">Предпочтения</button>
+          <button class="form__tab form__tab-three">Контакты</button>
+          <div class="form__tabs-slider"></div>
+        </div>
+        <div class="form__main">
+          <div class="form__state form__first-state">
+            <div class="form__preloader"></div>
+            <h3 class="form__title">Направление</h3>
+            <div class="form__drop">
+              <load ="/src/html/tour_request/drop-country.html" />
+            </div>
+            <h3 class="form__title">Дата вылета</h3>
+            <div class="form__drop">
+              <load ="/src/html/tour_request/calendar.html" />
+            </div>
+            <h3 class="form__title">Гости</h3>
+            <div class="form__drop form__drop-guests">
+              <load ="/src/html/tour_request/dropdown.html" />
+            </div>
+            <div class="form__drop-tags"></div>
+            <h3 class="form__title">Длительность тура (дней)</h3>
+            <div class="form__counter">
+              <div class="form__counter-btn form__counter-remove">
+                <svg>
+                  <use xlink:href="#minus-circle"></use>
+                </svg>
+              </div>
+              <div class="form__counter-count"></div>
+              <div class="form__counter-btn form__counter-add">
+                <svg>
+                  <use xlink:href="#plus-circle"></use>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="form__state form__second-state">
+            <h3 class="form__title">Желаемая цена на одного человека (€)</h3>
+            <input type="text" class="form__input" />
+            <h3 class="form__title">Питание</h3>
+            <div class="form__drop form__drop-food">
+              <load ="/src/html/tour_request/food.html" />
+            </div>
+            <h3 class="form__title">Категория отеля</h3>
+            <div class="form__drop form__stars">
+              <div data-num="1" class="form__stars-one-star">
+                <svg>
+                  <use xlink:href="#star"></use>
+                </svg>
+              </div>
+
+              <div data-num="2" class="form__stars-one-star">
+                <svg>
+                  <use xlink:href="#star"></use>
+                </svg>
+              </div>
+
+              <div data-num="3" class="form__stars-one-star">
+                <svg>
+                  <use xlink:href="#star"></use>
+                </svg>
+              </div>
+
+              <div data-num="4" class="form__stars-one-star">
+                <svg>
+                  <use xlink:href="#star"></use>
+                </svg>
+              </div>
+
+              <div data-num="5" class="form__stars-one-star">
+                <svg>
+                  <use xlink:href="#star"></use>
+                </svg>
+              </div>
+
+              <div data-num="6" class="form__stars-one-star">
+                <svg>
+                  <use xlink:href="#star"></use>
+                </svg>
+              </div>
+            </div>
+            <h3 class="form__title">Пожелания</h3>
+            <textarea class="form__textarea" cols="30" rows="12"></textarea>
+          </div>
+          <div class="form__state form__third-state">
+            <h3 class="form__title">Имя</h3>
+            <input type="text" class="form__input" />
+            <h3 class="form__title">Телефон</h3>
+            <input type="text" class="form__input" />
+            <h3 class="form__title">Эл. почта</h3>
+            <input type="text" class="form__input" />
+          </div>
+          <button class="form__btn">
+            <span class="form__btn_next">дальше</span
+            ><span class="form__btn_finish">подобрать тур</span>
+          </button>
+          <div class="form__btn-error"></div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

@@ -1,98 +1,96 @@
-import $ from 'jquery';
+import $ from "jquery";
 
+export class DropDown {
+  dropDown: JQuery<HTMLElement>;
+  dropMain: JQuery<HTMLElement>;
+  quatityAdults: JQuery<HTMLElement>;
+  quatityKids: JQuery<HTMLElement>;
+  addBtn: JQuery<HTMLElement>;
+  btn: JQuery<HTMLElement>;
+  children: JQuery<HTMLElement>;
+  tegContainer: JQuery<HTMLElement>;
+  error: JQuery<HTMLElement>;
+  currentAbdul: number;
+  currentKids: number;
 
-export class DropDown{
-    dropDown: JQuery<HTMLElement>;
-    dropMain: JQuery<HTMLElement>;
-    quatityAdults: JQuery<HTMLElement>;
-    quatityKids: JQuery<HTMLElement>;
-    addBtn: JQuery<HTMLElement>;
-    btn: JQuery<HTMLElement>;
-    children: JQuery<HTMLElement>;
-    tegContainer: JQuery<HTMLElement>;
-    error: JQuery<HTMLElement>;
-    currentAbdul: number;
-    currentKids: number;
-    constructor(className: string){
-        this.dropDown = $(className).find('.dropdown');
-        this.dropMain = this.dropDown.find('.dropdown__main');
-        this.quatityAdults = this.dropDown.find('#adults-quantity');
-        this.quatityKids = this.dropDown.find('#kids-quantity');
-        this.addBtn = this.dropDown.find('.dropdown__button-add');
-        this.error = this.dropDown.find('.dropdown__error');
-        this.btn =  this.dropDown.find('.dropdown__btn');
-        this.children = this.dropDown.find('.dropdown__children');
-        this.tegContainer = $('.tour__quantity-tegs');
-        this.currentAbdul = 0
-        this.currentKids = 0
-        this.init();
-    }
-    init(){
-        this.open();
-        this.counter(this.dropDown.find('.dropdown__count-one'));
-        this.counter(this.dropDown.find('.dropdown__count-two'), true);
-        this.removeAgeSelect(1);
-        this.addPeople();
-    }
-    open(){
-        this.btn.on('click', () => {
-            this.dropDown.toggleClass('dropdown_active')
-        })
-        const context = this;
+  constructor(className: string) {
+    this.dropDown = $(className).find(".dropdown");
+    this.dropMain = this.dropDown.find(".dropdown__main");
+    this.quatityAdults = this.dropDown.find("#adults-quantity");
+    this.quatityKids = this.dropDown.find("#kids-quantity");
+    this.addBtn = this.dropDown.find(".dropdown__button-add");
+    this.error = this.dropDown.find(".dropdown__error");
+    this.btn = this.dropDown.find(".dropdown__btn");
+    this.children = this.dropDown.find(".dropdown__children");
+    this.tegContainer = $(".tour__quantity-tegs");
+    this.currentAbdul = 0;
+    this.currentKids = 0;
+    this.init();
+  }
+  init() {
+    this.open();
+    this.counter(this.dropDown.find(".dropdown__count-one"));
+    this.counter(this.dropDown.find(".dropdown__count-two"), true);
+    this.removeAgeSelect(1);
+    this.addPeople();
+  }
+  open() {
+    this.btn.on("click", () => {
+      this.dropDown.toggleClass("dropdown_active");
+    });
+    const context = this;
 
+    $(document).on("click", function (e: JQuery.ClickEvent) {
+      if (context.dropDown.has(e.target).length == 0) {
+        context.dropDown.removeClass("dropdown_active");
+      }
+    });
+  }
 
-        $(document).on('click', function (e:JQuery.ClickEvent) {
-            if(context.dropDown.has(e.target).length == 0){
-                context.dropDown.removeClass('dropdown_active')
-            }
-        })
-    }
+  counter(el: JQuery<HTMLElement>, kids: boolean = false) {
+    const add = el.find(".dropdown__count-add");
+    const remove = el.find(".dropdown__count-remove");
+    const total = el.find(".dropdown__count-current");
+    const context = this;
 
-    counter(el : JQuery<HTMLElement>, kids: boolean = false){
-        const add = el.find('.dropdown__count-add');
-        const remove = el.find('.dropdown__count-remove');
-        const total = el.find('.dropdown__count-current');
-        const context = this;
-
-        function addOne() : void{
-            let current = +total.text();
-            if(current < 9){
-                const sum = current + 1
-                total.html(String(sum))
-                if(kids){
-                    context.timeout(sum, true)
-                }else{
-                    context.currentAbdul = sum;
-                    context.error.removeClass('dropdown__error_active-abduls')
-                }
-            }
+    function addOne(): void {
+      let current = +total.text();
+      if (current < 9) {
+        const sum = current + 1;
+        total.html(String(sum));
+        if (kids) {
+          context.timeout(sum, true);
+        } else {
+          context.currentAbdul = sum;
+          context.error.removeClass("dropdown__error_active-abduls");
         }
-        function removeOne() : void{
-            let current = +total.text()
-            // const min = kids? 0 : 1
-            if(current > 0){
-                const sum = current - 1;
-                total.html(String(sum))
-                if(kids){
-                    context.timeout(sum, false)
-                }
-                else{
-                    context.currentAbdul = sum;
-                }
-            }
+      }
+    }
+    function removeOne(): void {
+      let current = +total.text();
+      // const min = kids? 0 : 1
+      if (current > 0) {
+        const sum = current - 1;
+        total.html(String(sum));
+        if (kids) {
+          context.timeout(sum, false);
+        } else {
+          context.currentAbdul = sum;
         }
-
-        add.on('click', addOne)
-        remove.on('click', removeOne)
+      }
     }
 
-    addAgeSelect(current: number){
-        const allSelects = this.dropDown.find('.children__drop');
-        const quantitySelect = allSelects.length;
+    add.on("click", addOne);
+    remove.on("click", removeOne);
+  }
 
-        for(let i = 0; i < current; i++){
-            if(i > quantitySelect - 1){
-                this.children.append(`
+  addAgeSelect(current: number) {
+    const allSelects = this.dropDown.find(".children__drop");
+    const quantitySelect = allSelects.length;
+
+    for (let i = 0; i < current; i++) {
+      if (i > quantitySelect - 1) {
+        this.children.append(`
                     <div id="drop-${i}" class="children__drop">
                         <button class="children__btn">
                             <span class="children__current">Укажите возраст</span>
@@ -121,10 +119,9 @@ export class DropDown{
                         </ul>
                     </div>
                 `);
-        
-                const scriptElement = $('<script>')
-                .attr('type', 'text/javascript')
-                .text(`
+
+        const scriptElement = $("<script>").attr("type", "text/javascript")
+          .text(`
                     function dropDown(id){
                         const drop = document.querySelector(id)
                         const li = drop.querySelectorAll('li');
@@ -182,105 +179,103 @@ export class DropDown{
                     }
                     dropDown('#drop-${i}')
                 `);
-                $('body').append(scriptElement);
-            }
-        }
+        $("body").append(scriptElement);
+      }
+    }
+  }
 
+  removeAgeSelect(current: number) {
+    const allSelects = this.dropDown.find(".children__drop");
+    allSelects.each((index, item) => {
+      if (index > current - 1) {
+        item.classList.remove("children__drop_opacity");
+        setTimeout(() => {
+          item.remove();
+        }, 150);
+      }
+    });
+  }
 
+  timeout(current: number, action: boolean) {
+    function height(): number {
+      const rows = Math.ceil(current / 2);
+      let currentHeight = 0;
+      if (rows === 1) {
+        currentHeight = 40;
+      } else if (rows > 1) {
+        currentHeight = rows * 45 - 5;
+      }
+      return currentHeight;
     }
 
-    removeAgeSelect(current: number){
-        const allSelects = this.dropDown.find('.children__drop');
-        allSelects.each((index, item) => {
-            if(index > current - 1){
-                item.classList.remove('children__drop_opacity');
-                setTimeout(() => {
-                    item.remove()
-                }, 150)
-            }
-        })
+    if (action) {
+      if (current % 2 !== 0) {
+        this.children.css("height", `${height()}px`);
+      }
+      this.addAgeSelect(current);
+    } else {
+      if (current % 2 === 0) {
+        this.children.css("height", `${height()}px`);
+      }
+      this.removeAgeSelect(current);
     }
+  }
 
-    timeout(current: number, action: boolean){
-        function height(): number{
-            const rows = Math.ceil(current / 2);
-            let currentHeight = 0;
-            if(rows === 1){
-                currentHeight = 40
-            }else if(rows > 1){
-                currentHeight = (rows * 45) - 5;
-            }
-            return currentHeight;
+  addPeople() {
+    this.addBtn.on("click", () => {
+      const allSelects = this.dropDown.find(".children__drop");
+      const context = this;
+      interface KidsObject {
+        [key: string]: number;
+      }
+      const kidsObj: KidsObject = {};
+
+      allSelects.each(function (_index, el) {
+        const thisCurrent: string = String(
+          el.querySelector(".children__current")?.textContent
+        );
+        if (thisCurrent === "Укажите возраст") {
+          el.classList.add("children__drop_error");
+          context.error.addClass("dropdown__error_active-kids");
+        } else {
+          if (kidsObj.hasOwnProperty(thisCurrent)) {
+            kidsObj[thisCurrent]++;
+          } else {
+            kidsObj[thisCurrent] = 1;
+          }
         }
+      });
 
-        if(action){
-            if(current % 2 !== 0){
-                this.children.css('height', `${height()}px`)
-            }
-            this.addAgeSelect(current);
-        }else{
-            if(current % 2 === 0){
-                this.children.css('height', `${height()}px`)
-            }
-            this.removeAgeSelect(current)
-        }
-    }
+      const allErrors = this.dropDown.find(".children__drop_error");
 
-    addPeople(){
-        this.addBtn.on('click', () => {
-            const allSelects = this.dropDown.find('.children__drop');
-            const context = this
-            interface KidsObject {
-                [key: string]: number;
-            }
-            const kidsObj: KidsObject = {};
+      if (allErrors.length === 0) {
+        if (this.currentAbdul < 1) {
+          this.error.addClass("dropdown__error_active-abduls");
+        } else {
+          this.quatityAdults.html(String(this.currentAbdul));
 
+          this.currentKids = Object.keys(kidsObj).length;
+          this.quatityKids.html(String(this.currentKids));
+          this.dropDown.removeClass("dropdown_active");
 
-            allSelects.each(function(_index, el) {
-                const thisCurrent: string  = String(el.querySelector('.children__current')?.textContent)
-                if(thisCurrent === 'Укажите возраст'){
-                    el.classList.add('children__drop_error')
-                    context.error.addClass('dropdown__error_active-kids')
-                }else{
-                    if(kidsObj.hasOwnProperty(thisCurrent)){
-                        kidsObj[thisCurrent]++;
-                    }else{
-                        kidsObj[thisCurrent] = 1;
-                    }
-                }
-            });
-
-            const allErrors = this.dropDown.find('.children__drop_error');
-
-            if(allErrors.length === 0){
-                if(this.currentAbdul < 1){
-                    this.error.addClass('dropdown__error_active-abduls')
-                }else{
-                    this.quatityAdults.html(String(this.currentAbdul));
-
-                    this.currentKids = Object.keys(kidsObj).length
-                    this.quatityKids.html(String(this.currentKids))
-                    this.dropDown.removeClass('dropdown_active');
-    
-                    this.tegContainer.html(`
+          this.tegContainer.html(`
                         <li>Взрослых x${this.currentAbdul}</li>
-                    `)
-                    for(const key in kidsObj){
-                        this.tegContainer.append(`
+                    `);
+          for (const key in kidsObj) {
+            this.tegContainer.append(`
                             <li>${key} x${kidsObj[key]}</li>
-                        `)
-                    }
-                    const customEvent = new CustomEvent('myCustomEvent');
-                    document.dispatchEvent(customEvent);
-                }
-            }
-        });
-    }
-    getAbduls(){
-        return this.currentAbdul
-    }
-    getKids(){
-        return this.currentKids
-    }
+                        `);
+          }
+          const customEvent = new CustomEvent("myCustomEvent");
+          document.dispatchEvent(customEvent);
+        }
+      }
+    });
+  }
+  getAbduls() {
+    return this.currentAbdul;
+  }
+  getKids() {
+    return this.currentKids;
+  }
 }
-

@@ -14,7 +14,7 @@ export class InfoBlock{
     priceCalculator(){
         document.addEventListener('myCustomEvent', () => {
             const allPeople = this.dropDown.getKids() + this.dropDown.getAbduls();
-            const total = String( +this.priceOnePerson * allPeople);
+             const total = String( +this.priceOnePerson * allPeople);
             let sum = ''
             if(total.length > 3){
                 let count = 0

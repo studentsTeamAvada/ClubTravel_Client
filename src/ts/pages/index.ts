@@ -4,7 +4,7 @@ import { companySwiper } from '../code/swiper';
 import { hotDealsSwiper } from '../code/swiper';
 import { winterTourSwiper } from '../code/swiper';
 import { summerTourSwiper } from '../code/swiper';
-import { CompanyProduct } from '../code/main/company';
+import { CompanyProduct } from '../code/main/main-company';
 import { HotDealsProduct } from '../code/main/hot-deals';
 import { WinterTourProduct } from '../code/main/winter-tour';
 import { SummerTourProduct } from '../code/main/summer-tour';
