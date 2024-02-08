@@ -19,9 +19,13 @@ body {
 }
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template: 1fr auto/ 1fr;
   min-height: 100%;
+}
+
+.footer {
+  grid-row: 2;
 }
 
 .page {

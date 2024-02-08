@@ -1,13 +1,13 @@
 .offer {
   height: 570px;
-  background-image: url("../../../../src/images/offer/offerBaner.webp");
+  background-image: url("/src/images/offer/offerBaner.webp");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 
   @include media-breakpoint-down(md) {
     height: 923px;
-    background-image: url("../../../../src/images/offer/offerBannerMob.png");
+    background-image: url("/src/images/offer/offerBannerMob.png");
   }
 
   &__container {
