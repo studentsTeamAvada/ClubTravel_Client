@@ -184,11 +184,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
-      new Cleave("#adviser-inp", {
-        blocks: [3, 3, 2, 2],
-        numericOnly: true,
-        uppercase: true,
-      });
+      // new Cleave("#adviser-inp", {
+      //   blocks: [3, 3, 2, 2],
+      //   numericOnly: true,
+      //   uppercase: true,
+      // });
     }
 
     inputValidate() {
