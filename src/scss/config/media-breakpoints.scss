@@ -15,9 +15,7 @@ $breakpoints: (
     @media (min-width: $breakpoint-value) {
       @content;
     }
-  }
-
- @else {
+  } @else {
     @warn 'Invalid breakpoint: #{$breakpoint}.';
   }
 }
@@ -29,9 +27,7 @@ $breakpoints: (
     @media (max-width: $breakpoint-value - 1) {
       @content;
     }
-  }
-
- @else {
+  } @else {
     @warn 'Invalid breakpoint: #{$breakpoint}.';
   }
 }

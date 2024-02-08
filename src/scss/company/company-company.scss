@@ -4,11 +4,6 @@
   margin-bottom: 99px;
   background: #fff;
 
-  @include media-breakpoint-down(xs) {
-    top: 0;
-    margin-bottom: 77px;
-  }
-
   &__wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -41,14 +36,6 @@
   &__swiper-round {
     position: relative;
 
-    @media (width >= 1024px) {
-      &:hover {
-        &::before {
-          opacity: 0.4;
-        }
-      }
-    }
-
     &::before {
       content: "";
       position: absolute;
@@ -68,10 +55,17 @@
         opacity: 1;
       }
     }
+
+    @media (width >= 1024px) {
+      &:hover {
+        &::before {
+          opacity: 0.4;
+        }
+      }
+    }
   }
 
-  &__container {
-  }
+
 
   &__title {
     display: flex;
@@ -86,13 +80,6 @@
     text-transform: uppercase;
     gap: 7px;
 
-    @include media-breakpoint-down(xs) {
-      flex-direction: column;
-      margin-bottom: 40px;
-      padding-top: 0;
-      gap: 4px;
-    }
-
     span {
       color: #f15d28;
     }
@@ -101,6 +88,13 @@
       width: 35px;
       height: 35px;
       fill: rgb(241 93 40 / 100%);
+    }
+
+    @include media-breakpoint-down(xs) {
+      flex-direction: column;
+      margin-bottom: 40px;
+      padding-top: 0;
+      gap: 4px;
     }
   }
 
@@ -185,5 +179,10 @@
 
   &__card-text {
     padding: 16px 10px 5px 21px;
+  }
+
+  @include media-breakpoint-down(xs) {
+    top: 0;
+    margin-bottom: 77px;
   }
 }

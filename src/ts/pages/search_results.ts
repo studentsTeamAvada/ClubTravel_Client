@@ -1,4 +1,4 @@
-import {Search} from "../components/search"
+import {Country} from "../components/search1"
 
 
 import { Header } from "../components/header"
@@ -6,7 +6,7 @@ import { Header } from "../components/header"
 
 document.addEventListener("DOMContentLoaded", async () => {
   new Header()
-  new Search()
+  new Country()
 
 })
 

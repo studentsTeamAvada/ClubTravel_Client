@@ -2,10 +2,6 @@
   margin-top: 100px;
   margin-bottom: 198px;
 
-  @include media-breakpoint-down(sm) {
-    margin-top: 46px;
-  }
-
   &__swiper-round {
     position: relative;
 
@@ -48,8 +44,7 @@
   }
 
 
-  &__bg {
-  }
+
 
 
   &__bg-img {
@@ -72,13 +67,17 @@
     z-index: 1;
     cursor: pointer;
 
-    @include media-breakpoint-down(sm) {
-      display: none;
-    }
-
     svg {
       width: 32px;
       height: 32px;
     }
+
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    margin-top: 46px;
   }
 }

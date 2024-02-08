@@ -8,11 +8,6 @@
     background: rgb(255 255 255 / 100%);
     transition: all 300ms ease 0s;
 
-    @include media-breakpoint-down(md){
-        margin-bottom: -50px;
-        height: 50px;
-    }
-
     &__container {
         display: flex;
         justify-content: space-between;
@@ -26,17 +21,6 @@
         justify-content: center;
         width: 100px;
         height: 100px;
-
-        @include media-breakpoint-down(md){
-            position: absolute;
-            left: 50%;
-            top: -28px;
-            transform: translateX(-50%);
-
-            &::after{
-                display: none;
-            }
-        }
 
         &::before{
             content: '';
@@ -104,6 +88,22 @@
                 }
             }
         }
+
+        @include media-breakpoint-down(md){
+            position: absolute;
+            left: 50%;
+            top: -28px;
+            transform: translateX(-50%);
+
+            &::after{
+                display: none;
+            }
+        }
+    }
+
+    @include media-breakpoint-down(md){
+        margin-bottom: -50px;
+        height: 50px;
     }
 }
 
@@ -236,17 +236,17 @@ margin-leftmargin-left
             height: 26px;
             cursor: pointer;
 
+            &::before{
+                top: 5px;
+                width: 21.3px;
+            }
+
             &::before, &::after, span{
                 content: '';
                 position: absolute;
                 height: 3px;
                 background: #606C81;
                 transition: all 300ms ease 0s;
-            }
-
-            &::before{
-                top: 5px;
-                width: 21.3px;
             }
 
             &::after{
@@ -270,6 +270,106 @@ margin-leftmargin-left
     margin-right: 4px;
     min-height: 40px;
     gap: 24px;
+
+    &__link {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        color: #666;
+        transition: all 300ms ease 0s;
+
+        a{
+            font-size: 12px;
+            color: #666;
+        }
+
+        svg{
+            margin-right: 8px;
+            width: 16px;
+            height: 16px;
+            fill: #999;
+            opacity: 0.5;
+        }
+
+        &:hover{
+            color: #F68521;
+
+            a{
+                color: #F68521;
+            }
+
+            svg{
+                fill: #F68521;
+            }
+        }
+
+        @include media-breakpoint-down(md){
+            height: 28px;
+            line-height: 28px;
+        }
+
+    }
+
+    &__link-gap {
+        width: 1px;
+        height: 24px;
+        background-color: rgb(0 0 0 / 10%);
+
+        @include media-breakpoint-down(md){
+            display: none;
+        }
+    }
+
+    &__link-phone {
+        @include media-breakpoint-down(md){
+            margin-bottom: 16px;
+        }
+    }
+
+    &__link-email {
+        @include media-breakpoint-down(md){
+            margin: 3px 0 4px;
+        }
+    }
+
+    &__link-user {
+        svg{
+            margin: 0;
+            width: 24px;
+            height: 24px;
+        }
+
+        @include media-breakpoint-down(md){
+            display: none;
+        }
+    }
+
+    &__link-avatar {
+        @include media-breakpoint-down(md){
+            border-top: 1px solid rgb(0 0 0 / 10%);
+            padding-top: 19px ;
+            height: 55px;
+        }
+    }
+
+    &__img {
+        border-radius: 50%;
+        padding: 2px;
+        width: 20px;
+        height: 20px;
+        background-color: brown;
+    }
+
+    &__name {
+        display: none;
+
+        @include media-breakpoint-down(md){
+            display: block;
+            margin-left: 13px;
+            font-size: 16px;
+            color: #222;
+        }
+    }
 
     @include media-breakpoint-down(md){
         flex-direction: column;
@@ -304,122 +404,11 @@ margin-leftmargin-left
             }
         }
     }
-
-    &__link {
-        display: flex;
-        align-items: center;
-        font-size: 12px;
-        color: #666;
-        transition: all 300ms ease 0s;
-
-        @include media-breakpoint-down(md){
-            height: 28px;
-            line-height: 28px;
-        }
-
-        a{
-            font-size: 12px;
-            color: #666;
-        }
-
-        svg{
-            margin-right: 8px;
-            width: 16px;
-            height: 16px;
-            fill: #999;
-            opacity: 0.5;
-        }
-
-        &:hover{
-            color: #F68521;
-
-            a{
-                color: #F68521;
-            }
-
-            svg{
-                fill: #F68521;
-            }
-        }
-
-    }
-
-    &__link-gap {
-        width: 1px;
-        height: 24px;
-        background-color: rgb(0 0 0 / 10%);
-
-        @include media-breakpoint-down(md){
-            display: none;
-        }
-    }
-
-    &__link-phone {
-        @include media-breakpoint-down(md){
-            margin-bottom: 16px;
-        }
-    }
-
-    &__link-email {
-        @include media-breakpoint-down(md){
-            margin: 3px 0 4px;
-        }
-    }
-
-    &__link-user {
-        @include media-breakpoint-down(md){
-            display: none;
-        }
-
-        svg{
-            margin: 0;
-            width: 24px;
-            height: 24px;
-        }
-    }
-
-    &__link-avatar {
-        @include media-breakpoint-down(md){
-            border-top: 1px solid rgb(0 0 0 / 10%);
-            padding-top: 19px ;
-            height: 55px;
-        }
-    }
-
-    &__img {
-        border-radius: 50%;
-        padding: 2px;
-        width: 20px;
-        height: 20px;
-        background-color: brown;
-    }
-
-    &__name {
-        display: none;
-
-        @include media-breakpoint-down(md){
-            display: block;
-            margin-left: 13px;
-            font-size: 16px;
-            color: #222;
-        }
-    }
 }
 
 .bottom-list {
     order: 1;
     min-height: 60px;
-
-    @include media-breakpoint-down(md){
-        display: block;
-        margin-bottom: 11px;
-        border-bottom: 1px solid rgb(0 0 0 / 10%);
-        padding-bottom: 6px;
-
-        svg{
-            display: none;
-        }
-    }
 
     &__link-offer {
         span{
@@ -457,10 +446,6 @@ margin-leftmargin-left
         color: #255296;
         transition: color 300ms ease 0s;
 
-        @include media-breakpoint-down(md){
-            height: 38px;
-        }
-
         &::after{
             content: '';
             position: absolute;
@@ -490,12 +475,27 @@ margin-leftmargin-left
                 }
             }            
         }
+
+        @include media-breakpoint-down(md){
+            height: 38px;
+        }
     }
 
     svg{
         height: 24px;
         fill: #F15D28;
         transition: fill 300ms ease 0s;
+    }
+
+    @include media-breakpoint-down(md){
+        display: block;
+        margin-bottom: 11px;
+        border-bottom: 1px solid rgb(0 0 0 / 10%);
+        padding-bottom: 6px;
+
+        svg{
+            display: none;
+        }
     }
 }
 
