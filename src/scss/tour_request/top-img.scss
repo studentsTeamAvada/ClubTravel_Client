@@ -1,37 +1,41 @@
 .top-img {
-<<<<<<< HEAD
   position: relative;
   overflow: hidden;
   width: 100%;
   height: 421px;
 
-=======
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  height: 417px;
-  padding: 0;
->>>>>>> e1cf23eb36efb06597f9d43799c83213e8fff14c
+  @include media-breakpoint-down(sm) {
+    height: 239px;
+  }
+
   &__bg {
     &-img {
       position: absolute;
       top: -14px;
       z-index: -1;
       width: 100%;
-<<<<<<< HEAD
-
+      min-height: 430px;
       img {
-        width: 100%;
-        min-height: 430px;
         object-fit: cover;
+        width: 100%;
+        max-height: 100%;
 
         @include media-breakpoint-down(sm) {
+          height: 100%;
           min-height: 255px;
+          max-width: 100%;
         }
+      }
+      @include media-breakpoint-down(sm) {
+        min-height: 255px;
       }
     }
 
     &-bottom {
+      @include media-breakpoint-down(sm) {
+        display: none;
+      }
+
       svg {
         position: absolute;
         left: 50%;
@@ -40,10 +44,6 @@
         width: 1367px;
         height: 56px;
         transform: translateX(-50%);
-      }
-
-      @include media-breakpoint-down(sm) {
-        display: none;
       }
     }
   }
@@ -62,12 +62,6 @@
       transition: transform 300ms ease 0s;
       cursor: pointer;
 
-      &:hover {
-        @include media-breakpoint-up(md) {
-          transform: scale(1.01);
-        }
-      }
-
       @include media-breakpoint-down(xs) {
         bottom: 17px;
         padding: 10px 21px 13px;
@@ -77,6 +71,12 @@
       @include media-breakpoint-down(xxs) {
         min-width: auto;
         max-width: 86vw;
+      }
+
+      &:hover {
+        @include media-breakpoint-up(md) {
+          transform: scale(1.01);
+        }
       }
     }
 
@@ -106,6 +106,10 @@
       align-items: center;
       margin: 0 0 4px 12.8px;
 
+      @include media-breakpoint-down(xs) {
+        margin: 0 0 10px 10px;
+      }
+
       &::after {
         content: "+";
         position: absolute;
@@ -125,10 +129,6 @@
         width: 18px;
         height: 18px;
         fill: #f5c213;
-      }
-
-      @include media-breakpoint-down(xs) {
-        margin: 0 0 10px 10px;
       }
     }
 
@@ -155,49 +155,5 @@
         max-width: 280px;
       }
     }
-  }
-
-=======
-      min-height: 430px;
-      img {
-        object-fit: cover;
-        width: 100%;
-        max-height: 100%;
-
-        @include media-breakpoint-down(sm) {
-          height: 100%;
-          min-height: 255px;
-          max-width: 100%;
-        }
-      }
-      @include media-breakpoint-down(sm) {
-        min-height: 255px;
-      }
-    }
-    &-bottom {
-      svg {
-        position: absolute;
-        width: 1500px;
-        height: 56px;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: -1px;
-        z-index: 1;
-        @include media-breakpoint-up(lg) {
-          width: 100%;
-        }
-        @include media-breakpoint-down(sm) {
-          display: none;
-        }
-      }
-
-      @include media-breakpoint-down(sm) {
-        display: none;
-      }
-    }
-  }
->>>>>>> e1cf23eb36efb06597f9d43799c83213e8fff14c
-  @include media-breakpoint-down(sm) {
-    height: 239px;
   }
 }
