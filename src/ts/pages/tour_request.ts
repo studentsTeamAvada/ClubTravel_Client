@@ -56,6 +56,9 @@ document.addEventListener("DOMContentLoaded", () => {
       this.clickFormBtn();
       this.SelectStars();
       this.inputValidate();
+      this.formStageTwoValidate();
+      this.formStageThreeValidate();
+      this.inputFormMask();
     }
 
     SelectStars() {
@@ -108,6 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const btnTwo = document.querySelector(".form__tab-two");
       const btnThree = document.querySelector(".form__tab-three");
       const noErrorFirst = !$(".form").is(".form_erroe-one");
+      const noErrorSecond = !$(".form").is(".form_erroe-two");
       if (num === 1) {
         btnThree?.classList.remove("form__tab_active");
         btnTwo?.classList.remove("form__tab_active");
@@ -130,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
         this.tabsSlider.css({
           left: "33.3%",
         });
-      } else if (num === 3 && noErrorFirst) {
+      } else if (num === 3 && noErrorFirst && noErrorSecond) {
         btnOne?.classList.remove("form__tab_active");
         btnTwo?.classList.remove("form__tab_active");
         btnThree?.classList.add("form__tab_active");
@@ -150,13 +154,18 @@ document.addEventListener("DOMContentLoaded", () => {
         const twoState = $(".form").is(".form_two-state");
         const threeState = $(".form").is(".form_three-state");
 
-        if (oneState) {
+        const rule = this.calendar.checkError();
+        if (rule && oneState) {
           this.points(2);
-        } else if (twoState) {
-          this.points(3);
-        } else if (threeState) {
-          this.points(1);
         }
+
+        if (oneState) {
+        }
+        // else if (twoState) {
+        //   this.points(3);
+        // } else if (threeState) {
+        //   this.points(1);
+        // }
       });
     }
 
@@ -190,22 +199,34 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
+    inputFormMask() {
+      $("#input-tel").on("input", () => {
+        const value: number | undefined = String($("#input-tel").val()).length;
+        if (value && value > 0) {
+          $(".form__phone").addClass("form__phone_active");
+        } else {
+          $(".form__phone").removeClass("form__phone_active");
+        }
+      });
+
+      new Cleave("#input-tel", {
+        blocks: [3, 3, 2, 2],
+        numericOnly: true,
+        uppercase: true,
+      });
+    }
+
     inputValidate() {
       const validate = new JustValidate("#adviser__form");
       const ruleName = [
         {
           rule: "required",
-          errorMessage: "Введите имя",
+          errorMessage: "Введите номер",
         },
         {
           rule: "minLength",
           value: 13,
-          errorMessage: "Минимум 3 буквы",
-        },
-        {
-          rule: "customRegexp",
-          value: /[0-9]/,
-          errorMessage: "Три одинаковых буквы подряд",
+          errorMessage: "Номер слишком короткий",
         },
       ];
       const settingName = {
@@ -217,6 +238,115 @@ document.addEventListener("DOMContentLoaded", () => {
 
       validate.onSuccess(() => {
         this.clickBtn();
+      });
+    }
+
+    formStageTwoValidate() {
+      const validate = new JustValidate("#form-state-two");
+      const rulePrice = [
+        {
+          rule: "required",
+          errorMessage: "Введите цену",
+        },
+        {
+          rule: "customRegexp",
+          value: /[0-9]/,
+          errorMessage: "Только цифры",
+        },
+      ];
+      const settingName = {
+        errorsContainer: ".form__error-input-price",
+        errorLabelCssClass: ["invalid"],
+        errorFieldCssClass: ["error-focus"],
+      };
+      validate.addField("#input-price", rulePrice, settingName);
+
+      validate.onSuccess(() => {
+        const rule = this.food.checkInput();
+        if (rule) {
+          this.form.removeClass("form_erroe-two");
+          this.points(3);
+        }
+      });
+
+      validate.onFail(() => {
+        this.form.addClass("form_erroe-two");
+      });
+    }
+
+    formStageThreeValidate() {
+      const validate = new JustValidate("#form-state-three");
+      const ruleName = [
+        {
+          rule: "required",
+          errorMessage: "Введите имя",
+        },
+        {
+          rule: "customRegexp",
+          value: /^[a-zA-Zа-яА-Я\s]{3,20}$/,
+          errorMessage: "Только буквы",
+        },
+        {
+          rule: "minLength",
+          value: 3,
+          errorMessage: "Минимум 3 буквы",
+        },
+        {
+          rule: "maxLength",
+          value: 20,
+          errorMessage: "Максимум 20 букв",
+        },
+        {
+          rule: "customRegexp",
+          value: /^(?:(.)(?!\1\1))+$/,
+          errorMessage: "Три одинаковых буквы подряд",
+        },
+      ];
+      const settingName = {
+        errorsContainer: ".form__error-input-name",
+        errorLabelCssClass: ["invalid"],
+        errorFieldCssClass: ["error-focus"],
+      };
+      validate.addField("#input-name", ruleName, settingName);
+
+      const ruleTel = [
+        {
+          rule: "required",
+          errorMessage: "Введите номер",
+        },
+        {
+          rule: "minLength",
+          value: 13,
+          errorMessage: "Номер слишком короткий",
+        },
+      ];
+      const settingTel = {
+        errorsContainer: ".form__error-input-tel",
+        errorLabelCssClass: ["invalid"],
+        errorFieldCssClass: ["error-focus"],
+      };
+      validate.addField("#input-tel", ruleTel, settingTel);
+
+      const ruleLogin = [
+        {
+          rule: "required",
+          errorMessage: "Введите email",
+        },
+        {
+          rule: "customRegexp",
+          value: /^(?!.*\.\.)[\w.-]{2,15}@\w[\w.-]{2,15}\w\.[a-z]{2,10}/,
+          errorMessage: "Невалидный email",
+        },
+      ];
+      const settingLogin = {
+        errorsContainer: ".form__error-input-mail",
+        errorLabelCssClass: ["invalid"],
+        errorFieldCssClass: ["error-focus"],
+      };
+      validate.addField("#input-mail", ruleLogin, settingLogin);
+
+      validate.onSuccess(() => {
+        this.points(1);
       });
     }
 

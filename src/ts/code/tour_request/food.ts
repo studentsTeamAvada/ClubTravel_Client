@@ -6,6 +6,7 @@ export class Food {
   btn: JQuery<HTMLElement>;
   allLi: JQuery<HTMLElement>;
   currentSelect: JQuery<HTMLElement>;
+  errorFood: JQuery<HTMLElement>;
 
   constructor() {
     this.food = $(".food");
@@ -13,6 +14,7 @@ export class Food {
     this.btn = $(".food__btn");
     this.allLi = this.food.find("li");
     this.currentSelect = $(".food__btn-info");
+    this.errorFood = $(".form__error-food");
     this.init();
   }
   init() {
@@ -25,8 +27,20 @@ export class Food {
     this.allLi.each((_index, item) => {
       item.addEventListener("click", () => {
         this.currentSelect.html(String(item.textContent));
+        this.errorFood.removeClass("form__error-food_active");
       });
     });
+  }
+
+  checkInput(): boolean {
+    const info = this.currentSelect.html();
+    if (info == "Выбрать") {
+      this.errorFood.addClass("form__error-food_active");
+      return false;
+    } else {
+      this.errorFood.removeClass("form__error-food_active");
+      return true;
+    }
   }
 
   open(): void {
