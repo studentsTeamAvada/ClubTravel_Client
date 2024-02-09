@@ -28,15 +28,27 @@ export class DropCountry {
     if (countryValue) {
       this.countryMainDrop.html(countryValue);
     } else {
-      this.countryMainDrop.html("Болгария");
+      this.countryMainDrop.html("Страна");
     }
-    const tourValue = sessionStorage.getItem("tour");
+    const tourValue = sessionStorage.getItem("Тур");
     if (tourValue) {
       this.tourMainDrop.html(tourValue);
     } else {
       this.tourMainDrop.html("Золотые пески");
     }
   }
+
+  checkTour(): boolean {
+    const info = this.countryMainDrop.html();
+    if (info === "Страна") {
+      console.log(1);
+      return false;
+    } else {
+      console.log(2);
+      return true;
+    }
+  }
+
   open() {
     this.btn.on("click", () => {
       this.dropDown.toggleClass("drop-country_active");

@@ -37,7 +37,7 @@ export class Calendar {
     }
 
     spanStartDate.html(context.formatDate(this.currentSelDate));
-    context.checkError();
+
     sessionStorage.setItem("startDate", String(this.currentSelDate.valueOf()));
 
     const dp = new AirDatepicker("#el", {
@@ -54,9 +54,7 @@ export class Calendar {
       if (date != "undefined") {
         context.currentSelDate = new Date(date);
       }
-
-      context.checkError();
-
+      context.removeError();
       spanStartDate.html(context.formatDate(context.currentSelDate));
       sessionStorage.setItem(
         "startDate",
@@ -68,17 +66,28 @@ export class Calendar {
     this.removeFinalDate();
   }
 
-  checkError() {
+  removeError() {
+    const errorBtn = $(".form__btn-error");
+    if (!(this.currentDate.valueOf() > this.currentSelDate.valueOf())) {
+      this.form.removeClass("form_erroe-one");
+      this.btn.css("border", "1px solid #e2e2e2");
+      errorBtn.html("");
+    }
+  }
+
+  checkError(): boolean {
     const errorBtn = $(".form__btn-error");
     if (this.currentDate.valueOf() > this.currentSelDate.valueOf()) {
       errorBtn.html("");
       this.btn.css("border", "1px solid rgb(199 41 41)");
       errorBtn.html("Нельзя выбрать прошедшую/текущую дату вылета");
       this.form.addClass("form_erroe-one");
+      return false;
     } else {
       this.form.removeClass("form_erroe-one");
       this.btn.css("border", "1px solid #e2e2e2");
       errorBtn.html("");
+      return true;
     }
   }
 
