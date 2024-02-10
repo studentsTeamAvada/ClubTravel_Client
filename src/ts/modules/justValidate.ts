@@ -1,3 +1,4 @@
+//@ts-ignore
 import JustValidate from 'just-validate';
 
 export function justValidateRegistration() { 

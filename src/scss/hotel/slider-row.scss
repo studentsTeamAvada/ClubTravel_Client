@@ -1,10 +1,6 @@
 .slider-row {
     margin-bottom: 16px;
 
-    @include media-breakpoint-down(md){
-        margin: 15px 0 5px;
-    }
-
     &__wrapper {
         display: grid;
         grid-template: 1fr / 1fr  371px;
@@ -17,6 +13,10 @@
             gap: 35px;
         }
     }
+
+    @include media-breakpoint-down(md){
+        margin: 15px 0 5px;
+    }
 }
 
 .slider {
@@ -24,12 +24,6 @@
     margin-top: 46px;
     max-width: 730px;
     aspect-ratio: 1.163/1;
-
-    @include media-breakpoint-down(md){
-        margin-top: 20px;
-        max-width: 100%;
-        aspect-ratio: 1.1353/1;
-    }
 
     .swiper-slide {
         img {
@@ -70,30 +64,18 @@
     .hotel-swiper-one .swiper-slide-thumb-active {
         opacity: 1;
     }
+
+    @include media-breakpoint-down(md){
+        margin-top: 20px;
+        max-width: 100%;
+        aspect-ratio: 1.1353/1;
+    }
 }
 
 .tour {
     position: relative;
     z-index: 2;
     padding: 0 24px;
-
-    @include media-breakpoint-up(md){
-        box-shadow:0 5px 10px rgb(0 0 0 / 10%) ;
-    }
-
-    @include media-breakpoint-down(md){
-        display: grid;
-        grid-row: 1;
-        grid-template: 1fr / 1fr 1fr;
-        padding: 14px 6px 0;
-        gap: 40px;
-    }
-
-    @include media-breakpoint-down(sm){
-        display: block;
-        margin: 0 auto;
-        max-width: 600px;
-    }
 
     svg{
         margin-right: 15px;
@@ -180,12 +162,12 @@
             font-size: 12px;
             color: #999;
 
-            @include media-breakpoint-down(sm){
-                margin-bottom: 23px;
-            }
-
             &-bold {
                 font-weight: 700;
+            }
+
+            @include media-breakpoint-down(sm){
+                margin-bottom: 23px;
             }
         }
     }
@@ -298,6 +280,24 @@
         &:hover{
             background-color: rgb(246 133 33 / 100%);
         }
+    }
+
+    @include media-breakpoint-up(md){
+        box-shadow:0 5px 10px rgb(0 0 0 / 10%) ;
+    }
+
+    @include media-breakpoint-down(md){
+        display: grid;
+        grid-row: 1;
+        grid-template: 1fr / 1fr 1fr;
+        padding: 14px 6px 0;
+        gap: 40px;
+    }
+
+    @include media-breakpoint-down(sm){
+        display: block;
+        margin: 0 auto;
+        max-width: 600px;
     }
 }
 

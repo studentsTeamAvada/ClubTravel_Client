@@ -20,7 +20,6 @@
     "@types/jqueryui": "^1.12.21",
     "gh-pages": "^6.1.1",
     "jquery": "^3.7.1",
-    "just-validate": "^4.3.0",
     "prettier": "^3.2.4",
     "sass": "^1.69.7",
     "stylelint": "^16.2.1",
@@ -39,6 +38,7 @@
     "cleave.js": "^1.6.0",
     "firebase": "^10.7.2",
     "inputmask": "^5.0.8",
+    "just-validate": "^4.3.0",
     "nouislider": "^15.7.1",
     "strapi-plugin-populate-deep": "^3.0.1",
     "stylelint-declaration-block-no-ignored-properties": "^2.8.0"

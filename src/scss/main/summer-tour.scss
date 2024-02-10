@@ -1,10 +1,6 @@
 .summer-tour {
     position: relative;
     margin-bottom: 102px;
-
-    @include media-breakpoint-down(xs) {
-        margin-bottom: 80px;
-      }
   
     &__text {
       padding-bottom: 37px;
@@ -27,8 +23,7 @@
       position: relative;
     }
   
-    &__swiper-slide {
-    }
+
   
     &__card-wrapper {
       padding: 1px;
@@ -108,8 +103,7 @@
   
 
   
-    &__card-text {
-    }
+
   
     &__card-prices-wrapper {
       display: flex;
@@ -138,14 +132,6 @@
     &__swiper-round {
       position: relative;
   
-      @media (width >= 1024px) {
-        &:hover {
-          &::before {
-            opacity: 0.4;
-          }
-        }
-      }
-  
       &::before {
         content: "";
         position: absolute;
@@ -165,10 +151,22 @@
           opacity: 1;
         }
       }
+  
+      @media (width >= 1024px) {
+        &:hover {
+          &::before {
+            opacity: 0.4;
+          }
+        }
+      }
     }
   
     &__swiper-button-next {
       right: 2%;
+  
+      svg {
+        transform: rotate(180deg);
+      }
   
       @include media-breakpoint-down(md) {
         right: 5%;
@@ -176,10 +174,6 @@
   
       @include media-breakpoint-down(xs) {
         right: 10%;
-      }
-  
-      svg {
-        transform: rotate(180deg);
       }
     }
   
@@ -201,14 +195,6 @@
       justify-content: center;
       gap: 8px;
   
-      @media (width >= 1024px) {
-        &:hover {
-          a {
-            color: #f68521;
-          }
-        }
-      }
-  
       a {
         color: #555;
         transition: all 0.2s ease;
@@ -217,6 +203,14 @@
       svg {
         width: 24px;
         height: 24px;
+      }
+  
+      @media (width >= 1024px) {
+        &:hover {
+          a {
+            color: #f68521;
+          }
+        }
       }
     }
   
@@ -232,8 +226,7 @@
     }
 
   
-    &__container {
-    }
+
   
   
     &__title {
@@ -288,6 +281,12 @@
     &__swiper-button-next {
       display: none;
   
+      svg {
+        width: 32px;
+        height: 32px;
+        color: #3e7739;
+      }
+  
       @include media-breakpoint-down(md) {
         position: absolute;
         top: 41%;
@@ -295,12 +294,10 @@
         display: block;
         cursor: pointer;
       }
-  
-      svg {
-        width: 32px;
-        height: 32px;
-        color: #3e7739;
-      }
     }
+
+    @include media-breakpoint-down(xs) {
+        margin-bottom: 80px;
+      }
   }
   

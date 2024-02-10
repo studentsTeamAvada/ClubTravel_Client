@@ -36,10 +36,6 @@
     border-radius: 10px;
     max-height: 349px;
     aspect-ratio: 0.947/1;
-    
-    @include media-breakpoint-down(md){
-        max-height: 100%;
-    }
 
     &__image {
         position: relative;
@@ -165,12 +161,12 @@
     }
 
     &__price {
-        @include media-breakpoint-down(xxs){
-            order: 2;   
-        }
-
         span{
             font-weight: 700;
+        }
+
+        @include media-breakpoint-down(xxs){
+            order: 2;   
         }
     }
 
@@ -205,5 +201,9 @@
             position: relative;
             z-index: 1;
         }
+    }
+    
+    @include media-breakpoint-down(md){
+        max-height: 100%;
     }
 }

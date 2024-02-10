@@ -10,6 +10,15 @@ const firebaseConfig = {
 };
 
 export const app = initializeApp(firebaseConfig);
+
+
+
+
+
+
+
+
+
 // const storage = getStorage(app);
 
 // const photo = document.querySelector("#photo") as HTMLInputElement;

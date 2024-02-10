@@ -21,7 +21,7 @@ export function heroSwiper() {
 }
 
 export function companySwiper() {
-  new Swiper(".company__swiper", {
+  new Swiper(".main-company__swiper", {
     slidesPerView: "auto",
     speed: 1100,
     spaceBetween: 15,
@@ -48,8 +48,8 @@ export function companySwiper() {
     },
 
     navigation: {
-      nextEl: ".company__swiper-button-next",
-      prevEl: ".company__swiper-button-prev",
+      nextEl: ".main-company__swiper-button-next",
+      prevEl: ".main-company__swiper-button-prev",
     },
   });
 }

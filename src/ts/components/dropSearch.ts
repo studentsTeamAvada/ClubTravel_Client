@@ -27,50 +27,52 @@ export class DropdownSearch {
     this.currentVal();
     this.toggleDropdown();
     this.dropdownObserver();
+
     if (this.currentUrl !== null) {
       this.changeCurrentVal(this.currentUrl);
     }
+
     switch (this.currentUrl) {
-      case "All":
+      case "0":
         this.dropdownCurrent.text("Все направления");
         break;
-      case "Egypt":
+      case "1":
         this.dropdownCurrent.text("Египет");
         break;
-      case "AOE":
+      case "2":
         this.dropdownCurrent.text("АОЭ");
         break;
-      case "Thailand":
-        this.dropdownCurrent.text("Тайланд");
+      case "3":
+        this.dropdownCurrent.text("Таиланд");
         break;
-      case "Bulgaria":
+      case "4":
         this.dropdownCurrent.text("Болгария");
         break;
-      case "Chornogoria":
+      case "5":
         this.dropdownCurrent.text("Чорногория");
         break;
-      case "Indonesia":
+      case "6":
         this.dropdownCurrent.text("Індонезия");
         break;
-      case "Georgia":
+      case "7":
         this.dropdownCurrent.text("Грузия");
         break;
-      case "Greece":
+      case "8":
         this.dropdownCurrent.text("Греция");
         break;
-      case "Turkey":
+      case "9":
         this.dropdownCurrent.text("Турция");
         break;
-      case "Cyprus":
+      case "10":
         this.dropdownCurrent.text("Кипр");
         break;
-      case "Tunisia":
+      case "11":
         this.dropdownCurrent.text("Тунис");
         break;
-      case "Spain":
+      case "12":
         this.dropdownCurrent.text("Испания");
         break;
-      case "Ukraine":
+      case "13":
         this.dropdownCurrent.text("Украина");
         break;
       default:
@@ -86,7 +88,6 @@ export class DropdownSearch {
     this.dropdownRow.on("click", () => {
       this.dropdownList.toggleClass("dropdown__list_show");
       this.dropdownIcon.toggleClass("dropdown__icon_rotate");
-      console.log(1);
     });
 
     this.dropdownItems.on("click", (e: JQuery.ClickEvent) => {
