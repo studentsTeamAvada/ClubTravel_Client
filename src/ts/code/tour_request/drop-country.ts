@@ -21,21 +21,6 @@ export class DropCountry {
     this.open();
     this.observer();
     this.accordion();
-    this.startValue();
-  }
-  startValue() {
-    const countryValue = sessionStorage.getItem("city");
-    if (countryValue) {
-      this.countryMainDrop.html(countryValue);
-    } else {
-      this.countryMainDrop.html("Страна");
-    }
-    const tourValue = sessionStorage.getItem("Тур");
-    if (tourValue) {
-      this.tourMainDrop.html(tourValue);
-    } else {
-      this.tourMainDrop.html("Золотые пески");
-    }
   }
 
   checkTour(): boolean {
@@ -115,9 +100,6 @@ export class DropCountry {
         item.addEventListener("click", () => {
           context.countryMainDrop.html(city);
           context.tourMainDrop.html(String(item.textContent));
-
-          sessionStorage.setItem("city", city);
-          sessionStorage.setItem("tour", String(item.textContent));
           context.dropDown.removeClass("drop-country_active");
         });
       });

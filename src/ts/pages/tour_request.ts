@@ -4,18 +4,13 @@ import { DropCountry } from "../code/tour_request/drop-country";
 import { Calendar } from "../code/tour_request/calendar";
 import { DropDown } from "../code/tour_request/dropdown";
 import { Food } from "../code/tour_request/food";
-import JustValidate from "just-validate";
-
 import $ from "jquery";
-import Cleave from "cleave.js";
-// import JustValidate from "just-validate";
 
 document.addEventListener("DOMContentLoaded", () => {
   class TourRequest {
     header: Header;
     footer: Footer;
     food: Food;
-    inputWrapper: JQuery<HTMLElement>;
     input: JQuery<HTMLInputElement>;
     inputBtn: JQuery<HTMLButtonElement>;
     tabsBtn: JQuery<HTMLElement>;
@@ -33,12 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
       this.footer = new Footer();
       this.food = new Food();
       this.dropDown = new DropCountry();
-      this.counter();
+
       this.calendar = new Calendar();
       this.DropPeople = new DropDown(".form__drop-guests");
       this.stars = $(".form__stars-one-star");
 
-      this.inputWrapper = $(".adviser__input");
       this.input = $("#adviser-inp");
       this.inputBtn = $(".adviser__btn");
       this.inputForm = $("#adviser__form");
@@ -47,18 +41,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
       this.formBtn = this.form.find(".form__btn");
       this.tabsSlider = $(".form__tabs-slider");
-
-      this.inputMask();
+      this.inputMask(".adviser__input");
+      this.inputMask(".form__phone");
 
       this.tabs();
       this.points();
       this.stopReload();
       this.clickFormBtn();
       this.SelectStars();
-      this.inputValidate();
-      this.formStageTwoValidate();
-      this.formStageThreeValidate();
-      this.inputFormMask();
+      this.counter();
     }
 
     SelectStars() {
@@ -93,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const btnThree = document.querySelector(".form__tab-three");
 
       this.tabsBtn.each((_index, item) => {
-        item.addEventListener("click", (e) => {
+        item.addEventListener("click", e => {
           if (btnOne?.contains(e.target as Node)) {
             this.points(1);
           } else if (btnTwo?.contains(e.target as Node)) {
@@ -179,174 +170,43 @@ document.addEventListener("DOMContentLoaded", () => {
     clickBtn() {
       alert("В скором времени вам позвонят.");
       this.input.val("");
-      this.inputWrapper.removeClass("adviser__input_active");
+      $(".adviser__input").removeClass("adviser__input_active");
     }
 
-    inputMask() {
-      this.input.on("input", () => {
-        const value: number | undefined = this.input.val()?.length;
+    inputMask(inputWrapper: string) {
+      const wrapper = $(inputWrapper);
+      const input = wrapper.find("input");
+
+      function checkEmpy(): void {
+        const value: number | undefined = input.val()?.length;
         if (value && value > 0) {
-          this.inputWrapper.addClass("adviser__input_active");
+          wrapper.addClass("input_active");
         } else {
-          this.inputWrapper.removeClass("adviser__input_active");
+          wrapper.removeClass("input_active");
         }
-      });
+      }
 
-      new Cleave("#adviser-inp", {
-        blocks: [3, 3, 2, 2],
-        numericOnly: true,
-        uppercase: true,
-      });
-    }
+      function mask() {
+        const value: string = String(input.val()).replace(/\s/g, "");
+        const length: number = value.length;
+        const index: number = length - 1;
+        const lastNum: string = value[index];
+        const numRule = /[0-9]/.test(lastNum);
 
-    inputFormMask() {
-      $("#input-tel").on("input", () => {
-        const value: number | undefined = String($("#input-tel").val()).length;
-        if (value && value > 0) {
-          $(".form__phone").addClass("form__phone_active");
-        } else {
-          $(".form__phone").removeClass("form__phone_active");
+        if (!numRule || length > 10) {
+          input.val(String(input.val()).slice(0, -1));
+        } else if (length < 3) {
+          input.val(value);
+        } else if (length >= 3 && length < 10) {
+          input.val(
+            `${value.slice(0, 3)} ${value.slice(3, 6)} ${value.slice(6, 8)} ${value.slice(8, 10)}`.trim()
+          );
         }
-      });
+      }
 
-      new Cleave("#input-tel", {
-        blocks: [3, 3, 2, 2],
-        numericOnly: true,
-        uppercase: true,
-      });
-    }
-
-    inputValidate() {
-      const validate = new JustValidate("#adviser__form");
-      const ruleName = [
-        {
-          rule: "required",
-          errorMessage: "Введите номер",
-        },
-        {
-          rule: "minLength",
-          value: 13,
-          errorMessage: "Номер слишком короткий",
-        },
-      ];
-      const settingName = {
-        errorsContainer: ".adviser__input-error",
-        errorLabelCssClass: ["invalid"],
-        errorFieldCssClass: ["error-focus"],
-      };
-      validate.addField("#adviser-inp", ruleName, settingName);
-
-      validate.onSuccess(() => {
-        this.clickBtn();
-      });
-    }
-
-    formStageTwoValidate() {
-      const validate = new JustValidate("#form-state-two");
-      const rulePrice = [
-        {
-          rule: "required",
-          errorMessage: "Введите цену",
-        },
-        {
-          rule: "customRegexp",
-          value: /[0-9]/,
-          errorMessage: "Только цифры",
-        },
-      ];
-      const settingName = {
-        errorsContainer: ".form__error-input-price",
-        errorLabelCssClass: ["invalid"],
-        errorFieldCssClass: ["error-focus"],
-      };
-      validate.addField("#input-price", rulePrice, settingName);
-
-      validate.onSuccess(() => {
-        const rule = this.food.checkInput();
-        if (rule) {
-          this.form.removeClass("form_erroe-two");
-          this.points(3);
-        }
-      });
-
-      validate.onFail(() => {
-        this.form.addClass("form_erroe-two");
-      });
-    }
-
-    formStageThreeValidate() {
-      const validate = new JustValidate("#form-state-three");
-      const ruleName = [
-        {
-          rule: "required",
-          errorMessage: "Введите имя",
-        },
-        {
-          rule: "customRegexp",
-          value: /^[a-zA-Zа-яА-Я\s]{3,20}$/,
-          errorMessage: "Только буквы",
-        },
-        {
-          rule: "minLength",
-          value: 3,
-          errorMessage: "Минимум 3 буквы",
-        },
-        {
-          rule: "maxLength",
-          value: 20,
-          errorMessage: "Максимум 20 букв",
-        },
-        {
-          rule: "customRegexp",
-          value: /^(?:(.)(?!\1\1))+$/,
-          errorMessage: "Три одинаковых буквы подряд",
-        },
-      ];
-      const settingName = {
-        errorsContainer: ".form__error-input-name",
-        errorLabelCssClass: ["invalid"],
-        errorFieldCssClass: ["error-focus"],
-      };
-      validate.addField("#input-name", ruleName, settingName);
-
-      const ruleTel = [
-        {
-          rule: "required",
-          errorMessage: "Введите номер",
-        },
-        {
-          rule: "minLength",
-          value: 13,
-          errorMessage: "Номер слишком короткий",
-        },
-      ];
-      const settingTel = {
-        errorsContainer: ".form__error-input-tel",
-        errorLabelCssClass: ["invalid"],
-        errorFieldCssClass: ["error-focus"],
-      };
-      validate.addField("#input-tel", ruleTel, settingTel);
-
-      const ruleLogin = [
-        {
-          rule: "required",
-          errorMessage: "Введите email",
-        },
-        {
-          rule: "customRegexp",
-          value: /^(?!.*\.\.)[\w.-]{2,15}@\w[\w.-]{2,15}\w\.[a-z]{2,10}/,
-          errorMessage: "Невалидный email",
-        },
-      ];
-      const settingLogin = {
-        errorsContainer: ".form__error-input-mail",
-        errorLabelCssClass: ["invalid"],
-        errorFieldCssClass: ["error-focus"],
-      };
-      validate.addField("#input-mail", ruleLogin, settingLogin);
-
-      validate.onSuccess(() => {
-        this.points(1);
+      input.on("input", () => {
+        mask();
+        checkEmpy();
       });
     }
 
@@ -355,12 +215,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const remove = $(".form__counter-remove");
       const total = $(".form__counter-count");
       const context = this;
-      const sessionTotal = sessionStorage.getItem("count");
-      if (sessionTotal) {
-        total.html(sessionTotal);
-      } else {
-        total.html("1");
-      }
 
       function addOne(): void {
         let current = +total.text();
