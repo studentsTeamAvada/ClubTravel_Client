@@ -1,46 +1,46 @@
 .calendar {
-  position: relative;
   height: 100%;
-
+  position: relative;
   &__btn {
-    position: relative;
     display: flex;
     align-items: center;
-    border: 1px solid #e2e2e2;
-    border-radius: 6px;
+    position: relative;
     height: 100%;
+    border-radius: 6px;
+    border: 1px solid #e2e2e2;
     transition: border 300ms ease 0s;
-    cursor: pointer;
     user-select: none;
-
+    cursor: pointer;
     &-info {
+      font-family: Roboto;
       margin-left: 16px;
-      font-family: "Roboto";
     }
-
     svg {
       position: absolute;
       right: 8px;
       top: 50%;
+      transform: translateY(-50%);
+      transition: transform 300ms ease 0s;
       width: 24px;
       height: 24px;
       fill: #a9a9a9;
-      transform: translateY(-50%);
-      transition: transform 300ms ease 0s;
     }
   }
 
   &__main {
     position: absolute;
     z-index: 100;
-    overflow: auto;border
-    transform: scaleY(0);heightheighttransformtransformbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundtransformoverflowbackgroundoverflowoverflowtransformwidthbackgroundtransformtransformbackgroundbackgroundtransform
-    transform-origin: 0 0;overflowoverflowoverflowoverflowtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformheightbackgroundwidthtransform-origintransformtransformheightbackgroundtransformwidthbackgroundtransform-origintransform-originoverflowtransform-origintransform-origintransform-origin
-    transition: all 300ms ease 0s;transform-origintransform-origintransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransitiontransform-originoverflowtransform-origintransitiontransform-origintransitiontransitionheighttransitiontransform-originheightoverflowtransitiontransformtransformborder-radius
-    width: 100%;transformtransformheightheighttransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-origintransform-originwidthtransitiontransformtransformheightbackgroundtransform-origintransformheightbackgroundwidthtransitionwidthtransform-origintransitiontransition
-    // overflow: hidden;transitiontransitiontransform-origintransform-originoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowwidthtransitionwidthtransitionwidthoverflowoverflowtransform-originoverflowtransitionwidthtransformwidthwidth
-    height: 240px;widthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthtransformtransform-originheightoverflowwidthheightwidthtransform-originwidthtransitiontransform-origintransformheightheight
-    background: #fff;backgroundbackgroundbackgroundbackgroundheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheighttransitionheightbackgroundheightbackgroundtransform-originbackgroundtransitionoverflowheightoverflowheightoverflowtransitionoverflowoverflowoverflowoverflowoverflow
+    width: 100%;
+    border-radius: 6px;
+    height: 240px;
+    overflow: auto;
+    border: 1px solid #e2e2e2;
+    // border: 1px solid red;
+    transform: scaleY(0);
+    transform-origin: 0 0;
+    transition: all 300ms ease 0s;
+    background: #fff;
+    // overflow: hidden;
   }
 
   &_active {
@@ -50,7 +50,6 @@
           transform: translateY(-50%) rotate(180deg);
         }
       }
-
       &__main {
         transform: scaleY(1);
       }
@@ -64,7 +63,6 @@
       }
     }
   }
-
   &_top {
     .calendar {
       &__main {
@@ -76,23 +74,19 @@
 }
 
 .air-datepicker {
-  border: none !important;
   width: 100% !important;
-
+  border: none !important;
   .air-datepicker-body--day-name {
-    font-family: "Open Sans", sans-serif;
     color: #f68521;
+    font-family: "Open Sans", sans-serif;
   }
-
   .-selected- {
     background: #f68521 !important;
   }
-
   .-current- {
     color: #255296 !important;
-
     &.-selected- {
-      color: #fff !important;
+      color: #ffffff !important;
     }
   }
 }
