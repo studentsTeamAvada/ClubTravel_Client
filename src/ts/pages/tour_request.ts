@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const btnThree = document.querySelector(".form__tab-three");
 
       this.tabsBtn.each((_index, item) => {
-        item.addEventListener("click", e => {
+        item.addEventListener("click", (e) => {
           if (btnOne?.contains(e.target as Node)) {
             this.points(1);
           } else if (btnTwo?.contains(e.target as Node)) {
@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
           input.val(value);
         } else if (length >= 3 && length < 10) {
           input.val(
-            `${value.slice(0, 3)} ${value.slice(3, 6)} ${value.slice(6, 8)} ${value.slice(8, 10)}`.trim()
+            `${value.slice(0, 3)} ${value.slice(3, 6)} ${value.slice(6, 8)} ${value.slice(8, 10)}`.trim(),
           );
         }
       }

@@ -166,7 +166,7 @@ export class Country {
     try {
       const querySnapshot = await getDocs(hotelsRef);
       this.hotelsArr = querySnapshot.docs.map(
-        (doc: QueryDocumentSnapshot<DocumentData>) => doc.data()
+        (doc: QueryDocumentSnapshot<DocumentData>) => doc.data(),
       );
     } catch (error) {
       console.error("Error getting documents: ", error);
@@ -590,11 +590,11 @@ class Hotels extends CountryRegion {
       console.log(tourName);
 
       const findTour = this.filterArr?.filter(
-        (item: any) => item.touristPackage === true
+        (item: any) => item.touristPackage === true,
       );
 
       const filterFly = this.filterArr?.filter(
-        (item: any) => item.flight === true
+        (item: any) => item.flight === true,
       );
 
       if (findTour && filterFly) {

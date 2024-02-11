@@ -1,4 +1,4 @@
-import { Tours } from '../../type';
+import { Tours } from "../../type";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 const firebaseConfig = {
@@ -12,7 +12,7 @@ const firebaseConfig = {
 
 const companyWrapper = document.querySelector(".company-company__wrapper");
 
-export class CompanyProduct {  
+export class CompanyProduct {
   private app: any;
   private db: any;
   private productsArray: Tours[];
@@ -24,28 +24,27 @@ export class CompanyProduct {
   }
 
   async loadCards() {
-   
-    const querySnapshot = await getDocs(collection(this.db, 'hotels'));
+    const querySnapshot = await getDocs(collection(this.db, "hotels"));
     querySnapshot.forEach((doc) => {
       const product = doc.data() as Tours;
-      
+
       this.productsArray.push(product);
     });
 
     this.renderProducts();
   }
- 
+
   renderProducts() {
     const products = this.productsArray;
-      
+
     products.forEach((product) => {
       const content = product;
-      const { name, price, img} = content;
-      
+      const { name, price, img } = content;
+
       if (img && Array.isArray(img) && img.length > 0) {
         const { url, urlWebp } = img[0];
 
-      let template = `
+        let template = `
         <div class="company-company__card">
         <div class="company-company__card-img">
           <picture class="hero__bg-img">
@@ -54,8 +53,8 @@ export class CompanyProduct {
           </picture>
           `;
 
-      if (price[1]) {
-        template += `
+        if (price[1]) {
+          template += `
             <div class="company-company__card-line">
             <svg>
               <use xlink:href="#company-line"></use>
@@ -65,9 +64,9 @@ export class CompanyProduct {
             </div>
           </div>
             `;
-      }
+        }
 
-      template += `
+        template += `
           <div class="company-company__card-data-wrapper">
             <svg>
               <use xlink:href="#clock"></use>
@@ -79,10 +78,10 @@ export class CompanyProduct {
       </div>
         `;
 
-      if (companyWrapper) {
-        companyWrapper.insertAdjacentHTML("beforeend", template);
+        if (companyWrapper) {
+          companyWrapper.insertAdjacentHTML("beforeend", template);
+        }
       }
-    }
     });
-  };
+  }
 }

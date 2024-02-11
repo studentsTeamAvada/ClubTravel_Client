@@ -1,50 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<load="./src/html/head.htm" title="Результаты поиска" styles="search_results" />
+  <load
+    ="./src/html/head.htm"
+    title="Результаты поиска"
+    styles="search_results"
+  />
 
-<body>
-  <div class="wrapper">
-    <load="./src/html/header.htm"/>
-    <main class="page">
-      <section class="banner">
-        <div class="banner__oval">
-          <img src="./src/images/oval.png" alt="">
-        </div>
-      </section>
-      <section class="tour">
-        <div class="tour__container">
-          <load="./src/html/components/ui/search.html" title="Найти тур" />
-
-        </div>
-      </section>
-      <section class="result">
-
-        <div class="result__container">
-          <div class="result__top">
-            <h3 class="result__top-title">
-              Найдено <span class="result__top-offers"></span> предложения в <span class="result__top-hotel"></span>
-              отелях
-            </h3>
-            <div class="result__top-calendar"></div>
-            <div class="result__top-sort">
-              <p class="result__top-text">Сортировать:</p>
-              <section>
-                <option value="Цена"></option>
-                <option value=""></option>
-                <option value=""></option>
-              </section>
-              <section>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-              </section>
-
-            </div>
+  <body>
+    <div class="wrapper">
+      <load ="./src/html/header.htm" />
+      <main class="page">
+        <section class="banner">
+          <div class="banner__oval">
+            <img src="./src/images/oval.png" alt="" />
           </div>
+        </section>
+        <section class="tour">
+          <div class="tour__container">
+            <load ="./src/html/components/ui/search.html" title="Найти тур" />
+          </div>
+        </section>
+        <section class="result">
+          <div class="result__container">
+            <div class="result__top">
+              <h3 class="result__top-title">
+                Найдено <span class="result__top-offers"></span> предложения в
+                <span class="result__top-hotel"></span>
+                отелях
+              </h3>
+              <div class="result__top-calendar"></div>
+              <div class="result__top-sort">
+                <p class="result__top-text">Сортировать:</p>
+                <section>
+                  <option value="Цена"></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                </section>
+                <section>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                </section>
+              </div>
+            </div>
 
-          <div class="result__content ">
-
-            <!-- <div class="result__hotel">
+            <div class="result__content">
+              <!-- <div class="result__hotel">
 
               <div class="result__slider">
                 <div class="swiper result__swiper">
@@ -189,19 +190,12 @@
               </div>
 
             </div> -->
-
+            </div>
           </div>
-
-
-
-
-        </div>
-      </section>
-
-    </main>
-    <load="./src/html/footer.htm" />
-  </div>
-  <script type="module" src="src/ts/pages/search_results.ts"></script>
-</body>
-
+        </section>
+      </main>
+      <load ="./src/html/footer.htm" />
+    </div>
+    <script type="module" src="src/ts/pages/search_results.ts"></script>
+  </body>
 </html>
