@@ -11,14 +11,6 @@ const firebaseConfig = {
 
 export const app = initializeApp(firebaseConfig);
 
-
-
-
-
-
-
-
-
 // const storage = getStorage(app);
 
 // const photo = document.querySelector("#photo") as HTMLInputElement;
@@ -52,7 +44,6 @@ export const app = initializeApp(firebaseConfig);
 //   }
 // });
 
-
 // const hotelsCollection = collection(getFirestore(app), "hotels");
 
 // hotels.forEach(function (hotel){
@@ -65,4 +56,3 @@ export const app = initializeApp(firebaseConfig);
 //   console.error("Error writing document: ", error);
 // })
 // })
-

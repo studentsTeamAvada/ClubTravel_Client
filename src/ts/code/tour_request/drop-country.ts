@@ -93,7 +93,7 @@ export class DropCountry {
     function select(accordion: HTMLElement) {
       const li = accordion.querySelectorAll("li");
       const city = String(
-        accordion.querySelector(".accordion__country")?.textContent
+        accordion.querySelector(".accordion__country")?.textContent,
       );
 
       li.forEach((item) => {

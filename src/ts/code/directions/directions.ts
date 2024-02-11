@@ -1,4 +1,4 @@
-import { Tours } from '../../type';
+import { Tours } from "../../type";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 const firebaseConfig = {
@@ -12,7 +12,7 @@ const firebaseConfig = {
 
 const companyWrapper = document.querySelector(".directions__wrapper");
 
-export class DirectionProduct {  
+export class DirectionProduct {
   private app: any;
   private db: any;
   private productsArray: Tours[];
@@ -24,29 +24,28 @@ export class DirectionProduct {
   }
 
   async loadCards() {
-   
-    const querySnapshot = await getDocs(collection(this.db, 'hotels'));
+    const querySnapshot = await getDocs(collection(this.db, "hotels"));
     querySnapshot.forEach((doc) => {
       const product = doc.data() as Tours;
-      
+
       this.productsArray.push(product);
     });
 
     this.renderProducts();
   }
- 
+
   renderProducts() {
     const products = this.productsArray;
-      
+
     products.forEach((product) => {
       const content = product;
-      
+
       const { img, country, region } = content;
-      
+
       if (img && Array.isArray(img) && img.length > 0) {
         const { url, urlWebp } = img[0];
 
-      let template = `
+        let template = `
         <div class="directions__card">
         <div class="directions__card-img">
           <picture class="hero__bg-img">
@@ -58,17 +57,17 @@ export class DirectionProduct {
             <div class="directions__card-place">
             `;
 
-            if(region.length < 10) {
-                template += `
+        if (region.length < 10) {
+          template += `
                     <p class="directions__card-place-town">${region}</p>
-                `
-            } else {
-                template += `
+                `;
+        } else {
+          template += `
                     <p class="directions__card-place-town">${region.slice(0, 10) + "..."}</p>
-                `
-            }
-            
-              template += `
+                `;
+        }
+
+        template += `
                 <p class="directions__card-place-country">${country}</p>
             </div>
             <div class="directions__card-price">
@@ -89,10 +88,10 @@ export class DirectionProduct {
       </div>
         `;
 
-      if (companyWrapper) {
-        companyWrapper.insertAdjacentHTML("beforeend", template);
+        if (companyWrapper) {
+          companyWrapper.insertAdjacentHTML("beforeend", template);
+        }
       }
-    }
     });
-  };
+  }
 }

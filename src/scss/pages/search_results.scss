@@ -18,18 +18,12 @@
     bottom: 0;
     width: 100%;
 
-
-
-
     img {
       width: 100%;
       height: auto;
     }
-
   }
 }
-
-
 
 .result {
   &__slider {
@@ -54,12 +48,12 @@
     transform: rotate(-90deg);
   }
 
-  &__hotel{
-    border-top: 1px solid #E2E2E2;
+  &__hotel {
+    border-top: 1px solid #e2e2e2;
     padding: 40px 0;
 
-    &:last-child{
-      border-bottom: 1px solid #E2E2E2;
+    &:last-child {
+      border-bottom: 1px solid #e2e2e2;
     }
   }
 
@@ -77,7 +71,7 @@
       display: flex;
       align-items: center;
       margin-bottom: 16px;
-      border: 1px solid #E2E2E2;
+      border: 1px solid #e2e2e2;
       border-radius: 8px;
       padding: 5px 10px;
       width: fit-content;
@@ -130,27 +124,27 @@
     }
   }
 
-  &__rating{
+  &__rating {
     margin-left: 40px;
 
-    &-star{
+    &-star {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 24px;
       width: fit-content;
 
-      svg{
+      svg {
         width: 18px;
         height: 18px;
-        fill: #F5C213;
+        fill: #f5c213;
       }
     }
 
     &-duration,
     &-meal,
     &-room,
-    &-beach{
+    &-beach {
       display: flex;
       align-items: center;
       margin-bottom: 24px;
@@ -158,18 +152,18 @@
       font-size: 14px;
       color: #222;
 
-      svg{
+      svg {
         margin-right: 18px;
         width: 18px;
         height: 18px;
-        fill:  #3E7739;
+        fill: #3e7739;
         fill-opacity: 0.5;
       }
     }
   }
 
-  &-price{
-    &-num{
+  &-price {
+    &-num {
       margin-bottom: 12px;
       font-weight: 400;
       font-size: 18px;

@@ -22,5 +22,10 @@ export const price: Array<object> = [
   },
 ];
 
-export const duration: Array<string> = ["3 ночи", "7 ночей", "10 ночей", "14 ночей", "21 ночь"];
-
+export const duration: Array<string> = [
+  "3 ночи",
+  "7 ночей",
+  "10 ночей",
+  "14 ночей",
+  "21 ночь",
+];

@@ -1,9 +1,39 @@
-.top-img {
+.top-img {overflow
+    width: 100%;HEADpositionHEADpositionwidthwidthHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionHEADpositionwidthwidthHEADpositionHEADpositionwidthwidthHEADpositionheightwidthheightHEADpositionwidthwidthHEADpositionHEADpositionHEADpositionHEADpositionHEADposition
+    overflow: hidden;heightheightoverflowoverflowheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightoverflowoverflowheightheightoverflowoverflowheightoverflowoverflowwidthheightheightoverflowwidthheightheight
 <<<<<<< HEAD
-    position: relative;
-    overflow: hidden;
-    width: 100%;
+    position: relative;widthwidthHEADpositionHEADpositionwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthHEADpositionHEADpositionwidthwidthHEADpositionHEADpositionwidthwidthHEADpositionHEADpositionwidthoverflowHEADpositionoverflowwidthwidthwidth
     height: 421px;
+
+overflowoverflow
+
+heightheight
+
+overflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflow
+
+overflowoverflow
+
+overflowoverflow
+
+overflowoverflow
+
+heightheight
+
+overflowoverflow
+
+heightheight
+
+overflowheadposition
+
+heightoverflow
+
+overflowheadposition
+
+heightheight
+
+overflowoverflow
+
+overflowheadposition
 
     &__bg{
         &-img {
@@ -23,7 +53,43 @@
             }
         }
 
-        &-bottom{
+        &-bottom{position
+  overflow: hidden;overflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowheightoverflowwidthoverflowoverflowoverflowheightheight
+=======
+  position: relative;positionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionpositionoverflowpositionoverflowpositionheightpositionpositionoverflowoverflowoverflow
+  width: 100%;widthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthpositionwidthpositionwidthoverflowwidthwidth
+  height: 421px;
+
+heightheight
+
+heightheight
+
+heightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheightheight
+
+heightheight
+
+heightheight
+
+heightheight
+
+heightheight
+
+heightheight
+
+heightheight
+
+heightheight
+
+positionheight
+
+heightheight
+
+widthheight
+
+widthposition
+
+positionposition
+
             svg{
                 position: absolute;
                 left: 50%;
@@ -34,19 +100,6 @@
                 transform: translateX(-50%);
             }
 
-            @include media-breakpoint-down(sm){
-                display: none;
-            }
-=======
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 421px;
-
-  @include media-breakpoint-down(sm) {
-    height: 239px;
-  }
-
   &__bg {
     &-img {
       position: absolute;
@@ -54,10 +107,11 @@
       z-index: -1;
       width: 100%;
       min-height: 430px;
+
       img {
-        object-fit: cover;
         width: 100%;
         max-height: 100%;
+        object-fit: cover;
 
         @include media-breakpoint-down(sm) {
           height: 100%;
@@ -66,12 +120,13 @@
 >>>>>>> e1cf23eb36efb06597f9d43799c83213e8fff14c
         }
       }
+
       @include media-breakpoint-down(sm) {
         min-height: 255px;
       }
     }
 
-<<<<<<< HEAD
+<<<<<<< head
     &__hotel{
         &-info {
             position: absolute;
@@ -92,6 +147,23 @@
                 }
             }
 
+=======
+    &-bottom {
+      svg {
+        position: absolute;
+        left: 50%;
+        bottom: -1px;
+        z-index: 1;
+        width: 1367px;
+        height: 56px;
+        transform: translateX(-50%);
+      }
+
+      @include media-breakpoint-down(sm) {
+        display: none;
+      }
+    }
+
             @include media-breakpoint-down(xs){
                 bottom: 17px;
                 padding: 10px 21px 13px;
@@ -102,22 +174,6 @@
                 min-width: auto;
                 max-width: 86vw;
             }
-=======
-    &-bottom {
-      @include media-breakpoint-down(sm) {
-        display: none;
-      }
-
-      svg {
-        position: absolute;
-        left: 50%;
-        bottom: -1px;
-        z-index: 1;
-        width: 1367px;
-        height: 56px;
-        transform: translateX(-50%);
-      }
-    }
   }
 
   &__hotel {
@@ -134,6 +190,13 @@
       transition: transform 300ms ease 0s;
       cursor: pointer;
 
+      &:hover {
+        @include media-breakpoint-up(md) {
+          transform: scale(1.01);
+>>>>>>> e1cf23eb36efb06597f9d43799c83213e8fff14c
+        }
+      }
+
       @include media-breakpoint-down(xs) {
         bottom: 17px;
         padding: 10px 21px 13px;
@@ -143,13 +206,6 @@
       @include media-breakpoint-down(xxs) {
         min-width: auto;
         max-width: 86vw;
-      }
-
-      &:hover {
-        @include media-breakpoint-up(md) {
-          transform: scale(1.01);
->>>>>>> e1cf23eb36efb06597f9d43799c83213e8fff14c
-        }
       }
     }
 
@@ -173,7 +229,7 @@
       }
     }
 
-<<<<<<< HEAD
+<<<<<<< head
         &-stars {
             position: relative;
             display: flex;
@@ -200,43 +256,6 @@
                 height: 18px;
                 fill: #F5C213;
             }
-
-            @include media-breakpoint-down(xs){
-                margin: 0 0 10px 10px;
-            }
-=======
-    &-stars {
-      position: relative;
-      display: flex;
-      align-items: center;
-      margin: 0 0 4px 12.8px;
-
-      @include media-breakpoint-down(xs) {
-        margin: 0 0 10px 10px;
-      }
-
-      &::after {
-        content: "+";
-        position: absolute;
-        right: -9px;
-        top: -2px;
-        font-weight: 700;
-        color: #f5c213;
-
-        @include media-breakpoint-down(xs) {
-          right: -8px;
-          top: -5px;
->>>>>>> e1cf23eb36efb06597f9d43799c83213e8fff14c
-        }
-      }
-
-      svg {
-        margin-right: 4px;
-        width: 18px;
-        height: 18px;
-        fill: #f5c213;
-      }
-    }
 
     &-location {
       display: flex;
@@ -266,7 +285,54 @@
     @include media-breakpoint-down(sm){
         height: 239px;
     }
+
+=======
+    &-stars {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin: 0 0 4px 12.8px;
+
+      &::after {
+        content: "+";
+        position: absolute;
+        right: -9px;
+        top: -2px;
+        font-weight: 700;
+        color: #f5c213;
+
+        @include media-breakpoint-down(xs) {
+          right: -8px;
+          top: -5px;
+>>>>>>> e1cf23eb36efb06597f9d43799c83213e8fff14c
+        }
+      }
+
+      svg {
+        margin-right: 4px;
+        width: 18px;
+        height: 18px;
+        fill: #f5c213;
+      }
+
+      @include media-breakpoint-down(xs) {
+        margin: 0 0 10px 10px;
+      }
+    }
+
+            @include media-breakpoint-down(xs){
+                margin: 0 0 10px 10px;
+            }
 =======
   }
 >>>>>>> e1cf23eb36efb06597f9d43799c83213e8fff14c
 }
+}}
+
+            @include media-breakpoint-down(sm){
+                display: none;
+            }
+
+  @include media-breakpoint-down(sm) {
+    height: 239px;
+  }}}}
