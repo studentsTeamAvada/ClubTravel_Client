@@ -77,7 +77,6 @@
     }
   }
   &__input {
-    position: relative;
     flex: 1 0 67%;
     height: 42px;
     input {
@@ -86,29 +85,8 @@
       height: 100%;
       width: 100%;
       padding-left: 15px;
-      font-size: 14px;
       &::placeholder {
         font-size: 14px;
-      }
-    }
-    &::before {
-      content: "+380";
-      position: absolute;
-      pointer-events: none;
-      font-size: 14px;
-      left: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      opacity: 0;
-    }
-    &_active {
-      input {
-        transition: all 300ms ease 0s;
-        padding-left: 45px;
-      }
-      &::before {
-        opacity: 1;
-        transition: all 300ms ease 150ms;
       }
     }
 
@@ -120,9 +98,10 @@
   }
 
   &__input-error {
-    // position: absolute;
-    // bottom: -5px;
-    display: none;
+    position: absolute;
+    bottom: -18px;
+    padding-left: 1px;
+    font-size: 12px;
   }
 
   &__btn {
@@ -289,7 +268,6 @@
   }
   &__state {
     min-height: 378px;
-    margin-bottom: 55px;
   }
   &__title {
     color: #888;
@@ -321,7 +299,11 @@
         background: #fff;
       }
     }
+    &-food {
+      position: relative;
+    }
   }
+
   &__counter {
     width: 100%;
     height: 42px;
@@ -358,6 +340,7 @@
     border-radius: 6px;
     width: 100%;
     height: 42px;
+    margin-top: 34px;
     font-size: 16px;
     color: #222;
     transition: all 300ms ease 0s;
@@ -387,11 +370,30 @@
     height: 42px;
     width: 100%;
     padding-left: 18px;
-    font-family: Roboto;
     margin-bottom: 16px;
+    &-wrap {
+      position: relative;
+    }
   }
 
-  &__drop-food {
+  &__phone {
+
+  }
+
+  &__error {
+    position: absolute;
+    right: 0;
+    bottom: 0px;
+    font-size: 12px;
+    transition: all 300ms ease 0s;
+    color: rgb(199 41 41);
+  }
+  &__error-food {
+    bottom: -16px;
+    opacity: 0;
+    &_active {
+      opacity: 1;
+    }
   }
 
   &__stars {
@@ -535,6 +537,35 @@
 
     ::-ms-scrollbar {
       width: 6px;
+    }
+  }
+}
+
+.input{
+
+  position: relative;
+  &::before {
+    content: "+380";
+    color: #255296;
+    position: absolute;
+    font-style: italic;
+    font-family: Roboto;
+    pointer-events: none;
+    font-size: 14px;
+    left: 10px; 
+    top: 0;
+    line-height: 44px;
+    opacity: 0;
+  }
+  &_active {
+    input {
+      font-style: italic;
+      transition: all 300ms ease 0s;
+      padding-left: 45px;
+    }
+    &::before {
+      opacity: 1;
+      transition: all 300ms ease 150ms;
     }
   }
 }
