@@ -1,14 +1,15 @@
 .authorization {
   position: relative;
   height: 900px;
+
   &__bg {
-    margin-top: 101px;
-    height: 800px;
-    width: 100%;
     position: absolute;
-    top: 0px;
     left: 0;
+    top: 0;
     z-index: -1;
+    margin-top: 101px;
+    width: 100%;
+    height: 800px;
 
     img {
       width: 100%;
@@ -18,129 +19,130 @@
   }
 
   &__form {
-    max-width: 427px;
-    min-height: 736px;
     margin: 0 auto;
-    padding-top: 218px;
     margin-bottom: 10px;
+    padding-top: 218px;
+    min-height: 736px;
+    max-width: 427px;
   }
 
   &__form-wrapper {
-    padding: 32px;
-    background: #fff;
     border-radius: 10px;
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 32px;
+    box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
+    background: #fff;
   }
 
   &__form-title {
+    margin-bottom: 33px;
     font-size: 14px;
+    text-align: center;
     color: #555;
     opacity: 0.5;
-    text-align: center;
-    margin-bottom: 33px;
   }
 
   &__form-btn-facebook {
+    position: relative;
+    margin-bottom: 16px;
     border-radius: 6px;
-    background: #395185;
-    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.15);
     width: 100%;
     height: 42px;
-    position: relative;
+    box-shadow: 0 1px 5px 0 rgb(0 0 0 / 15%);
     text-align: center;
     color: #fff;
-    margin-bottom: 16px;
+    background: #395185;
     transition: all 0.3s ease;
-
-    @include media-breakpoint-up(md) {
-      &:hover {
-        background: #132b60;
-        color: #dab7b7;
-      }
-    }
 
     img {
       position: absolute;
       left: 11px;
+    }
+
+    @include media-breakpoint-up(md) {
+      &:hover {
+        color: #dab7b7;
+        background: #132b60;
+      }
     }
   }
 
   &__form-btn-google {
+    position: relative;
+    margin-bottom: 32px;
     border-radius: 6px;
-    background: #fff;
-    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.15);
     width: 100%;
     height: 42px;
-    position: relative;
+    box-shadow: 0 1px 5px 0 rgb(0 0 0 / 15%);
     text-align: center;
     color: #222;
-    margin-bottom: 32px;
+    background: #fff;
     transition: all 0.3s ease;
-
-    @include media-breakpoint-up(md) {
-      &:hover {
-        background: #dab7b7;
-        color: #132b60;
-      }
-    }
 
     img {
       position: absolute;
       left: 11px;
     }
+
+    @include media-breakpoint-up(md) {
+      &:hover {
+        color: #132b60;
+        background: #dab7b7;
+      }
+    }
   }
 
   &__form-text {
-    font-size: 14px;
-    color: #555;
     position: relative;
-    text-align: center;
     margin-bottom: 28px;
+    font-size: 14px;
+    text-align: center;
+    color: #555;
 
-    &::after {
-      position: absolute;
+    &::before {
       content: "";
+      position: absolute;
+      right: 26px;
+      top: 50%;
       width: 124px;
       height: 1px;
       background: #cacaca;
-      top: 50%;
-      left: 26px;
 
       @include media-breakpoint-down(xs) {
+        right: 16px;
         width: 93px;
-        left: 16px;
       }
     }
 
-    &::before {
-      position: absolute;
+    &::after {
       content: "";
+      position: absolute;
+      left: 26px;
+      top: 50%;
       width: 124px;
       height: 1px;
       background: #cacaca;
-      top: 50%;
-      right: 26px;
 
       @include media-breakpoint-down(xs) {
+        left: 16px;
         width: 93px;
-        right: 16px;
       }
     }
   }
 
   &__form-input {
     p {
+      margin-bottom: 8px;
+      padding-left: 12px;
       font-size: 13px;
       color: #888;
-      padding-left: 12px;
-      margin-bottom: 8px;
     }
+
     input {
-      width: 100%;
-      height: 42px;
       border: 1px solid #e2e2e2;
       border-radius: 6px;
       padding: 10px;
+      width: 100%;
+      height: 42px;
     }
   }
 
@@ -149,8 +151,8 @@
 
     .just-validate-error-label {
       position: absolute;
-      bottom: -8px;
       left: 4px;
+      bottom: -8px;
       font-size: 14px;
     }
   }
@@ -160,8 +162,8 @@
 
     .just-validate-error-label {
       position: absolute;
-      bottom: -17px;
       left: 4px;
+      bottom: -17px;
       font-size: 14px;
     }
   }
@@ -171,9 +173,9 @@
     justify-content: space-between;
 
     a {
+      padding-right: 8px;
       font-size: 13px;
       text-decoration: underline;
-      padding-right: 8px;
     }
   }
 
@@ -188,16 +190,16 @@
   }
 
   &__btn-entry {
-    border: 1px solid #f68521;
-    border-radius: 6px;
-    width: 100%;
-    max-width: 175px;
-    height: 42px;
-    text-transform: uppercase;
-    color: #222;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid #f68521;
+    border-radius: 6px;
+    width: 100%;
+    height: 42px;
+    max-width: 175px;
+    text-transform: uppercase;
+    color: #222;
     transition: all 0.3s ease;
 
     @include media-breakpoint-up(md) {
@@ -208,21 +210,21 @@
     }
 
     @include media-breakpoint-down(xs) {
-        font-size: 14px;
-      }
+      font-size: 14px;
+    }
   }
 
   &__btn-registration {
-    max-width: 175px;
     height: 42px;
+    max-width: 175px;
   }
 
   &__policy {
+    text-align: center;
     text-decoration: underline;
     color: #fff;
-    text-align: center;
-    cursor: pointer;
     transition: color 0.3s ease;
+    cursor: pointer;
 
     @include media-breakpoint-up(md) {
       &:hover {

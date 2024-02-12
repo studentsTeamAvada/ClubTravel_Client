@@ -12,11 +12,11 @@ export class Authorization {
 
   authorizationWithEmail() {
     const emailInput = document.querySelector(
-      "#authorizationMail"
+      "#authorizationMail",
     ) as HTMLInputElement;
     const email = emailInput.value;
     const passwordInput = document.querySelector(
-      "#authorizationPassword"
+      "#authorizationPassword",
     ) as HTMLInputElement;
     const password = passwordInput.value;
 

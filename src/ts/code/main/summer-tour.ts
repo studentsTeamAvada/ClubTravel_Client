@@ -2,7 +2,9 @@ import { Tours } from '../../type';
 import { app } from "../../modules/firebase";
 import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
 
-const summerTourWrapper = document.querySelector(".summer-tour__swiper-wrapper");
+const summerTourWrapper = document.querySelector(
+  ".summer-tour__swiper-wrapper",
+);
 
 export class SummerTourProduct {
   private app: any;
@@ -17,11 +19,10 @@ export class SummerTourProduct {
 
   async loadCards() {
     const filterSummerTours = query(
-      collection(this.db, 'hotels'),
-      where('hotTour', '==', true)
+      collection(this.db, "hotels"),
+      where("hotTour", "==", true),
     );
-    
-   
+
     const querySnapshot = await getDocs(filterSummerTours);
     querySnapshot.forEach((doc) => {
       const product = doc.data() as Tours;
@@ -31,21 +32,19 @@ export class SummerTourProduct {
 
     this.renderProducts();
   }
-  
+
   renderProducts() {
     const products = this.productsArray;
-      
+
     products.forEach((product) => {
       const content = product;
-      
 
-      const { country, img} = content;
+      const { country, img } = content;
 
       if (img && Array.isArray(img) && img.length > 0) {
         const { url, urlWebp } = img[0];
 
-      
-      let template = `
+        let template = `
       <div class="swiper-slide summer-tour__swiper-slide">
         <div class="summer-tour__card">
         <div class="summer-tour__card-img">
@@ -67,10 +66,10 @@ export class SummerTourProduct {
         <a href="#" class="summer-tour__btn btn">Выбрать тур</a>
         `;
 
-      if (summerTourWrapper) {
-        summerTourWrapper.insertAdjacentHTML("beforeend", template);
+        if (summerTourWrapper) {
+          summerTourWrapper.insertAdjacentHTML("beforeend", template);
+        }
       }
-    }
     });
-  };
+  }
 }

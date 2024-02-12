@@ -1,24 +1,28 @@
 .drop-country {
-  height: 100%;
   position: relative;
+  height: 100%;
+
   &__btn {
-    cursor: pointer;
-    user-select: none;
-    border-radius: 6px;
-    border: 1px solid #e2e2e2;
-    background: #fff;
-    height: 100%;
+    position: relative;
     display: flex;
     align-items: center;
-    position: relative;
-    font-family: Roboto;
+    border: 1px solid #e2e2e2;
+    border-radius: 6px;
+    height: 100%;
+    font-family: "Roboto";
+    background: #fff;
+    cursor: pointer;
+    user-select: none;
   }
+
   &__county {
     margin: 0 2px 0 16px;
   }
+
   &__tour {
     margin-left: 4px;
   }
+
   &__btn-arrow {
     position: absolute;
     right: 8px;
@@ -26,30 +30,34 @@
     transform: translateY(-50%);
     transition: transform 300ms ease 0s;
   }
+
   &__accordions {
     position: absolute;
     z-index: 100;
-    width: 100%;
-    border-radius: 6px;
-    max-height: 300px;
     overflow: auto;
     border: 1px solid #e2e2e2;
+    border-radius: 6px;
+    padding: 5px;
+    width: 100%;
+    max-height: 300px;
+    background: #fff;
     transform: scaleY(0);
     transform-origin: 0 0;
     transition: all 300ms ease 0s;
-    background: #fff;
-    padding: 5px;
   }
+
   &_active {
     .drop-country {
       &__accordions {
         transform: scaleY(1);
       }
+
       &__btn-arrow {
         transform: translateY(-50%) rotate(180deg);
       }
     }
   }
+
   &_bottom {
     .drop-country {
       &__accordions {
@@ -57,6 +65,7 @@
       }
     }
   }
+
   &_top {
     .drop-country {
       &__accordions {
@@ -65,33 +74,38 @@
       }
     }
   }
+
   svg {
     width: 24px;
     height: 24px;
     fill: #a9a9a9;
   }
 }
+
 .accordion {
   user-select: none;
+
   &__btn {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 0 10px;
-    background: #fff;
-    border-radius: 6px;
+    justify-content: space-between;
     border: 1px solid #e2e2e2;
+    border-radius: 6px;
+    padding: 0 10px;
     height: 40px;
-    cursor: pointer;
+    background: #fff;
     transition: border 300ms ease 0s;
+    cursor: pointer;
+
     svg {
-      transition: fill 300ms ease 0s;
-      transition: transform 300ms ease 0s;
       fill: #a9a9a9;
+      transition: transform 300ms ease 0s;
     }
+
     &:hover {
       @include media-breakpoint-up(md) {
         border: 1px solid #f68521;
+
         svg {
           fill: #f68521;
         }
@@ -105,24 +119,26 @@
     transition: all 300ms ease 0s;
 
     li {
-      margin: 1px 0;
-      height: 0;
-      width: 100%;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+      margin: 1px 0;
       border-radius: 6px;
+      width: 100%;
+      height: 0;
       opacity: 0;
-      cursor: pointer;
       transition: all 300ms ease 0s;
+      cursor: pointer;
+
       &:hover {
         @include media-breakpoint-up(md) {
-          background: #f68521;
           color: #fff;
+          background: #f68521;
         }
       }
     }
   }
+
   &_active {
     .accordion {
       &__btn {
@@ -130,8 +146,10 @@
           transform: rotate(180deg);
         }
       }
+
       &__list {
         transform: scaleY(1);
+
         li {
           height: 40px;
           opacity: 1;

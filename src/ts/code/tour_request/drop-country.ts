@@ -21,22 +21,19 @@ export class DropCountry {
     this.open();
     this.observer();
     this.accordion();
-    this.startValue();
   }
-  startValue() {
-    const countryValue = sessionStorage.getItem("city");
-    if (countryValue) {
-      this.countryMainDrop.html(countryValue);
+
+  checkTour(): boolean {
+    const info = this.countryMainDrop.html();
+    if (info === "Страна") {
+      console.log(1);
+      return false;
     } else {
-      this.countryMainDrop.html("Болгария");
-    }
-    const tourValue = sessionStorage.getItem("tour");
-    if (tourValue) {
-      this.tourMainDrop.html(tourValue);
-    } else {
-      this.tourMainDrop.html("Золотые пески");
+      console.log(2);
+      return true;
     }
   }
+
   open() {
     this.btn.on("click", () => {
       this.dropDown.toggleClass("drop-country_active");
@@ -96,16 +93,13 @@ export class DropCountry {
     function select(accordion: HTMLElement) {
       const li = accordion.querySelectorAll("li");
       const city = String(
-        accordion.querySelector(".accordion__country")?.textContent
+        accordion.querySelector(".accordion__country")?.textContent,
       );
 
       li.forEach((item) => {
         item.addEventListener("click", () => {
           context.countryMainDrop.html(city);
           context.tourMainDrop.html(String(item.textContent));
-
-          sessionStorage.setItem("city", city);
-          sessionStorage.setItem("tour", String(item.textContent));
           context.dropDown.removeClass("drop-country_active");
         });
       });

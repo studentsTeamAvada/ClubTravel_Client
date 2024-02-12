@@ -28,17 +28,8 @@ export class Calendar {
   selectDate(): void {
     const spanStartDate = $("#start-date");
     const context = this;
-    if (sessionStorage.getItem("startDate")) {
-      this.currentSelDate = new Date(
-        Number(sessionStorage.getItem("startDate"))
-      );
-    } else {
-      this.currentSelDate.setDate(this.currentSelDate.getDate() + 7);
-    }
-
+    this.currentSelDate.setDate(this.currentSelDate.getDate() + 7);
     spanStartDate.html(context.formatDate(this.currentSelDate));
-    context.checkError();
-    sessionStorage.setItem("startDate", String(this.currentSelDate.valueOf()));
 
     const dp = new AirDatepicker("#el", {
       onSelect: ({ date }) => {
@@ -54,50 +45,51 @@ export class Calendar {
       if (date != "undefined") {
         context.currentSelDate = new Date(date);
       }
-
-      context.checkError();
-
+      context.removeError();
       spanStartDate.html(context.formatDate(context.currentSelDate));
-      sessionStorage.setItem(
-        "startDate",
-        String(context.currentSelDate.valueOf())
-      );
 
       context.removeFinalDate();
     }
     this.removeFinalDate();
   }
 
-  checkError() {
+  removeError() {
     const errorBtn = $(".form__btn-error");
-    if (this.currentDate.valueOf() > this.currentSelDate.valueOf()) {
-      errorBtn.html("");
-      this.btn.css("border", "1px solid rgb(199 41 41)");
-      errorBtn.html("Нельзя выбрать прошедшую/текущую дату вылета");
-      this.form.addClass("form_erroe-one");
-    } else {
+    if (!(this.currentDate.valueOf() > this.currentSelDate.valueOf())) {
       this.form.removeClass("form_erroe-one");
       this.btn.css("border", "1px solid #e2e2e2");
       errorBtn.html("");
     }
   }
 
+  checkError(): boolean {
+    const errorBtn = $(".form__btn-error");
+    if (this.currentDate.valueOf() > this.currentSelDate.valueOf()) {
+      errorBtn.html("");
+      this.btn.css("border", "1px solid rgb(199 41 41)");
+      errorBtn.html("Нельзя выбрать прошедшую/текущую дату вылета");
+      this.form.addClass("form_erroe-one");
+      return false;
+    } else {
+      this.form.removeClass("form_erroe-one");
+      this.btn.css("border", "1px solid #e2e2e2");
+      errorBtn.html("");
+      return true;
+    }
+  }
+
   removeFinalDate(): void {
     const finalDate = $("#final-date");
     const total: number = +$(".form__counter-count").html();
-
     const newDate = new Date(this.currentSelDate);
     newDate.setDate(newDate.getDate() + total);
-
     finalDate.html(this.formatDate(newDate));
-    // sessionStorage.setItem("finalDate", String(newDate.valueOf()));
   }
 
   formatDate(date: Date): string {
     const day = date.getDate();
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
-
     const formatDay = day < 10 ? "0" + day : day;
     const formatMonth = month < 10 ? "0" + month : month;
     return `${formatDay}.${formatMonth}.${year}`;
@@ -115,6 +107,7 @@ export class Calendar {
       }
     });
   }
+
   observer(): void {
     const mainDropHeight: number = Number(this.calendarMain.height());
     const context = this;
@@ -143,7 +136,6 @@ export class Calendar {
       }
 
       const items = $(".calendar__btn");
-
       const observer = new IntersectionObserver(callback, options);
 
       items.each(function (_index, item) {

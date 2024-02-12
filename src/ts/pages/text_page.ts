@@ -1,2 +1,2 @@
 import { Header } from "../components/header";
-new Header()
+new Header();

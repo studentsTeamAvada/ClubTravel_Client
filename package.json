@@ -9,8 +9,18 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "preview": "vite preview",
-    "stylelint": "stylelint 'src/**/*.{scss,css}'",
-    "stylelint:fix": "stylelint 'src/**/*.scss' --fix"
+    "stylelint": "stylelint \"src/**/*.{scss,css}\"",
+    "stylelint:fix": "stylelint \"src/**/*.scss\" --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.(css|scss)": [
+      "stylelint --fix"
+    ]
   },
   "devDependencies": {
     "@types/cleave.js": "^1.4.12",
@@ -20,9 +30,10 @@
     "@types/jqueryui": "^1.12.21",
     "gh-pages": "^6.1.1",
     "jquery": "^3.7.1",
-    "prettier": "^3.2.4",
+    "prettier": "3.2.5",
     "sass": "^1.69.7",
     "stylelint": "^16.2.1",
+    "stylelint-config-rational-order-fix": "^0.1.9",
     "stylelint-config-standard": "^36.0.0",
     "stylelint-config-standard-scss": "^13.0.0",
     "stylelint-order": "^6.0.4",
@@ -38,6 +49,7 @@
     "cleave.js": "^1.6.0",
     "firebase": "^10.7.2",
     "inputmask": "^5.0.8",
+    "jquery-validation": "^1.20.0",
     "just-validate": "^4.3.0",
     "nouislider": "^15.7.1",
     "strapi-plugin-populate-deep": "^3.0.1",

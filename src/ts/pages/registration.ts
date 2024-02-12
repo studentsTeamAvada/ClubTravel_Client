@@ -1,6 +1,6 @@
 import { Header } from "../components/header";
-import { justValidateRegistration } from "../modules/justValidate"
-import { Registration } from '../code/registration/registration';
+import { justValidateRegistration } from "../modules/justValidate";
+import { Registration } from "../code/registration/registration";
 
 new Header();
 justValidateRegistration();

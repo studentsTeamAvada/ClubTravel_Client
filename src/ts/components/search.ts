@@ -166,7 +166,7 @@ export class Country {
     try {
       const querySnapshot = await getDocs(hotelsRef);
       this.hotelsArr = querySnapshot.docs.map(
-        (doc: QueryDocumentSnapshot<DocumentData>) => doc.data()
+        (doc: QueryDocumentSnapshot<DocumentData>) => doc.data(),
       );
     } catch (error) {
       console.error("Error getting documents: ", error);
@@ -346,6 +346,67 @@ export class Country {
     }
   }
 
+  clickSearchPanel(): void {
+    this.searchPanelBtn.on("click", () => {
+      this.filterCountry();
+    });
+  }
+
+  filterCountry(): void {
+    const destinationName = this.destinationCurrent.text().trim();
+    const destination = this.countryToNumber(destinationName);
+
+    this.filterArr = this.hotelsArr.filter((item: any) => {
+      if (destination === Destination.All) {
+        return item;
+      } else {
+        return item.isCountry === destination;
+      }
+    });
+
+    this.renderHotels(this.filterArr);
+
+    const newUrl = new URL(window.location.href);
+    newUrl.searchParams.set("isCountry", destination.toString());
+    window.history.pushState({}, "", newUrl.toString());
+  }
+
+  readDataUrl(): void {
+    const urlParams = new URLSearchParams(window.location.search);
+    const isCountryParam = urlParams.get("isCountry");
+
+    if (isCountryParam) {
+      this.filterCountry();
+    }
+  }
+}
+
+class CountryRegion extends Country {
+  regionFilter: Array<object> | undefined;
+  regionCurrent: JQuery<HTMLElement>;
+
+  constructor() {
+    super();
+    this.regionCurrent = $(".category__regions-current");
+    this.regionFilter = [];
+    this.clickSearchPanelRegion();
+  }
+
+  filterCountry(): void {
+    super.filterCountry();
+    if (this.filterArr) {
+      this.renderRegions(this.filterArr);
+    }
+  }
+
+  clickSearchPanelRegion(): void {
+    this.searchPanelBtn.off("click");
+    this.searchPanelBtn.on("click", () => {
+      this.filterRegion();
+      this.selectRegion();
+    });
+  }
+
   regionToNumber(info: string): Regions {
     switch (info) {
       case "Шарм-эль-Шейх":
@@ -410,16 +471,7 @@ export class Country {
       $(".category__regions-item").append(regionHtml);
     });
 
-    $(".category__btns-regions").on("click", (event) => {
-      const regionName = $(event.currentTarget).data("region");
-      const region = this.regionToNumber(regionName);
-
-      const newUrl = new URL(window.location.href);
-      newUrl.searchParams.set("isRegion", region.toString());
-      window.history.pushState({}, "", newUrl.toString());
-
-      localStorage.setItem("region", region.toString());
-    });
+    this.selectRegion();
     // console.log(1);
     if ($(".category__regions-item").children().length > 5) {
       $(".category__regions-item").removeClass("category__regions-item_change");
@@ -428,61 +480,20 @@ export class Country {
     }
   }
 
-  clickSearchPanel(): void {
-    this.searchPanelBtn.on("click", () => {
-      this.filterCountry();
-    });
-  }
+  selectRegion() {
+    $(".category__btns-regions").on("click", (event) => {
+      const regionName = $(event.currentTarget).data("region");
+      console.log(regionName);
+      const region = this.regionToNumber(regionName);
 
-  filterCountry(): void {
-    const destinationName = this.destinationCurrent.text().trim();
-    const destination = this.countryToNumber(destinationName);
-
-    this.filterArr = this.hotelsArr.filter((item: any) => {
-      if (destination === Destination.All) {
-        return item;
-      } else {
-        return item.isCountry === destination;
-      }
-    });
-
-    this.renderHotels(this.filterArr);
-    this.renderRegions(this.filterArr);
-
-    const newUrl = new URL(window.location.href);
-    newUrl.searchParams.set("isCountry", destination.toString());
-    window.history.pushState({}, "", newUrl.toString());
-  }
-
-  readDataUrl(): void {
-    const urlParams = new URLSearchParams(window.location.search);
-    const isCountryParam = urlParams.get("isCountry");
-
-    if (isCountryParam) {
-      this.filterCountry();
-    }
-  }
-}
-
-class CountryRegion extends Country {
-  regionFilter: Array<object> | undefined;
-  regionCurrent: JQuery<HTMLElement>;
-
-  constructor() {
-    super();
-    this.regionCurrent = $(".category__regions-current");
-    this.regionFilter = [];
-    this.clickSearchPanelRegion();
-
-  }
-
-  clickSearchPanelRegion(): void {
-    this.searchPanelBtn.off("click");
-    this.searchPanelBtn.on("click", () => {
+      const newUrl = new URL(window.location.href);
+      newUrl.searchParams.set("isRegion", region.toString());
+      window.history.pushState({}, "", newUrl.toString());
       this.filterRegion();
     });
-  }
 
+    this.filterRegion();
+  }
 
   filterRegion(): void {
     const urlParams = new URLSearchParams(window.location.search);
@@ -508,10 +519,9 @@ class CountryRegion extends Country {
 
   readDataUrl(): void {
     super.readDataUrl();
-    this.filterRegion()
+    this.filterRegion();
   }
 }
-
 
 class Hotels extends CountryRegion {
   updatePriceMax: any;
@@ -580,11 +590,11 @@ class Hotels extends CountryRegion {
       console.log(tourName);
 
       const findTour = this.filterArr?.filter(
-        (item: any) => item.touristPackage === true
+        (item: any) => item.touristPackage === true,
       );
 
       const filterFly = this.filterArr?.filter(
-        (item: any) => item.flight === true
+        (item: any) => item.flight === true,
       );
 
       if (findTour && filterFly) {

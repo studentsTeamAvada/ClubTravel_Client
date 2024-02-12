@@ -1,14 +1,13 @@
 import { Tours } from '../../type';
-import { app } from "../../modules/firebase";
 import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
+import { app } from "../../modules/firebase";
 
 const hotDealsWrapper = document.querySelector(".hot-deals__swiper-wrapper");
 
-
 export class HotDealsProduct {
-  private app: any;
-  private db: any;
-  private productsArray: Tours[];
+  app: any;
+  db: any;
+  productsArray: Tours[];
 
   constructor() {
     this.app = app;
@@ -18,11 +17,10 @@ export class HotDealsProduct {
 
   async loadCards() {
     const filterHotDeals = query(
-      collection(this.db, 'hotels'),
-      where('hotTour', '==', true)
+      collection(this.db, "hotels"),
+      where("hotTour", "==", true),
     );
-    
-   
+
     const querySnapshot = await getDocs(filterHotDeals);
     querySnapshot.forEach((doc) => {
       const product = doc.data() as Tours;
@@ -32,21 +30,19 @@ export class HotDealsProduct {
 
     this.renderProducts();
   }
-  
+
   renderProducts() {
     const products = this.productsArray;
-      
+
     products.forEach((product) => {
       const content = product;
-      
 
-      const { name, price, country, region, star, img} = content;
+      const { name, price, country, region, star, img } = content;
 
       if (img && Array.isArray(img) && img.length > 0) {
         const { url, urlWebp } = img[0];
 
-      
-      let template = `
+        let template = `
       <div class="swiper-slide hot-deals__swiper-slide">
         <div class="hot-deals__card">
         <div class="hot-deals__card-img">
@@ -72,15 +68,15 @@ export class HotDealsProduct {
             <p class="hot-deals__card-text">${name}</p>
             <div class="hot-deals__card-stars-wrapper">
             `;
-            for (let i = 0; i < star; i++) {
-              template += `
+        for (let i = 0; i < star; i++) {
+          template += `
               <svg>
                 <use xlink:href="#star"></use>
               </svg>
               `;
-            }
+        }
 
-            template += `
+        template += `
             </div>
           </div>
           <div class="hot-deals__card-prices-wrapper">
@@ -89,8 +85,8 @@ export class HotDealsProduct {
               <p class="hot-deals__card-price-old">779 €/чел</p>
             </div>
             `;
-            if (price) {
-              template += `
+        if (price) {
+          template += `
                   <div class="hot-deals__card-line">
                   <svg>
                     <use xlink:href="#company-line"></use>
@@ -101,18 +97,18 @@ export class HotDealsProduct {
                 </div>
                 </div>
                   `;
-            }
+        }
 
-            template += `
+        template += `
             </div>
             </div>
             </div>
         `;
 
-      if (hotDealsWrapper) {
-        hotDealsWrapper.insertAdjacentHTML("beforeend", template);
+        if (hotDealsWrapper) {
+          hotDealsWrapper.insertAdjacentHTML("beforeend", template);
+        }
       }
-    }
     });
-  };
+  }
 }

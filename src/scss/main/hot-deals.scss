@@ -4,7 +4,6 @@
 
   &__title-wrapper {
     position: relative;
-
   }
 
   &__title-wrapper-first {
@@ -41,8 +40,6 @@
   &__swiper-wrapper {
     position: relative;
   }
-
-
 
   &__card-wrapper {
     padding: 1px;
@@ -135,7 +132,7 @@
 
   &__card-price-old {
     text-decoration: line-through;
-    color: #BFBFBF;
+    color: #bfbfbf;
   }
 
   &__swiper-round {
@@ -223,11 +220,6 @@
     }
   }
 
-
-
-
-
-
   &__title {
     display: flex;
     align-items: center;
@@ -258,7 +250,6 @@
     }
   }
 
-
   &__swiper {
     margin-bottom: 36px;
     padding: 2px;
@@ -268,7 +259,6 @@
     }
   }
 
-
   &__card {
     border-radius: 10px;
     width: 100%;
@@ -276,7 +266,6 @@
     box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
     background: #fff;
   }
-
 
   &__card-img {
     position: relative;
@@ -286,7 +275,6 @@
       height: 250px;
     }
   }
-
 
   &__card-line {
     position: relative;
@@ -300,7 +288,6 @@
     }
   }
 
-
   &__card-line-price {
     position: relative;
     left: 102%;
@@ -310,7 +297,6 @@
     color: #fff;
     transform: translate(-50%, -50%);
   }
-
 
   &__card-data-wrapper {
     position: absolute;
@@ -330,14 +316,10 @@
     }
   }
 
-
   &__card-data {
     font-size: 14px;
     color: #fff;
   }
-
-
-
 
   &__swiper-button-prev,
   &__swiper-button-next {

@@ -58,34 +58,6 @@ export class DropDown {
     const total = el.find(".dropdown__count-current");
     const context = this;
 
-    function start(kids: boolean): void {
-      if (kids) {
-        const sessionKids = JSON.parse(String(sessionStorage.getItem("kids")));
-        if (sessionKids) {
-          context.currentKids = Object.keys(sessionKids).reduce((acc, item) => {
-            acc += +sessionKids[item];
-            return acc;
-          }, 0);
-
-          context.objKidsYears = sessionKids;
-          context.getTegs(context.objKidsYears);
-          total.html(String(context.currentKids));
-          context.quatityKids.html(String(context.currentKids));
-          context.timeout(context.currentKids, true, true);
-        }
-      } else {
-        const sessionAbduls = sessionStorage.getItem("abduls");
-        if (sessionAbduls) {
-          total.html(sessionAbduls);
-          context.quatityAdults.html(sessionAbduls);
-          context.currentAbdul = +sessionAbduls;
-        } else {
-          context.getTegs();
-        }
-      }
-    }
-    start(kids);
-
     function addOne(): void {
       let current = +total.text();
       if (current < 9) {
@@ -281,7 +253,7 @@ export class DropDown {
 
       allSelects.each(function (_index, el) {
         const thisCurrent: string = String(
-          el.querySelector(".children__current")?.textContent
+          el.querySelector(".children__current")?.textContent,
         );
         if (thisCurrent === "Укажите возраст") {
           el.classList.add("children__drop_error");
