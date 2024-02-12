@@ -142,8 +142,8 @@ document.addEventListener("DOMContentLoaded", () => {
     clickFormBtn() {
       this.formBtn.on("click", () => {
         const oneState = $(".form").is(".form_one-state");
-        const twoState = $(".form").is(".form_two-state");
-        const threeState = $(".form").is(".form_three-state");
+        // const twoState = $(".form").is(".form_two-state");
+        // const threeState = $(".form").is(".form_three-state");
 
         const rule = this.calendar.checkError();
         if (rule && oneState) {
