@@ -8,7 +8,11 @@ justValidateAuthorization();
 const authorizationInstance = new Authorization();
 
 const buttonAuthorization = document.querySelector('.authorization__btn-registration') as HTMLElement;
-
 buttonAuthorization.addEventListener('click', () => {
-    authorizationInstance.authorization();
+    authorizationInstance.authorizationWithEmail();
+})
+
+const buttonAuthorizationGoogle = document.querySelector('.authorization__form-btn-google') as HTMLElement;
+buttonAuthorizationGoogle.addEventListener('click', () => {
+    authorizationInstance.authorizationWithGoogle();
 })

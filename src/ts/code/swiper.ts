@@ -8,158 +8,173 @@ import {
 } from "swiper/modules";
 Swiper.use([Navigation, Pagination, Autoplay, Scrollbar, Thumbs]);
 
-export function heroSwiper() {
-  new Swiper(".hero-swiper", {
-    slidesPerView: "auto",
-    speed: 1100,
+export class HeroSwiper {
+  swiper: Swiper;
+  constructor() {
+    this.swiper = new Swiper(".hero-swiper", {
+      slidesPerView: "auto",
+      speed: 1100,
 
-    navigation: {
-      nextEl: ".hero__swiper-button-next",
-      prevEl: ".hero__swiper-button-prev",
-    },
-  });
+      navigation: {
+        nextEl: ".hero__swiper-button-next",
+        prevEl: ".hero__swiper-button-prev",
+      },
+    });
+  }
 }
 
-export function companySwiper() {
-  new Swiper(".main-company__swiper", {
-    slidesPerView: "auto",
-    speed: 1100,
-    spaceBetween: 15,
+export class CompanySwiper {
+  swiper: Swiper;
+  constructor() {
+    this.swiper = new Swiper(".main-company__swiper", {
+      slidesPerView: "auto",
+      speed: 1100,
+      spaceBetween: 15,
 
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+        },
+        375: {
+          slidesPerView: 1,
+        },
+        768: {
+          slidesPerView: 2,
+        },
+        991: {
+          slidesPerView: 3,
+        },
+        1440: {
+          slidesPerView: 3,
+        },
+        1920: {
+          slidesPerView: 3,
+        },
       },
-      375: {
-        slidesPerView: 1,
-      },
-      768: {
-        slidesPerView: 2,
-      },
-      991: {
-        slidesPerView: 3,
-      },
-      1440: {
-        slidesPerView: 3,
-      },
-      1920: {
-        slidesPerView: 3,
-      },
-    },
 
-    navigation: {
-      nextEl: ".main-company__swiper-button-next",
-      prevEl: ".main-company__swiper-button-prev",
-    },
-  });
+      navigation: {
+        nextEl: ".main-company__swiper-button-next",
+        prevEl: ".main-company__swiper-button-prev",
+      },
+    });
+  }
 }
 
-export function hotDealsSwiper() {
-  new Swiper(".hot-deals__swiper", {
-    slidesPerView: "auto",
-    speed: 1100,
-    spaceBetween: 15,
+export class HotDealsSwiper {
+  swiper: Swiper;
+  constructor() {
+    this.swiper = new Swiper(".hot-deals__swiper", {
+      slidesPerView: "auto",
+      speed: 1100,
+      spaceBetween: 15,
 
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+        },
+        375: {
+          slidesPerView: 1,
+        },
+        768: {
+          slidesPerView: 2,
+        },
+        991: {
+          slidesPerView: 3,
+        },
+        1440: {
+          slidesPerView: 3,
+        },
+        1920: {
+          slidesPerView: 3,
+        },
       },
-      375: {
-        slidesPerView: 1,
-      },
-      768: {
-        slidesPerView: 2,
-      },
-      991: {
-        slidesPerView: 3,
-      },
-      1440: {
-        slidesPerView: 3,
-      },
-      1920: {
-        slidesPerView: 3,
-      },
-    },
 
-    navigation: {
-      nextEl: ".hot-deals__swiper-button-next",
-      prevEl: ".hot-deals__swiper-button-prev",
-    },
-  });
+      navigation: {
+        nextEl: ".hot-deals__swiper-button-next",
+        prevEl: ".hot-deals__swiper-button-prev",
+      },
+    });
+  }
 }
 
-export function winterTourSwiper() {
-  new Swiper(".winter-tour__swiper", {
-    slidesPerView: "auto",
-    speed: 1100,
-    spaceBetween: 15,
+export class WinterTourSwiper {
+  swiper: Swiper;
+  constructor() {
+    this.swiper = new Swiper(".winter-tour__swiper", {
+      slidesPerView: "auto",
+      speed: 1100,
+      spaceBetween: 15,
 
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+        },
+        375: {
+          slidesPerView: 1,
+        },
+        768: {
+          slidesPerView: 2,
+        },
+        991: {
+          slidesPerView: 3,
+        },
+        1200: {
+          slidesPerView: 4,
+        },
+        1440: {
+          slidesPerView: 4,
+        },
+        1920: {
+          slidesPerView: 4,
+        },
       },
-      375: {
-        slidesPerView: 1,
-      },
-      768: {
-        slidesPerView: 2,
-      },
-      991: {
-        slidesPerView: 3,
-      },
-      1200: {
-        slidesPerView: 4,
-      },
-      1440: {
-        slidesPerView: 4,
-      },
-      1920: {
-        slidesPerView: 4,
-      },
-    },
 
-    navigation: {
-      nextEl: ".winter-tour__swiper-button-next",
-      prevEl: ".winter-tour__swiper-button-prev",
-    },
-  });
+      navigation: {
+        nextEl: ".winter-tour__swiper-button-next",
+        prevEl: ".winter-tour__swiper-button-prev",
+      },
+    });
+  }
 }
 
-export function summerTourSwiper() {
-  new Swiper(".summer-tour__swiper", {
-    slidesPerView: "auto",
-    speed: 1100,
-    spaceBetween: 15,
+export class SummerTourSwiper {
+  swiper: Swiper;
+  constructor() {
+    this.swiper = new Swiper(".summer-tour__swiper", {
+      slidesPerView: "auto",
+      speed: 1100,
+      spaceBetween: 15,
 
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+        },
+        375: {
+          slidesPerView: 1,
+        },
+        768: {
+          slidesPerView: 2,
+        },
+        991: {
+          slidesPerView: 3,
+        },
+        1200: {
+          slidesPerView: 4,
+        },
+        1440: {
+          slidesPerView: 4,
+        },
+        1920: {
+          slidesPerView: 4,
+        },
       },
-      375: {
-        slidesPerView: 1,
-      },
-      768: {
-        slidesPerView: 2,
-      },
-      991: {
-        slidesPerView: 3,
-      },
-      1200: {
-        slidesPerView: 4,
-      },
-      1440: {
-        slidesPerView: 4,
-      },
-      1920: {
-        slidesPerView: 4,
-      },
-    },
 
-    navigation: {
-      nextEl: ".summer-tour__swiper-button-next",
-      prevEl: ".summer-tour__swiper-button-prev",
-    },
-  });
+      navigation: {
+        nextEl: ".summer-tour__swiper-button-next",
+        prevEl: ".summer-tour__swiper-button-prev",
+      },
+    });
+  }
 }
 
 export class HotelSlider {

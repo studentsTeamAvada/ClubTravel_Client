@@ -1,5 +1,5 @@
 import { app } from "../../modules/firebase";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 export class Authorization {
   app: any;
@@ -10,7 +10,7 @@ export class Authorization {
     this.auth = getAuth();
   }
 
-  authorization() {
+  authorizationWithEmail() {
     const emailInput = document.querySelector(
       "#authorizationMail"
     ) as HTMLInputElement;
@@ -31,7 +31,24 @@ export class Authorization {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert("Почта или пароль введены не верно");
+        alert("Почта или пароль введены неверно");
+        console.error("Login failed:", errorCode, errorMessage);
+      });
+  }
+
+  authorizationWithGoogle() {
+    const provider = new GoogleAuthProvider();
+
+    signInWithPopup(this.auth, provider)
+      .then((result) => {
+        const user = result.user;
+        alert("Пользователь вошел с помощью Google");
+        console.log("User signed in:", user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert("Не удалось войти с помощью Google");
         console.error("Login failed:", errorCode, errorMessage);
       });
   }
