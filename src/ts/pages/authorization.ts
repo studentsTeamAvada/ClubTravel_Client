@@ -16,3 +16,8 @@ const buttonAuthorizationGoogle = document.querySelector('.authorization__form-b
 buttonAuthorizationGoogle.addEventListener('click', () => {
     authorizationInstance.authorizationWithGoogle();
 })
+
+const buttonAuthorizationFacebook = document.querySelector('.authorization__form-btn-facebook') as HTMLElement;
+buttonAuthorizationFacebook.addEventListener('click', () => {
+    authorizationInstance.authorizationFacebook();
+})
