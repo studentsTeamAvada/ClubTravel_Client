@@ -23,7 +23,6 @@
           max-width: 100%;
         }
       }
-
       @include media-breakpoint-down(sm) {
         min-height: 255px;
       }

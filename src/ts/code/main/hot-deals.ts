@@ -1,30 +1,16 @@
-import { Tours } from "../../type";
-import {
-  getFirestore,
-  collection,
-  getDocs,
-  query,
-  where,
-} from "firebase/firestore";
-import { initializeApp } from "firebase/app";
-const firebaseConfig = {
-  apiKey: "AIzaSyAVwhQr2zeNEAr1FSrD6ygo5dJeLkxjtRk",
-  authDomain: "clubtravel-6eff6.firebaseapp.com",
-  projectId: "clubtravel-6eff6",
-  storageBucket: "clubtravel-6eff6.appspot.com",
-  messagingSenderId: "883499742498",
-  appId: "1:883499742498:web:b0bf6b06d8073d249a217b",
-};
+import { Tours } from '../../type';
+import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
+import { app } from "../../modules/firebase";
 
 const hotDealsWrapper = document.querySelector(".hot-deals__swiper-wrapper");
 
 export class HotDealsProduct {
-  private app: any;
-  private db: any;
-  private productsArray: Tours[];
+  app: any;
+  db: any;
+  productsArray: Tours[];
 
   constructor() {
-    this.app = initializeApp(firebaseConfig);
+    this.app = app;
     this.db = getFirestore(this.app);
     this.productsArray = [];
   }
