@@ -101,6 +101,7 @@ export class DropCountry {
           context.countryMainDrop.html(city);
           context.tourMainDrop.html(String(item.textContent));
           context.dropDown.removeClass("drop-country_active");
+          $('.drop-country').removeClass("drop-country_error")
         });
       });
     }
