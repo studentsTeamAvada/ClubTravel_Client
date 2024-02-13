@@ -45,6 +45,7 @@
     "vite-plugin-html-inject": "^1.0.4"
   },
   "dependencies": {
+    "@types/jquery.validation": "^1.16.10",
     "air-datepicker": "^3.4.0",
     "cleave.js": "^1.6.0",
     "firebase": "^10.7.2",

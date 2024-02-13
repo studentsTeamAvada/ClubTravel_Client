@@ -1,4 +1,3 @@
-//@ts-ignore
 import JustValidate from "just-validate";
 
 export function justValidateRegistration() {
@@ -45,12 +44,13 @@ export function justValidateRegistration() {
           value: 15,
         },
         {
-          validator: (value: any, fields: any) => {
+          rule: "function",
+          validator: (value: string, fields: any) => {
             if (
               fields["#registrationPassword"] &&
               fields["#registrationPassword"].elem
             ) {
-              const repeatPasswordValue =
+              const repeatPasswordValue: string =
                 fields["#registrationPassword"].elem.value;
 
               return value === repeatPasswordValue;

@@ -12,11 +12,13 @@ export class Registration {
   registrationWithEmail() {
     const emailInput = document.querySelector("#registrationMail") as HTMLInputElement;
     const email = emailInput.value;
-    const passwordInput = document.querySelector(
-      "#registrationPassword",
-    ) as HTMLInputElement;
+    const passwordInput = document.querySelector("#registrationPassword") as HTMLInputElement;
     const password = passwordInput.value;
     const repeatPasswordInput = document.querySelector("#registrationRepeatPassword") as HTMLInputElement;
+
+    if (password !== repeatPasswordInput.value) {
+      return;
+    }
 
     createUserWithEmailAndPassword(this.auth, email, password)
       .then((userData: any) => {
