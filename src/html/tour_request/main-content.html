@@ -14,8 +14,9 @@
         Оставьте свой номер телефона и мы вам перезвоним
       </h3>
       <form id="adviser__form" class="adviser__row-input">
-        <div class="adviser__input input">
+        <div class="adviser__input input input-row">
           <input
+          name="tel"
             id="adviser-inp"
             type="text"
             placeholder="Ваш номер телефона"
@@ -69,7 +70,7 @@
           <div class="form__tabs-slider"></div>
         </div>
         <div class="form__main">
-          <div class="form__state form__first-state">
+          <form id="form-state-one" class="form__state form__first-state">
             <div class="form__preloader"></div>
             <h3 class="form__title">Направление</h3>
             <div class="form__drop">
@@ -103,10 +104,10 @@
               ><span class="form__btn_finish">подобрать тур</span>
             </button>
             <div class="form__btn-error"></div>
-          </div>
+          </form>
           <form id="form-state-two" class="form__state form__second-state">
             <h3 class="form__title">Желаемая цена на одного человека (€)</h3>
-            <div class="form__input-wrap">
+            <div class="form__input-wrap input-row">
               <input type="text" id="input-price" class="form__input" />
               <span class="form__error form__error-input-price"></span>
             </div>

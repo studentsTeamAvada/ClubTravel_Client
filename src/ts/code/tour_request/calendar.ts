@@ -2,88 +2,143 @@ import $ from "jquery";
 import AirDatepicker from "air-datepicker";
 import "air-datepicker/air-datepicker.css";
 
+
+interface ICalendar  {
+
+}
 export class Calendar {
   calendar: JQuery<HTMLElement>;
   calendarMain: JQuery<HTMLElement>;
   btn: JQuery<HTMLElement>;
   form: JQuery<HTMLElement>;
   currentSelDate: Date;
-  currentDate: Date;
+  currentNextDate: Date;
+  datepicker?: AirDatepicker<HTMLElement>;
+  between: number;
   constructor() {
     this.form = $(".form");
     this.calendar = $(".calendar");
     this.calendarMain = $(".calendar__main");
     this.btn = $(".calendar__btn");
     this.currentSelDate = new Date();
-    this.currentDate = new Date();
+    this.currentNextDate = new Date();
+    this.between = 0;
     this.init();
   }
   init() {
     this.open();
     this.observer();
-    this.selectDate();
-    this.startCurrentDate();
+    this.airDatepicker();
+    this.counter()
   }
-  startCurrentDate() {}
-  selectDate(): void {
-    const spanStartDate = $("#start-date");
-    const context = this;
-    this.currentSelDate.setDate(this.currentSelDate.getDate() + 7);
-    spanStartDate.html(context.formatDate(this.currentSelDate));
 
-    const dp = new AirDatepicker("#el", {
-      onSelect: ({ date }) => {
-        select(String(date));
-      },
-      toggleSelected: false,
-      selectedDates: [this.currentSelDate],
-    });
 
-    dp.show();
 
-    function select(date: string): void {
-      if (date != "undefined") {
-        context.currentSelDate = new Date(date);
+  newDate(start: boolean = true, finish: boolean = false){
+    if(start){
+      $("#start-date").html(this.formatDate(this.currentSelDate))
+    }else{
+      $("#start-date").html("")
+    }
+
+    if(finish){
+      $("#final-date").html(this.formatDate(this.currentNextDate))
+    }else{
+      $("#final-date").html("")
+    }
+  }
+
+  airDatepicker(){
+    const context = this
+    const tomorrow = new Date().setDate(new Date().getDate() + 1)
+    const maxData = new Date().setDate(new Date().getFullYear() + 5)
+
+    this.datepicker =  new AirDatepicker('#el', {
+      range: true, 
+      toggleSelected: true,
+      multipleDatesSeparator: ' -', 
+      minDate: tomorrow,
+      onSelect({date}) {
+        const myDate = date as Array<Date> 
+
+
+
+        if(myDate[1]){
+          context.currentNextDate = new Date(myDate[1]);
+          context.newDate(true, true);
+          context.datepicker?.update({
+            minDate: tomorrow,
+            maxDate: maxData
+          })
+          context.selectCount()
+        }else if(myDate[0]){
+          context.currentSelDate = new Date(myDate[0]);
+          context.newDate();
+          context.datepicker?.update({
+            minDate: new Date(myDate[0]),
+            maxDate: new Date(myDate[0]).setDate(myDate[0].getDate() + 18)
+          })
+        } else{
+          context.datepicker?.update({
+            minDate: tomorrow,
+            maxDate: maxData
+          })
+          context.newDate(false, false);
+        }
       }
-      context.removeError();
-      spanStartDate.html(context.formatDate(context.currentSelDate));
-
-      context.removeFinalDate();
-    }
-    this.removeFinalDate();
+    })
   }
 
-  removeError() {
-    const errorBtn = $(".form__btn-error");
-    if (!(this.currentDate.valueOf() > this.currentSelDate.valueOf())) {
-      this.form.removeClass("form_erroe-one");
-      this.btn.css("border", "1px solid #e2e2e2");
-      errorBtn.html("");
-    }
+  selectCount(){
+    const finishDate = new Date(new Date().setDate(this.currentSelDate.getDate() + this.between)) 
+
+    const between: number = this.currentNextDate.getTime() - this.currentSelDate.getTime();
+
+    const daysBetween: number = Math.floor(between / (1000 * 60 * 60 * 24));
+    console.log(daysBetween)
+    $('.form__counter-count').html(String(daysBetween))
   }
 
-  checkError(): boolean {
-    const errorBtn = $(".form__btn-error");
-    if (this.currentDate.valueOf() > this.currentSelDate.valueOf()) {
-      errorBtn.html("");
-      this.btn.css("border", "1px solid rgb(199 41 41)");
-      errorBtn.html("Нельзя выбрать прошедшую/текущую дату вылета");
-      this.form.addClass("form_erroe-one");
-      return false;
-    } else {
-      this.form.removeClass("form_erroe-one");
-      this.btn.css("border", "1px solid #e2e2e2");
-      errorBtn.html("");
-      return true;
+  
+  counter() {
+    const add = $(".form__counter-add");
+    const remove = $(".form__counter-remove");
+    const total = $(".form__counter-count");
+    const context = this;
+
+    function addOne(): void {
+      let current = +total.text();
+      if (current < 100) {
+        const sum = current + 1;
+        selectSum(String(sum));
+      }
     }
+
+    function removeOne(): void {
+      let current = +total.text();
+      if (current > 1) {
+        const sum = current - 1;
+        selectSum(String(sum));
+      }
+    }
+
+    function selectSum(sum: string) {
+      total.html(sum);
+      context.selectFinishDate(+sum)
+    }
+
+    add.on("click", addOne);
+    remove.on("click", removeOne);
   }
 
-  removeFinalDate(): void {
-    const finalDate = $("#final-date");
-    const total: number = +$(".form__counter-count").html();
-    const newDate = new Date(this.currentSelDate);
-    newDate.setDate(newDate.getDate() + total);
-    finalDate.html(this.formatDate(newDate));
+  selectFinishDate(num: number = 1): void{
+    const finish = new Date(new Date().setDate(this.currentSelDate.getDate() + num)) 
+    this.datepicker?.clear();
+    this.datepicker?.selectDate(this.currentSelDate); 
+    this.datepicker?.selectDate(finish);
+    console.log(this.currentSelDate)
+    console.log(this.currentNextDate)
+
   }
 
   formatDate(date: Date): string {
@@ -96,7 +151,7 @@ export class Calendar {
   }
 
   open(): void {
-    this.calendar.on("click", () => {
+    this.btn.on("click", () => {
       this.calendar.toggleClass("calendar_active");
     });
     const context = this;

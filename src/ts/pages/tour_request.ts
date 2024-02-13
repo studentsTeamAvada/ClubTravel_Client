@@ -5,6 +5,27 @@ import { Calendar } from "../code/tour_request/calendar";
 import { DropDown } from "../code/tour_request/dropdown";
 import { Food } from "../code/tour_request/food";
 import $ from "jquery";
+import 'jquery-validation';
+
+
+
+interface JQueryValidateForm extends JQuery<HTMLElement> {
+  validate(object: Object): void;
+  // addMethod(str: string, callback: Function, errorInfo: string): void;
+  // validator: addMet
+}
+
+
+type addMet = {
+  addMethod(str: string, callback: Function, errorInfo: string): void
+}
+
+interface addValidator extends JQueryStatic {
+  validator: addMet
+}
+
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
   class TourRequest {
@@ -43,13 +64,20 @@ document.addEventListener("DOMContentLoaded", () => {
       this.tabsSlider = $(".form__tabs-slider");
       this.inputMask(".adviser__input");
       this.inputMask(".form__phone");
+      this.validateTel("#adviser__form");
+
+      // $(".adviser__input").submit(function(event) {
+      //   // Предотвращаем стандартное поведение формы (перезагрузку страницы)
+      //   event.preventDefault();
+      // });
 
       this.tabs();
       this.points();
       this.stopReload();
       this.clickFormBtn();
       this.SelectStars();
-      this.counter();
+      this.validateMainFormOne();
+
     }
 
     SelectStars() {
@@ -145,10 +173,10 @@ document.addEventListener("DOMContentLoaded", () => {
         // const twoState = $(".form").is(".form_two-state");
         // const threeState = $(".form").is(".form_three-state");
 
-        const rule = this.calendar.checkError();
-        if (rule && oneState) {
-          this.points(2);
-        }
+        // const rule = this.calendar.checkError();
+        // if (rule && oneState) {
+        //   // this.points(2);
+        // }
 
         if (oneState) {
         }
@@ -210,37 +238,50 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    counter() {
-      const add = $(".form__counter-add");
-      const remove = $(".form__counter-remove");
-      const total = $(".form__counter-count");
-      const context = this;
 
-      function addOne(): void {
-        let current = +total.text();
-        if (current < 18) {
-          const sum = current + 1;
-          selectSum(String(sum));
+
+    validateTel(inputWrap: string){
+      const element = $(inputWrap) as JQueryValidateForm;
+      element.validate({
+          rules: {
+            tel: {
+                minlength: 13,
+            },
+        },
+        messages: {
+            tel: {
+                minlength: "Номер должен состоять из 10 цифр"
+            },
+        },
+        highlight: function(element: JQuery<HTMLElement>, _errorClass: string, validClass: string) {
+          $(element).addClass("border-error").removeClass(validClass);
+        },
+        unhighlight: function(element: JQuery<HTMLElement>, _errorClass: string, validClass: string) {
+          $(element).addClass(validClass).removeClass("border-error");
+        },
+        submitHandler(form : JQuery<HTMLElement>) {
+          $(inputWrap).find(".input-row").removeClass("input_active")
+          console.log($(inputWrap))
+          alert("Мы скоро с вами свяжемся")
+          $(form).trigger("reset");
+
         }
-      }
-
-      function removeOne(): void {
-        let current = +total.text();
-        if (current > 1) {
-          const sum = current - 1;
-          selectSum(String(sum));
-        }
-      }
-
-      function selectSum(sum: string) {
-        total.html(sum);
-        context.calendar.removeFinalDate();
-        sessionStorage.setItem("count", sum);
-      }
-
-      add.on("click", addOne);
-      remove.on("click", removeOne);
+       });
     }
+
+    validateMainFormOne(){
+      function validateCountry(){
+        console.log(12)
+        const ruleCounrty: boolean = $(".drop-country__county").html() === "Страна";
+        if(ruleCounrty){
+          $('.drop-country').addClass("drop-country_error")
+        }
+      }
+      $(".form__btn-first-state").on("click", validateCountry)
+    }
+  
+
+
   }
   new TourRequest();
 });
