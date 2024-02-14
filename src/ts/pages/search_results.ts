@@ -1,4 +1,4 @@
-import {Country} from "../components/search"
+import {Country} from "../components/searchNew"
 
 
 import { Header } from "../components/header"

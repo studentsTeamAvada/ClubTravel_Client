@@ -1,22 +1,20 @@
 .company {
-  position: relative;
-  margin-bottom: 99px;
 
   &__text {
-    display: none;
 
     svg {
       width: 20px;
       height: 20px;
     }
+    display: none;
 
     @include media-breakpoint-down(xs) {
       display: block;
       margin: 0 auto;
       margin-bottom: 48px;
       max-width: 316px;
-      font-size: 14px;
       text-align: center;
+      font-size: 14px;
       color: #888;
     }
   }
@@ -50,27 +48,6 @@
   }
 
   &__swiper-round {
-    position: relative;
-
-    &::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      z-index: -1;
-      border-radius: 50%;
-      width: 48px;
-      height: 48px;
-      background: #3e7739;
-      opacity: 0.1;
-      transform: translate(-50%, -50%);
-      transition: opacity 0.2s ease;
-
-      @include media-breakpoint-down(md) {
-        background: #fff;
-        opacity: 1;
-      }
-    }
 
     @media (width >= 1024px) {
       &:hover {
@@ -79,14 +56,35 @@
         }
       }
     }
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.2s ease;
+      z-index: -1;
+      background: #3e7739;
+      opacity: 0.1;
+
+      @include media-breakpoint-down(md) {
+        background: #fff;
+        opacity: 1;
+      }
+    }
   }
 
   &__swiper-button-next {
-    right: 2%;
 
     svg {
       transform: rotate(180deg);
     }
+    right: 2%;
 
     @include media-breakpoint-down(md) {
       right: 5%;
@@ -110,14 +108,10 @@
   }
 
   &__button-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
 
     a {
-      color: #555;
       transition: all 0.2s ease;
+      color: #555;
     }
 
     svg {
@@ -128,16 +122,6 @@
 
 
     &__title {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 38px;
-      font-weight: 700;
-      font-size: 26px;
-      line-height: normal;
-      letter-spacing: 1.3px;
-      text-transform: uppercase;
-      gap: 7px;
 
       span {
         color: #f15d28;
@@ -148,6 +132,16 @@
         height: 35px;
         fill: rgb(241 93 40 / 100%);
       }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 38px;
+      font-weight: 700;
+      line-height: normal;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      font-size: 26px;
+      gap: 7px;
 
       @include media-breakpoint-down(xs) {
         flex-direction: column;
@@ -174,38 +168,44 @@
     }
 
     &__card-img {
-      position: relative;
 
       img {
         border-radius: 10px 10px 0 0;
         height: 250px;
       }
+      position: relative;
     }
 
     &__card-line {
-      position: absolute;
-      right: 20px;
-      top: 29px;
-      display: flex;
 
       svg {
         width: 3px;
         height: 31px;
         fill: #f68521;
       }
+      position: absolute;
+      right: 20px;
+      top: 29px;
+      display: flex;
     }
 
     &__card-line-price {
       position: relative;
       left: 67%;
       top: 50%;
-      z-index: 1;
       font-weight: 700;
-      color: #fff;
       transform: translate(-50%, -50%);
+      z-index: 1;
+      color: #fff;
     }
 
     &__card-data-wrapper {
+
+      svg {
+        width: 16px;
+        height: 16px;
+        fill: #fff;
+      }
       position: absolute;
       left: 15px;
       bottom: 14px;
@@ -215,12 +215,6 @@
       padding: 7px 15px 7px 8px;
       background: rgb(0 0 0 / 50%);
       gap: 10px;
-
-      svg {
-        width: 16px;
-        height: 16px;
-        fill: #fff;
-      }
     }
 
     &__card-data {
@@ -232,24 +226,6 @@
       padding: 16px 10px 5px 21px;
     }
 
-    &__swiper-button-prev,
-    &__swiper-button-next {
-      position: absolute;
-      top: 47%;
-      z-index: 2;
-      cursor: pointer;
-
-      svg {
-        width: 32px;
-        height: 32px;
-        color: #3e7739;
-      }
-
-      @include media-breakpoint-down(xs) {
-        top: 55%;
-      }
-    }
-
     @media (width >= 1024px) {
       &:hover {
         a {
@@ -257,7 +233,31 @@
         }
       }
     }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    &__swiper-button-prev,
+    &__swiper-button-next {
+
+      svg {
+        width: 32px;
+        height: 32px;
+        color: #3e7739;
+      }
+      position: absolute;
+      top: 47%;
+      cursor: pointer;
+      z-index: 2;
+
+      @include media-breakpoint-down(xs) {
+        top: 55%;
+      }
+    }
   }
+  position: relative;
+  margin-bottom: 99px;
 
   @include media-breakpoint-down(xs) {
     margin-bottom: 77px;

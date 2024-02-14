@@ -1,8 +1,10 @@
 .hero {
-  margin-top: 100px;
-  margin-bottom: 198px;
 
   &__swiper-round {
+
+    svg {
+      color: #fff;
+    }
     position: relative;
 
     &::before {
@@ -10,18 +12,14 @@
       position: absolute;
       left: 50%;
       top: 50%;
-      z-index: 1;
       border-radius: 50%;
       width: 48px;
       height: 48px;
-      background: #fff;
-      opacity: 0.2;
       transform: translate(-50%, -50%);
       transition: opacity 0.2s ease;
-    }
-
-    svg {
-      color: #fff;
+      z-index: 1;
+      background: #fff;
+      opacity: 0.2;
     }
 
     &:hover {
@@ -32,11 +30,11 @@
   }
 
   &__swiper-button-next {
-    right: 2%;
 
     svg {
       transform: rotate(180deg);
     }
+    right: 2%;
   }
 
   &__swiper-button-prev {
@@ -59,18 +57,20 @@
       }
     }
   }
+  margin-top: 100px;
+  margin-bottom: 198px;
 
   &__swiper-button-prev,
   &__swiper-button-next {
-    position: absolute;
-    top: 47%;
-    z-index: 1;
-    cursor: pointer;
 
     svg {
       width: 32px;
       height: 32px;
     }
+    position: absolute;
+    top: 47%;
+    cursor: pointer;
+    z-index: 1;
 
     @include media-breakpoint-down(sm) {
       display: none;

@@ -1,24 +1,12 @@
 .top-img {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 421px;
-
-  @include media-breakpoint-down(sm) {
-    height: 239px;
-  }
 
   &__bg {
     &-img {
-      position: absolute;
-      top: -14px;
-      z-index: -1;
-      width: 100%;
-      min-height: 430px;
+
       img {
-        object-fit: cover;
         width: 100%;
         max-height: 100%;
+        object-fit: cover;
 
         @include media-breakpoint-down(sm) {
           height: 100%;
@@ -26,24 +14,30 @@
           max-width: 100%;
         }
       }
+      position: absolute;
+      top: -14px;
+      width: 100%;
+      min-height: 430px;
+      z-index: -1;
+
       @include media-breakpoint-down(sm) {
         min-height: 255px;
       }
     }
 
     &-bottom {
-      @include media-breakpoint-down(sm) {
-        display: none;
-      }
-
       svg {
         position: absolute;
         left: 50%;
         bottom: -1px;
-        z-index: 1;
         width: 1367px;
         height: 56px;
         transform: translateX(-50%);
+        z-index: 1;
+      }
+
+      @include media-breakpoint-down(sm) {
+        display: none;
       }
     }
   }
@@ -52,15 +46,21 @@
     &-info {
       position: absolute;
       bottom: 41px;
-      z-index: 2;
       border-radius: 8px;
       padding: 12px 19px 13px;
       height: 85px;
       min-width: 304px;
+      cursor: pointer;
+      transition: transform 300ms ease 0s;
+      z-index: 2;
       color: #222;
       background: #fff;
-      transition: transform 300ms ease 0s;
-      cursor: pointer;
+
+      &:hover {
+        @include media-breakpoint-up(md) {
+          transform: scale(1.01);
+        }
+      }
 
       @include media-breakpoint-down(xs) {
         bottom: 17px;
@@ -71,12 +71,6 @@
       @include media-breakpoint-down(xxs) {
         min-width: auto;
         max-width: 86vw;
-      }
-
-      &:hover {
-        @include media-breakpoint-up(md) {
-          transform: scale(1.01);
-        }
       }
     }
 
@@ -101,14 +95,17 @@
     }
 
     &-stars {
+
+      svg {
+        margin-right: 4px;
+        width: 18px;
+        height: 18px;
+        fill: #f5c213;
+      }
       position: relative;
       display: flex;
       align-items: center;
       margin: 0 0 4px 12.8px;
-
-      @include media-breakpoint-down(xs) {
-        margin: 0 0 10px 10px;
-      }
 
       &::after {
         content: "+";
@@ -124,17 +121,12 @@
         }
       }
 
-      svg {
-        margin-right: 4px;
-        width: 18px;
-        height: 18px;
-        fill: #f5c213;
+      @include media-breakpoint-down(xs) {
+        margin: 0 0 10px 10px;
       }
     }
 
     &-location {
-      display: flex;
-      align-items: center;
 
       svg {
         margin-right: 9px;
@@ -143,11 +135,13 @@
         fill: #3e7739;
         opacity: 0.5;
       }
+      display: flex;
+      align-items: center;
     }
 
     &-sity {
-      font-size: 14px;
       white-space: nowrap;
+      font-size: 14px;
       color: #222;
 
       @include media-breakpoint-down(xs) {
@@ -155,5 +149,13 @@
         max-width: 280px;
       }
     }
+  }
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 421px;
+
+  @include media-breakpoint-down(sm) {
+    height: 239px;
   }
 }

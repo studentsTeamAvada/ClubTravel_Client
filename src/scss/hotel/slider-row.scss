@@ -1,5 +1,4 @@
 .slider-row {
-    margin-bottom: 16px;
 
     &__wrapper {
         display: grid;
@@ -13,6 +12,7 @@
             gap: 35px;
         }
     }
+    margin-bottom: 16px;
 
     @include media-breakpoint-down(md){
         margin: 15px 0 5px;
@@ -20,10 +20,6 @@
 }
 
 .slider {
-    overflow: hidden;
-    margin-top: 46px;
-    max-width: 730px;
-    aspect-ratio: 1.163/1;
 
     .swiper-slide {
         img {
@@ -64,6 +60,10 @@
     .hotel-swiper-one .swiper-slide-thumb-active {
         opacity: 1;
     }
+    overflow: hidden;
+    margin-top: 46px;
+    max-width: 730px;
+    aspect-ratio: 1.163/1;
 
     @include media-breakpoint-down(md){
         margin-top: 20px;
@@ -73,9 +73,6 @@
 }
 
 .tour {
-    position: relative;
-    z-index: 2;
-    padding: 0 24px;
 
     svg{
         margin-right: 15px;
@@ -96,10 +93,6 @@
     }
 
     &__setected {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 24px;
 
         &-info {
             font-size: 20px;
@@ -108,9 +101,9 @@
 
         &-select {
             position: relative;
+            cursor: pointer;
             font-size: 14px;
             color: #F68521;
-            cursor: pointer;
 
             &::after{
                 content: '';
@@ -119,9 +112,9 @@
                 bottom: 0;
                 width: 98%;
                 height: 1px;
-                background:#F68521 ;
                 transform: translateX(-50%) scaleX(0) ;
                 transition: transform 150ms ease 0s;
+                background:#F68521 ;
             }
 
             &:hover{
@@ -132,25 +125,25 @@
                 }
             }
         }
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 24px;
     }
 
     &__list {
-        margin-bottom: 24px;
-        font-size: 16px;
-        color: #222;
 
         li{
             display: flex;
             align-items: center;
             margin-bottom: 16px;
         }
+        margin-bottom: 24px;
+        font-size: 16px;
+        color: #222;
     }
 
     &__price {
-        margin-bottom: 7px;
-        font-weight: 700;
-        font-size: 24px;
-        color: #000;
 
         &-people {
             font-weight: 400;
@@ -158,18 +151,22 @@
         }
 
         &-info {
-            margin-bottom: 30px;
-            font-size: 12px;
-            color: #999;
 
             &-bold {
                 font-weight: 700;
             }
+            margin-bottom: 30px;
+            font-size: 12px;
+            color: #999;
 
             @include media-breakpoint-down(sm){
                 margin-bottom: 23px;
             }
         }
+        margin-bottom: 7px;
+        font-weight: 700;
+        font-size: 24px;
+        color: #000;
     }
 
     &__quantity {
@@ -183,13 +180,6 @@
         }
 
         &-tegs {
-            display: flex;
-            flex-wrap: wrap;
-            overflow: auto;
-            margin-bottom: 8px;
-            min-height: 68px;
-            max-height: 200px;
-            gap: 8px;
 
             li{
                 border: 1px solid #E2E2E2;
@@ -197,11 +187,18 @@
                 padding: 3px 10px;
                 height: 22px;
                 box-shadow: 0 2px 3px 0 rgb(0 0 0 / 10%);
-                font-size: 12px;
                 line-height: 16px;
+                font-size: 12px;
                 color: #222;
                 background: #FFF;
             }
+            display: flex;
+            flex-wrap: wrap;
+            overflow: auto;
+            margin-bottom: 8px;
+            min-height: 68px;
+            max-height: 200px;
+            gap: 8px;
         }
     }
 
@@ -233,11 +230,8 @@
     }
 
     &__bottom {
-        display: flex;
-        gap: 7px;
 
         &-icon{
-            width: 18px;
 
             svg{
                 flex-grow: 1;
@@ -246,16 +240,19 @@
                 fill: #255296;
                 opacity: 0.5;
             }
+            width: 18px;
         }
 
         &-info {
-            font-size: 12px;
-            color: #999;
 
             span{
                 color: #555;
             }
+            font-size: 12px;
+            color: #999;
         }
+        display: flex;
+        gap: 7px;
     }
 
     ::-webkit-scrollbar {
@@ -281,6 +278,9 @@
             background-color: rgb(246 133 33 / 100%);
         }
     }
+    position: relative;
+    padding: 0 24px;
+    z-index: 2;
 
     @include media-breakpoint-up(md){
         box-shadow:0 5px 10px rgb(0 0 0 / 10%) ;

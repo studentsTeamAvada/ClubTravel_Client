@@ -5,6 +5,15 @@
 @import "../libs/swiper";
 
 .banner {
+  &__oval {
+    img {
+      width: 100%;
+      height: auto;
+    }
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
   position: relative;
   margin-top: 100px;
   height: 320px;
@@ -12,24 +21,7 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-
-  &__oval {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-
-
-
-
-    img {
-      width: 100%;
-      height: auto;
-    }
-
-  }
 }
-
-
 
 .result {
   &__slider {
@@ -39,6 +31,7 @@
     width: 100%;
     height: 250px;
     max-width: 380px;
+    margin-bottom: 20px;
   }
 
   &__slide {
@@ -48,24 +41,16 @@
     }
   }
 
-  &__btn-next {
-    left: auto;
-    right: 10px;
-    transform: rotate(-90deg);
-  }
+  &__hotel {
+    border-top: 1px solid #e2e2e2;
+    padding: 40px 0 0;
 
-  &__hotel{
-    border-top: 1px solid #E2E2E2;
-    padding: 40px 0;
-
-    &:last-child{
-      border-bottom: 1px solid #E2E2E2;
+    &:last-child {
+      border-bottom: 1px solid #e2e2e2;
     }
   }
 
   &__info {
-    margin-left: 40px;
-
     &-title {
       margin-bottom: 12px;
       font-weight: 400;
@@ -74,20 +59,19 @@
     }
 
     &-location {
-      display: flex;
-      align-items: center;
-      margin-bottom: 16px;
-      border: 1px solid #E2E2E2;
-      border-radius: 8px;
-      padding: 5px 10px;
-      width: fit-content;
-
       svg {
         width: 10px;
         height: 15px;
         fill: #3e7739;
         fill-opacity: 0.5;
       }
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+      border: 1px solid #e2e2e2;
+      border-radius: 8px;
+      padding: 5px 10px;
+      width: fit-content;
     }
 
     &-descript {
@@ -99,26 +83,26 @@
       min-width: 100px;
       max-width: 294px;
       font-weight: 400;
+      -webkit-box-orient: vertical;
       font-size: 14px;
       color: #666;
-      -webkit-box-orient: vertical;
       -webkit-line-clamp: 5;
     }
 
     &-link {
-      display: flex;
-      align-items: center;
-      font-weight: 400;
-      font-size: 16px;
-      color: #555;
-
       svg {
         margin-left: 8px;
         width: 24px;
         height: 24px;
         fill: #f68521;
       }
+      display: flex;
+      align-items: center;
+      font-weight: 400;
+      font-size: 16px;
+      color: #555;
     }
+    margin-left: 40px;
 
     &-country,
     &-region {
@@ -130,50 +114,103 @@
     }
   }
 
-  &__rating{
-    margin-left: 40px;
-
-    &-star{
+  &__rating {
+    &-star {
+      svg {
+        width: 18px;
+        height: 18px;
+        fill: #f5c213;
+      }
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 24px;
       width: fit-content;
-
-      svg{
-        width: 18px;
-        height: 18px;
-        fill: #F5C213;
-      }
     }
+    margin-left: 40px;
 
     &-duration,
     &-meal,
     &-room,
-    &-beach{
+    &-beach {
+      svg {
+        margin-right: 18px;
+        width: 18px;
+        height: 18px;
+        fill: #3e7739;
+        fill-opacity: 0.5;
+      }
       display: flex;
       align-items: center;
       margin-bottom: 24px;
       font-weight: 400;
       font-size: 14px;
       color: #222;
-
-      svg{
-        margin-right: 18px;
-        width: 18px;
-        height: 18px;
-        fill:  #3E7739;
-        fill-opacity: 0.5;
-      }
     }
   }
 
-  &-price{
-    &-num{
+  &__price {
+    max-width: 200px;
+    width: 100%;
+    margin-left: 33px;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &-num {
       margin-bottom: 12px;
       font-weight: 400;
       font-size: 18px;
       color: #222;
+      text-align: center;
+
+      span {
+        &:nth-child(2) {
+          font-weight: 700;
+          font-size: 24px;
+          color: #000;
+        }
+        &:nth-child(3) {
+          font-size: 24px;
+        }
+      }
+    }
+
+    &-btn {
+      border-radius: 6px;
+      width: 160px;
+      height: 42px;
+      background: #f68521;
+      font-weight: 400;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-align: center;
+      color: #fff;
+      border: transparent;
+
+      &:active {
+        background: #fff;
+        color: #222;
+        border: 1px solid #f68521;
+      }
+
+      &_act {
+        background: #fff;
+        color: #222;
+        border: 1px solid #f68521;
+      }
+    }
+
+    &_act {
+      background: #f4f6fa;
+      box-shadow: none;
+      border-radius: 10px  10px 0 0px;
+
     }
   }
 
@@ -185,26 +222,102 @@
 
   &__btn-next,
   &__btn-prev {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    z-index: 50;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    background: rgb(0 0 0 / 20%);
-    transform: rotate(90deg);
-    cursor: pointer;
-
     svg {
       width: 24px;
       height: 24px;
       fill: #fff;
     }
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transform: rotate(90deg);
+    z-index: 50;
+    background: rgb(0 0 0 / 20%);
+  }
+
+  &__btn-next {
+    left: auto;
+    right: 10px;
+    transform: rotate(-90deg);
   }
 
   &__hotel,
   &__row {
     display: flex;
+  }
+
+  &__row {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+.advanced {
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  background: #f4f6fa;
+  border-radius: 10px 0 10px 10px;
+  padding: 18px 22px 10px 25px;
+
+  &__header {
+    display: grid;
+    grid-template-columns: repeat(5, 100px);
+    grid-column-gap: 92px;
+
+    &-text {
+      font-weight: 400;
+      font-size: 14px;
+      color: #666;
+    }
+  }
+
+  &__body {
+    margin-top: 24px;
+    &-row {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-column-gap: 50px;
+    }
+
+    &-date,
+    &-duration,
+    &-meals,
+    &-rooms,
+    &-price {
+      font-weight: 400;
+      font-size: 16px;
+      color: #222;
+    }
+
+    &-price {
+      font-weight: 700;
+      span {
+        font-weight: 400;
+      }
+    }
+
+    &-link {
+      font-weight: 400;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-align: center;
+      color: #fff;
+      border: transparent;
+      border-radius: 6px;
+      background: #f68521;
+      padding: 11px 46px;
+    }
+
+    &-line {
+      width: 100%;
+      height: 1px;
+      background: #e2e2e2;
+      margin: 12px 0;
+
+    }
   }
 }
