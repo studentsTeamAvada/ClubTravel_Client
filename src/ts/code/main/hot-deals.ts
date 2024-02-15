@@ -37,7 +37,7 @@ export class HotDealsProduct {
     products.forEach((product) => {
       const content = product;
 
-      const { name, price, country, region, star, img } = content;
+      const { name, price, country, region, star, img, date } = content;
 
       if (img && Array.isArray(img) && img.length > 0) {
         const { url, urlWebp } = img[0];
@@ -54,7 +54,7 @@ export class HotDealsProduct {
             <svg>
               <use xlink:href="#clock"></use>
             </svg>
-            <p class="hot-deals__card-data">22.11.2020</p>
+            <p class="hot-deals__card-data">${date}</p>
           </div>
           <div class="hot-deals__card-place-wrapper">
             <svg>
@@ -81,8 +81,8 @@ export class HotDealsProduct {
           </div>
           <div class="hot-deals__card-prices-wrapper">
             <div class="hot-deals__card-price-wrapper">
-              <p class="hot-deals__card-price-new"><span>509€</span>/чел</p>
-              <p class="hot-deals__card-price-old">779 €/чел</p>
+              <p class="hot-deals__card-price-new"><span>${price[1]}€</span>/чел</p>
+              <p class="hot-deals__card-price-old">${price[0]} €/чел</p>
             </div>
             `;
         if (price) {
@@ -92,7 +92,7 @@ export class HotDealsProduct {
                     <use xlink:href="#company-line"></use>
                   </svg>
                   <div class="hot-deals__card-line-wrapper">
-                    <p class="hot-deals__card-line-price">-30%</p>
+                    <p class="hot-deals__card-line-price">-${(((price[0] - price[1]) / price[0]) * 100).toFixed(0)}%</p>
                   </div>
                 </div>
                 </div>

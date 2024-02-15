@@ -40,7 +40,7 @@ export class DirectionProduct {
     products.forEach((product) => {
       const content = product;
 
-      const { img, country, region } = content;
+      const { img, country, region, price, work } = content;
 
       if (img && Array.isArray(img) && img.length > 0) {
         const { url, urlWebp } = img[0];
@@ -71,14 +71,14 @@ export class DirectionProduct {
                 <p class="directions__card-place-country">${country}</p>
             </div>
             <div class="directions__card-price">
-                <p class="directions__card-price-person">от <span>319,00€</span>/чел</p>
+                <p class="directions__card-price-person">от <span>${price[0]}€</span>/чел</p>
                 <p class="directions__card-price-offer">214 предложения</p>
             </div>
         </div>
         <div class="directions__card-season-wrapper">
             <div class="directions__card-season">
-                <p class="directions__card-season-start-end">19 июня 2020 - 30 сентября 2020</p>
-                <p class="directions__card-season-start-end">08 июля 2020 - 05 апреля 2021</p>
+                <p class="directions__card-season-start-end">${work[0]}</p>
+                <p class="directions__card-season-start-end">${work[1]}</p>
             </div>
             <svg>
               <use xlink:href="#directions-calendar"></use>

@@ -1,6 +1,9 @@
 .hot-deals {
-  position: relative;
   margin-bottom: 100px;
+
+  &__container {
+    position: relative;
+  }
 
   &__title-wrapper {
     position: relative;
@@ -168,18 +171,18 @@
   }
 
   &__swiper-button-next {
-    right: 2%;
+    right: -5%;
 
     svg {
       transform: rotate(180deg);
     }
 
     @include media-breakpoint-down(my) {
-      right: 7%;
+      right: 4%;
     }
 
     @include media-breakpoint-down(md) {
-      right: 5%;
+      right: 6%;
     }
 
     @include media-breakpoint-down(xs) {
@@ -188,14 +191,14 @@
   }
 
   &__swiper-button-prev {
-    left: 2%;
+    left: -5%;
 
     @include media-breakpoint-down(my) {
-      left: 7%;
+      left: 4%;
     }
 
     @include media-breakpoint-down(md) {
-      left: 5%;
+      left: 6%;
     }
 
     @include media-breakpoint-down(xs) {
@@ -332,7 +335,7 @@
   &__swiper-button-prev,
   &__swiper-button-next {
     position: absolute;
-    top: 52%;
+    top: 54%;
     z-index: 2;
     cursor: pointer;
 

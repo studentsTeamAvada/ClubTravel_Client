@@ -31,7 +31,7 @@ export class CompanyProduct {
 
     products.forEach((product) => {
       const content = product;
-      const { name, price, img } = content;
+      const { name, price, img, date } = content;
 
       if (img && Array.isArray(img) && img.length > 0) {
         const { url, urlWebp } = img[0];
@@ -64,7 +64,7 @@ export class CompanyProduct {
             <svg>
               <use xlink:href="#clock"></use>
             </svg>
-            <p class="main-company__card-data">22.11.2020</p>
+            <p class="main-company__card-data">${date}</p>
           </div>
         </div>
         <p class="main-company__card-text">${name}</p>

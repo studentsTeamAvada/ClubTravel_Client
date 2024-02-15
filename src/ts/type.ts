@@ -7,5 +7,6 @@ export interface Tours {
   discount: number;
   country: string;
   region: string;
+  work: [string, string];
   img: { url: string; urlWebp: string };
 }

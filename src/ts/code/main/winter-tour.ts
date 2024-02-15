@@ -20,7 +20,7 @@ export class WinterTourProduct {
   async loadCards() {
     const filterWinterTour = query(
       collection(this.db, "hotels"),
-      where("hotTour", "==", true),
+      where("isWinterTour", "==", true),
     );
 
     const querySnapshot = await getDocs(filterWinterTour);
@@ -39,7 +39,7 @@ export class WinterTourProduct {
     products.forEach((product) => {
       const content = product;
 
-      const { country, img } = content;
+      const { country, img, price } = content;
 
       if (img && Array.isArray(img) && img.length > 0) {
         const { url, urlWebp } = img[0];
@@ -60,7 +60,7 @@ export class WinterTourProduct {
                 </svg>
                 <p class="winter-tour__card-place">${country}</p>
             </div>  
-            <p class="winter-tour__card-price-new">от <span>509€</span>/чел</p>
+            <p class="winter-tour__card-price-new">от <span>${price[0]}€</span>/чел</p>
             
         </div>
         <a href="#" class="winter-tour__btn btn">Выбрать тур</a>
