@@ -11,18 +11,16 @@ import 'jquery-validation';
 
 interface JQueryValidateForm extends JQuery<HTMLElement> {
   validate(object: Object): void;
-  // addMethod(str: string, callback: Function, errorInfo: string): void;
-  // validator: addMet
 }
 
 
-type addMet = {
-  addMethod(str: string, callback: Function, errorInfo: string): void
-}
+// type addMet = {
+//   addMethod(str: string, callback: Function, errorInfo: string): void
+// }
 
-interface addValidator extends JQueryStatic {
-  validator: addMet
-}
+// interface addValidator extends JQueryStatic {
+//   validator: addMet
+// }
 
 
 
