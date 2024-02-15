@@ -4,12 +4,14 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/ico+xml" href="/ClubTravel.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Текстовая страница</title>
-  <script type="module" crossorigin src="/assets/Text_page-qvUAJjHe.js"></script>
+  <title>Авторизация</title>
+  <script type="module" crossorigin src="/assets/Authorization-qYd9lXd7.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/header-hiQeVM5C.js">
-  <link rel="stylesheet" crossorigin href="/assets/Text_page-sOOEDgh_.css">
+  <link rel="modulepreload" crossorigin href="/assets/index.esm-RQMDg1fI.js">
+  <link rel="modulepreload" crossorigin href="/assets/index-dd468b12-ZD5C6yO3.js">
+  <link rel="modulepreload" crossorigin href="/assets/firebase-WXR3vcUU.js">
+  <link rel="stylesheet" crossorigin href="/assets/Authorization-KyeSXC99.css">
 </head>
-
 
   <body>
     <div class="wrapper">
@@ -138,65 +140,87 @@
   </div>
 </header>
 
-      <main class="page">
-        <section class="info">
-          <div class="info__container">
-            <h1 class="info__title">Заголовок</h1>
-            <h2 class="info__title info__title_sub">
-              Рекомендуем для семейного и молодёжного отдыха.
-            </h2>
-            <ul class="info__list">
-              <li class="info__item">
-                Гости города Золотые пески, приехавшие в город по делам бизнеса
-                или для отдыха, могут остановиться в гостинце Ambassador
-                (Амбассадор). Отель прекрасно сочетает в себе как современный
-                комфорт, так и высокий уровень обслуживания. Каждый номер
-                оснащен всем необходимым для комфортного отдыха (кондиционер,
-                телевизор, письменный стол, сейф и утренняя газета). Вы сможете
-                воспользоваться услугами массажиста, баром, лифтом, спа, сауной,
-                рестораном, отдохнуть у бассейна, посетить фитнес зал и
-                прогуляться по саду. Ваш отдых в отеле Ambassador (Амбассадор)
-                будет ярким и запоминающимся, вас не оставят равнодушными
-                первоклассный сервис и великолепное обслуживание. Отель
-                находится в 27 км от Международного аэропорта Варна (Varna
-                International Airport), в 900 метрах от центра курорта Золотые
-                пески и в 150 метрах от пляжа. Отель принимает отдыхающих
-                круглый год и является прекрасным местом для отдыха, спорта и
-                развлечений. В бальнеологическом центре «Амбассадор»
-                предлагаются свыше 100 видов услуг: таласотерапия, ванные,
-                массаж, электротерапия, грязелечение, водолечение, акупунктура,
-                медицинская косметика, сауна, открытый и крытый бассейны, фитнес
-                зал, солярий и много других.
-              </li>
-              <li class="info__item">
-                Гости города Золотые пески, приехавшие в город по делам бизнеса
-                или для отдыха, могут остановиться в гостинце Ambassador
-                (Амбассадор). Отель прекрасно сочетает в себе как современный
-                комфорт, так и высокий уровень обслуживания. Каждый номер
-                оснащен всем необходимым для комфортного отдыха (кондиционер,
-                телевизор, письменный стол, сейф и утренняя газета). Вы сможете
-                воспользоваться услугами массажиста, баром, лифтом, спа, сауной,
-                рестораном, отдохнуть у бассейна, посетить фитнес зал и
-                прогуляться по саду.
-              </li>
-              <li class="info__item">
-                Ваш отдых в отеле Ambassador (Амбассадор) будет ярким и
-                запоминающимся, вас не оставят равнодушными первоклассный сервис
-                и великолепное обслуживание. Отель находится в 27 км от
-                Международного аэропорта Варна (Varna International Airport), в
-                900 метрах от центра курорта Золотые пески и в 150 метрах от
-                пляжа. Отель принимает отдыхающих круглый год и является
-                прекрасным местом для отдыха, спорта и развлечений. В
-                бальнеологическом центре «Амбассадор» предлагаются свыше 100
-                видов услуг: таласотерапия, ванные, массаж, электротерапия,
-                грязелечение, водолечение, акупунктура, медицинская косметика,
-                сауна, открытый и крытый бассейны, фитнес зал, солярий и много
-                других.
-              </li>
-            </ul>
+      <div class="page">
+        <section class="authorization">
+  <div class="authorization__bg">
+    <picture>
+      <source srcset="/assets/404-GFzYOh1M.webp " type="image/webp" />
+      <img src="/assets/404-xO_aT0Xi.png" alt="bg" />
+    </picture>
+  </div>
+  <div class="authorization__container">
+    <form action="#" class="authorization__form" id="authorizationForm">
+      <div class="authorization__form-wrapper">
+        <h3 class="authorization__form-title">Войдите используя соц. сети</h3>
+        <button class="authorization__form-btn-facebook">
+          <picture>
+            <source
+              srcset="data:image/webp;base64,UklGRtQAAABXRUJQVlA4WAoAAAAQAAAAEwAAEwAAQUxQSIgAAAABcE7bdh4dhCAEYRAGIQgPoQaNQWswCI1BEYrwahCE+yNfgxARE0Ab7HLpuYzJVDV0Gxya3ju7hvWVpAMw9f0LZEkJvOeRQQ2m/g9I+ZakrQwyJPXLM5MHrn/0neHdeRdq46UTY4AQP2qLNZIyZPUt1DWHtGbAuZJp89xJ33xUE5NWNtjKFmgBVlA4ICYAAADQAgCdASoUABQAPlEkj0WjoiEUBAA4BQS0gAAe0dAAAP78qAAAAA== "
+              type="image/webp"
+            />
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAERSURBVHgBpVIBEcIwDMx2CJgD5gAcgIThoDiYA4oCDgc4AAfgAFCwogAclM/RQa+UpWN/971bmvw+SYkisNYWoAL3YGM/OLuYolQguQLvVkYjCiNhY/tj9UtslVDMzk0kvgnFlCDUgPOgRgc5lX/ZCGJlpCMdcV+M7GuwZcdoT1mWGU+InUzBWZBXgGqEo6Ju3AKxfUfuPMcxpnRMhftJnpDUByX9WoRUiZxjrJAd3ug/xDozvJQLReboPZUHtvxwMd6kzxDXlEetvZ9oIVdxywd2QcNh0Mkud+0saTjWfLBDgii73NL/WLO7t6ATrdu/9MQWtbr9yP0bd8HtG5LBo1o4IzLc9g9g7cXqNuae0BeeH7rsQQrOUgQAAAAASUVORK5CYII="
+              alt="facebook"
+            />
+          </picture>
+          Войти с помощью Facebook
+        </button>
+        <button class="authorization__form-btn-google">
+          <picture>
+            <source
+              srcset="data:image/webp;base64,UklGRtwBAABXRUJQVlA4WAoAAAAQAAAAFwAAFwAAQUxQSJEAAAABcFXbdtRcCUh4EpCABCREQhyAg+IAHBAnlfBwEAnnI1MHAxExAfrXKd4O7zuMrJmmh64X3bFjo9utFQDyvkjzhZvaDripaqZ2ADB9MAGnPvkAc4W2FwAa4TsPsIx4kYC9Ur2AVEQgW8sAQjFlwK1mDriqK+U5S8uWAUJNR9F7qL33HeoN3sqrBkN64Elx0r8CAFZQOCAkAQAAEAoAnQEqGAAYAD5RII5Eo6IhGAwEADgFBLYATpmTAL/APxy/GanAf4DzAcwxuAP0v/SX3/+hm/gHAAfqr6QH7YfBF+3H63ex8A10n9RVbemqXvRVpfBHMAAA/p0LNiyA5b5tJEai5A+GM/j7pWRu7EbuNifzFmSYNVqwP9TQQVl/H6oP6RtM60MZf7vLHmo//jt8uUZxP9nw7kG67zcsWN8Vt4JToUmADJ/+H2kL7dinWgfvLiI8sqEUh/qDbdTuQvWJ2FEcGf/kimVQtYsI7++sU0rJp6GKRNuGCuzWf6VLlA5G6x21pJrXWiLuP1DSfcAy85iWq3bgjxVcmoHMNKe5KRJmpT4+pkF5Qin9IooQgeUELM3/NpWnb9qujo0u59AAAA== "
+              type="image/webp"
+            />
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAIxSURBVHgB3VXPSxtBFP5matpCW9hTMaXgeiqlYLU9FVrM3lqwsLn0VhrpH2AKxat6KJR6qIEeW9yeC80WSvHULBSrJ43+A64oRr2YwxLE4I5vNyT7I7urq3jQD2Zn8t6875t5vDcBLjpYklPkIOEWL2DPHqadg2SSWw5U6WvCxi/2H9qpBMQzqDTN0pCQDBOHmIoTYjHkn2kqIg1svGPzmAmbeRf5U0ykJm/dQo9yBATo5AW602RoT51sU5R3hf0DcwaRDZH9e4e8Sb5FmiMQSJEY52tYsOXAyRKCqQhk7BNJjD8gICqZAjifxdIh8JdGXYDI+5OCTwJfirjqTo+uAG8zwB2unZXcgXcD45pJv/o6HtseYkqzGg7Ijq8KHA+z9mmg31lwn1RfQDmCPAXk9oLjnOEJCKz7HaLSk8PpYbYXPT6BajtNiwe38a3xIAfMGeFIym1X9/e+X9EYZ288LrHSXvpTZDifr437+GA9xrZ9fex5WZVxDHqLy3KA3D0r63S1rw8k6WPj3tr8QVbyNsKkjlDm8roZS36VV4hG9pk7FRQQcDBSVp1eKIeJSEgTTZT+vNLdyhr5oeYoucO0LG5tKFJtU/H2CoxuTw9okQJu8E91hqxjSIGd2hNsmi8c9lJt+mHgoYx8rukmkzRNIAUs627JeP2l6xWO/cN5WVYLjojwNU0UWOvVGv2d1/UYfzJcIQH1BmsOWsi4ZUx5Xqfyq2aZZezipqbn9TouLY4ACke6p9obI7QAAAAASUVORK5CYII="
+              alt="google"
+            />
+          </picture>
+          Войти с помощью Google
+        </button>
+
+        <p class="authorization__form-text">или</p>
+
+        <div class="authorization__form-input authorization__form-input-mail">
+          <p>E-mail</p>
+          <input type="mail" id="authorizationMail" />
+          <p
+            class="authorization__form-validate-text"
+            id="authorizationMailText"
+          ></p>
+        </div>
+
+        <div
+          class="authorization__form-input authorization__form-input-password"
+        >
+          <div class="authorization__form-input-text">
+            <p>Пароль</p>
+            <a href="../../../password_recovery.html">Забыли пароль?</a>
           </div>
-        </section>
-      </main>
+
+          <input type="password" id="authorizationPassword" />
+          <p
+            class="authorization__form-validate-text"
+            id="authorizationPasswordText"
+          ></p>
+        </div>
+
+        <div class="authorization__btn-wrapper">
+          <a href="../../../registration.html">
+            <p class="authorization__btn-entry">регистрация</p>
+          </a>
+          <button type="submit" class="authorization__btn-registration btn">
+            вход
+          </button>
+        </div>
+      </div>
+    </form>
+    <p class="authorization__policy">Политика конфиденциальности</p>
+    <p class="authorization__policy">Политика использования</p>
+  </div>
+</section>
+
+      </div>
       <footer class="footer">
   <div class="footer__container">
     <div class="footer__main">
