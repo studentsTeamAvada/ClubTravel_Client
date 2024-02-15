@@ -124,7 +124,11 @@
 }
 
 .swiper-3d .swiper-slide-shadow-right {
-  background-image: linear-gradient(to right, rgb(0 0 0 / 50%), rgb(0 0 0 / 0%));
+  background-image: linear-gradient(
+    to right,
+    rgb(0 0 0 / 50%),
+    rgb(0 0 0 / 0%)
+  );
 }
 
 .swiper-3d .swiper-slide-shadow-top {
@@ -132,7 +136,11 @@
 }
 
 .swiper-3d .swiper-slide-shadow-bottom {
-  background-image: linear-gradient(to bottom, rgb(0 0 0 / 50%), rgb(0 0 0 / 0%));
+  background-image: linear-gradient(
+    to bottom,
+    rgb(0 0 0 / 50%),
+    rgb(0 0 0 / 0%)
+  );
 }
 
 .swiper-css-mode > .swiper-wrapper {
@@ -163,7 +171,9 @@
   order: 9999;
 }
 
-.swiper-centered.swiper-horizontal > .swiper-wrapper > .swiper-slide:first-child {
+.swiper-centered.swiper-horizontal
+  > .swiper-wrapper
+  > .swiper-slide:first-child {
   margin-inline-start: var(--swiper-centered-offset-before);
 }
 

@@ -1,6 +1,15 @@
 .registration {
+  position: relative;
+  height: 994px;
 
   &__bg {
+    margin-top: 101px;
+    height: 895px;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    z-index: -1;
 
     img {
       width: 100%;
@@ -19,9 +28,6 @@
   &__form {
     margin: 0 auto;
     margin-bottom: 18px;
-    padding-top: 218px;
-    min-height: 810px;
-    max-width: 427px;
     
   }
 
@@ -30,76 +36,80 @@
     padding: 32px;
     box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
     background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
 
   }
 
   &__form-title {
-    margin-bottom: 33px;
-    text-align: center;
     font-size: 14px;
+    text-align: center;
     color: #555;
     opacity: 0.5;
   }
 
   &__form-btn-facebook {
-
-    img {
-      position: absolute;
-      left: 11px;
-    }
-    position: relative;
-    margin-bottom: 16px;
     border-radius: 6px;
     width: 100%;
     height: 42px;
     box-shadow: 0 1px 5px 0 rgb(0 0 0 / 15%);
     text-align: center;
-    transition: all 0.3s ease;
     color: #fff;
-    background: #395185;
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
 
     @include media-breakpoint-up(md) {
       &:hover {
-        color: #dab7b7;
         background: #132b60;
+        color: #dab7b7;
       }
       
+    }
+
+    img {
+      position: absolute;
+      left: 11px;
     }
   }
 
   &__form-btn-google {
+    border-radius: 6px;
+    width: 100%;
+    height: 42px;
+    box-shadow: 0 1px 5px 0 rgb(0 0 0 / 15%);
+    text-align: center;
+    color: #222;
+    margin-bottom: 32px;
+    transition: all 0.3s ease;
+    
+    @include media-breakpoint-up(md) {
+      &:hover {
+        background: #dab7b7;
+        color: #132b60;
+      }
+      
+    }
 
 
     img {
       position: absolute;
       left: 11px;
     }
-    position: relative;
-    margin-bottom: 32px;
-    border-radius: 6px;
-    width: 100%;
-    height: 42px;
-    box-shadow: 0 1px 5px 0 rgb(0 0 0 / 15%);
-    text-align: center;
-    transition: all 0.3s ease;
-    color: #222;
-    background: #fff;
-    
+
     @include media-breakpoint-up(md) {
       &:hover {
         color: #132b60;
         background: #dab7b7;
       }
-      
     }
   }
 
   &__form-text {
-    position: relative;
-    margin-bottom: 28px;
-    text-align: center;
     font-size: 14px;
     color: #555;
+    position: relative;
+    text-align: center;
+    margin-bottom: 28px;
 
     &::before {
       content: "";
@@ -202,6 +212,10 @@
     height: 42px;
     max-width: 175px;
     text-transform: uppercase;
+    color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: all 0.3s ease;
     color: #222;
 
@@ -209,7 +223,7 @@
       &:hover {
         color: #fff;
         background: #f68521;
-      } 
+      }
     }
 
     @include media-breakpoint-down(xs) {
@@ -225,14 +239,15 @@
   &__policy {
     text-align: center;
     text-decoration: underline;
+    color: #fff;
+    text-align: center;
     cursor: pointer;
     transition: color 0.3s ease;
-    color: #fff;
 
     @include media-breakpoint-up(md) {
       &:hover {
         color: #dab7b7;
-      }  
+      }
     }
   }
   position: relative;

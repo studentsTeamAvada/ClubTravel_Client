@@ -1,11 +1,9 @@
-
-
-
 .search {
   &__row {
     width: 100%;
     background: #fff;
-    &-top {
+
+    &_top {
       border-radius: 10px 10px 0 0;
     }
 
@@ -297,7 +295,6 @@
       max-height: 250px;
     }
 
-
     @include media-breakpoint-down(sm) {
       border-top: 1px solid #e2e2e2;
       border-right: 1px solid #e2e2e2;
@@ -445,7 +442,6 @@
       font-size: 16px;
       font-family: "Open Sans";
     }
-
   }
 
   &-body {
@@ -466,7 +462,6 @@
 
     &.-selected- {
       background: #f68521 !important;
-
     }
 
     &.-range-to- {
@@ -486,11 +481,10 @@
     }
 
     &.-focus- {
-      background: #FFE489 !important;
+      background: #ffe489 !important;
       box-shadow: 0 3px 10px 0 rgb(247 143 31 / 50%);
       color: #fff;
     }
-
 
     &.-current- {
       color: #f68521 !important;
@@ -518,6 +512,9 @@
     opacity: 1;
     visibility: visible;
     min-height: 53px;
+    @include media-breakpoint-down(sm) {
+      flex-direction: column;
+    }
   }
 
   &__title {
@@ -714,6 +711,9 @@
         grid-template-columns: repeat(1, 1fr);
         overflow: auto;
         height: 114px;
+        &::-webkit-scrollbar {
+          display: none;
+        }
       }
     }
 
@@ -776,6 +776,9 @@
       font-weight: 400;
       font-size: 14px;
       color: #666;
+      &_main {
+        margin-right: 20px;
+      }
     }
 
     &-text {
@@ -813,6 +816,13 @@
 
 .noUi-horizontal .noUi-origin {
   width: 210px !important;
+  @include media-breakpoint-down(md) {
+    width: 168px !important;
+  }
+
+  @include media-breakpoint-down(xs) {
+    width: 210px !important;
+  }
 }
 
 .noUi-horizontal .noUi-handle {

@@ -117,7 +117,7 @@ export class DropdownSearch {
     };
     const observer = new IntersectionObserver(
       this.callback.bind(this),
-      options
+      options,
     );
     observer.observe(this.dropdown[0]);
   }

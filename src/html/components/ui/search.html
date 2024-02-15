@@ -52,12 +52,13 @@
               <use #chevron-left></use>
             </svg>
           </div>
-          <ul class="info__duration-list dropdown__list">
-            <li data-duration="three" class="dropdown__item">3 ночи</li>
-            <li data-duration="seven" class="dropdown__item">7 ночей</li>
-            <li data-duration="ten" class="dropdown__item">10 ночей</li>
-            <li data-duration="fourteen" class="dropdown__item">14 ночей</li>
-            <li data-duration="twenty-one" class="dropdown__item">21 ночь</li>
+          <ul class="info__duration-list  dropdown__list">
+            <li data-duration="One" class="dropdown__item">3 ночи</li>
+            <li data-duration="Seven" class="dropdown__item">7 ночей</li>
+            <li data-duration="Ten" class="dropdown__item">10 ночей</li>
+            <li data-duration="Fourteen" class="dropdown__item">14 ночей</li>
+            <li data-duration="TwentyOne" class="dropdown__item">21 ночь</li>
+
           </ul>
         </div>
       </div>
@@ -250,12 +251,12 @@
           <div class="category__rating-meal">
             <h2 class="category__title">Питание</h2>
 
-            <button data-meals="ao" class="category__btns category__btns-meals">
-              <svg>
-                <use xlink:href="#check-circle"></use>
-              </svg>
-              Без питания
-            </button>
+          <button data-meals="ao"  class="category__btns category__btns-meals">
+            <svg>
+              <use xlink:href="#check-circle"></use>
+            </svg>
+            Без питания
+          </button>
 
             <button data-meals="bb" class="category__btns category__btns-meals">
               <svg>
@@ -288,82 +289,80 @@
               Всё включено
             </button>
 
-            <button
-              data-meals="uai"
-              class="category__btns category__btns-meals"
-            >
-              <svg>
-                <use xlink:href="#check-circle"></use>
-              </svg>
-              Ультра: всё включено
-            </button>
-          </div>
-        </div>
+          <button data-meals="uai" class="category__btns category__btns-meals">
+            <svg>
+              <use xlink:href="#check-circle"></use>
+            </svg>
+            Ультра: всё включено
+          </button>
 
-        <div class="category__fly">
-          <div class="category__lineup">
-            <h2 class="category__title">Состав тура</h2>
-            <button data-tour="tour" class="category__btns category__btns-tour">
-              <svg>
-                <use xlink:href="#check-circle"></use>
-              </svg>
-              Туристический пакет
-            </button>
-            <button data-tour="fly" class="category__btns category__btns-tour">
-              <svg>
-                <use xlink:href="#check-circle"></use>
-              </svg>
-              Только перелет
-            </button>
-          </div>
-          <div class="category__departure">
-            <h2 class="category__title">Вылет из</h2>
-            <button data-city="kiev" class="category__btns category__btns-city">
-              <svg>
-                <use xlink:href="#check-circle"></use>
-              </svg>
-              Киева
-            </button>
-            <button data-city="lviv" class="category__btns category__btns-city">
-              <svg>
-                <use xlink:href="#check-circle"></use>
-              </svg>
-              Львова
-            </button>
-          </div>
-          <div class="category__price">
-            <h2 class="category__title">Цена на одного человека</h2>
-            <div class="category__slider"></div>
-          </div>
-        </div>
-
-        <div class="category__regions">
-          <h2 class="category__title">Регион</h2>
-          <p class="category__regions-current"></p>
-          <div class="category__regions-item"></div>
         </div>
       </div>
-      <div class="category__filter">
+
+      <div class="category__fly">
+        <div class="category__lineup">
+          <h2 class="category__title">Состав тура</h2>
+          <button data-tour="tour" class="category__btns category__btns-tour">
+            <svg>
+              <use xlink:href="#check-circle"></use>
+            </svg>
+            Туристический пакет
+          </button>
+          <button data-tour="fly" class="category__btns category__btns-tour">
+            <svg>
+              <use xlink:href="#check-circle"></use>
+            </svg>
+            Только перелет
+          </button>
+        </div>
+        <div class="category__departure">
+          <h2 class="category__title">Вылет из</h2>
+          <button class="category__btns">
+            <svg>
+              <use xlink:href="#check-circle"></use>
+            </svg>
+            Киева
+          </button>
+          <button class="category__btns">
+            <svg>
+              <use xlink:href="#check-circle"></use>
+            </svg>
+            Львова
+          </button>
+
+        </div>
+        <div class="category__price">
+          <h2 class="category__title">Цена на одного человека</h2>
+          <div class="category__slider"></div>
+        </div>
+
+      </div>
+
+      <div class="category__regions">
+        <h2 class="category__title">Регион</h2>
+        <p class="category__regions-current"></p>
+        <div class="category__regions-item">
+
+        </div>
+
+      </div>
+
+    </div>
+<div class="category__filter">
         <hr class="category__filter-line" />
         <div class="category__filter-item">
           <h3 class="category__filter-title">Активные фильтры:</h3>    
         <div class="category__filter-row">
-          <h3 class="category__filter-title">Категория</h3>
+          <h3 class="category__filter-title category__filter-title_main">Категория</h3>
 
-          <div class="category__filter-tour">
-            <h3 class="category__filter-title">Состав тура</h3>
-          </div>
-          <div class="category__filter-region">
-            <h3 class="category__filter-title">Регион</h3>
-          </div>
-          <div class="category__filter-flying">
-            <h3 class="category__filter-title">Вылет из</h3>
-          </div>
+
+ 
+
         </div>
-      </div>
-    </div>
-    </div>
+
+
   </div>
+
+
+
 </div>
-
-

@@ -11,13 +11,15 @@ export class PasswordRecovery {
   }
 
   passwordRecovery() {
-    const emailInput = document.querySelector("#passwordRecoveryMail") as HTMLInputElement;
+    const emailInput = document.querySelector(
+      "#passwordRecoveryMail",
+    ) as HTMLInputElement;
     const email = emailInput.value;
 
     sendPasswordResetEmail(this.auth, email)
       .then(() => {
         alert("Password reset email sent. Please check your inbox.");
-        emailInput.value = '';
+        emailInput.value = "";
       })
       .catch((error) => {
         const errorCode = error.code;

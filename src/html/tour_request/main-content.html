@@ -14,8 +14,9 @@
         Оставьте свой номер телефона и мы вам перезвоним
       </h3>
       <form id="adviser__form" class="adviser__row-input">
-        <div class="adviser__input">
+        <div class="adviser__input input input-row">
           <input
+          name="tel"
             id="adviser-inp"
             type="text"
             placeholder="Ваш номер телефона"
@@ -60,7 +61,7 @@
         </div>
       </div>
     </section>
-    <form class="main-content__column main-content__column-two form">
+    <section class="main-content__column main-content__column-two form">
       <div class="form__wrapper">
         <div class="form__tabs">
           <button class="form__tab form__tab-one">Основное</button>
@@ -69,7 +70,7 @@
           <div class="form__tabs-slider"></div>
         </div>
         <div class="form__main">
-          <div class="form__state form__first-state">
+          <form id="form-state-one" class="form__state form__first-state">
             <div class="form__preloader"></div>
             <h3 class="form__title">Направление</h3>
             <div class="form__drop">
@@ -91,20 +92,32 @@
                   <use xlink:href="#minus-circle"></use>
                 </svg>
               </div>
-              <div class="form__counter-count"></div>
+              <div class="form__counter-count">1</div>
               <div class="form__counter-btn form__counter-add">
                 <svg>
                   <use xlink:href="#plus-circle"></use>
                 </svg>
               </div>
             </div>
-          </div>
-          <div class="form__state form__second-state">
+            <button class="form__btn form__btn-first-state">
+              <span class="form__btn_next">дальше</span
+              ><span class="form__btn_finish">подобрать тур</span>
+            </button>
+            <div class="form__btn-error"></div>
+          </form>
+          <form id="form-state-two" class="form__state form__second-state">
             <h3 class="form__title">Желаемая цена на одного человека (€)</h3>
-            <input type="text" class="form__input" />
+            <div class="form__input-wrap input-row">
+              <input type="text" id="input-price" class="form__input" />
+              <span class="form__error form__error-input-price"></span>
+            </div>
+
             <h3 class="form__title">Питание</h3>
             <div class="form__drop form__drop-food">
               <load ="/src/html/tour_request/food.html" />
+              <span class="form__error form__error-food"
+                >Выберите один из вариантов</span
+              >
             </div>
             <h3 class="form__title">Категория отеля</h3>
             <div class="form__drop form__stars">
@@ -146,22 +159,40 @@
             </div>
             <h3 class="form__title">Пожелания</h3>
             <textarea class="form__textarea" cols="30" rows="12"></textarea>
-          </div>
-          <div class="form__state form__third-state">
+            <button class="form__btn form__btn-second-state">
+              <span class="form__btn_next">дальше</span
+              ><span class="form__btn_finish">подобрать тур</span>
+            </button>
+            <div class="form__btn-error"></div>
+          </form>
+          <form id="form-state-three" class="form__state form__third-state">
             <h3 class="form__title">Имя</h3>
-            <input type="text" class="form__input" />
+            <div class="form__input-wrap">
+              <input type="text" id="input-name" class="form__input" />
+              <span class="form__error form__error-input-name"></span>
+            </div>
+
             <h3 class="form__title">Телефон</h3>
-            <input type="text" class="form__input" />
+            <div class="form__input-wrap form__phone input">
+              <input type="text" id="input-tel" class="form__input" />
+              <span class="form__error form__error-input-tel"></span>
+            </div>
+
             <h3 class="form__title">Эл. почта</h3>
-            <input type="text" class="form__input" />
-          </div>
-          <button class="form__btn">
-            <span class="form__btn_next">дальше</span
-            ><span class="form__btn_finish">подобрать тур</span>
-          </button>
-          <div class="form__btn-error"></div>
+
+            <div class="form__input-wrap">
+              <input type="text" id="input-mail" class="form__input" />
+              <span class="form__error form__error-input-mail"></span>
+            </div>
+
+            <button class="form__btn">
+              <span class="form__btn_next">дальше</span
+              ><span class="form__btn_finish">подобрать тур</span>
+            </button>
+            <div class="form__btn-error"></div>
+          </form>
         </div>
       </div>
-    </form>
+    </section>
   </div>
 </section>

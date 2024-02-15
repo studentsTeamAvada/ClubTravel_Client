@@ -16,8 +16,8 @@ import { ResultSwiper } from "./../pages/code/swiper";
 
 new DropdownSearch(".info__destination-select");
 
-new DropdownSearch(".info__duration-select");
-new DropdownSearch(".info__date-select");
+// new DropdownSearch(".info__duration-select");
+// new DropdownSearch(".info__date-select");
 
 enum Destination {
   All = 0,
@@ -117,7 +117,12 @@ interface Hotel {
   flight: boolean;
   touristPackage: boolean;
   departure: Departure;
-  date: {seconds:number};
+  date: string;
+  img: { url: string; urlWebp: string }[];
+  description: { main: string; additional: string }[];
+  room: string | string[];
+  meals: string;
+  beach: string;
 }
 
 export class Country {
@@ -139,33 +144,33 @@ export class Country {
     this.countryFilterArr = [];
     this.durationFilterArr = [];
     this.init();
-    const localStorageData = localStorage.getItem("countryArr");
-    if (localStorageData) {
-      this.countryArr = JSON.parse(localStorageData);
-    }
+    // const localStorageData = localStorage.getItem("countryArr");
+    // if (localStorageData) {
+    //   this.countryArr = JSON.parse(localStorageData);
+    // }
     // this.renderInfo(this.countryArr);
   }
 
   async init(): Promise<void> {
-    // await this.getCountry();
+    await this.getCountry();
 
     this.bindEvents();
   }
 
-  // async getCountry(): Promise<void> {
-  //   const db = getFirestore(app);
-  //   const hotelsRef = collection(db, "hotels");
+  async getCountry(): Promise<void> {
+    const db = getFirestore(app);
+    const hotelsRef = collection(db, "hotels");
 
-  //   try {
-  //     const querySnapshot = await getDocs(hotelsRef);
-  //     this.countryArr = querySnapshot.docs.map<Hotel>(
-  //       (doc: QueryDocumentSnapshot<DocumentData>) => doc.data() as Hotel
-  //     );
+    try {
+      const querySnapshot = await getDocs(hotelsRef);
+      this.countryArr = querySnapshot.docs.map<Hotel>(
+        (doc: QueryDocumentSnapshot<DocumentData>) => doc.data() as Hotel
+      );
   // localStorage.setItem('countryArr', JSON.stringify(this.countryArr));
-  //   } catch (error) {
-  //     console.error("Error getting documents: ", error);
-  //   }
-  // }
+    } catch (error) {
+      console.error("Error getting documents: ", error);
+    }
+  }
 
   bindEvents(): void {
     this.searchPanelBtn.on("click", () => this.filterCountry());
@@ -207,10 +212,10 @@ export class Country {
 
   restoreFilterFromUrl(): void {
     const urlParams = new URLSearchParams(window.location.search);
-    const savedDestination = urlParams.get("isCountry");
+    const savedDestination = urlParams.get("country");
 
     if (savedDestination) {
-      this.destinationCurrent.val(savedDestination);
+      // this.destinationCurrent.val(savedDestination);
       this.filterCountry();
     }
   }
@@ -230,18 +235,15 @@ export class Country {
     this.renderRegions(this.countryFilterArr);
     this.renderInfo(this.countryFilterArr);
     new ResultSwiper();
+
     const newUrl = new URL(window.location.href);
     newUrl.searchParams.set("isCountry", destination.toString());
-    if (newUrl.searchParams.has("isRegion")) {
-      newUrl.searchParams.delete("isRegion");
-    }
     window.history.pushState({}, "", newUrl.toString());
   }
 
-  renderHotels(info: DocumentData[]): void {
-    $(".result__content").html("");
-
+  renderHotels(info: Hotel[]): void {
     if (info.length > 0) {
+      $(".result__content").html("");
       info.forEach((item) => {
         const starsCount = item.star;
         let starsHTML = "";
@@ -250,192 +252,168 @@ export class Country {
           starsHTML += `<svg><use xlink:href="#star"></use></svg>`;
         }
 
-        const seconds = item.date.seconds;
-        const dateObj = new Date(seconds * 1000);
-        const day = dateObj.getDate();  
-        const monthNames = ['янв.', 'фев.', 'мар.', 'апр.', 'май.', 'июн.', 'июл.', 'авг.', 'сен.', 'окт.', 'ноя.', 'дек.'];
-        const month = monthNames[dateObj.getMonth()];
-        const year = dateObj.getFullYear();
-        const formattedDate = `${day} ${month} ${year}`;
-        
-
         const hotelHtml = `
-            <div class="result__hotel">
-    
-            <div class="result__slider">
-              <div class="swiper result__swiper">
-                <div class="swiper-wrapper result__wrapper">
-    
-                  <div class="swiper-slide result__slide">
-                    <picture>
-                      <source srcset="${item.img[0].urlWebp}" type="image/webp">
-                      <img src="${item.img[0].url}" alt="photo">
-                    </picture>
-                  </div>
-    
-                  <div class="swiper-slide result__slide">
-                    <picture>
-                      <source srcset="${item.img[1].urlWebp}" type="image/webp">
-                      <img src="${item.img[1].url}" alt="photo">
-                    </picture>
-                  </div>
-    
-                  <div class="swiper-slide result__slide">
-                    <picture>
-                      <source srcset="${item.img[2].urlWebp}" type="image/webp">
-                      <img src="${item.img[2].url}" alt="photo">
-                    </picture>
-                  </div>
-    
-                  <div class="swiper-slide result__slide">
-                    <picture>
-                      <source srcset="${item.img[3].urlWebp}" type="image/webp">
-                      <img src="${item.img[3].url}" alt="photo">
-                    </picture>
-                  </div>
-    
-                  <div class="swiper-slide result__slide">
-                    <picture>
-                      <source srcset="${item.img[4].urlWebp}" type="image/webp">
-                      <img src="${item.img[4].url}" alt="photo">
-                    </picture>
-                  </div>
-    
-                </div>
-    
-                <div class="swiper-button-next result__btn-next">
-                  <svg>
-                    <use xlink:href="#chevron-left"></use>
-                  </svg>
-                </div>
-    
-                <div class="swiper-button-prev result__btn-prev">
-                  <svg>
-                    <use xlink:href="#chevron-left"></use>
-                  </svg>
-                </div>
-    
-              </div>
-            </div>
-    
-            <div class="result__row">
-    
-              <div class="result__info">
-                <h4 class="result__info-title">${item.name}</h4>
-    
-                <div class="result__info-location">
-                  <svg>
-                    <use xlink:href="#point"></use>
-                  </svg>
-                  <p class="result__info-country">${item.country}</p>
-                  <p class="result__info-region">${item.region}</p>
-                </div>
-    
-                <p class="result__info-descript">${item.description[0].main}</p>
-                <a class="result__info-link"  href="hotel.html">
-                  Подробнее об отеле
-                  <svg>
-                    <use xlink:href="#arrow-right"></use>
-                  </svg>
-                </a>
-              </div>
-    
-              <div class="result__rating">
-                <div class="result__rating-star">
-                  ${starsHTML}
-                </div>
-    
-                <p class="result__rating-duration">
-                  <svg>
-                    <use xlink:href="#clock"></use>
-                  </svg>
-                  ${item.duration}
-                </p>
-    
-                <p class="result__rating-meal">
-                  <svg>
-                    <use xlink:href="#food"></use>
-                  </svg>
-                  ${item.meals}
-                </p>
-    
-                <p class="result__rating-room">
-                  <svg>
-                    <use xlink:href="#house"></use>
-                  </svg>
-                  ${item.room[0]}
-                </p>
-    
-                <p class="result__rating-beach">
-                  <svg>
-                    <use xlink:href="#sun"></use>
-                  </svg>
-                  ${item.beach}
-                </p>
-              </div>
-    
-              <div class="result__price">
-                <p class="result__price-num"><span>${item.room.length}</span> предложения от <span>${item.price[0]}€</span><span>/чел</span></p>
-                <button class="result__price-btn">Открыть</button>
-              </div>
-    
-            </div>
-    
-          </div>
+                <div class="result__hotel">
+                    <div class="result__slider">
+                        <div class="swiper result__swiper">
+                            <div class="swiper-wrapper result__wrapper">
+                                <div class="swiper-slide result__slide">
+                                    <picture>
+                                        <source srcset="${item.img[0].urlWebp}" type="image/webp"/>
+                                        <img src="${item.img[0].url}" alt="photo"/>
+                                    </picture>
+                                </div>
 
-          <div class="result__advanced advanced">
-          <div class="advanced__header">
-            <p class="advanced__header-text">Дата</p>
-            <p class="advanced__header-text">Период</p>
-            <p class="advanced__header-text">Питание</p>
-            <p class="advanced__header-text">Тип номера</p>
-            <p class="advanced__header-text">Стоимость</p>
-          </div>
+                                <div class="swiper-slide result__slide">
+                                    <picture>
+                                        <source srcset="${item.img[1].urlWebp}" type="image/webp"/>
+                                        <img src="${item.img[1].url}" alt="photo"/>
+                                    </picture>
+                                </div>
 
-          <div class="advanced__body">
-          ${
-            Array.isArray(item.room)
-              ? item.room
-                  .map(
-                    (room: any) => `
-          <div class="advanced__body-row">
-            <p class="advanced__body-date">${formattedDate}</p>
-            <p class="advanced__body-duration">${item.duration}</p>
-            <p class="advanced__body-meals">${item.meals}</p>
-            <p class="advanced__body-rooms">${room}</p>
-            <p class="advanced__body-price">${item.price[0]}€<span>/чел</span></p>
-            <a class="advanced__body-link" href="hotel.html">выбрать</a>
-          </div>
-          <hr class="advanced__body-line"></hr>
-        `
-                  )
-                  .join("")
-              : ""
-          }
-          </div>
-        </div>
-          
-          
-          
-          `;
+                                <div class="swiper-slide result__slide">
+                                    <picture>
+                                        <source srcset="${item.img[2].urlWebp}" type="image/webp"/>
+                                        <img src="${item.img[2].url}" alt="photo"/>
+                                    </picture>
+                                </div>
+
+                                <div class="swiper-slide result__slide">
+                                    <picture>
+                                        <source srcset="${item.img[3].urlWebp}" type="image/webp"/>
+                                        <img src="${item.img[3].url}" alt="photo"/>
+                                    </picture>
+                                </div>
+
+                                <div class="swiper-slide result__slide">
+                                    <picture>
+                                        <source srcset="${item.img[4].urlWebp}" type="image/webp"/>
+                                        <img src="${item.img[4].url}" alt="photo"/>
+                                    </picture>
+                                </div>
+                            </div>
+
+                            <div class="swiper-button-next result__btn-next">
+                                <svg><use xlink:href="#chevron-left"></use></svg>
+                            </div>
+
+                            <div class="swiper-button-prev result__btn-prev">
+                                <svg><use xlink:href="#chevron-left"></use></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="result__row">
+                        <div class="result__info">
+                            <div class="result__info-item">
+                                <h4 class="result__info-title">${item.name}</h4>
+
+                                <div class="result__info-location">
+                                    <svg><use xlink:href="#point"></use></svg>
+                                    <p class="result__info-country">${item.country},</p>
+                                    <p class="result__info-region">${item.region}</p>
+                                </div>
+
+                                <p class="result__info-descript">${item.description[0].main}</p>
+                            </div>
+                            <div class="result__info-subitem">
+                                <a class="result__info-link" href="hotel.html">
+                                    Подробнее об отеле
+                                    <svg><use xlink:href="#arrow-right"></use></svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="result__rating">
+                            <div class="result__rating-item">
+                                <div class="result__rating-star">${starsHTML}</div>
+                                <div class="result__rating-subitem">
+                                    <p class="result__rating-duration">
+                                        <svg><use xlink:href="#clock"></use></svg>
+                                        ${item.duration}
+                                    </p>
+
+                                    <p class="result__rating-meal">
+                                        <svg><use xlink:href="#food"></use></svg>
+                                        ${item.meals}
+                                    </p>
+
+                                    <p class="result__rating-room">
+                                        <svg><use xlink:href="#house"></use></svg>
+                                        ${item.room[0]}
+                                    </p>
+
+                                    <p class="result__rating-beach">
+                                        <svg><use xlink:href="#sun"></use></svg>
+                                        ${item.beach}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="result__price">
+                                <p class="result__price-num">
+                                    <span>${item.room.length}</span> предложения от
+                                    <span>${item.price[0]}€</span><span>/чел</span>
+                                </p>
+                                <button class="result__price-btn">Открыть</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <table class="result__table table table_act">
+                <thead   ad class="table__thead">
+                    <tr class="table__tr">
+                        <th class="table__th">Дата</th>
+                        <th class="table__th">Период</th>
+                        <th class="table__th">Питание</th>
+                        <th class="table__th">Тип номера</th>
+                        <th class="table__th">Стоимость</th>
+                    </tr>
+                </thead>
+                <tbody class="table__tbody">
+                    ${
+                      Array.isArray(item.room)
+                        ? item.room
+                            .map(
+                              (room) => `
+                        <tr class="table__tr">
+                            <td class="table__td">${item.date}</td>
+                            <td class="table__td">${item.duration}</td>
+                            <td class="table__td">${item.meals}</td>
+                            <td class="table__td">${room}</td>
+                            <td class="table__td">${item.price[0]}€<span>/чел</span></td>
+                            <td class="table__td"><button class="table__link">выбрать</button></td>
+                        </tr>
+                        <tr class="table__sub-tbody">
+                            <td class="table__sub-td" colspan="6"> <hr class="table__line"></td>
+                        </tr>
+                    `
+                            )
+                            .join("")
+                        : ""
+                    }
+                </tbody>
+            </table>
+                `;
 
         $(".result__content").append(hotelHtml);
       });
     } else {
       $(".result__content").html(`
-          <div class="result__not-found">
-            <h2 class="result__not-found-title">По вашему запросу ничего не найдено</h2>
-            <p class="result__not-found-text">Попробуйте изменить параметры поиска</p>
-          </div>`);
+            <div class="result__not-found">
+              <h2 class="result__not-found-title">По вашему запросу ничего не найдено</h2>
+              <p class="result__not-found-text">Попробуйте изменить параметры поиска</p>
+            </div>`);
     }
     $(".result__price button").on("click", function () {
       $(this).toggleClass("result__price-btn_act");
-      $(this).closest('.result__price').toggleClass("result__price_act");
-  });
-  
+      $(this).closest(".result__price").toggleClass("result__price_act");
+
+      $(".table").toggleClass("table_act");
+    });
   }
 
-  renderRegions(region: DocumentData[]): void {
+  renderRegions(region: Hotel[]): void {
     $(".category__regions-item").html("");
     region.forEach((item) => {
       const regionHtml = `
@@ -477,7 +455,7 @@ export class Country {
     $(".category__btns-regions").on("click", (event) => {
       const regionName = $(event.currentTarget).data("region");
       const region = this.regionToNumber(regionName);
-      this.regionsCurrent.text(region);
+      // this.regionsCurrent.text(region);
 
       const newUrl = new URL(window.location.href);
       newUrl.searchParams.set("isRegion", region.toString());
@@ -556,8 +534,8 @@ class Region extends Country {
     super.restoreFilterFromUrl();
     const urlParams = new URLSearchParams(window.location.search);
     const savedRegion = urlParams.get("isRegion");
+
     if (savedRegion) {
-      this.regionsCurrent.val(savedRegion);
       this.filterRegion();
     }
   }
@@ -575,15 +553,18 @@ class Region extends Country {
       }
     });
 
-    // console.log(this.regionFilterArr);
+    console.log(this.regionFilterArr);
+
+    this.renderHotels(this.regionFilterArr);
+    this.renderRegions(this.regionFilterArr);
+    this.renderInfo(this.regionFilterArr);
+    new ResultSwiper();
 
     // const newUrl = new URL(window.location.href);
     // newUrl.searchParams.set("isRegion", region.toString());
     // window.history.pushState({}, "", newUrl.toString());
 
-    this.renderHotels(this.regionFilterArr);
-    this.renderRegions(this.regionFilterArr);
-    new ResultSwiper();
+    // new ResultSwiper();
   }
 }
 
@@ -686,8 +667,11 @@ class Hotels extends Country {
       }
     });
 
+    console.log(this.mealsFilterArr);
+
     this.renderHotels(this.mealsFilterArr);
     this.renderRegions(this.mealsFilterArr);
+    this.renderInfo(this.mealsFilterArr);
 
     const newUrl = new URL(window.location.href);
     newUrl.searchParams.set("isMeals", meals.toString());
@@ -750,6 +734,7 @@ class Hotels extends Country {
     // window.history.pushState({}, "", newUrl.toString());
     this.renderHotels(this.starsFilterArr);
     this.renderRegions(this.starsFilterArr);
+    this.renderInfo(this.starsFilterArr);
   }
 
   priceSlider(): void {
@@ -814,29 +799,33 @@ class Hotels extends Country {
     console.log(this.priceFilterArr);
     this.renderHotels(this.priceFilterArr);
     this.renderRegions(this.priceFilterArr);
+    this.renderInfo(this.priceFilterArr);
   }
 
   selectTourAndFlight(): void {
-    const context = this;
     const newUrl = new URL(window.location.href);
 
     $(".category__btns-tour[data-tour]").on("click", (event) => {
       const tourName = $(event.currentTarget).data("tour");
 
       if (tourName === "tour") {
-        const filterTour = context.countryArr.filter(
+        const filterTour = this.countryArr.filter(
           (item: Hotel) => item.touristPackage === true
         );
-
-        context.renderHotels(filterTour);
+        console.log(filterTour);
+        this.renderHotels(filterTour);
+        // this.renderRegions(filterTour);
+        // this.renderInfo(filterTour);
 
         newUrl.searchParams.set("isTour", "true");
       } else {
-        const filterFly = context.countryArr.filter(
+        const filterFly = this.countryArr.filter(
           (item: Hotel) => item.flight === true
         );
 
-        context.renderHotels(filterFly);
+        this.renderHotels(filterFly);
+        // this.renderRegions(filterFly);
+        // this.renderInfo(filterFly);
 
         newUrl.searchParams.set("flight", "true");
       }
@@ -857,7 +846,11 @@ class Hotels extends Country {
       const filterCity = this.countryArr.filter(
         (item: Hotel) => item.departure === city
       );
+
+      console.log(filterCity);
       this.renderHotels(filterCity);
+      // this.renderRegions(filterCity);
+      // this.renderInfo(filterCity);
 
       const newUrl = new URL(window.location.href);
       newUrl.searchParams.set("departure", city.toString());
@@ -879,70 +872,64 @@ class Hotels extends Country {
 }
 
 class SelectData extends Country {
-    constructor() {
-      super();
-      this.calendar();
-
-    }
-
-    calendar() {
-      new AirDatepicker("#calendar", {
-          onSelect: function({date }) {
-                const dateObj = Array.isArray(date) ? date[0] : date;
-                const day = dateObj.getDate();
-                const month = dateObj.getMonth() + 1;
-                const year = dateObj.getFullYear();
-          
-                const formattedDate = `${day} ${month} ${year}`;
-          
-                $(".info__date-current").text(formattedDate);
-          
-                const currentUrl = window.location.href;
-                const urlParts = currentUrl.split("?");
-                const baseUrl = urlParts[0];
-                const params = new URLSearchParams(urlParts[1]);
-                params.set("date", formattedDate);
-                const newUrl = baseUrl + "?" + params.toString();
-              window.history.pushState({ path: newUrl }, '', newUrl);
-              window.location.reload();
-          }
-      });
+  constructor() {
+    super();
+    this.calendar();
   }
 
+  calendar() {
+    new AirDatepicker("#calendar", {
+      onSelect: function ({ date }) {
+        const dateObj = Array.isArray(date) ? date[0] : date;
+        const day = dateObj.getDate();
+        const month = dateObj.getMonth() + 1;
+        const year = dateObj.getFullYear();
 
-  restoreFilterFromUrl(){
+        const formattedDate = `${day} ${month} ${year}`;
+
+        $(".info__date-current").text(formattedDate);
+
+        const currentUrl = window.location.href;
+        const urlParts = currentUrl.split("?");
+        const baseUrl = urlParts[0];
+        const params = new URLSearchParams(urlParts[1]);
+        params.set("date", formattedDate);
+        const newUrl = baseUrl + "?" + params.toString();
+        window.history.pushState({ path: newUrl }, "", newUrl);
+        // window.location.reload();
+      },
+    });
+  }
+
+  restoreFilterFromUrl() {
     super.restoreFilterFromUrl();
     const urlParams = new URLSearchParams(window.location.search);
     const savedDate = urlParams.get("date");
     if (savedDate) {
-      this.filterDate();
+      // this.filterDate();
     }
   }
-
-
 
   filterDate(): void {
     const urlParams = new URLSearchParams(window.location.search);
     const savedDate = urlParams.get("date");
+    console.log(savedDate);
 
-    const filterDate = this.countryArr.filter(function(item ) {
-      const seconds = item.date.seconds;
-      const dateObj = new Date(seconds * 1000);
-      const day = dateObj.getDate();  
-      const month = dateObj.getMonth() + 1;
-      const year = dateObj.getFullYear();
-      console.log(day, month, year);
+    const filterDate = this.countryArr.filter(function (_item) {
+      // const seconds = item.date.seconds;
+      // const dateObj = new Date(seconds * 1000);
+      // const day = dateObj.getDate();
+      // const month = dateObj.getMonth() + 1;
+      // const year = dateObj.getFullYear();
+      // console.log(day, month, year);
 
-      const formattedDate = `${day} ${month} ${year}`;
-      return formattedDate === savedDate;
-
+      // const formattedDate = `${day} ${month} ${year}`;
+      // return formattedDate === savedDate;
     });
     console.log(filterDate);
     this.renderHotels(filterDate);
     this.renderRegions(filterDate);
   }
-  
-
 }
 
 class AdvancedSearch {
@@ -971,6 +958,12 @@ class AdvancedSearch {
           break;
         case "isMeals":
           this.meals(value);
+          break;
+        case "isTour":
+          this.tours(value);
+          break;
+        case "isRegion":
+          this.region(value);
           break;
       }
     });
@@ -1062,9 +1055,43 @@ class AdvancedSearch {
     }
   }
 
-  // tours(val: string) {
-  //   const meals = $(".category__filter-row");
-  //   switch (val) {
+  tours(val: string) {
+    const meals = $(".category__filter-row");
+    switch (val) {
+      case "true":
+        meals.append(
+          `<div class="category__filter-tour">
+          <h3 class="category__filter-title">Состав тура</h3>
+          <p class="category__filter-text">Туристический пакет</p>
+        </div`
+        );
+    }
+  }
+  region(val: string) {
+    const meals = $(".category__filter-row");
+    switch (val) {
+      case "1":
+        meals.append(
+          `<div class="category__filter-region">
+          <h3 class="category__filter-title">Регион</h3>
+          <p class="category__filter-text">Шарм-эль-Шейх</p>
+        </div`
+        );
+        break;
+    }
+  }
+
+  //   frying(val: string) {
+  //     const meals = $(".category__filter-row");
+  //     switch (val) {
+  //       case "true":
+  //         meals.append(
+  //           `<div class="category__filter-flying">
+  //           <h3 class="category__filter-title">Вылет из</h3>
+  //           <p class="category__filter-text">Туристический пакет</p>
+  //         </div>`
+  //         );
+
   //   }
   // }
 }

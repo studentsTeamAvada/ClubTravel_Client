@@ -1,4 +1,8 @@
 .directions {
+  position: relative;
+  top: -100px;
+  padding-top: 162px;
+  background: #fff;
 
   &__wrapper {
     display: flex;
@@ -16,6 +20,7 @@
   }
 
   &__swiper-round {
+    position: relative;
 
     @media (width >= 1024px) {
       &:hover {
@@ -24,7 +29,6 @@
         }
       }
     }
-    position: relative;
 
     &::before {
       content: "";
@@ -45,6 +49,14 @@
         opacity: 1;
       }
     }
+
+    @media (width >= 1024px) {
+      &:hover {
+        &::before {
+          opacity: 0.4;
+        }
+      }
+    }
   }
 
   &__container {
@@ -59,8 +71,8 @@
     background: #fff;
 
     @include media-breakpoint-down(xs) {
-        max-width: 320px;
-      }
+      max-width: 320px;
+    }
   }
 
   &__card-img {
@@ -128,24 +140,5 @@
     @include media-breakpoint-down(xs) {
       max-width: 290px;
     }
-  }
-  position: relative;
-  top: -100px;
-  padding-top: 162px;
-  background: #fff;
-
-  &__card-place-country,
-  &__card-price-offer {
-    font-size: 12px;
-    color: #808080;
-  }
-
-  @include media-breakpoint-down(sm) {
-    padding-top: 52px;
-  }
-
-  @include media-breakpoint-down(xs) {
-    top: 0;
-    margin-bottom: 77px;
   }
 }

@@ -4,19 +4,34 @@ import { DropCountry } from "../code/tour_request/drop-country";
 import { Calendar } from "../code/tour_request/calendar";
 import { DropDown } from "../code/tour_request/dropdown";
 import { Food } from "../code/tour_request/food";
-//@ts-ignore
-import JustValidate from "just-validate";
-
 import $ from "jquery";
-// import Cleave from "cleave.js";
-// import JustValidate from "just-validate";
+import 'jquery-validation';
+
+
+
+interface JQueryValidateForm extends JQuery<HTMLElement> {
+  validate(object: Object): void;
+  // addMethod(str: string, callback: Function, errorInfo: string): void;
+  // validator: addMet
+}
+
+
+// type addMet = {
+//   addMethod(str: string, callback: Function, errorInfo: string): void
+// }
+
+// interface addValidator extends JQueryStatic {
+//   validator: addMet
+// }
+
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
   class TourRequest {
     header: Header;
     footer: Footer;
     food: Food;
-    inputWrapper: JQuery<HTMLElement>;
     input: JQuery<HTMLInputElement>;
     inputBtn: JQuery<HTMLButtonElement>;
     tabsBtn: JQuery<HTMLElement>;
@@ -34,12 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
       this.footer = new Footer();
       this.food = new Food();
       this.dropDown = new DropCountry();
-      this.counter();
+
       this.calendar = new Calendar();
       this.DropPeople = new DropDown(".form__drop-guests");
       this.stars = $(".form__stars-one-star");
 
-      this.inputWrapper = $(".adviser__input");
       this.input = $("#adviser-inp");
       this.inputBtn = $(".adviser__btn");
       this.inputForm = $("#adviser__form");
@@ -48,15 +62,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
       this.formBtn = this.form.find(".form__btn");
       this.tabsSlider = $(".form__tabs-slider");
+      this.inputMask(".adviser__input");
+      this.inputMask(".form__phone");
+      this.validateTel("#adviser__form");
 
-      this.inputMask();
+      // $(".adviser__input").submit(function(event) {
+      //   // Предотвращаем стандартное поведение формы (перезагрузку страницы)
+      //   event.preventDefault();
+      // });
 
       this.tabs();
       this.points();
       this.stopReload();
       this.clickFormBtn();
       this.SelectStars();
-      this.inputValidate();
+      this.validateMainFormOne();
+
     }
 
     SelectStars() {
@@ -109,6 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const btnTwo = document.querySelector(".form__tab-two");
       const btnThree = document.querySelector(".form__tab-three");
       const noErrorFirst = !$(".form").is(".form_erroe-one");
+      const noErrorSecond = !$(".form").is(".form_erroe-two");
       if (num === 1) {
         btnThree?.classList.remove("form__tab_active");
         btnTwo?.classList.remove("form__tab_active");
@@ -131,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
         this.tabsSlider.css({
           left: "33.3%",
         });
-      } else if (num === 3 && noErrorFirst) {
+      } else if (num === 3 && noErrorFirst && noErrorSecond) {
         btnOne?.classList.remove("form__tab_active");
         btnTwo?.classList.remove("form__tab_active");
         btnThree?.classList.add("form__tab_active");
@@ -148,16 +170,21 @@ document.addEventListener("DOMContentLoaded", () => {
     clickFormBtn() {
       this.formBtn.on("click", () => {
         const oneState = $(".form").is(".form_one-state");
-        const twoState = $(".form").is(".form_two-state");
-        const threeState = $(".form").is(".form_three-state");
+        // const twoState = $(".form").is(".form_two-state");
+        // const threeState = $(".form").is(".form_three-state");
+
+        // const rule = this.calendar.checkError();
+        // if (rule && oneState) {
+        //   // this.points(2);
+        // }
 
         if (oneState) {
-          this.points(2);
-        } else if (twoState) {
-          this.points(3);
-        } else if (threeState) {
-          this.points(1);
         }
+        // else if (twoState) {
+        //   this.points(3);
+        // } else if (threeState) {
+        //   this.points(1);
+        // }
       });
     }
 
@@ -171,93 +198,90 @@ document.addEventListener("DOMContentLoaded", () => {
     clickBtn() {
       alert("В скором времени вам позвонят.");
       this.input.val("");
-      this.inputWrapper.removeClass("adviser__input_active");
+      $(".adviser__input").removeClass("adviser__input_active");
     }
 
-    inputMask() {
-      this.input.on("input", () => {
-        const value: number | undefined = this.input.val()?.length;
+    inputMask(inputWrapper: string) {
+      const wrapper = $(inputWrapper);
+      const input = wrapper.find("input");
+
+      function checkEmpy(): void {
+        const value: number | undefined = input.val()?.length;
         if (value && value > 0) {
-          this.inputWrapper.addClass("adviser__input_active");
+          wrapper.addClass("input_active");
         } else {
-          this.inputWrapper.removeClass("adviser__input_active");
+          wrapper.removeClass("input_active");
         }
-      });
+      }
 
-      // new Cleave("#adviser-inp", {
-      //   blocks: [3, 3, 2, 2],
-      //   numericOnly: true,
-      //   uppercase: true,
-      // });
-    }
+      function mask() {
+        const value: string = String(input.val()).replace(/\s/g, "");
+        const length: number = value.length;
+        const index: number = length - 1;
+        const lastNum: string = value[index];
+        const numRule = /[0-9]/.test(lastNum);
 
-    inputValidate() {
-      const validate = new JustValidate("#adviser__form");
-      const ruleName = [
-        {
-          rule: "required",
-          errorMessage: "Введите имя",
-        },
-        {
-          rule: "minLength",
-          value: 13,
-          errorMessage: "Минимум 3 буквы",
-        },
-        {
-          rule: "customRegexp",
-          value: /[0-9]/,
-          errorMessage: "Три одинаковых буквы подряд",
-        },
-      ];
-      const settingName = {
-        errorsContainer: ".adviser__input-error",
-        errorLabelCssClass: ["invalid"],
-        errorFieldCssClass: ["error-focus"],
-      };
-      validate.addField("#adviser-inp", ruleName, settingName);
+        if (!numRule || length > 10) {
+          input.val(String(input.val()).slice(0, -1));
+        } else if (length < 3) {
+          input.val(value);
+        } else if (length >= 3 && length < 10) {
+          input.val(
+            `${value.slice(0, 3)} ${value.slice(3, 6)} ${value.slice(6, 8)} ${value.slice(8, 10)}`.trim(),
+          );
+        }
+      }
 
-      validate.onSuccess(() => {
-        this.clickBtn();
+      input.on("input", () => {
+        mask();
+        checkEmpy();
       });
     }
 
-    counter() {
-      const add = $(".form__counter-add");
-      const remove = $(".form__counter-remove");
-      const total = $(".form__counter-count");
-      const context = this;
-      const sessionTotal = sessionStorage.getItem("count");
-      if (sessionTotal) {
-        total.html(sessionTotal);
-      } else {
-        total.html("1");
-      }
 
-      function addOne(): void {
-        let current = +total.text();
-        if (current < 18) {
-          const sum = current + 1;
-          selectSum(String(sum));
+
+    validateTel(inputWrap: string){
+      const element = $(inputWrap) as JQueryValidateForm;
+      element.validate({
+          rules: {
+            tel: {
+                minlength: 13,
+            },
+        },
+        messages: {
+            tel: {
+                minlength: "Номер должен состоять из 10 цифр"
+            },
+        },
+        highlight: function(element: JQuery<HTMLElement>, _errorClass: string, validClass: string) {
+          $(element).addClass("border-error").removeClass(validClass);
+        },
+        unhighlight: function(element: JQuery<HTMLElement>, _errorClass: string, validClass: string) {
+          $(element).addClass(validClass).removeClass("border-error");
+        },
+        submitHandler(form : JQuery<HTMLElement>) {
+          $(inputWrap).find(".input-row").removeClass("input_active")
+          console.log($(inputWrap))
+          alert("Мы скоро с вами свяжемся")
+          $(form).trigger("reset");
+
         }
-      }
-
-      function removeOne(): void {
-        let current = +total.text();
-        if (current > 1) {
-          const sum = current - 1;
-          selectSum(String(sum));
-        }
-      }
-
-      function selectSum(sum: string) {
-        total.html(sum);
-        context.calendar.removeFinalDate();
-        sessionStorage.setItem("count", sum);
-      }
-
-      add.on("click", addOne);
-      remove.on("click", removeOne);
+       });
     }
+
+    validateMainFormOne(){
+      function validateCountry(){
+        console.log(12)
+        const ruleCounrty: boolean = $(".drop-country__county").html() === "Страна";
+        if(ruleCounrty){
+          $('.drop-country').addClass("drop-country_error")
+        }
+      }
+      $(".form__btn-first-state").on("click", validateCountry)
+    }
+  
+
+
   }
   new TourRequest();
 });
