@@ -9,10 +9,9 @@ import 'jquery-validation';
 
 
 
+
 interface JQueryValidateForm extends JQuery<HTMLElement> {
-  validate(object: Object): void;
-  // addMethod(str: string, callback: Function, errorInfo: string): void;
-  // validator: addMet
+  validate(object: Object): any;
 }
 
 

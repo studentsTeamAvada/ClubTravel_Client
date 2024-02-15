@@ -1,4 +1,9 @@
 .hot-deals {
+  margin-bottom: 100px;
+
+  &__container {
+    position: relative;
+  }
 
   &__title-wrapper {
     position: relative;
@@ -13,7 +18,6 @@
   }
 
   &__text {
-
     img {
       width: 20px;
       height: 20px;
@@ -62,7 +66,6 @@
   }
 
   &__card-place-wrapper {
-
     svg {
       width: 14px;
       height: 14px;
@@ -85,11 +88,10 @@
   }
 
   &__card-stars-wrapper {
-
     svg {
       width: 18px;
       height: 18px;
-      fill: #F5C213;
+      fill: #f5c213;
     }
     display: flex;
   }
@@ -134,7 +136,6 @@
   }
 
   &__swiper-round {
-
     @media (width >= 1024px) {
       &:hover {
         &::before {
@@ -166,6 +167,7 @@
   }
 
   &__swiper-button-next {
+    right: -5%;
 
     svg {
       transform: rotate(180deg);
@@ -173,11 +175,11 @@
     right: 2%;
 
     @include media-breakpoint-down(my) {
-      right: 7%;
+      right: 4%;
     }
 
     @include media-breakpoint-down(md) {
-      right: 5%;
+      right: 6%;
     }
 
     @include media-breakpoint-down(xs) {
@@ -186,14 +188,14 @@
   }
 
   &__swiper-button-prev {
-    left: 2%;
+    left: -5%;
 
     @include media-breakpoint-down(my) {
-      left: 7%;
+      left: 4%;
     }
 
     @include media-breakpoint-down(md) {
-      left: 5%;
+      left: 6%;
     }
 
     @include media-breakpoint-down(xs) {
@@ -202,7 +204,6 @@
   }
 
   &__button-wrapper {
-
     a {
       transition: all 0.2s ease;
       color: #555;
@@ -227,7 +228,6 @@
   }
 
   &__title {
-
     span {
       text-align: center;
       color: #f15d28;
@@ -274,7 +274,6 @@
   }
 
   &__card-img {
-
     img {
       border-radius: 10px 10px 0 0;
       height: 250px;
@@ -283,7 +282,6 @@
   }
 
   &__card-line {
-
     svg {
       width: 3px;
       height: 31px;
@@ -305,7 +303,6 @@
   }
 
   &__card-data-wrapper {
-
     svg {
       width: 14px;
       height: 14px;
@@ -331,6 +328,10 @@
 
   &__swiper-button-prev,
   &__swiper-button-next {
+    position: absolute;
+    top: 54%;
+    z-index: 2;
+    cursor: pointer;
 
     svg {
       width: 32px;

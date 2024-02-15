@@ -3,9 +3,6 @@ import AirDatepicker from "air-datepicker";
 import "air-datepicker/air-datepicker.css";
 
 
-interface ICalendar  {
-
-}
 export class Calendar {
   calendar: JQuery<HTMLElement>;
   calendarMain: JQuery<HTMLElement>;
@@ -90,7 +87,7 @@ export class Calendar {
   }
 
   selectCount(){
-    const finishDate = new Date(new Date().setDate(this.currentSelDate.getDate() + this.between)) 
+    // const finishDate = new Date(new Date().setDate(this.currentSelDate.getDate() + this.between)) 
 
     const between: number = this.currentNextDate.getTime() - this.currentSelDate.getTime();
 
