@@ -1,5 +1,5 @@
 import { app } from "../../modules/firebase";
-import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
 
 export class Authorization {
   app: any;
@@ -49,6 +49,23 @@ export class Authorization {
         const errorCode = error.code;
         const errorMessage = error.message;
         alert("Не удалось войти с помощью Google");
+        console.error("Login failed:", errorCode, errorMessage);
+      });
+  }
+
+  authorizationFacebook() {
+    const provider = new FacebookAuthProvider();
+
+    signInWithPopup(this.auth, provider)
+      .then((result) => {
+        const user = result.user;
+        alert("Пользователь вошел с помощью Facebook");
+        console.log("User signed in:", user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert("Не удалось войти с помощью Facebook");
         console.error("Login failed:", errorCode, errorMessage);
       });
   }

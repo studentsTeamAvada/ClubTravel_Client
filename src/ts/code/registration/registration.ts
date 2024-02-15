@@ -1,5 +1,5 @@
 import { app } from "../../modules/firebase";
-import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
 export class Registration {
   app: any;
   auth: any;
@@ -12,11 +12,13 @@ export class Registration {
   registrationWithEmail() {
     const emailInput = document.querySelector("#registrationMail") as HTMLInputElement;
     const email = emailInput.value;
-    const passwordInput = document.querySelector(
-      "#registrationPassword",
-    ) as HTMLInputElement;
+    const passwordInput = document.querySelector("#registrationPassword") as HTMLInputElement;
     const password = passwordInput.value;
     const repeatPasswordInput = document.querySelector("#registrationRepeatPassword") as HTMLInputElement;
+
+    if (password !== repeatPasswordInput.value) {
+      return;
+    }
 
     createUserWithEmailAndPassword(this.auth, email, password)
       .then((userData: any) => {
@@ -48,6 +50,23 @@ export class Registration {
         console.error("Registration with Google failed:", errorCode, errorMessage);
       });
   }
+
+  registrationWithFacebook() {
+    const facebookProvider =  new FacebookAuthProvider();
+
+    signInWithPopup(this.auth, facebookProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log("Registration with Facebook successful:", user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error("Registration with Facebook failed:", errorCode, errorMessage);
+      });
+  }
+
+
 }
 
 

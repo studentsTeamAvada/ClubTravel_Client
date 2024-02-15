@@ -30,10 +30,6 @@
     position: relative;
   }
 
-  &__swiper-slide {
-    // width: fit-content;widthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidthwidth
-  }
-
   &__card-wrapper {
     padding: 1px;
   }
@@ -69,7 +65,7 @@
       transform: translate(-50%, -50%);
       transition: opacity 0.2s ease;
 
-      @include media-breakpoint-down(md) {
+      @include media-breakpoint-down(my) {
         background: #fff;
         opacity: 1;
       }
@@ -91,6 +87,10 @@
       transform: rotate(180deg);
     }
 
+    @include media-breakpoint-down(my) {
+      right: 7%;
+    }
+
     @include media-breakpoint-down(md) {
       right: 5%;
     }
@@ -102,6 +102,10 @@
 
   &__swiper-button-prev {
     left: 2%;
+
+    @include media-breakpoint-down(my) {
+      left: 7%;
+    }
 
     @include media-breakpoint-down(md) {
       left: 5%;
