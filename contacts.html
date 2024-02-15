@@ -5,11 +5,15 @@
   <link rel="icon" type="image/ico+xml" href="/ClubTravel.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Контакты</title>
-  <link rel="stylesheet" crossorigin href="/assets/Hot_offers-hUQZiGrP.css">
+  <script type="module" crossorigin src="/assets/Contacts-gp5HW2Hg.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/header-hiQeVM5C.js">
+  <link rel="modulepreload" crossorigin href="/assets/footer-MmTiPZRL.js">
+  <link rel="stylesheet" crossorigin href="/assets/Contacts-lqXrJAzk.css">
 </head>
 
   <body>
-    <header class="header">
+    <div class="wrapper">
+      <header class="header">
   <div class="header__container">
     <div class="header__logo">
       <a
@@ -134,7 +138,75 @@
   </div>
 </header>
 
-    <footer class="footer">
+      <main class="page">
+        <div class="top-img">
+  <picture class="top-img__bg-img">
+    <source srcset="/assets/image-bg-rhl2l6Xs.webp " type="image/webp" />
+    <img
+      src="/assets/image-bg-qkNO-IWh.jpg"
+      alt="Description of the image"
+      width="1366"
+      height="550"
+    />
+  </picture>
+
+  <div class="top-img__container">
+    <div class="top-img__bg-bottom">
+      <svg><use xlink:href="#tour_request-bg"></use></svg>
+    </div>
+  </div>
+</div>
+
+        <div class="main-content main-content__container">
+    <div class="main-content__column main-content__contact contact">
+        <h1 class="contact__title">Контакты</h1>
+
+        <h3 class="contact__title-two"></h3>
+
+        <p class="contact__info">Оставьте свой номер телефона или электронную почту и мы свяжемся с вами</p>
+
+        <h3 class="contact__campany-name">Clubs Travel OÜ</h3>
+
+        <ul class="contact__list">
+            <li class="contact__li"><svg><use xlink:href="#mail"></use></svg>
+                <span class="contact__li-text contact__li-mail"><a href="mailto:info@clubstravel.ee">info@clubstravel.ee</a></span>
+            </li>
+
+            <li class="contact__li"><svg><use xlink:href="#phone"></use></svg>
+                <span class="contact__li-text contact__li-phones"><a href="tel:+37255560310">+372 555 60 310</a>|<a href="tel:+3726130633">+372 61 30 633</a></span>
+            </li>
+
+            <li class="contact__li"><svg><use xlink:href="#clock"></use></svg>
+                <span class="contact__li-text">Пн-Пт 9:30-18:00, Сб 11:00-15:00</span>
+            </li>
+            
+            <li class="contact__li"><svg><use xlink:href="#point"></use></svg>
+                <span class="contact__li-text">Narva mnt 7D, Tallinn (корпус B) 4 этаж</span>
+            </li>
+        </ul>
+    </div>
+    <form class="main-content__column main-content__form form">
+        <h3 class="form__title">Имя (необязательно)</h3>
+
+        <input class="form__input" type="text">
+
+        <h3 class="form__title">Номер телефона</h3>
+
+        <input class="form__input" type="text">
+
+        <h3 class="form__title">E-mail</h3>
+        
+        <input class="form__input" type="text">
+
+        <h3 class="form__title">Сообщение (необязательно)</h3>
+        
+        <textarea class="form__textarea" name="" ></textarea>
+
+        <button class="form__btn btn">отправить</button>
+    </form>
+</div>
+      </main>
+      <footer class="footer">
   <div class="footer__container">
     <div class="footer__main">
       <div class="footer__popular popular">
@@ -581,5 +653,6 @@
 </svg>
 
 
+    </div>
   </body>
 </html>
