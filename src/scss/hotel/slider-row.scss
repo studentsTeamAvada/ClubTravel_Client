@@ -77,14 +77,6 @@
   z-index: 2;
   padding: 0 24px;
 
-  svg {
-    margin-right: 15px;
-    width: 18px;
-    height: 18px;
-    fill: #3e7739;
-    opacity: 0.5;
-  }
-
   &__column {
     @include media-breakpoint-down(md) {
       padding: 0 20px;
@@ -138,6 +130,14 @@
     margin-bottom: 24px;
     font-size: 16px;
     color: #222;
+
+    svg {
+      margin-right: 15px;
+      width: 18px;
+      height: 18px;
+      fill: #3e7739;
+      opacity: 0.5;
+    }
 
     li {
       display: flex;

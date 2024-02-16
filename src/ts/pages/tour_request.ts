@@ -10,7 +10,7 @@ import 'jquery-validation';
 
 
 interface JQueryValidateForm extends JQuery<HTMLElement> {
-  validate(object: Object): void;
+  validate(object: Object): Object;
 }
 
 
@@ -134,8 +134,8 @@ document.addEventListener("DOMContentLoaded", () => {
         btnTwo?.classList.remove("form__tab_active");
         btnOne?.classList.add("form__tab_active");
 
-        this.form.removeClass("form_two-state form_three-state");
-        this.form.addClass("form_one-state");
+        this.form.removeClass("form_state-two form_state-three");
+        this.form.addClass("form_state-one");
 
         this.tabsSlider.css({
           left: "0",
@@ -145,8 +145,8 @@ document.addEventListener("DOMContentLoaded", () => {
         btnOne?.classList.remove("form__tab_active");
         btnTwo?.classList.add("form__tab_active");
 
-        this.form.removeClass("form_one-state form_three-state");
-        this.form.addClass("form_two-state");
+        this.form.removeClass("form_state-one form_state-three");
+        this.form.addClass("form_state-two");
 
         this.tabsSlider.css({
           left: "33.3%",
@@ -156,8 +156,8 @@ document.addEventListener("DOMContentLoaded", () => {
         btnTwo?.classList.remove("form__tab_active");
         btnThree?.classList.add("form__tab_active");
 
-        this.form.removeClass("form_one-state form_two-state");
-        this.form.addClass("form_three-state");
+        this.form.removeClass("form_state-one form_state-two");
+        this.form.addClass("form_state-three");
 
         this.tabsSlider.css({
           left: "68%",
@@ -167,22 +167,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     clickFormBtn() {
       this.formBtn.on("click", () => {
-        const oneState = $(".form").is(".form_one-state");
-        // const twoState = $(".form").is(".form_two-state");
-        // const threeState = $(".form").is(".form_three-state");
+        const oneState = $(".form").is(".form_state-one");
+        const twoState = $(".form").is(".form_state-two");
+        const threeState = $(".form").is(".form_state-three");
 
-        // const rule = this.calendar.checkError();
-        // if (rule && oneState) {
-        //   // this.points(2);
-        // }
 
         if (oneState) {
         }
-        // else if (twoState) {
-        //   this.points(3);
-        // } else if (threeState) {
-        //   this.points(1);
-        // }
+        else if (twoState) {
+          this.points(3);
+        } else if (threeState) {
+          this.points(1);
+        }
       });
     }
 

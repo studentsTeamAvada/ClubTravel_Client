@@ -88,22 +88,35 @@
     width: 101px;
     height: 100%;
 
-    svg {
-      margin: 0;
-      width: 16px;
-      height: 16px;
-      fill: #f68521;
-    }
-
     &-btn {
       padding: 8px;
       width: 32px;
       height: 32px;
-      transition: all 100ms ease 0s;
+      opacity: 0.5;
+      transition: scale 100ms ease 0s;
+      transition: opacity 300ms ease 0s;
       cursor: pointer;
 
       &:active {
         transform: scale(0.9);
+      }
+
+      &:hover{
+        @include media-breakpoint-up(md) {
+          opacity: 0.9;
+        }
+      }
+
+      svg {
+        margin: 0;
+        width: 16px;
+        height: 16px;
+        fill: #f68521;
+
+        @include media-breakpoint-down(sm) {
+          width: 14px;
+          height: 14px;
+        }
       }
     }
 
