@@ -527,6 +527,15 @@
 
   &__state{
     animation: animation 500ms ease-in-out;
+    &-first {
+      display: block;
+    }
+    &-second {
+      display: none;
+    }
+    &-third {
+      display: none;
+    }
   }
   
   &_state{
