@@ -1,12 +1,12 @@
 .similars {
   margin-bottom: 97px;
 
-    &__title {
-        margin-bottom: 38px;
-        font-size: 26px;
-        letter-spacing: 1.3px;
-        text-align: center;
-        text-transform: uppercase;
+  &__title {
+    margin-bottom: 38px;
+    font-size: 26px;
+    letter-spacing: 1.3px;
+    text-align: center;
+    text-transform: uppercase;
 
 
     @include media-breakpoint-down(sm) {
@@ -23,20 +23,20 @@
       max-width: 80vw;
     }
 
-        @include media-breakpoint-down(xxs){
-            max-width: 100%;
-        }
+    @include media-breakpoint-down(xxs) {
+      max-width: 100%;
     }
+  }
 }
 
 .slide {
-    display: grid;
-    flex-direction: column;
-    grid-template: 1fr auto / auto;
-    overflow: hidden;
-    border-radius: 10px;
-    max-height: 349px;
-    aspect-ratio: 0.947/1;
+  display: grid;
+  flex-direction: column;
+  grid-template: 1fr auto / auto;
+  overflow: hidden;
+  border-radius: 10px;
+  max-height: 349px;
+  aspect-ratio: 0.947/1;
 
   &__image {
     position: relative;
@@ -44,34 +44,34 @@
     height: 100%;
   }
 
-    &__img {
-        height: 100%;
+  &__img {
+    height: 100%;
 
-        img{
-            height: 100%;
-            max-width: 100%;
-            object-fit: cover;
-        }
+    img {
+      height: 100%;
+      max-width: 100%;
+      object-fit: cover;
     }
+  }
 
-    &__tag {
-        position: absolute;
-        left: 14px;
-        display: flex;
-        align-items: center;
-        border-radius: 5px;
-        padding: 6px 6px 7px;
-        font-size: 14px;
-        color: #FFF;
-        background: rgb(0 0 0 / 50%);
+  &__tag {
+    position: absolute;
+    left: 14px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 6px 6px 7px;
+    font-size: 14px;
+    color: #fff;
+    background: rgb(0 0 0 / 50%);
 
-        svg{
-            margin-right: 6.4px;
-            width: 14px;
-            height: 14px;
-            fill: #fff;
-        }
+    svg {
+      margin-right: 6.4px;
+      width: 14px;
+      height: 14px;
+      fill: #fff;
     }
+  }
 
   &__tag-date {
     bottom: 54px;
@@ -111,25 +111,25 @@
     margin-bottom: 16px;
   }
 
-    &__title {
-        position: relative;
-        overflow: hidden; /* Скрытие лишнего текста, который не помещается в контейнер */
-        max-width: 230px;
-        white-space: nowrap; /* Запрет переноса текста на новую строку */
-        text-overflow: ellipsis;
-        cursor: pointer;
+  &__title {
+    position: relative;
+    overflow: hidden; /* Скрытие лишнего текста, который не помещается в контейнер */
+    max-width: 230px;
+    white-space: nowrap; /* Запрет переноса текста на новую строку */
+    text-overflow: ellipsis;
+    cursor: pointer;
 
-        &::after{
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: 1px;
-            width: 98%;
-            height: 1px;
-            background:#222 ;
-            transform: translateX(-50%) scaleX(0) ;
-            transition: transform 150ms ease 0s;
-        }
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 1px;
+      width: 98%;
+      height: 1px;
+      background: #222;
+      transform: translateX(-50%) scaleX(0);
+      transition: transform 150ms ease 0s;
+    }
 
     &:hover {
       @include media-breakpoint-up(md) {
@@ -140,17 +140,17 @@
     }
   }
 
-    &__stars {
-        display: flex;
-        align-items: center;
-        gap: 4px;
+  &__stars {
+    display: flex;
+    align-items: center;
+    gap: 4px;
 
-        svg{
-            width: 18px;
-            height: 18px;
-            fill: #F5C213;
-        }
+    svg {
+      width: 18px;
+      height: 18px;
+      fill: #f5c213;
     }
+  }
 
   &__row-two {
     position: relative;
@@ -168,24 +168,24 @@
     }
   }
 
-    &__old-price {
-        font-size: 14px;
-        text-decoration-line: strikethrough;
-        color: #BFBFBF;
-    }
+  &__old-price {
+    font-size: 14px;
+    text-decoration-line: strikethrough;
+    color: #bfbfbf;
+  }
 
-    &__sale {
-        position: absolute;
-        right: -16px;
-        top: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 80px;
-        height: 31px;
-        font-weight: 700;
-        font-size: 16px;
-        color: #FFF;
+  &__sale {
+    position: absolute;
+    right: -16px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 31px;
+    font-weight: 700;
+    font-size: 16px;
+    color: #fff;
 
     svg {
       position: absolute;
@@ -195,13 +195,13 @@
       height: 31px;
     }
 
-        span{
-            position: relative;
-            z-index: 1;
-        }
+    span {
+      position: relative;
+      z-index: 1;
     }
-    
-    @include media-breakpoint-down(md){
-        max-height: 100%;
-    }
+  }
+
+  @include media-breakpoint-down(md) {
+    max-height: 100%;
+  }
 }
