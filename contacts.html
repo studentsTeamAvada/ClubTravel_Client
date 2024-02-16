@@ -3,12 +3,13 @@
   <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/ico+xml" href="/ClubTravel.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Контакты</title>
-  <script type="module" crossorigin src="/assets/Contacts-wbRe_uTg.js"></script>
+  <script type="module" crossorigin src="/assets/Contacts-2_UgA_EA.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/header-hiQeVM5C.js">
   <link rel="modulepreload" crossorigin href="/assets/footer-MmTiPZRL.js">
-  <link rel="stylesheet" crossorigin href="/assets/Contacts-C9K2vdnV.css">
+  <link rel="modulepreload" crossorigin href="/assets/jquery.validate-K0FBTwEN.js">
+  <link rel="stylesheet" crossorigin href="/assets/Contacts-7jgUCs06.css">
 </head>
 
   <body>
@@ -23,12 +24,12 @@
       >
         <img
           class="header__logo-desktop"
-          src="/assets/cTravel-logo 1-aTFnXwL3.svg"
+          src="/assets/cTravel-logo 1-utSzAp7N.svg"
           alt=""
         />
         <img
           class="header__logo-adaptive"
-          src="/assets/cTravel-logo 2-NHSpIwPl.svg"
+          src="/assets/cTravel-logo 2-XA_iFfcE.svg"
           alt=""
         />
       </a>
@@ -139,7 +140,7 @@
 </header>
 
       <main class="page">
-        <div class="top-img">
+        <section class="top-img">
   <picture class="top-img__bg-img">
     <source srcset="/assets/image-bg-rhl2l6Xs.webp " type="image/webp" />
     <img
@@ -155,13 +156,13 @@
       <svg><use xlink:href="#tour_request-bg"></use></svg>
     </div>
   </div>
-</div>
+</section>
 
-        <div class="main-content main-content__container">
+        <section class="main-content main-content__container">
     <div class="main-content__column main-content__contact contact">
         <h1 class="contact__title">Контакты</h1>
 
-        <h3 class="contact__title-two"></h3>
+        <h3 class="contact__title-two">Напишите нам</h3>
 
         <p class="contact__info">Оставьте свой номер телефона или электронную почту и мы свяжемся с вами</p>
 
@@ -185,26 +186,48 @@
             </li>
         </ul>
     </div>
-    <form class="main-content__column main-content__form form">
+    <form id="form" class="main-content__column main-content__form form">
         <h3 class="form__title">Имя (необязательно)</h3>
 
-        <input class="form__input" type="text">
+        <div class="form__wrap">
+            <input class="form__input" type="text">
+        </div>
 
         <h3 class="form__title">Номер телефона</h3>
 
-        <input class="form__input" type="text">
+        <div class="form__wrap">
+            <input class="form__input"  name="phone" type="text">
+        </div>
 
         <h3 class="form__title">E-mail</h3>
         
-        <input class="form__input" type="text">
+        <div class="form__wrap">
+            <input class="form__input" name="main" type="text">
+        </div>
 
         <h3 class="form__title">Сообщение (необязательно)</h3>
         
-        <textarea class="form__textarea" name="" ></textarea>
+        <textarea class="form__textarea" ></textarea>
 
         <button class="form__btn btn">отправить</button>
     </form>
+</section>
+        <div class="map">
+    <div class="map__container">
+        <div class="map__iframe">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2028.6992742758443!2d24.757793577119536!3d59.43808997466716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4692935e1cef6107%3A0x32bf3446e703ad12!2zTmFydmEgbW50IDdkLTQg0Y3RgtCw0LYsIDEwMTE3IFRhbGxpbm4sINCt0YHRgtC-0L3QuNGP!5e0!3m2!1sru!2sua!4v1708086820237!5m2!1sru!2sua" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
 </div>
+
       </main>
       <footer class="footer">
   <div class="footer__container">
@@ -287,7 +310,7 @@
       <div class="footer__pictures pictures">
         <div class="pictures__insta">
           <img
-            src="/assets/insta-c29t3KDM.svg"
+            src="/assets/insta-OYEwA75t.svg"
             alt="insta"
             width="25"
             height="25"
@@ -653,6 +676,6 @@
 </svg>
 
 
-    </div>
+    </div>
   </body>
 </html>
