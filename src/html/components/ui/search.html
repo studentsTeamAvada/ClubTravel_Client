@@ -1,5 +1,5 @@
 <div class="search">
-  <div class="search__row search__row_top">
+  <div class="search__row search__row-top">
     <h1 class="search__row-title">{=$title}</h1>
   </div>
 
@@ -52,12 +52,13 @@
               <use #chevron-left></use>
             </svg>
           </div>
-          <ul class="info__duration-list dropdown__list">
+          <ul class="info__duration-list  dropdown__list">
             <li data-duration="One" class="dropdown__item">3 ночи</li>
             <li data-duration="Seven" class="dropdown__item">7 ночей</li>
             <li data-duration="Ten" class="dropdown__item">10 ночей</li>
             <li data-duration="Fourteen" class="dropdown__item">14 ночей</li>
             <li data-duration="TwentyOne" class="dropdown__item">21 ночь</li>
+
           </ul>
         </div>
       </div>
@@ -165,7 +166,7 @@
     </button>
   </div>
 
-  <div class="search__row search__row_bottom">
+  <div class="search__row search__row-bottom">
     <div class="search__row-sub">
       <button class="search__btn">
         <svg>
@@ -181,58 +182,112 @@
         Закрыть
       </button>
     </div>
-    <div class="search__category category">
-      <div class="category__rating">
-        <div class="category__rating-stars">
-          <h2 class="category__title">Категория размещения</h2>
-          <button class="category__btns category__btns-stars"></button>
-          <button class="category__btns category__btns-stars"></button>
-          <button class="category__btns category__btns-stars"></button>
-          <button class="category__btns category__btns-stars"></button>
-          <button class="category__btns category__btns-apart">
-            <svg>
-              <use xlink:href="#house"></use>
-            </svg>
-            Апартаменты
-          </button>
-        </div>
-        <div class="category__rating-meal">
-          <h2 class="category__title">Питание</h2>
+    <div class="search__category category category_active">
+      <div class="category__item">
+        <div class="category__rating">
+          <div class="category__rating-stars">
+            <h2 class="category__title">Категория размещения</h2>
+            <button
+              data-stars="three"
+              class="category__btns category__btns-stars"
+            >
+              <svg>
+                <use xlink:href="#star"></use>
+              </svg>
+              <svg>
+                <use xlink:href="#star"></use>
+              </svg>
+              <svg>
+                <use xlink:href="#star"></use>
+              </svg>
+            </button>
+            <button
+              data-stars="four"
+              class="category__btns category__btns-stars"
+            >
+              <svg>
+                <use xlink:href="#star"></use>
+              </svg>
+              <svg>
+                <use xlink:href="#star"></use>
+              </svg>
+              <svg>
+                <use xlink:href="#star"></use>
+              </svg>
+              <svg>
+                <use xlink:href="#star"></use>
+              </svg>
+            </button>
+            <button
+              data-stars="five"
+              class="category__btns category__btns-stars"
+            >
+              <svg>
+                <use xlink:href="#star"></use>
+              </svg>
+              <svg>
+                <use xlink:href="#star"></use>
+              </svg>
+              <svg>
+                <use xlink:href="#star"></use>
+              </svg>
+              <svg>
+                <use xlink:href="#star"></use>
+              </svg>
+              <svg>
+                <use xlink:href="#star"></use>
+              </svg>
+            </button>
+            <button
+              data-stars="apart"
+              class="category__btns category__btns-apart"
+            >
+              <svg>
+                <use xlink:href="#house"></use>
+              </svg>
+              Апартаменты
+            </button>
+          </div>
+          <div class="category__rating-meal">
+            <h2 class="category__title">Питание</h2>
 
-          <button data-meals="ao" class="category__btns category__btns-meals">
+          <button data-meals="ao"  class="category__btns category__btns-meals">
             <svg>
               <use xlink:href="#check-circle"></use>
             </svg>
             Без питания
           </button>
 
-          <button data-meals="bb" class="category__btns category__btns-meals">
-            <svg>
-              <use xlink:href="#check-circle"></use>
-            </svg>
-            Завтрак
-          </button>
+            <button data-meals="bb" class="category__btns category__btns-meals">
+              <svg>
+                <use xlink:href="#check-circle"></use>
+              </svg>
+              Завтрак
+            </button>
 
-          <button data-meals=" hb" class="category__btns category__btns-meals">
-            <svg>
-              <use xlink:href="#check-circle"></use>
-            </svg>
-            Затрак и ужин
-          </button>
+            <button
+              data-meals="hb"
+              class="category__btns category__btns-meals"
+            >
+              <svg>
+                <use xlink:href="#check-circle"></use>
+              </svg>
+              Затрак и ужин
+            </button>
 
-          <button data-meals="fb" class="category__btns category__btns-meals">
-            <svg>
-              <use xlink:href="#check-circle"></use>
-            </svg>
-            Завтрак, обед, ужин
-          </button>
+            <button data-meals="fb" class="category__btns category__btns-meals">
+              <svg>
+                <use xlink:href="#check-circle"></use>
+              </svg>
+              Завтрак, обед, ужин
+            </button>
 
-          <button data-meals="ai" class="category__btns category__btns-meals">
-            <svg>
-              <use xlink:href="#check-circle"></use>
-            </svg>
-            Всё включено
-          </button>
+            <button data-meals="ai" class="category__btns category__btns-meals">
+              <svg>
+                <use xlink:href="#check-circle"></use>
+              </svg>
+              Всё включено
+            </button>
 
           <button data-meals="uai" class="category__btns category__btns-meals">
             <svg>
@@ -240,6 +295,7 @@
             </svg>
             Ультра: всё включено
           </button>
+
         </div>
       </div>
 
@@ -273,17 +329,40 @@
             </svg>
             Львова
           </button>
+
         </div>
         <div class="category__price">
           <h2 class="category__title">Цена на одного человека</h2>
           <div class="category__slider"></div>
         </div>
+
       </div>
+
       <div class="category__regions">
         <h2 class="category__title">Регион</h2>
         <p class="category__regions-current"></p>
-        <div class="category__regions-item"></div>
+        <div class="category__regions-item">
+
+        </div>
+
       </div>
+
     </div>
+<div class="category__filter">
+        <hr class="category__filter-line" />
+        <div class="category__filter-item">
+          <h3 class="category__filter-title">Активные фильтры:</h3>    
+        <div class="category__filter-row">
+          <h3 class="category__filter-title category__filter-title_main">Категория</h3>
+
+
+ 
+
+        </div>
+
+
   </div>
+
+
+
 </div>

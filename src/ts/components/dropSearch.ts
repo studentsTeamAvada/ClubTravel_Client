@@ -9,6 +9,7 @@ export class DropdownSearch {
   urlParam: URLSearchParams | undefined;
   currentUrl: string | null | undefined;
 
+
   constructor(className: string) {
     this.dropdown = $(className);
     this.dropdownRow = this.dropdown.find(".dropdown__row");
@@ -78,6 +79,7 @@ export class DropdownSearch {
       default:
         this.dropdownCurrent.text("");
     }
+
   }
 
   currentVal(): void {
@@ -103,6 +105,7 @@ export class DropdownSearch {
       if (!dropdownIs && dropdownHas) {
         this.dropdownList.removeClass("dropdown__list_show");
         this.dropdownIcon.removeClass("dropdown__icon_rotate");
+
       }
     });
   }

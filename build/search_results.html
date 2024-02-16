@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,10 +8,25 @@
   <title>Результаты поиска</title>
   <script type="module" crossorigin src="/assets/Search_results-_vr_RBay.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/header-9Fuft6xP.js">
+=======
+<!doctype html>
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/ico+xml" href="/ClubTravel.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Результаты поиска</title>
+  <script type="module" crossorigin src="/assets/Search_results-IhpPVgMR.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/header-hiQeVM5C.js">
+>>>>>>> 667309d8f251983cc7dd0db29ac6e881384a0f61
   <link rel="modulepreload" crossorigin href="/assets/index.esm-RQMDg1fI.js">
   <link rel="modulepreload" crossorigin href="/assets/firebase-WXR3vcUU.js">
   <link rel="modulepreload" crossorigin href="/assets/index.esm2017-9WYfP4j3.js">
-  <link rel="stylesheet" crossorigin href="/assets/Search_results-CWc5WiOI.css">
+  <link rel="modulepreload" crossorigin href="/assets/air-datepicker-nZugeT86.js">
+  <link rel="modulepreload" crossorigin href="/assets/autoplay-3nwb4p1k.js">
+  <link rel="stylesheet" crossorigin href="/assets/air-datepicker-vjRodfbR.css">
+  <link rel="stylesheet" crossorigin href="/assets/Search_results-pOSZxwfq.css">
 </head>
 
 
@@ -26,12 +42,12 @@
       >
         <img
           class="header__logo-desktop"
-          src="/assets/cTravel-logo 1-utSzAp7N.svg"
+          src="/assets/cTravel-logo 1-aTFnXwL3.svg"
           alt=""
         />
         <img
           class="header__logo-adaptive"
-          src="/assets/cTravel-logo 2-XA_iFfcE.svg"
+          src="/assets/cTravel-logo 2-NHSpIwPl.svg"
           alt=""
         />
       </a>
@@ -150,7 +166,7 @@
         <section class="tour">
           <div class="tour__container">
             <div class="search">
-  <div class="search__row search__row_top">
+  <div class="search__row search__row-top">
     <h1 class="search__row-title">Найти тур</h1>
   </div>
 
@@ -203,12 +219,13 @@
               <use #chevron-left></use>
             </svg>
           </div>
-          <ul class="info__duration-list dropdown__list">
+          <ul class="info__duration-list  dropdown__list">
             <li data-duration="One" class="dropdown__item">3 ночи</li>
             <li data-duration="Seven" class="dropdown__item">7 ночей</li>
             <li data-duration="Ten" class="dropdown__item">10 ночей</li>
             <li data-duration="Fourteen" class="dropdown__item">14 ночей</li>
             <li data-duration="TwentyOne" class="dropdown__item">21 ночь</li>
+
           </ul>
         </div>
       </div>
@@ -316,7 +333,7 @@
     </button>
   </div>
 
-  <div class="search__row search__row_bottom">
+  <div class="search__row search__row-bottom">
     <div class="search__row-sub">
       <button class="search__btn">
         <svg>
@@ -332,58 +349,112 @@
         Закрыть
       </button>
     </div>
-    <div class="search__category category">
-      <div class="category__rating">
-        <div class="category__rating-stars">
-          <h2 class="category__title">Категория размещения</h2>
-          <button class="category__btns category__btns-stars"></button>
-          <button class="category__btns category__btns-stars"></button>
-          <button class="category__btns category__btns-stars"></button>
-          <button class="category__btns category__btns-stars"></button>
-          <button class="category__btns category__btns-apart">
-            <svg>
-              <use xlink:href="#house"></use>
-            </svg>
-            Апартаменты
-          </button>
-        </div>
-        <div class="category__rating-meal">
-          <h2 class="category__title">Питание</h2>
+    <div class="search__category category category_active">
+      <div class="category__item">
+        <div class="category__rating">
+          <div class="category__rating-stars">
+            <h2 class="category__title">Категория размещения</h2>
+            <button
+              data-stars="three"
+              class="category__btns category__btns-stars"
+            >
+              <svg>
+                <use xlink:href="#star"></use>
+              </svg>
+              <svg>
+                <use xlink:href="#star"></use>
+              </svg>
+              <svg>
+                <use xlink:href="#star"></use>
+              </svg>
+            </button>
+            <button
+              data-stars="four"
+              class="category__btns category__btns-stars"
+            >
+              <svg>
+                <use xlink:href="#star"></use>
+              </svg>
+              <svg>
+                <use xlink:href="#star"></use>
+              </svg>
+              <svg>
+                <use xlink:href="#star"></use>
+              </svg>
+              <svg>
+                <use xlink:href="#star"></use>
+              </svg>
+            </button>
+            <button
+              data-stars="five"
+              class="category__btns category__btns-stars"
+            >
+              <svg>
+                <use xlink:href="#star"></use>
+              </svg>
+              <svg>
+                <use xlink:href="#star"></use>
+              </svg>
+              <svg>
+                <use xlink:href="#star"></use>
+              </svg>
+              <svg>
+                <use xlink:href="#star"></use>
+              </svg>
+              <svg>
+                <use xlink:href="#star"></use>
+              </svg>
+            </button>
+            <button
+              data-stars="apart"
+              class="category__btns category__btns-apart"
+            >
+              <svg>
+                <use xlink:href="#house"></use>
+              </svg>
+              Апартаменты
+            </button>
+          </div>
+          <div class="category__rating-meal">
+            <h2 class="category__title">Питание</h2>
 
-          <button data-meals="ao" class="category__btns category__btns-meals">
+          <button data-meals="ao"  class="category__btns category__btns-meals">
             <svg>
               <use xlink:href="#check-circle"></use>
             </svg>
             Без питания
           </button>
 
-          <button data-meals="bb" class="category__btns category__btns-meals">
-            <svg>
-              <use xlink:href="#check-circle"></use>
-            </svg>
-            Завтрак
-          </button>
+            <button data-meals="bb" class="category__btns category__btns-meals">
+              <svg>
+                <use xlink:href="#check-circle"></use>
+              </svg>
+              Завтрак
+            </button>
 
-          <button data-meals=" hb" class="category__btns category__btns-meals">
-            <svg>
-              <use xlink:href="#check-circle"></use>
-            </svg>
-            Затрак и ужин
-          </button>
+            <button
+              data-meals="hb"
+              class="category__btns category__btns-meals"
+            >
+              <svg>
+                <use xlink:href="#check-circle"></use>
+              </svg>
+              Затрак и ужин
+            </button>
 
-          <button data-meals="fb" class="category__btns category__btns-meals">
-            <svg>
-              <use xlink:href="#check-circle"></use>
-            </svg>
-            Завтрак, обед, ужин
-          </button>
+            <button data-meals="fb" class="category__btns category__btns-meals">
+              <svg>
+                <use xlink:href="#check-circle"></use>
+              </svg>
+              Завтрак, обед, ужин
+            </button>
 
-          <button data-meals="ai" class="category__btns category__btns-meals">
-            <svg>
-              <use xlink:href="#check-circle"></use>
-            </svg>
-            Всё включено
-          </button>
+            <button data-meals="ai" class="category__btns category__btns-meals">
+              <svg>
+                <use xlink:href="#check-circle"></use>
+              </svg>
+              Всё включено
+            </button>
 
           <button data-meals="uai" class="category__btns category__btns-meals">
             <svg>
@@ -391,6 +462,7 @@
             </svg>
             Ультра: всё включено
           </button>
+
         </div>
       </div>
 
@@ -424,196 +496,54 @@
             </svg>
             Львова
           </button>
+
         </div>
         <div class="category__price">
           <h2 class="category__title">Цена на одного человека</h2>
           <div class="category__slider"></div>
         </div>
+
       </div>
+
       <div class="category__regions">
         <h2 class="category__title">Регион</h2>
         <p class="category__regions-current"></p>
-        <div class="category__regions-item"></div>
-      </div>
-    </div>
-  </div>
-</div>
+        <div class="category__regions-item">
 
+        </div>
+
+      </div>
+
+    </div>
+<div class="category__filter">
+        <hr class="category__filter-line" />
+        <div class="category__filter-item">
+          <h3 class="category__filter-title">Активные фильтры:</h3>    
+        <div class="category__filter-row">
+          <h3 class="category__filter-title category__filter-title_main">Категория</h3>
+
+
+ 
+
+        </div>
+
+
+  </div>
+
+
+
+</div>
           </div>
         </section>
         <section class="result">
           <div class="result__container">
-            <div class="result__top">
-              <h3 class="result__top-title">
-                Найдено <span class="result__top-offers"></span> предложения в
-                <span class="result__top-hotel"></span>
-                отелях
-              </h3>
-              <div class="result__top-calendar"></div>
-              <div class="result__top-sort">
-                <p class="result__top-text">Сортировать:</p>
-                <section>
-                  <option value="Цена"></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                </section>
-                <section>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                </section>
-              </div>
+            <div class="result__header">
             </div>
 
-            <div class="result__content">
-              <!-- <div class="result__hotel">
-
-              <div class="result__slider">
-                <div class="swiper result__swiper">
-                  <div class="swiper-wrapper result__wrapper">
-
-                    <div class="swiper-slide result__slide">
-                      <picture>
-                        <source srcset="./src/images/404/404.webp" type="image/webp">
-                        <img src="./src/images/404/404.png" alt="photo">c
-                      </picture>
-                    </div>
-
-                    <div class="swiper-slide result__slide">
-                      <picture>
-                        <source srcset="./src/images/404/404.webp" type="image/webp">
-                        <img src="./src/images/404/404.png" alt="photo">
-                      </picture>
-                    </div>
-
-                    <div class="swiper-slide result__slide">
-                      <picture>
-                        <source srcset="./src/images/404/404.webp" type="image/webp">
-                        <img src="./src/images/404/404.png" alt="photo">
-                      </picture>
-                    </div>
-
-                    <div class="swiper-slide result__slide">
-                      <picture>
-                        <source srcset="./src/images/404/404.webp" type="image/webp">
-                        <img src="./src/images/404/404.png" alt="photo">
-                      </picture>
-                    </div>
-
-                    <div class="swiper-slide result__slide">
-                      <picture>
-                        <source srcset="./src/images/404/404.webp" type="image/webp">
-                        <img src="./src/images/404/404.png" alt="photo">
-                      </picture>
-                    </div>
-
-                    <div class="swiper-slide result__slide">
-                      <picture>
-                        <source srcset="./src/images/404/404.webp" type="image/webp">
-                        <img src="./src/images/404/404.png" alt="photo">
-                      </picture>
-                    </div>
-
-                    <div class="swiper-slide result__slide">
-                      <picture>
-                        <source srcset="./src/images/404/404.webp" type="image/webp">
-                        <img src="./src/images/404/404.png" alt="photo">
-                      </picture>
-                    </div>
-
-                    <div class="swiper-slide result__slide">
-                      <picture>
-                        <source srcset="./src/images/404/404.webp" type="image/webp">
-                        <img src="./src/images/404/404.png" alt="photo">
-                      </picture>
-                    </div>
-
-                    <div class="swiper-slide result__slide">
-                      <picture>
-                        <source srcset="./src/images/404/404.webp" type="image/webp">
-                        <img src="./src/images/404/404.png" alt="photo">
-                      </picture>
-                    </div>
-
-                  </div>
-
-                  <div class="swiper-button-next result__btn-next">
-                    <svg>
-                      <use xlink:href="#chevron-left"></use>
-                    </svg>
-                  </div>
-
-                  <div class="swiper-button-prev result__btn-prev">
-                    <svg>
-                      <use xlink:href="#chevron-left"></use>
-                    </svg>
-                  </div>
-
-                </div>
-              </div>
-
-              <div class="result__row">
-
-                <div class="result__info">
-                  <h4 class="result__info-title"></h4>
-
-                  <div class="result__info-location">
-                    <svg>
-                      <use xlink:href="#point"></use>
-                    </svg>
-                    <p class="result__info-country"></p>
-                    <p class="result__info-region"></p>
-                  </div>
-
-                  <p class="result__info-descript"></p>
-                  <a class="result__info-link"  href="hotel.html"> 
-                    Подробнее об отеле
-                    <svg>
-                      <use xlink:href="#arrow-right"></use>
-                    </svg> 
-                  </a>                  
-                </div>
-
-                <div class="result__rating">
-                  <div class="result__rating-star">
-                    <img src="" alt="star">
-                  </div>
-
-                  <p class="result__rating-duration">
-                    <svg>
-                      <use xlink:href="#clock"></use>
-                    </svg>
-                  </p>
-
-                  <p class="result__rating-meal">
-                    <svg>
-                      <use xlink:href="#food"></use>
-                    </svg>
-                  </p>
-
-                  <p class="result__rating-room">
-                    <svg>
-                      <use xlink:href="#house"></use>
-                    </svg>
-                  </p>
-
-                  <p class="result__rating-beach">
-                    <svg>
-                      <use xlink:href="#sun"></use>
-                    </svg>
-                  </p>
-                </div>
-
-                <div class="result__price">
-                  <p class="result__price-num"></p>
-                </div>
-
-              </div>
-
-            </div> -->
-            </div>
+            <div class="result__content"></div>
           </div>
         </section>
+
       </main>
       <footer class="footer">
   <div class="footer__container">
@@ -696,7 +626,7 @@
       <div class="footer__pictures pictures">
         <div class="pictures__insta">
           <img
-            src="/assets/insta-OYEwA75t.svg"
+            src="/assets/insta-c29t3KDM.svg"
             alt="insta"
             width="25"
             height="25"
@@ -1062,6 +992,6 @@
 </svg>
 
 
-    </div>
+    </div>
   </body>
 </html>

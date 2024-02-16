@@ -23,6 +23,12 @@
           max-width: 100%;
         }
       }
+      position: absolute;
+      top: -14px;
+      width: 100%;
+      min-height: 430px;
+      z-index: -1;
+
       @include media-breakpoint-down(sm) {
         min-height: 255px;
       }
@@ -37,6 +43,11 @@
         width: 1600px;
         height: 56px;
         transform: translateX(-50%);
+        z-index: 1;
+      }
+
+      @include media-breakpoint-down(sm) {
+        display: none;
       }
 
       @include media-breakpoint-down(sm) {
@@ -49,15 +60,21 @@
     &-info {
       position: absolute;
       bottom: 41px;
-      z-index: 2;
       border-radius: 8px;
       padding: 12px 19px 13px;
       height: 85px;
       min-width: 304px;
+      cursor: pointer;
+      transition: transform 300ms ease 0s;
+      z-index: 2;
       color: #222;
       background: #fff;
-      transition: transform 300ms ease 0s;
-      cursor: pointer;
+
+      &:hover {
+        @include media-breakpoint-up(md) {
+          transform: scale(1.01);
+        }
+      }
 
       &:hover {
         @include media-breakpoint-up(md) {
@@ -98,6 +115,13 @@
     }
 
     &-stars {
+
+      svg {
+        margin-right: 4px;
+        width: 18px;
+        height: 18px;
+        fill: #f5c213;
+      }
       position: relative;
       display: flex;
       align-items: center;
@@ -117,11 +141,8 @@
         }
       }
 
-      svg {
-        margin-right: 4px;
-        width: 18px;
-        height: 18px;
-        fill: #f5c213;
+      @include media-breakpoint-down(xs) {
+        margin: 0 0 10px 10px;
       }
 
       @include media-breakpoint-down(xs) {
@@ -130,8 +151,6 @@
     }
 
     &-location {
-      display: flex;
-      align-items: center;
 
       svg {
         margin-right: 9px;
@@ -140,11 +159,13 @@
         fill: #3e7739;
         opacity: 0.5;
       }
+      display: flex;
+      align-items: center;
     }
 
     &-sity {
-      font-size: 14px;
       white-space: nowrap;
+      font-size: 14px;
       color: #222;
 
       @include media-breakpoint-down(xs) {
