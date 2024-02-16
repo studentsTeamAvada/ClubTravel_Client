@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:build/assets/index-vk4GAbb3.js
-import{H as T}from"./header-9Fuft6xP.js";import{H as q,C as x,a as W,W as k,S as C}from"./swiper-8s-Bbwav.js";import{a as u}from"./firebase-WXR3vcUU.js";import{g as l,a as _,c as m,q as w,w as v}from"./index.esm2017-9WYfP4j3.js";import"./index.esm-RQMDg1fI.js";const g=document.querySelector(".main-company__swiper-wrapper");class H{app;db;productsArray;constructor(){this.app=u,this.db=l(this.app),this.productsArray=[]}async loadCards(){(await _(m(this.db,"hotels"))).forEach(e=>{const s=e.data();this.productsArray.push(s)}),this.renderProducts()}renderProducts(){this.productsArray.forEach(e=>{const s=e,{name:a,price:r,img:c,date:i}=s;if(c&&Array.isArray(c)&&c.length>0){const{url:p,urlWebp:o}=c[0];let d=`
-========
 import{H as T}from"./header-hiQeVM5C.js";import{H as q,C as x,a as W,W as k,S as C}from"./swiper-G_k_SzQb.js";import{a as u}from"./firebase-WXR3vcUU.js";import{g as l,a as _,c as m,q as w,w as v}from"./index.esm2017-9WYfP4j3.js";import"./autoplay-3nwb4p1k.js";import"./index.esm-RQMDg1fI.js";const g=document.querySelector(".main-company__swiper-wrapper");class H{app;db;productsArray;constructor(){this.app=u,this.db=l(this.app),this.productsArray=[]}async loadCards(){(await _(m(this.db,"hotels"))).forEach(e=>{const s=e.data();this.productsArray.push(s)}),this.renderProducts()}renderProducts(){this.productsArray.forEach(e=>{const s=e,{name:a,price:r,img:c,date:i}=s;if(c&&Array.isArray(c)&&c.length>0){const{url:p,urlWebp:o}=c[0];let d=`
->>>>>>>> 667309d8f251983cc7dd0db29ac6e881384a0f61:build/assets/index-MjZ13ddA.js
       <div class="swiper-slide main-company__swiper-slide">
         <div class="main-company__card">
         <div class="main-company__card-img">
