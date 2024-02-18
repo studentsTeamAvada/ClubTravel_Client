@@ -172,7 +172,6 @@
     svg {
       transform: rotate(180deg);
     }
-    right: 2%;
 
     @include media-breakpoint-down(my) {
       right: 4%;
