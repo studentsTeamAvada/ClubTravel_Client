@@ -8,19 +8,28 @@ import { CompanyProduct } from '../code/main/main-company';
 import { HotDealsProduct } from '../code/main/hot-deals';
 import { WinterTourProduct } from '../code/main/winter-tour';
 import { SummerTourProduct } from '../code/main/summer-tour';
+import { Preloader } from "../components/preloader";
 
-new Header();
-const productCompany = new CompanyProduct();
-const productHotDeals = new HotDealsProduct();
-const productWinterTour = new WinterTourProduct();
-const productSummerTour = new SummerTourProduct();
-new HeroSwiper();
-new CompanySwiper();
-new HotDealsSwiper();
-new WinterTourSwiper();
-new SummerTourSwiper();
 
-await productCompany.loadCards();
-await productHotDeals.loadCards();
-await productWinterTour.loadCards();
-await productSummerTour.loadCards();
+
+
+
+
+document.addEventListener("DOMContentLoaded", async function() {
+    const productCompany = new CompanyProduct();
+    const productHotDeals = new HotDealsProduct();
+    const productWinterTour = new WinterTourProduct();
+    const productSummerTour = new SummerTourProduct();
+    new HeroSwiper();
+    new CompanySwiper();
+    new HotDealsSwiper();
+    new WinterTourSwiper();
+    new SummerTourSwiper();
+
+    await productCompany.loadCards();
+    await productHotDeals.loadCards();
+    await productWinterTour.loadCards();
+    await productSummerTour.loadCards();
+    new Header();
+    new Preloader()
+})

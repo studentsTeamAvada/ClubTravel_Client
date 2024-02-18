@@ -1,21 +1,15 @@
-.page {
-  min-height: 1500px;
-}
-
 .main-content {
   &__wrapper {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 55px;
     @include media-breakpoint-down(sm) {
       display: block;
     }
   }
-  &__column {
-  }
   &__column-one {
     max-width: 521px;
     width: 100%;
-    // background-color: rgb(20, 156, 219);
     margin-right: 30px;
     @include media-breakpoint-down(sm) {
       max-width: 100%;
@@ -32,6 +26,11 @@
 
 .adviser {
   margin-top: 23px;
+
+  @include media-breakpoint-down(sm) {
+    margin: 34px 0 24px 0;
+  }
+
   &__main-title {
     font-size: 36px;
     font-weight: 700;
@@ -216,14 +215,17 @@
       flex-wrap: wrap;
     }
   }
-  @include media-breakpoint-down(sm) {
-    margin: 34px 0 0 0;
-  }
+
 }
 
 .form {
   width: 100%;
   height: 100%;
+  max-width: 418px;
+
+  @include media-breakpoint-down(sm) {
+    max-width: unset;
+  }
 
   &__wrapper {
     transform: translateY(-38px);
@@ -233,6 +235,10 @@
     position: relative;
     z-index: 1;
     min-height: 544px;
+
+    @include media-breakpoint-down(sm) {
+      transform: translateY(0);
+    }
   }
   &__tabs {
     height: 58px;
@@ -248,6 +254,14 @@
       height: 100%;
       width: 33%;
       transition: all 300ms ease 0s;
+
+      @include media-breakpoint-down(sm) {
+        display: none;
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+      background: #fff;
     }
   }
   &__tab {
@@ -264,12 +278,19 @@
     &_active {
       opacity: 1;
     }
+
+    @include media-breakpoint-down(sm) {
+      font-size: 18px;
+    }
   }
 
   &__main {
     padding: 22px;
+    @include media-breakpoint-down(sm) {
+      padding: 18px 16px 16px 16px;
+    }
   }
-  &__state {
+  &___state {
     min-height: 378px;
   }
   &__title {
@@ -282,6 +303,11 @@
     height: 42px;
     margin-bottom: 14px;
     position: relative;
+
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 14px;
+    }
+
     label{
       position: absolute;
       top: -18px;
@@ -289,16 +315,24 @@
       color: rgb(199 41 41);
       right: 5px;
     }
+
+    &-guests {
+      margin-bottom: 7px;
+    }
+
     &-tags {
       display: flex;
       flex-wrap: wrap;
-      overflow: auto;
-      margin-bottom: 8px;
-      min-height: 68px;
-      max-height: 200px;
+      margin-bottom: 16px;
+      min-height: 31px;
       gap: 8px;
 
+      @include media-breakpoint-down(sm) {
+        margin-bottom: 16px;
+      }
+
       li {
+        cursor: default;
         border: 1px solid #e2e2e2;
         border-radius: 6px;
         padding: 3px 10px;
@@ -308,8 +342,43 @@
         line-height: 16px;
         color: #222;
         background: #fff;
+        position: relative;
+        transition: border 200ms ease 0s;
+
+        span{
+          content: "+";
+          position: absolute;
+          right: -6px;
+          top: -6px;
+          opacity: 0;
+          background-color: #f68521;
+          color: #fff;
+          border-radius: 50%;
+          transform: rotate(-45deg);
+          font-size: 15px;
+          line-height: 12px;
+          text-align: center;
+          cursor: pointer;
+          width: 13px;
+          height: 13px;
+
+
+        }
+
+        &:hover{
+          @include media-breakpoint-up(md) {
+            border: 1px solid #f68521;
+            span{
+              opacity: 0.7;
+              &:hover{
+                opacity: 0.9;
+              }
+            }
+          }
+        }
       }
     }
+
     &-food {
       position: relative;
     }
@@ -323,20 +392,35 @@
     justify-content: space-between;
     user-select: none;
     &-btn {
-      padding: 4px;
+      padding: 5px;
       border-radius: 50%;
       width: 24px;
       height: 24px;
-      transition: all 100ms ease 0s;
+      opacity: 0.5;
+      transition: scale 100ms ease 0s;
+      transition: opacity 300ms ease 0s;
       cursor: pointer;
+
       &:active {
         transform: scale(0.9);
       }
+
+      &:hover{
+        @include media-breakpoint-up(md) {
+          opacity: 0.9;
+        }
+      }
+
       svg {
         margin: 0;
         width: 16px;
         height: 16px;
         fill: #f68521;
+
+        @include media-breakpoint-down(sm) {
+          width: 14px;
+          height: 14px;
+        }
       }
     }
     &-remove {
@@ -351,14 +435,16 @@
     border-radius: 6px;
     width: 100%;
     height: 42px;
-    margin-top: 34px;
     font-size: 16px;
     color: #222;
     transition: all 300ms ease 0s;
     user-select: none;
-    &_finish {
-      display: none;
+
+    @include media-breakpoint-down(sm) {
+      background-color: #f68521;
+      color: #fff;
     }
+
     &:hover {
       @include media-breakpoint-up(md) {
         color: #fff;
@@ -369,6 +455,39 @@
     &:active {
       transform: scale(0.97);
     }
+
+    &-first-state{
+      margin-top: 56px;
+
+      @include media-breakpoint-down(sm) {
+        margin-top: 35px;
+      }
+    }
+
+    &-second-state{
+      margin-top: 31px;
+
+      @include media-breakpoint-down(sm) {
+        margin-top: 16px;
+      }
+    }
+
+    &-three-state {
+      margin-top: 154px;
+      color: #fff;
+      background: #f68521;
+
+      &:hover {
+        @include media-breakpoint-up(md) {
+          background:  rgb(246 133 33 / 90%);
+        }
+      }
+
+      @include media-breakpoint-down(sm) {
+        margin-top: 136px;
+      }
+    }
+
     &-error {
       font-size: 12px;
       transition: all 300ms ease 0s;
@@ -445,11 +564,6 @@
     }
   }
 
-  &__btn-three-state {
-    height: 42px;
-    display: none;
-  }
-
   &__textarea {
     border-radius: 6px;
     border: 1px solid #e2e2e2;
@@ -459,110 +573,104 @@
     resize: none;
   }
 
-  &__first-state {
+  &__state{
     animation: animation 500ms ease-in-out;
-  }
-  &__second-state {
-    animation: animation 500ms ease-in-out;
-  }
-  &__third-state {
-    animation: animation 500ms ease-in-out;
-  }
-  &_one-state {
-    .form {
-      &__first-state {
-        display: block;
-      }
-      &__second-state {
-        display: none;
-      }
-      &__third-state {
-        display: none;
-      }
+    &-first {
+      display: block;
+    }
+    &-second {
+      display: none;
+    }
+    &-third {
+      display: none;
     }
   }
-
-  &_two-state {
-    .form {
-      &__first-state {
-        display: none;
-      }
-      &__second-state {
-        display: block;
-      }
-      &__third-state {
-        display: none;
-      }
-    }
-  }
-
-  &_three-state {
-    .form {
-      &__first-state {
-        display: none;
-      }
-      &__second-state {
-        display: none;
-      }
-      &__third-state {
-        display: block;
-      }
-      &__btn {
-        border-radius: 6px;
-        width: 100%;
-        height: 42px;
-        font-size: 16px;
-        color: #fff;
-        background: #f68521;
-        transition: all 300ms ease 0s;
-        &_next {
-          display: none;
+  
+  &_state{
+    &-one{
+      .form {
+        &__state{
+          &-first {
+            display: block;
+          }
+          &-second {
+            display: none;
+          }
+          &-third {
+            display: none;
+          }
         }
-        &_finish {
-          display: block;
-        }
-        &:hover {
-          @include media-breakpoint-up(md) {
-            background-color: rgb(246 133 33 / 90%);
+
+        @include media-breakpoint-down(sm) {
+          &__tab{
+            &-two{
+              display: none;
+            }
+            &-three{
+              display: none;
+            }
           }
         }
       }
     }
-  }
 
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-ms-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: rgb(246 133 33 / 80%);
-
-    &:hover {
-      background-color: rgb(246 133 33 / 100%);
+    &-two {
+      .form {
+        &__state{
+          &-first {
+            display: none;
+          }
+          &-second {
+  
+            display: block;
+          }
+          &-third {
+            display: none;
+          }
+        }
+  
+        @include media-breakpoint-down(sm) {
+          &__tab{
+            &-one{
+              display: none;
+            }
+  
+            &-three{
+              display: none;
+            }
+          }
+        }
+      }
     }
+  
+    &-three{
+      .form {
+        &__state{
+          &-first {
+            display: none;
+          }
+          &-second {
+            display: none;
+          }
+          &-third {
+            display: block;
+          }
+        }
+  
+        @include media-breakpoint-down(sm) {
+          &__tab{
+            &-one{
+              display: none;
+            }
+            &-two{
+              display: none;
+            }
+          }
+        }
+      }
+    }  
   }
 
-  ::-ms-scrollbar-thumb {
-    background-color: rgb(246 133 33 / 80%);
-
-    &:hover {
-      background-color: rgb(246 133 33 / 100%);
-    }
-  }
-
-  @include media-breakpoint-down(md) {
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    ::-ms-scrollbar {
-      width: 6px;
-    }
-  }
 }
 
 .input{

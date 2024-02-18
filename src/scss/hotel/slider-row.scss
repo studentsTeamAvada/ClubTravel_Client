@@ -77,14 +77,6 @@
   z-index: 2;
   padding: 0 24px;
 
-  svg {
-    margin-right: 15px;
-    width: 18px;
-    height: 18px;
-    fill: #3e7739;
-    opacity: 0.5;
-  }
-
   &__column {
     @include media-breakpoint-down(md) {
       padding: 0 20px;
@@ -139,6 +131,14 @@
     font-size: 16px;
     color: #222;
 
+    svg {
+      margin-right: 15px;
+      width: 18px;
+      height: 18px;
+      fill: #3e7739;
+      opacity: 0.5;
+    }
+
     li {
       display: flex;
       align-items: center;
@@ -185,13 +185,13 @@
     &-tegs {
       display: flex;
       flex-wrap: wrap;
-      overflow: auto;
+
       margin-bottom: 8px;
       min-height: 68px;
-      max-height: 200px;
       gap: 8px;
 
       li {
+        cursor: default;
         border: 1px solid #e2e2e2;
         border-radius: 6px;
         padding: 3px 10px;
@@ -201,6 +201,38 @@
         line-height: 16px;
         color: #222;
         background: #fff;
+        position: relative;
+        transition: border 200ms ease 0s;
+
+        span{
+          content: "+";
+          position: absolute;
+          right: -6px;
+          top: -6px;
+          opacity: 0;
+          background-color: #f68521;
+          color: #fff;
+          border-radius: 50%;
+          transform: rotate(-45deg);
+          font-size: 15px;
+          line-height: 12px;
+          text-align: center;
+          cursor: pointer;
+          width: 13px;
+          height: 13px;
+        }
+
+        &:hover{
+          @include media-breakpoint-up(md) {
+            border: 1px solid #f68521;
+            span{
+              opacity: 0.7;
+              &:hover{
+                opacity: 0.9;
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -255,30 +287,6 @@
       span {
         color: #555;
       }
-    }
-  }
-
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  ::-ms-scrollbar {
-    width: 6px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: rgb(246 133 33 / 80%);
-
-    &:hover {
-      background-color: rgb(246 133 33 / 100%);
-    }
-  }
-
-  ::-ms-scrollbar-thumb {
-    background-color: rgb(246 133 33 / 80%);
-
-    &:hover {
-      background-color: rgb(246 133 33 / 100%);
     }
   }
 
