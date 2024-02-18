@@ -312,7 +312,7 @@ export class DropDown {
       const total = $(".dropdown__count-two").find(".dropdown__count-current");
 
       if(e.target.innerHTML === "+"){
-        allSelects.each((index, item) => {
+        allSelects.each((_index, item) => {
           const ageDropValue =  item.querySelector('.children__current')?.textContent
           if (currentTag === ageDropValue) {
             e.target.parentElement?.remove()
