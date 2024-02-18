@@ -1,8 +1,4 @@
 .directions {
-  position: relative;
-  top: -100px;
-  padding-top: 162px;
-  background: #fff;
 
   &__wrapper {
     display: flex;
@@ -20,7 +16,6 @@
   }
 
   &__swiper-round {
-    position: relative;
 
     @media (width >= 1024px) {
       &:hover {
@@ -29,6 +24,15 @@
         }
       }
     }
+
+    @media (width >= 1024px) {
+      &:hover {
+        &::before {
+          opacity: 0.4;
+        }
+      }
+    }
+    position: relative;
 
     &::before {
       content: "";
@@ -47,14 +51,6 @@
       @include media-breakpoint-down(md) {
         background: #fff;
         opacity: 1;
-      }
-    }
-
-    @media (width >= 1024px) {
-      &:hover {
-        &::before {
-          opacity: 0.4;
-        }
       }
     }
   }
@@ -141,4 +137,8 @@
       max-width: 290px;
     }
   }
+  position: relative;
+  top: -100px;
+  padding-top: 162px;
+  background: #fff;
 }

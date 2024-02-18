@@ -1,17 +1,6 @@
 .food {
-  position: relative;
-  height: 100%;
 
   &__btn {
-    position: relative;
-    display: flex;
-    align-items: center;
-    border: 1px solid #e2e2e2;
-    border-radius: 6px;
-    height: 100%;
-    transition: border 300ms ease 0s;
-    cursor: pointer;
-    user-select: none;
 
     &-info {
       margin-left: 16px;
@@ -29,29 +18,26 @@
       transition: transform 300ms ease 0s;
     }
     position: relative;
+    position: relative;
+    display: flex;
     display: flex;
     align-items: center;
+    align-items: center;
+    border: 1px solid #e2e2e2;
     border: 1px solid #e2e2e2;
     border-radius: 6px;
+    border-radius: 6px;
+    height: 100%;
     height: 100%;
     cursor: pointer;
+    cursor: pointer;
     user-select: none;
+    user-select: none;
+    transition: border 300ms ease 0s;
     transition: border 300ms ease 0s;
   }
 
   &__list {
-    position: absolute;
-    z-index: 100;
-    overflow: auto;
-    border: 1px solid #e2e2e2;
-    border-radius: 6px;
-    padding: 5px;
-    width: 100%;
-    max-height: 240px;
-    background: #fff;
-    transform: scaleY(0);
-    transform-origin: 0 0;
-    transition: all 300ms ease 0s;
 
     li {
       margin: 1px 0;
@@ -59,8 +45,8 @@
       height: 40px;
       line-height: 40px;
       text-align: center;
-      transition: all 300ms ease 0s;
       cursor: pointer;
+      transition: all 300ms ease 0s;
 
       &:hover {
         color: #fff;
@@ -68,16 +54,28 @@
       }
     }
     position: absolute;
+    position: absolute;
+    overflow: auto;
     overflow: auto;
     border: 1px solid #e2e2e2;
+    border: 1px solid #e2e2e2;
+    border-radius: 6px;
     border-radius: 6px;
     padding: 5px;
+    padding: 5px;
+    width: 100%;
     width: 100%;
     max-height: 240px;
+    max-height: 240px;
+    transform: scaleY(0);
     transform: scaleY(0);
     transform-origin: 0 0;
+    transform-origin: 0 0;
+    transition: all 300ms ease 0s;
     transition: all 300ms ease 0s;
     z-index: 100;
+    z-index: 100;
+    background: #fff;
     background: #fff;
   }
 
@@ -112,12 +110,12 @@
     }
   }
   position: relative;
+  position: relative;
+  height: 100%;
   height: 100%;
 }
 
 .air-datepicker {
-  border: none !important;
-  width: 100% !important;
 
   .air-datepicker-body--day-name {
     font-family: "Open Sans", sans-serif;
@@ -136,5 +134,7 @@
     }
   }
   border: none !important;
+  border: none !important;
+  width: 100% !important;
   width: 100% !important;
 }

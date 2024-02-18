@@ -1,15 +1,13 @@
 .main-content {
+    &__column {}
     display: flex;
     justify-content: space-between;
-    &__column {}
 }
 .contact {
-    max-width: 370px;
-    width: 100%;
 
     &__title {
-        font-size: 36px;
         font-weight: 700;
+        font-size: 36px;
     }
 
     &__title-two {
@@ -28,11 +26,11 @@
 
     }
     &__li {
-        display: flex;
-        align-items: center;
         a {
           color: #255296;
         }
+        display: flex;
+        align-items: center;
       }
     
       svg {
@@ -46,39 +44,41 @@
     &__li-text {}
     &__li-mail {}
     &__li-phones {}
+    width: 100%;
+    max-width: 370px;
 }
 .form {
-    max-width: 418px;
-    width: 100%;
-    padding: 24px;
-    border: 1px solid #e2e2e2;
-    border-radius: 10px;
 
     &__title {
+        margin-bottom: 8px;
         color: #888;
         font-size: 13px;
-        margin-bottom: 8px;
     }
     &__input {
+        margin-bottom: 16px;
         border: 1px solid rgb(226, 226, 226);
         border-radius: 6px;
-        height: 42px;
-        width: 100%;
-        margin-bottom: 16px;
         padding-left: 10px;
+        width: 100%;
+        height: 42px;
     }
     &__textarea {
+        margin-bottom: 32px;
         border: 1px solid rgb(226, 226, 226);
         border-radius: 6px;
-        width: 100%;
-        resize: none;
-        min-height: 83px;
-        margin-bottom: 32px;
         padding: 10px;
+        width: 100%;
+        min-height: 83px;
+        resize: none;
     }
     &__btn {
         height: 42px;
     }
+    border: 1px solid #e2e2e2;
+    border-radius: 10px;
+    padding: 24px;
+    width: 100%;
+    max-width: 418px;
 }
 
 

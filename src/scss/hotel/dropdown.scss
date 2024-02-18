@@ -1,11 +1,4 @@
 .dropdown {
-  position: relative;
-  z-index: 10;
-  border: 1px solid #e2e2e2;
-  border-radius: 6px;
-  width: 100%;
-  height: 42px;
-  user-select: none;
   
   &__btn {
 
@@ -205,11 +198,18 @@
     }
   }
   position: relative;
+  position: relative;
+  border: 1px solid #e2e2e2;
   border: 1px solid #e2e2e2;
   border-radius: 6px;
+  border-radius: 6px;
+  width: 100%;
   width: 100%;
   height: 42px;
+  height: 42px;
   user-select: none;
+  user-select: none;
+  z-index: 10;
   z-index: 10;
 }
 
