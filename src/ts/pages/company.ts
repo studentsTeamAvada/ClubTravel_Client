@@ -1,7 +1,13 @@
 import { Header } from "../components/header";
 import { CompanyProduct } from "../code/company/company-company";
+import { Preloader } from "../components/preloader";
 
-new Header();
-const productCompany = new CompanyProduct();
 
-await productCompany.loadCards();
+
+
+document.addEventListener("DOMContentLoaded", async function() {
+    const productCompany = new CompanyProduct();
+    await productCompany.loadCards();
+    new Header();
+    new Preloader()
+})

@@ -2,6 +2,7 @@ import { Header } from "../components/header";
 import { Footer } from "../components/footer";
 import { HotelSlider, HotelSecondSlider } from "../code/swiper";
 import { InfoBlock } from "../code/hotel/info-block";
+import { Preloader } from "../components/preloader";
 
 document.addEventListener("DOMContentLoaded", () => {
   class Hotel {
@@ -21,4 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     init() {}
   }
   new Hotel();
+  new Preloader();
 });
+
+

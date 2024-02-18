@@ -1,8 +1,8 @@
-<div class="main-content main-content__container">
+<section class="main-content main-content__container">
     <div class="main-content__column main-content__contact contact">
         <h1 class="contact__title">Контакты</h1>
 
-        <h3 class="contact__title-two"></h3>
+        <h3 class="contact__title-two">Напишите нам</h3>
 
         <p class="contact__info">Оставьте свой номер телефона или электронную почту и мы свяжемся с вами</p>
 
@@ -26,23 +26,29 @@
             </li>
         </ul>
     </div>
-    <form class="main-content__column main-content__form form">
+    <form id="form" class="main-content__column main-content__form form">
         <h3 class="form__title">Имя (необязательно)</h3>
 
-        <input class="form__input" type="text">
+        <div class="form__wrap">
+            <input class="form__input" type="text">
+        </div>
 
         <h3 class="form__title">Номер телефона</h3>
 
-        <input class="form__input" type="text">
+        <div class="form__wrap">
+            <input class="form__input"  name="phone" type="text">
+        </div>
 
         <h3 class="form__title">E-mail</h3>
         
-        <input class="form__input" type="text">
+        <div class="form__wrap">
+            <input class="form__input" name="main" type="text">
+        </div>
 
         <h3 class="form__title">Сообщение (необязательно)</h3>
         
-        <textarea class="form__textarea" name="" ></textarea>
+        <textarea class="form__textarea" ></textarea>
 
         <button class="form__btn btn">отправить</button>
     </form>
-</div>
+</section>

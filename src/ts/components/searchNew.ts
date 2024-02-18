@@ -1,5 +1,5 @@
 import { app } from '../modules/firebase';
-// import { collection, getDocs, getFirestore} from 'firebase/firestore';
+import { collection, getDocs, getFirestore } from 'firebase/firestore';
 import $ from 'jquery';
 import { DropdownSearch } from './dropSearch';
 import noUiSlider, { target } from 'nouislider';
@@ -7,18 +7,18 @@ import 'nouislider/dist/nouislider.css';
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 import { ResultSwiper } from './../pages/code/swiper';
-import { collection, addDoc, getFirestore, query, orderBy, getDocs } from 'firebase/firestore';
+
 new DropdownSearch('.info__destination-select');
 
 new DropdownSearch('.info__duration-select');
 // new DropdownSearch(".info__date-select");
 
+//!!! додати duration в import
 import {
   Destination,
   Regions,
   Meals,
   Stars,
-  Duration,
   Departure,
   Hotel,
 } from '../code/searchFile/type';
@@ -47,7 +47,6 @@ export class Country {
     // if (localStorageData) {
     //   this.countryArr = JSON.parse(localStorageData);
     // }
-
   }
 
   async init(): Promise<void> {
@@ -58,21 +57,21 @@ export class Country {
 
   async getCountry(): Promise<void> {
     const db = getFirestore(app);
-    const hotelsRef = collection(db, "hotels");
+    const hotelsRef = collection(db, 'hotels');
 
     try {
-      const querySnapshot = await getDocs(hotelsRef)
+      const querySnapshot = await getDocs(hotelsRef);
       this.countryArr = querySnapshot.docs.map<Hotel>(doc => {
         const hotelData = doc.data() as Hotel;
         return {
           ...hotelData,
-          id: doc.id 
+          id: doc.id,
         };
       });
 
-  // localStorage.setItem('countryArr', JSON.stringify(this.countryArr));
+      // localStorage.setItem('countryArr', JSON.stringify(this.countryArr));
     } catch (error) {
-      console.error("Error getting documents: ", error);
+      console.error('Error getting documents: ', error);
     }
   }
 
@@ -884,7 +883,6 @@ class AdvancedSearch {
       $('.search__row-bottom').addClass('search__row-bottom_active');
       $('.search__btn-close').removeClass('search__btn-close_act');
       $('.search__line').removeClass('search__line_act');
-
     });
 
     $('.search__btn-close').on('click', function () {
@@ -1114,13 +1112,7 @@ new AdvancedSearch();
 
 // getDocs(hotelsRef).then((querySnapshot) => {
 //   querySnapshot.forEach((doc) => {
-     
+
 //       console.log(doc.id);
 //   });
 // });
-
-
-
-
-
-
