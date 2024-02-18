@@ -113,9 +113,9 @@
 
   &__title {
     position: relative;
-    overflow: hidden; /* Скрытие лишнего текста, который не помещается в контейнер */
+    overflow: hidden; 
     max-width: 230px;
-    white-space: nowrap; /* Запрет переноса текста на новую строку */
+    white-space: nowrap; 
     text-overflow: ellipsis;
     cursor: pointer;
 

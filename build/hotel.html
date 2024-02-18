@@ -5,20 +5,21 @@
   <link rel="icon" type="image/ico+xml" href="/ClubTravel.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Отель</title>
-  <script type="module" crossorigin src="/assets/Hotel-NSZp_i1d.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/header-hiQeVM5C.js">
-  <link rel="modulepreload" crossorigin href="/assets/footer-MmTiPZRL.js">
+  <script type="module" crossorigin src="/assets/Hotel-z1huvmjH.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/preloader-IQBbSx6n.js">
+  <link rel="modulepreload" crossorigin href="/assets/footer-5Z_-RnYv.js">
   <link rel="modulepreload" crossorigin href="/assets/autoplay-3nwb4p1k.js">
   <link rel="modulepreload" crossorigin href="/assets/swiper-G_k_SzQb.js">
-  <link rel="stylesheet" crossorigin href="/assets/Hotel-BJvmzRIK.css">
+  <link rel="stylesheet" crossorigin href="/assets/Hotel-0bFsQI0T.css">
 </head>
 
   <body>
     <div class="wrapper">
-      <header class="header">
+      <header class="header header_preload">
   <div class="header__container">
     <div class="header__logo">
       <a href="index.html" aria-label="Главная страница" class="header__logo-link">
+        <div class="header__logo-decor"></div>
         <img class="header__logo-desktop" src="/assets/cTravel-logo 1-utSzAp7N.svg" alt=""/>
 
         <img class="header__logo-adaptive" src="/assets/cTravel-logo 2-XA_iFfcE.svg" alt=""/>
@@ -129,6 +130,9 @@
 </header>
 
       <main class="page">
+        <div class="preloader">
+          <span></span>
+        </div>
         <div class="top-img">
   <picture class="top-img__bg-img">
     <source srcset="/assets/image-bg-rhl2l6Xs.webp " type="image/webp" />
@@ -372,7 +376,7 @@
   <div class="dropdown__btn">
     <span class="dropdown__btn-info">
       <span class="dropdown__adults"
-        >Взрослых: <span id="adults-quantity">0</span>;</span
+        >Взрослых: <span id="adults-quantity">1</span>;</span
       >
       <span class="dropdown__kids"
         >детей: <span id="kids-quantity">0</span></span
@@ -395,7 +399,7 @@
             <use xlink:href="#minus-circle"></use>
           </svg>
         </div>
-        <div class="dropdown__count-current">0</div>
+        <div class="dropdown__count-current">1</div>
         <div class="dropdown__count-btn dropdown__count-add">
           <svg class="dropdown__arrow">
             <use xlink:href="#plus-circle"></use>
@@ -437,7 +441,9 @@
 </div>
 
           </div>
-          <ul class="tour__quantity-tegs"></ul>
+          <ul class="tour__quantity-tegs">
+            <li>Взрослых x1</li>
+          </ul>
           <div class="tour__total-sum">
             <span class="tour__total-info">Общая стоимость тура:</span>
             <span class="tour__total-price">0</span

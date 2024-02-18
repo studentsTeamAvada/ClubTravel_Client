@@ -5,12 +5,16 @@ import { Calendar } from "../code/tour_request/calendar";
 import { DropDown } from "../code/tour_request/dropdown";
 import { Food } from "../code/tour_request/food";
 import { Preloader } from "../components/preloader";
+import { AsYouType, validatePhoneNumberLength } from 'libphonenumber-js'
 import $ from "jquery";
 import 'jquery-validation';
 
+
+
 interface JQueryValidateForm extends JQuery<HTMLElement> {
-  validate(object: Object): Object;
+  validate(object: Object): any;
 }
+
 
 
 
@@ -19,9 +23,9 @@ interface JQueryValidateForm extends JQuery<HTMLElement> {
 //   addMethod(str: string, callback: Function, errorInfo: string): void
 // }
 
-// interface addValidator extends JQueryStatic {
-//   validator: addMet
-// }
+interface addValidator extends JQueryStatic {
+  validator: any
+}
 
 
 
@@ -61,8 +65,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       this.formBtn = this.form.find(".form__btn");
       this.tabsSlider = $(".form__tabs-slider");
-      this.inputMask(".adviser__input");
-      this.inputMask(".form__phone");
+
+      // this.inputMask(".form__phone");
       this.validateTel("#adviser__form");
 
       // $(".adviser__input").submit(function(event) {
@@ -74,6 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
       this.points();
       this.stopReload();
       this.clickFormBtn();
+      this.inputMask();
       this.SelectStars();
       this.validateMainFormOne();
 
@@ -196,57 +201,46 @@ document.addEventListener("DOMContentLoaded", () => {
       $(".adviser__input").removeClass("adviser__input_active");
     }
 
-    inputMask(inputWrapper: string) {
-      const wrapper = $(inputWrapper);
-      const input = wrapper.find("input");
-
-      function checkEmpy(): void {
-        const value: number | undefined = input.val()?.length;
-        if (value && value > 0) {
-          wrapper.addClass("input_active");
-        } else {
-          wrapper.removeClass("input_active");
-        }
-      }
-
-      function mask() {
-        const value: string = String(input.val()).replace(/\s/g, "");
-        const length: number = value.length;
-        const index: number = length - 1;
-        const lastNum: string = value[index];
-        const numRule = /[0-9]/.test(lastNum);
-
-        if (!numRule || length > 10) {
-          input.val(String(input.val()).slice(0, -1));
-        } else if (length < 3) {
-          input.val(value);
-        } else if (length >= 3 && length < 10) {
-          input.val(
-            `${value.slice(0, 3)} ${value.slice(3, 6)} ${value.slice(6, 8)} ${value.slice(8, 10)}`.trim(),
-          );
-        }
-      }
-
-      input.on("input", () => {
-        mask();
-        checkEmpy();
-      });
+    inputMask() {
+      const inputs = document.querySelectorAll("input[name='phone']")
+      inputs.forEach(item => {
+        const input = item as HTMLInputElement
+        input.addEventListener("input", () => {
+          if(input.value.length === 1){
+            input.value = "+" + input.value
+            if(input.value === "+0"){
+              input.value = "+380"
+            }
+          }
+          if(validatePhoneNumberLength(input.value + '0') === "TOO_LONG"){
+            input.value = input.value.slice(0, -1)
+          }
+          input.value = new AsYouType().input(input.value)
+        })
+      })
+      
     }
 
 
 
     validateTel(inputWrap: string){
       const element = $(inputWrap) as JQueryValidateForm;
+
+      ($ as addValidator).validator.addMethod("min", function(value : string) {
+        return  value.replace(/ |\+/g, '').length >= 10;
+      }, 'Номер должен состоять из 10 цифр');
+
       element.validate({
           rules: {
-            tel: {
-                minlength: 13,
+            phone: {
+              min: true,
+              required: true
             },
         },
         messages: {
-            tel: {
-                minlength: "Номер должен состоять из 10 цифр"
-            },
+          phone: {
+            required: "Введите номер"
+          },
         },
         highlight: function(element: JQuery<HTMLElement>, _errorClass: string, validClass: string) {
           $(element).addClass("border-error").removeClass(validClass);
