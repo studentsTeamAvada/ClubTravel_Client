@@ -2,8 +2,7 @@ import { Header } from "../components/header";
 import { Footer } from "../components/footer";
 import $ from "jquery";
 import 'jquery-validation';
-
-
+import { Preloader } from "../components/preloader";
 
 interface JQueryValidateForm extends JQuery<HTMLElement> {
   validate(object: Object): Object;
@@ -79,4 +78,7 @@ class Contacts{
     }
 }
 
-new Contacts();
+document.addEventListener("DOMContentLoaded", () => {
+  new Contacts();
+  new Preloader()
+})

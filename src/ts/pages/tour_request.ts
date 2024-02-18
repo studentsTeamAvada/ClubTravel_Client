@@ -4,14 +4,15 @@ import { DropCountry } from "../code/tour_request/drop-country";
 import { Calendar } from "../code/tour_request/calendar";
 import { DropDown } from "../code/tour_request/dropdown";
 import { Food } from "../code/tour_request/food";
+import { Preloader } from "../components/preloader";
 import $ from "jquery";
 import 'jquery-validation';
-
-
 
 interface JQueryValidateForm extends JQuery<HTMLElement> {
   validate(object: Object): Object;
 }
+
+
 
 
 // type addMet = {
@@ -278,4 +279,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
   new TourRequest();
+  new Preloader()
 });

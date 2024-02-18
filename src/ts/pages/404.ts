@@ -1,2 +1,8 @@
 import { Header } from "../components/header";
-new Header();
+import { Preloader } from "../components/preloader";
+
+document.addEventListener("DOMContentLoaded", () => {
+    new Header();
+    new Preloader()
+})
+
