@@ -11,7 +11,8 @@ import { ResultSwiper } from './../pages/code/swiper';
 new DropdownSearch('.info__destination-select');
 
 new DropdownSearch('.info__duration-select');
-// new DropdownSearch(".info__date-select");
+
+new DropdownSearch(".info__date-select");
 
 //!!! додати duration в import
 import {
@@ -43,37 +44,37 @@ export class Country {
     this.durationFilterArr = [];
     this.init();
 
-    // const localStorageData = localStorage.getItem('countryArr');
-    // if (localStorageData) {
-    //   this.countryArr = JSON.parse(localStorageData);
-    // }
+    const localStorageData = localStorage.getItem('countryArr');
+    if (localStorageData) {
+      this.countryArr = JSON.parse(localStorageData);
+    }
   }
 
   async init(): Promise<void> {
-    await this.getCountry();
+    // await this.getCountry();
 
     this.bindEvents();
   }
 
-  async getCountry(): Promise<void> {
-    const db = getFirestore(app);
-    const hotelsRef = collection(db, 'hotels');
+  // async getCountry(): Promise<void> {
+  //   const db = getFirestore(app);
+  //   const hotelsRef = collection(db, 'hotels');
 
-    try {
-      const querySnapshot = await getDocs(hotelsRef);
-      this.countryArr = querySnapshot.docs.map<Hotel>(doc => {
-        const hotelData = doc.data() as Hotel;
-        return {
-          ...hotelData,
-          id: doc.id,
-        };
-      });
+  //   try {
+  //     const querySnapshot = await getDocs(hotelsRef);
+  //     this.countryArr = querySnapshot.docs.map<Hotel>(doc => {
+  //       const hotelData = doc.data() as Hotel;
+  //       return {
+  //         ...hotelData,
+  //         id: doc.id,
+  //       };
+  //     });
 
-      // localStorage.setItem('countryArr', JSON.stringify(this.countryArr));
-    } catch (error) {
-      console.error('Error getting documents: ', error);
-    }
-  }
+  //     localStorage.setItem('countryArr', JSON.stringify(this.countryArr));
+  //   } catch (error) {
+  //     console.error('Error getting documents: ', error);
+  //   }
+  // }
 
   bindEvents(): void {
     this.searchPanelBtn.on('click', () => this.filterCountry());
@@ -863,9 +864,15 @@ class SelectData extends Country {
 
 class AdvancedSearch {
   filterRow: JQuery<HTMLElement>;
+  destinationCurrent: JQuery<HTMLElement>;
+  dateCurrent: JQuery<HTMLElement>;
+  durationCurrent: JQuery<HTMLElement>;
 
   constructor() {
     this.filterRow = $('.category__filter-row');
+    this.destinationCurrent = $('.info__destination-current');
+    this.dateCurrent = $('.info__date-current');
+    this.durationCurrent = $('.info__duration-current');
     this.init();
   }
 
@@ -876,6 +883,7 @@ class AdvancedSearch {
     this.addActiveClassForMeals();
     this.addActiveClassForTour();
     this.addActiveClassForDeparture();
+    this.addTextForCurrents();
   }
 
   accordion() {
@@ -1098,6 +1106,20 @@ class AdvancedSearch {
       $(
         `.category__btns-city[data-city="${departure[savedDeparture]}"]`
       ).addClass('category__btns-city_act');
+    }
+  }
+
+  addTextForCurrents() {
+    if (this.destinationCurrent.text() === '') {
+      this.destinationCurrent.text('Направление');
+    }
+
+    if(this.dateCurrent.text() === '') {
+      this.dateCurrent.text('Дата');
+    }
+
+    if(this.durationCurrent.text() === '') {
+      this.durationCurrent.text('Длительность');
     }
   }
 }

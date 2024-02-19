@@ -20,8 +20,6 @@
         animation: slideDown 0.5s ease;
       }
 
-
-
       @include media-breakpoint-down(sm) {
       }
 
@@ -42,7 +40,6 @@
       display: flex;
       align-items: center;
     }
-
   }
 
   &__panel {
@@ -289,6 +286,14 @@
       padding: 0;
     }
 
+    &-row {
+      svg {
+        width: 24px;
+        height: 24px;
+        fill: #f68521;
+      }
+    }
+
     &-list,
     &-calendar {
       left: 0;
@@ -495,7 +500,6 @@
 }
 
 .category {
-
   &__item {
     display: flex;
     justify-content: space-between;
@@ -783,7 +787,6 @@
       margin-left: 8px;
     }
   }
-
 
   &__lineup,
   &__departure {
