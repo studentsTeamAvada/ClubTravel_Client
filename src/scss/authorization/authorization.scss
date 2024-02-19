@@ -1,4 +1,6 @@
 .authorization {
+  position: relative;
+  height: 900px;
 
   &__bg {
     position: absolute;
@@ -35,7 +37,6 @@
     margin-bottom: 33px;
     font-size: 14px;
     text-align: center;
-    font-size: 14px;
     color: #555;
     opacity: 0.5;
   }
@@ -51,7 +52,6 @@
     color: #fff;
     background: #395185;
     transition: all 0.3s ease;
-    color: #fff;
 
     img {
       position: absolute;
@@ -77,7 +77,6 @@
     color: #222;
     background: #fff;
     transition: all 0.3s ease;
-    color: #222;
 
     img {
       position: absolute;
@@ -192,10 +191,7 @@
 
   &__btn-entry {
     display: flex;
-    display: flex;
     align-items: center;
-    align-items: center;
-    justify-content: center;
     justify-content: center;
     border: 1px solid #f68521;
     border-radius: 6px;
