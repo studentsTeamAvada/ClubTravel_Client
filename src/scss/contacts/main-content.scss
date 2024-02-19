@@ -1,4 +1,5 @@
 .main-content {
+    &__column {}
     display: flex;
     justify-content: space-between;
     margin-bottom: 36px;
@@ -28,7 +29,6 @@
     }
 
     &__title {
-        font-size: 36px;
         font-weight: 700;
         margin-bottom: 16px;
 
@@ -76,6 +76,8 @@
         a {
           color: #255296;
         }
+        display: flex;
+        align-items: center;
       }
     
       svg {
@@ -89,6 +91,8 @@
     &__li-text {}
     &__li-mail {}
     &__li-phones {}
+    width: 100%;
+    max-width: 370px;
 }
 .form {
     max-width: 418px;
@@ -117,6 +121,7 @@
     }
 
     &__title {
+        margin-bottom: 8px;
         color: #888;
         font-size: 13px;
         margin: 0 0 4px 14px;
@@ -131,18 +136,22 @@
     }
 
     &__input {
+        margin-bottom: 16px;
         border: 1px solid rgb(226, 226, 226);
         border-radius: 6px;
         height: 42px;
         width: 100%;
         margin-bottom: 15px;
         padding-left: 10px;
+        width: 100%;
+        height: 42px;
     }
     &__textarea {
+        margin-bottom: 32px;
         border: 1px solid rgb(226, 226, 226);
         border-radius: 6px;
+        padding: 10px;
         width: 100%;
-        resize: none;
         min-height: 83px;
         margin-bottom: 26px;
         padding: 10px;

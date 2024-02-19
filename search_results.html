@@ -1,7 +1,8 @@
 <!doctype html>
 <!doctype html>
 <html lang="en">
-  <load ="./src/html/head.htm"
+  <load
+    ="./src/html/head.htm"
     title="Результаты поиска"
     styles="search_results"
   />
@@ -10,9 +11,9 @@
     <div class="wrapper">
       <load ="./src/html/header.htm" />
       <main class="page">
-        <div class="preloader">
+        <!-- <div class="preloader">
           <span></span>
-        </div>
+        </div> -->
         <section class="banner">
           <div class="banner__oval">
             <img src="./src/images/oval.png" alt="" />
@@ -25,13 +26,12 @@
         </section>
         <section class="result">
           <div class="result__container">
-            <div class="result__header">
-            </div>
+            <div class="result__header"></div>
 
             <div class="result__content"></div>
           </div>
         </section>
-
+        <load ="./src/html/components/ui/offer.html" />
       </main>
       <load ="./src/html/footer.htm" />
     </div>

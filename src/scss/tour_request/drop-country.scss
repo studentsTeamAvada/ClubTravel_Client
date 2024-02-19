@@ -1,6 +1,4 @@
 .drop-country {
-  position: relative;
-  height: 100%;
 
   &__btn {
     position: relative;
@@ -114,7 +112,6 @@
     border-radius: 6px;
     padding: 0 10px;
     height: 40px;
-    background: #fff;
     transition: border 300ms ease 0s;
     cursor: pointer;
 

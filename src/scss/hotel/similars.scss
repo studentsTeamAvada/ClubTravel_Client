@@ -1,5 +1,4 @@
 .similars {
-  margin-bottom: 97px;
 
   &__title {
     margin-bottom: 38px;
@@ -113,6 +112,7 @@
 
   &__title {
     position: relative;
+    overflow: hidden; 
     overflow: hidden; 
     max-width: 230px;
     white-space: nowrap; 

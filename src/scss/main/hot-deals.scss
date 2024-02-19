@@ -1,5 +1,4 @@
 .hot-deals {
-  margin-bottom: 100px;
 
   &__container {
     position: relative;
@@ -172,7 +171,6 @@
     svg {
       transform: rotate(180deg);
     }
-    right: 2%;
 
     @include media-breakpoint-down(my) {
       right: 4%;
@@ -325,13 +323,10 @@
   }
   position: relative;
   margin-bottom: 100px;
+  margin-bottom: 100px;
 
   &__swiper-button-prev,
   &__swiper-button-next {
-    position: absolute;
-    top: 54%;
-    z-index: 2;
-    cursor: pointer;
 
     svg {
       width: 32px;
@@ -339,8 +334,12 @@
       color: #3e7739;
     }
     position: absolute;
+    position: absolute;
+    top: 54%;
     top: 52%;
     cursor: pointer;
+    cursor: pointer;
+    z-index: 2;
     z-index: 2;
 
     @include media-breakpoint-down(my) {
