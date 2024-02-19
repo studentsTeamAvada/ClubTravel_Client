@@ -1,0 +1,1 @@
+import{$ as o}from"./jquery-eLIhC4UN.js";class s{fb;constructor(){this.fb=o(".pictures__social-window"),this.fbPluginReload()}fbPluginReload(){window.addEventListener("resize",()=>{})}}export{s as F};
