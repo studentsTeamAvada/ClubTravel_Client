@@ -1,4 +1,4 @@
-import { Country } from '../components/searchNew';
+import { Country } from '../code/searchFile/filterCountry';
 // import { Preloader } from "../components/preloader";
 // import { Header } from "../components/header"
 

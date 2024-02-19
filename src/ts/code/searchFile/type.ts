@@ -104,3 +104,30 @@ export interface Hotel {
   meals: string;
   beach: string;
 }
+
+export enum RegionsName {
+  SharmElSheikh = 'Шарм-эль-Шейх',
+  Hurghada = 'Хургада',
+  Dubai = 'Дубай',
+  AbuDhabi = 'Абу-Даби',
+  Bangkok = 'Бангкок',
+  KuahHin = 'Хуа Хин',
+  SunnyBeach = 'Солнечный берег',
+  GoldenSands = 'Золотые пески',
+  Budva = 'Будва',
+  StefanBridge = 'Свети Стефан',
+  Bali = 'Бали',
+  Batumi = 'Батумі',
+  Rodos = 'Родос',
+  Marmaris = 'Мармарис',
+  Paphos = 'Пафос',
+  Suss = 'Сусс',
+  Tenerife = 'Тенерифе',
+  Majorca = 'Майорка',
+  Bukovyn = 'Буковель',
+  Uldag = 'Улудаг',
+  Bansko = 'Бансько',
+  Borovets = 'Боровець',
+  All = 'All'
+
+}
