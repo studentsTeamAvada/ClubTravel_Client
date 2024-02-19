@@ -1,4 +1,4 @@
-import $ from "jquery";
+// import $ from "jquery";
 import {app} from "./../../modules/firebase"
 import { getFirestore, getDoc, doc,  } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";

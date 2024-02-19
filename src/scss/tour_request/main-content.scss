@@ -76,15 +76,17 @@
     }
   }
   &__input {
+    flex: 1 0 67%;
+    height: 42px;
     input {
+      border: 1px solid #e2e2e2;
+      border-radius: 6px 0px 0px 6px;
+      height: 100%;
+      width: 100%;
+      padding-left: 15px;
       &::placeholder {
         font-size: 14px;
       }
-      border: 1px solid #e2e2e2;
-      border-radius: 6px 0px 0px 6px;
-      padding-left: 15px;
-      width: 100%;
-      height: 100%;
       @include media-breakpoint-down(xs) {
         border-radius: 6px;
       }
@@ -308,10 +310,10 @@
 
     label{
       position: absolute;
-      right: 5px;
       top: -18px;
       font-size: 12px;
       color: rgb(199 41 41);
+      right: 5px;
     }
 
     &-guests {
@@ -380,10 +382,6 @@
     &-food {
       position: relative;
     }
-    position: relative;
-    margin-bottom: 14px;
-    width: 100%;
-    height: 42px;
   }
 
   &__counter {
@@ -508,20 +506,15 @@
 
     }
     &-for-validate{
-      position: absolute;
-      top: 0;
       width: 100%;
-      height: 0;
-      pointer-events: none;
-      z-index: -100;
       background-color: red;
+      pointer-events: none;
+      position: absolute;
+      z-index: -100;
       opacity: 0;
+      height: 0;
+      top: 0;
     }
-    margin-bottom: 16px;
-    margin-bottom: 16px;
-    border: 1px solid #e2e2e2;
-    border-radius: 6px;
-    padding-left: 18px;
 
 
   }
@@ -534,16 +527,16 @@
     position: absolute;
     right: 0;
     bottom: 0px;
-    transition: all 300ms ease 0s;
     font-size: 12px;
+    transition: all 300ms ease 0s;
     color: rgb(199 41 41);
   }
   &__error-food {
+    bottom: -16px;
+    opacity: 0;
     &_active {
       opacity: 1;
     }
-    bottom: -16px;
-    opacity: 0;
   }
 
   &__stars {
@@ -681,15 +674,30 @@
 }
 
 .input{
+
+  position: relative;
+  &::before {
+    content: "+380";
+    color: #255296;
+    position: absolute;
+    font-style: italic;
+    font-family: Roboto;
+    pointer-events: none;
+    font-size: 14px;
+    left: 10px; 
+    top: 0;
+    line-height: 44px;
+    opacity: 0;
+  }
   &_active {
     input {
-      padding-left: 45px;
       font-style: italic;
       transition: all 300ms ease 0s;
+      padding-left: 45px;
     }
     &::before {
-      transition: all 300ms ease 150ms;
       opacity: 1;
+      transition: all 300ms ease 150ms;
     }
   }
 
@@ -713,21 +721,6 @@
       border-right: 1px solid rgb(199 41 41) ;
     }
 
-  }
-
-  position: relative;
-  &::before {
-    content: "+380";
-    position: absolute;
-    left: 10px; 
-    top: 0;
-    font-family: Roboto;
-    font-style: italic;
-    line-height: 44px;
-    pointer-events: none;
-    color: #255296;
-    font-size: 14px;
-    opacity: 0;
   }
 }
 
