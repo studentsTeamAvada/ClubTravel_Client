@@ -29,56 +29,56 @@ export class DropdownSearch {
     this.toggleDropdown();
     this.dropdownObserver();
 
-    if (this.currentUrl !== null) {
-      this.changeCurrentVal(this.currentUrl);
-    }
+    // if (this.currentUrl !== null) {
+    //   this.changeCurrentVal(this.currentUrl);
+    // }
 
-    switch (this.currentUrl) {
-      case "0":
-        this.dropdownCurrent.text("Все направления");
-        break;
-      case "1":
-        this.dropdownCurrent.text("Египет");
-        break;
-      case "2":
-        this.dropdownCurrent.text("АОЭ");
-        break;
-      case "3":
-        this.dropdownCurrent.text("Таиланд");
-        break;
-      case "4":
-        this.dropdownCurrent.text("Болгария");
-        break;
-      case "5":
-        this.dropdownCurrent.text("Чорногория");
-        break;
-      case "6":
-        this.dropdownCurrent.text("Індонезия");
-        break;
-      case "7":
-        this.dropdownCurrent.text("Грузия");
-        break;
-      case "8":
-        this.dropdownCurrent.text("Греция");
-        break;
-      case "9":
-        this.dropdownCurrent.text("Турция");
-        break;
-      case "10":
-        this.dropdownCurrent.text("Кипр");
-        break;
-      case "11":
-        this.dropdownCurrent.text("Тунис");
-        break;
-      case "12":
-        this.dropdownCurrent.text("Испания");
-        break;
-      case "13":
-        this.dropdownCurrent.text("Украина");
-        break;
-      default:
-        this.dropdownCurrent.text("");
-    }
+    // switch (this.currentUrl) {
+    //   case "0":
+    //     this.dropdownCurrent.text("Все направления");
+    //     break;
+    //   case "1":
+    //     this.dropdownCurrent.text("Египет");
+    //     break;
+    //   case "2":
+    //     this.dropdownCurrent.text("АОЭ");
+    //     break;
+    //   case "3":
+    //     this.dropdownCurrent.text("Таиланд");
+    //     break;
+    //   case "4":
+    //     this.dropdownCurrent.text("Болгария");
+    //     break;
+    //   case "5":
+    //     this.dropdownCurrent.text("Чорногория");
+    //     break;
+    //   case "6":
+    //     this.dropdownCurrent.text("Індонезия");
+    //     break;
+    //   case "7":
+    //     this.dropdownCurrent.text("Грузия");
+    //     break;
+    //   case "8":
+    //     this.dropdownCurrent.text("Греция");
+    //     break;
+    //   case "9":
+    //     this.dropdownCurrent.text("Турция");
+    //     break;
+    //   case "10":
+    //     this.dropdownCurrent.text("Кипр");
+    //     break;
+    //   case "11":
+    //     this.dropdownCurrent.text("Тунис");
+    //     break;
+    //   case "12":
+    //     this.dropdownCurrent.text("Испания");
+    //     break;
+    //   case "13":
+    //     this.dropdownCurrent.text("Украина");
+    //     break;
+    //   default:
+    //     this.dropdownCurrent.text("");
+    // }
 
   }
 

@@ -1,5 +1,4 @@
 .text-info {
-  margin-bottom: 39px;
 
   &__wrapper {
     display: grid;
@@ -17,6 +16,7 @@
   &__info-block {
     min-height: 500px;
   }
+  margin-bottom: 39px;
 
   @include media-breakpoint-down(sm) {
     margin-bottom: 82px;
@@ -86,10 +86,6 @@
 
 .info-block {
   &__banner {
-    margin: 26px 0 47px;
-    border: 3px solid #f68521;
-    border-radius: 5px;
-    padding: 18px 15px 10px 23px;
 
     &-title {
       margin-bottom: 25px;
@@ -104,13 +100,6 @@
 
     &-list {
       li {
-        position: relative;
-        display: flex;
-        align-items: center;
-        margin: 0 0 14px;
-        padding-left: 34px;
-        font-weight: 700;
-        font-size: 16px;
 
         span {
           margin-top: 2px;
@@ -130,6 +119,13 @@
             top: 4px;
           }
         }
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin: 0 0 14px;
+        padding-left: 34px;
+        font-weight: 700;
+        font-size: 16px;
 
         @include media-breakpoint-down(sm) {
           margin: 0 0 17px;
@@ -143,6 +139,10 @@
         }
       }
     }
+    margin: 26px 0 47px;
+    border: 3px solid #f68521;
+    border-radius: 5px;
+    padding: 18px 15px 10px 23px;
 
     @include media-breakpoint-down(md) {
       margin: 0 auto 30px;
@@ -156,7 +156,6 @@
   }
 
   &__contacts {
-    padding: 25px 24px;
 
     svg {
       margin-right: 12px;
@@ -186,15 +185,15 @@
     }
 
     &-info {
-      margin-bottom: 18px;
-      max-width: 243px;
-      font-size: 16px;
-      color: #555;
 
       span {
         font-size: 18px;
         color: #222;
       }
+      margin-bottom: 18px;
+      max-width: 243px;
+      font-size: 16px;
+      color: #555;
 
       @include media-breakpoint-down(md) {
         margin-bottom: 10px;
@@ -208,17 +207,17 @@
     }
 
     &-image {
-      overflow: hidden;
-      margin-bottom: 16px;
-      border-radius: 5px;
-      height: 160px;
-      background-color: #3e7739;
 
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
+      overflow: hidden;
+      margin-bottom: 16px;
+      border-radius: 5px;
+      height: 160px;
+      background-color: #3e7739;
 
       @include media-breakpoint-down(md) {
         margin-bottom: 20px;
@@ -230,7 +229,6 @@
     }
 
     &-list {
-      font-size: 16px;
 
       a {
         color: #222;
@@ -242,8 +240,6 @@
         margin-bottom: 16px;
 
         &:last-child {
-          margin: 19px 0 0;
-          font-size: 14px;
 
           span {
             margin-left: 5px;
@@ -254,6 +250,8 @@
             width: 22px;
             height: 22px;
           }
+          margin: 19px 0 0;
+          font-size: 14px;
 
           @include media-breakpoint-down(md) {
             margin: 0;
@@ -268,6 +266,7 @@
           margin-bottom: 16px;
         }
       }
+      font-size: 16px;
 
       @include media-breakpoint-down(md) {
         display: flex;
@@ -281,6 +280,7 @@
         display: block;
       }
     }
+    padding: 25px 24px;
 
     @include media-breakpoint-up(md) {
       box-shadow: 0 5px 10px rgb(0 0 0 / 10%);
