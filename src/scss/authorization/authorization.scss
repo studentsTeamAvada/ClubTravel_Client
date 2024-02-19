@@ -1,26 +1,21 @@
 .authorization {
+  position: relative;
+  height: 900px;
 
   &__bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    margin-top: 101px;
+    width: 100%;
+    height: 800px;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    position: absolute;
-    position: absolute;
-    left: 0;
-    left: 0;
-    top: 0px;
-    top: 0;
-    margin-top: 101px;
-    margin-top: 101px;
-    width: 100%;
-    width: 100%;
-    height: 800px;
-    height: 800px;
-    z-index: -1;
-    z-index: -1;
   }
 
   &__form {
@@ -39,26 +34,29 @@
   }
 
   &__form-title {
-    text-align: center;
+    margin-bottom: 33px;
     font-size: 14px;
+    text-align: center;
     color: #555;
     opacity: 0.5;
   }
 
   &__form-btn-facebook {
-
-    img {
-      position: absolute;
-      left: 11px;
-    }
+    position: relative;
     margin-bottom: 16px;
     border-radius: 6px;
     width: 100%;
     height: 42px;
     box-shadow: 0 1px 5px 0 rgb(0 0 0 / 15%);
     text-align: center;
-    transition: all 0.3s ease;
     color: #fff;
+    background: #395185;
+    transition: all 0.3s ease;
+
+    img {
+      position: absolute;
+      left: 11px;
+    }
 
     @include media-breakpoint-up(md) {
       &:hover {
@@ -69,14 +67,21 @@
   }
 
   &__form-btn-google {
+    position: relative;
     margin-bottom: 32px;
     border-radius: 6px;
     width: 100%;
     height: 42px;
     box-shadow: 0 1px 5px 0 rgb(0 0 0 / 15%);
     text-align: center;
-    transition: all 0.3s ease;
     color: #222;
+    background: #fff;
+    transition: all 0.3s ease;
+
+    img {
+      position: absolute;
+      left: 11px;
+    }
 
     @include media-breakpoint-up(md) {
       &:hover {
@@ -89,8 +94,8 @@
   &__form-text {
     position: relative;
     margin-bottom: 28px;
-    text-align: center;
     font-size: 14px;
+    text-align: center;
     color: #555;
 
     &::before {
@@ -142,6 +147,7 @@
   }
 
   &__form-input-mail {
+    position: relative;
 
     .just-validate-error-label {
       position: absolute;
@@ -149,10 +155,10 @@
       bottom: -8px;
       font-size: 14px;
     }
-    position: relative;
   }
 
   &__form-input-password {
+    position: relative;
 
     .just-validate-error-label {
       position: absolute;
@@ -160,36 +166,32 @@
       bottom: -17px;
       font-size: 14px;
     }
-    position: relative;
   }
 
   &__form-input-text {
+    display: flex;
+    justify-content: space-between;
 
     a {
       padding-right: 8px;
-      text-decoration: underline;
       font-size: 13px;
+      text-decoration: underline;
     }
-    display: flex;
-    justify-content: space-between;
   }
 
   &__btn-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 13px;
 
     a {
       width: 100%;
     }
-    display: flex;
-    justify-content: space-between;
-    gap: 13px;
   }
 
   &__btn-entry {
     display: flex;
-    display: flex;
     align-items: center;
-    align-items: center;
-    justify-content: center;
     justify-content: center;
     border: 1px solid #f68521;
     border-radius: 6px;
@@ -197,9 +199,8 @@
     height: 42px;
     max-width: 175px;
     text-transform: uppercase;
+    color: #222;
     transition: all 0.3s ease;
-    color: #222;
-    color: #222;
 
     @include media-breakpoint-up(md) {
       &:hover {
@@ -220,11 +221,10 @@
 
   &__policy {
     text-align: center;
-    text-align: center;
     text-decoration: underline;
-    cursor: pointer;
-    transition: color 0.3s ease;
     color: #fff;
+    transition: color 0.3s ease;
+    cursor: pointer;
 
     @include media-breakpoint-up(md) {
       &:hover {
@@ -232,10 +232,6 @@
       }
     }
   }
-  position: relative;
-  position: relative;
-  height: 900px;
-  height: 900px;
 }
 
 #authorizationMail {

@@ -3,10 +3,17 @@
   <load
     ="./src/html/head.htm"
     title="Личный кабинет клиента"
-    styles="client's_personal_account"
+    styles="account"
   />
   <body>
-    <load ="./src/html/header.htm" />
-    <load ="./src/html/footer.htm" />
+    <div class="wrapper">
+      <load ="./src/html/header.htm" />
+      <div class="page">
+        <load ="./src/html/account/account-bg.html" />
+        <load ="./src/html/account/account.html" />
+      </div>
+      <load ="./src/html/footer.htm" />
+    </div>
+    <script type="module" src="src/ts/pages/account.ts"></script>
   </body>
 </html>

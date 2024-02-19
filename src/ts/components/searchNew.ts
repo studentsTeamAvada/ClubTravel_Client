@@ -56,25 +56,25 @@ export class Country {
     this.bindEvents();
   }
 
-  // async getCountry(): Promise<void> {
-  //   const db = getFirestore(app);
-  //   const hotelsRef = collection(db, 'hotels');
+  async getCountry(): Promise<void> {
+    const db = getFirestore(app);
+    const hotelsRef = collection(db, 'hotels');
 
-  //   try {
-  //     const querySnapshot = await getDocs(hotelsRef);
-  //     this.countryArr = querySnapshot.docs.map<Hotel>(doc => {
-  //       const hotelData = doc.data() as Hotel;
-  //       return {
-  //         ...hotelData,
-  //         id: doc.id,
-  //       };
-  //     });
+    try {
+      const querySnapshot = await getDocs(hotelsRef);
+      this.countryArr = querySnapshot.docs.map<Hotel>(doc => {
+        const hotelData = doc.data() as Hotel;
+        return {
+          ...hotelData,
+          id: doc.id,
+        };
+      });
 
-  //     localStorage.setItem('countryArr', JSON.stringify(this.countryArr));
-  //   } catch (error) {
-  //     console.error('Error getting documents: ', error);
-  //   }
-  // }
+      localStorage.setItem('countryArr', JSON.stringify(this.countryArr));
+    } catch (error) {
+      console.error('Error getting documents: ', error);
+    }
+  }
 
   bindEvents(): void {
     this.searchPanelBtn.on('click', () => this.filterCountry());
@@ -128,8 +128,8 @@ export class Country {
     const destinationName = this.destinationCurrent.text().trim();
     const destination = this.countryToNumber(destinationName);
     this.countryFilterArr = this.countryArr.filter((item: Hotel) => {
-      if (destination === Destination.All) {
-        return true;
+      if (destination === Destination.All ) {
+        return item;
       } else {
         return item.isCountry === destination;
       }

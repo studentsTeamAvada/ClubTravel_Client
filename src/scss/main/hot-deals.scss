@@ -166,12 +166,11 @@
   }
 
   &__swiper-button-next {
+    right: -5%;
 
     svg {
       transform: rotate(180deg);
     }
-    right: -5%;
-    right: 2%;
 
     @include media-breakpoint-down(my) {
       right: 4%;
