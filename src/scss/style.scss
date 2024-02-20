@@ -10,7 +10,7 @@ body {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   color: #222;
-  
+  // overflow: hidden;
   ::-webkit-scrollbar-thumb {
     background-color: rgb(246 133 33 / 80%);
     border-radius: 3px;
@@ -20,6 +20,14 @@ body {
 
     }
   }
+  ::-webkit-scrollbar {
+    width: 8px;
+  
+    @include media-breakpoint-down(sm) {
+      width: 6px;
+    }
+  }
+  
   
 }
 
@@ -38,6 +46,7 @@ body {
 .page {
   flex: 1 1 auto;
   position: relative;
+  overflow: hidden;
 }
 
 .preloader{
@@ -65,7 +74,7 @@ body {
     height: 7px;
     border-radius: 5px;
     width: 120px;
-    background-color: #949292;
+    background-color: #999999b9;
 
     @include media-breakpoint-down(md) {
       width: 100px;
@@ -85,10 +94,6 @@ body {
 
 ::-webkit-scrollbar {
   width: 8px;
-
-  @include media-breakpoint-down(sm) {
-    width: 6px;
-  }
 }
 
 ::-webkit-scrollbar-thumb {
@@ -101,11 +106,7 @@ body {
 }
 
 ::-ms-scrollbar {
-  width: 10px;
-
-  @include media-breakpoint-down(sm) {
-    width: 8px;
-  }
+  width: 8px;
 }
 
 ::-ms-scrollbar-thumb {

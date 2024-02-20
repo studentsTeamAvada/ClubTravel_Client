@@ -65,7 +65,7 @@ export enum Stars {
   apart = 5,
 }
 
-export enum Duration {
+export enum Durations {
   all = 0,
   three = 1,
   seven = 2,
@@ -92,7 +92,7 @@ export interface Hotel {
   star: Stars;
   isStar: number;
   price: number[];
-  duration: Duration;
+  duration: Durations;
   isDuration: number;
   flight: boolean;
   touristPackage: boolean;
@@ -105,29 +105,4 @@ export interface Hotel {
   beach: string;
 }
 
-export enum RegionsName {
-  SharmElSheikh = 'Шарм-эль-Шейх',
-  Hurghada = 'Хургада',
-  Dubai = 'Дубай',
-  AbuDhabi = 'Абу-Даби',
-  Bangkok = 'Бангкок',
-  KuahHin = 'Хуа Хин',
-  SunnyBeach = 'Солнечный берег',
-  GoldenSands = 'Золотые пески',
-  Budva = 'Будва',
-  StefanBridge = 'Свети Стефан',
-  Bali = 'Бали',
-  Batumi = 'Батумі',
-  Rodos = 'Родос',
-  Marmaris = 'Мармарис',
-  Paphos = 'Пафос',
-  Suss = 'Сусс',
-  Tenerife = 'Тенерифе',
-  Majorca = 'Майорка',
-  Bukovyn = 'Буковель',
-  Uldag = 'Улудаг',
-  Bansko = 'Бансько',
-  Borovets = 'Боровець',
-  All = 'All'
 
-}

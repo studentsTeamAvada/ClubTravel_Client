@@ -2,7 +2,8 @@ import { Country } from './filterCountry';
 import { Regions, Hotel } from './type';
 import { ResultSwiper } from '../../pages/code/swiper';
 import $ from 'jquery';
-class Region extends Country {
+
+ export class Region extends Country {
   regionFilterArr: Hotel[];
 
   constructor() {
@@ -39,6 +40,8 @@ class Region extends Country {
         return item.isRegion === region;
       }
     });
+
+    console.log(this.regionFilterArr);
 
     this.renderHotels(this.regionFilterArr);
     this.renderRegions(this.regionFilterArr);
@@ -88,4 +91,4 @@ class Region extends Country {
   }
 }
 
-new Region()
+

@@ -7,6 +7,8 @@ import { DropdownSearch } from '../../components/dropSearch';
 new DropdownSearch('.info__destination-select');
 new DropdownSearch('.info__duration-select');
 new DropdownSearch('.info__date-select');
+new DropdownSearch('.info__guests-select');
+
 
 export class Country {
   countryArr: Hotel[];
@@ -100,8 +102,8 @@ export class Country {
 
   restoreFilterFromUrl(): void {
     const urlParams = new URLSearchParams(window.location.search);
-    // const savedDestination = urlParams.get('сountry');
-    const seveCountry = urlParams.get('isCountry');
+    const seveCountry = urlParams.get('country');
+
     if (seveCountry) {
       this.filterCountry();
     }
@@ -110,6 +112,7 @@ export class Country {
   filterCountry(): void {
     const destinationName = this.destinationCurrent.text().trim();
     const destination = this.countryToNumber(destinationName);
+
     this.countryFilterArr = this.countryArr.filter((item: Hotel) => {
       if (destination === Destination.All) {
         return true;
@@ -124,6 +127,7 @@ export class Country {
     new ResultSwiper();
 
     const newUrl = new URL(window.location.href);
+
     newUrl.searchParams.set('isCountry', destination.toString());
     window.history.pushState({}, '', newUrl.toString());
 
@@ -402,3 +406,6 @@ export class Country {
     }
   }
 }
+
+
+

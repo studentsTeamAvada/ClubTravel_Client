@@ -60,10 +60,13 @@ export class DropdownSearch {
   }
 
   dropdownObserver(): void {
+
     const options = {
-      rootMargin: `0px 0px -${this.dropdownList.outerHeight()}px 0px`,
+      rootMargin: `0px 0px -250px 0px`,
       threshold: 1,
+
     };
+
     const observer = new IntersectionObserver(
       this.callback.bind(this),
       options,
