@@ -1,4 +1,24 @@
 .directions-bg {
+  max-height: 554px;
+
+  &__container {
+    position: relative;
+    z-index: 2;
+    top: -194px;
+
+    @include media-breakpoint-down(md) {
+      top: -160px;
+    }
+
+    @include media-breakpoint-down(sm) {
+      top: -70px;
+    }
+
+    @include media-breakpoint-down(xs) {
+      top: -4px;
+    }
+  }
+
   &__image {
     img {
       width: 100%;

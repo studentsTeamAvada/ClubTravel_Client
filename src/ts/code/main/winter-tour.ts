@@ -1,14 +1,15 @@
 import { Tours } from '../../type';
 import { app } from "../../modules/firebase";
-import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
+import { getFirestore, collection, getDocs, query, where, Firestore } from "firebase/firestore";
+import { FirebaseApp } from "firebase/app";
 
 const winterTourWrapper = document.querySelector(
   ".winter-tour__swiper-wrapper",
 );
 
 export class WinterTourProduct {
-  private app: any;
-  private db: any;
+  private app: FirebaseApp;
+  private db: Firestore;
   private productsArray: Tours[];
 
   constructor() {

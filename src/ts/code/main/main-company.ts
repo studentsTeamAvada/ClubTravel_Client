@@ -1,12 +1,13 @@
 import { Tours } from '../../type';
 import { app } from "../../modules/firebase";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs, Firestore } from "firebase/firestore";
+import { FirebaseApp } from "firebase/app";
 
 const companyWrapper = document.querySelector(".main-company__swiper-wrapper");
 
 export class CompanyProduct {
-  private app: any;
-  private db: any;
+  private app: FirebaseApp;
+  private db: Firestore;
   private productsArray: Tours[];
 
   constructor() {

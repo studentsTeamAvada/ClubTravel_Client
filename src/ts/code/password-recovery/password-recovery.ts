@@ -1,9 +1,10 @@
 import { app } from "../../modules/firebase";
-import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import { getAuth, Auth, sendPasswordResetEmail } from "firebase/auth";
+import { FirebaseApp } from "firebase/app";
 
 export class PasswordRecovery {
-  app: any;
-  auth: any;
+  app: FirebaseApp;
+  auth: Auth;
 
   constructor() {
     this.app = app;

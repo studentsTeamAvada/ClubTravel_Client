@@ -1,4 +1,21 @@
 .hero {
+  margin-top: 100px;
+  margin-bottom: 4px;
+
+  @include media-breakpoint-down(sm) {
+    margin-top: 46px;
+    margin-bottom: 84px;
+  }
+
+  &__container-second {
+    position: relative;
+    top: -97px;
+    z-index: 2;
+
+    @include media-breakpoint-down(sm) {
+      top: 0;
+    }
+  }
 
   &__swiper-round {
 
@@ -53,8 +70,6 @@
       }
     }
   }
-  margin-top: 100px;
-  margin-bottom: 198px;
 
   &__swiper-button-prev,
   &__swiper-button-next {
@@ -71,9 +86,5 @@
     @include media-breakpoint-down(sm) {
       display: none;
     }
-  }
-
-  @include media-breakpoint-down(sm) {
-    margin-top: 46px;
   }
 }

@@ -1,8 +1,9 @@
 import { app } from "../../modules/firebase";
-import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
+import { getAuth, Auth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
+import { FirebaseApp } from "firebase/app";
 export class Registration {
-  app: any;
-  auth: any;
+  app: FirebaseApp;
+  auth: Auth;
 
   constructor() {
     this.app = app;

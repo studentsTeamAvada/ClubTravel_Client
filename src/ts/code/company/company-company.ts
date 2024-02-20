@@ -1,6 +1,6 @@
 import { Tours } from "../../type";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
-import { initializeApp } from "firebase/app";
+import { getFirestore, collection, getDocs, Firestore } from "firebase/firestore";
+import { initializeApp, FirebaseApp } from "firebase/app";
 const firebaseConfig = {
   apiKey: "AIzaSyAVwhQr2zeNEAr1FSrD6ygo5dJeLkxjtRk",
   authDomain: "clubtravel-6eff6.firebaseapp.com",
@@ -13,8 +13,8 @@ const firebaseConfig = {
 const companyWrapper = document.querySelector(".company-company__wrapper");
 
 export class CompanyProduct {
-  private app: any;
-  private db: any;
+  private app: FirebaseApp;
+  private db: Firestore;
   private productsArray: Tours[];
 
   constructor() {
