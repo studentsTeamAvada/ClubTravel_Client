@@ -1,12 +1,13 @@
 import { Tours } from '../../type';
-import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
+import { getFirestore, collection, getDocs, query, where, Firestore } from "firebase/firestore";
+import { FirebaseApp } from "firebase/app";
 import { app } from "../../modules/firebase";
 
 const hotDealsWrapper = document.querySelector(".hot-deals__swiper-wrapper");
 
 export class HotDealsProduct {
-  app: any;
-  db: any;
+  app: FirebaseApp;
+  db: Firestore;
   productsArray: Tours[];
 
   constructor() {

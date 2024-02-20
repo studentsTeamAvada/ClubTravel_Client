@@ -1,5 +1,18 @@
 .directions {
 
+  position: relative;
+  top: -140px;
+  padding-top: 162px;
+  background: #fff;
+
+  @include media-breakpoint-down(md) {
+    padding-top: 50px;
+  }
+
+  @include media-breakpoint-down(sm) {
+    padding-top: 354px;
+  }
+
   &__wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -137,8 +150,4 @@
       max-width: 290px;
     }
   }
-  position: relative;
-  top: -100px;
-  padding-top: 162px;
-  background: #fff;
 }
