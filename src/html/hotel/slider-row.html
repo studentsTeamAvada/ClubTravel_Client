@@ -3,158 +3,11 @@
     <div class="slider-row__wrapper">
       <div class="slider">
         <div class="swiper hotel-swiper-two">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <picture>
-                <source
-                  srcset="/src/images/hotel/image.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="/src/images/hotel/image.png"
-                  alt="Description of the image"
-                  width="730"
-                  height="499"
-                />
-              </picture>
-            </div>
-            <div class="swiper-slide">
-              <picture>
-                <source
-                  srcset="/src/images/hotel/image.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="/src/images/hotel/image.png"
-                  alt="Description of the image"
-                  width="730"
-                  height="499"
-                  loading="lazy"
-                />
-              </picture>
-            </div>
-            <div class="swiper-slide">
-              <picture>
-                <source
-                  srcset="/src/images/hotel/image.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="/src/images/hotel/image.png"
-                  alt="Description of the image"
-                  width="730"
-                  height="499"
-                  loading="lazy"
-                />
-              </picture>
-            </div>
-            <div class="swiper-slide">
-              <picture>
-                <source
-                  srcset="/src/images/hotel/image.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="/src/images/hotel/image.png"
-                  alt="Description of the image"
-                  width="730"
-                  height="499"
-                  loading="lazy"
-                />
-              </picture>
-            </div>
-            <div class="swiper-slide">
-              <picture>
-                <source
-                  srcset="/src/images/hotel/image.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="/src/images/hotel/image.png"
-                  alt="Description of the image"
-                  width="730"
-                  height="499"
-                  loading="lazy"
-                />
-              </picture>
-            </div>
-          </div>
+          <div class="swiper-wrapper" id="swiper-image-two"></div>
         </div>
 
         <div thumbsSlider="" class="swiper hotel-swiper-one">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <picture>
-                <source
-                  srcset="/src/images/hotel/image.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="/src/images/hotel/image.png"
-                  alt="Description of the image"
-                  width="730"
-                  height="499"
-                />
-              </picture>
-            </div>
-            <div class="swiper-slide">
-              <picture>
-                <source
-                  srcset="/src/images/hotel/image.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="/src/images/hotel/image.png"
-                  alt="Description of the image"
-                  width="730"
-                  height="499"
-                />
-              </picture>
-            </div>
-            <div class="swiper-slide">
-              <picture>
-                <source
-                  srcset="/src/images/hotel/image.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="/src/images/hotel/image.png"
-                  alt="Description of the image"
-                  width="730"
-                  height="499"
-                />
-              </picture>
-            </div>
-            <div class="swiper-slide">
-              <picture>
-                <source
-                  srcset="/src/images/hotel/image.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="/src/images/hotel/image.png"
-                  alt="Description of the image"
-                  width="730"
-                  height="499"
-                />
-              </picture>
-            </div>
-            <div class="swiper-slide">
-              <picture>
-                <source
-                  srcset="/src/images/hotel/image.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="/src/images/hotel/image.png"
-                  alt="Description of the image"
-                  width="730"
-                  height="499"
-                  loading="lazy"
-                />
-              </picture>
-            </div>
-          </div>
+          <div class="swiper-wrapper" id="swiper-image-one"></div>
         </div>
       </div>
 
@@ -167,23 +20,23 @@
           <ul class="tour__list">
             <li>
               <svg><use xlink:href="#calendar"></use></svg
-              ><span class="tour__li-info">18 июня 2020 г. | 7 ночей</span>
+              ><span class="tour__li-info"><span id="date-flight"></span> | <span id="days"></span> ночей</span>
             </li>
             <li>
               <svg><use xlink:href="#airplane"></use></svg
-              ><span class="tour__li-info">Вылет из Таллинна</span>
+              ><span class="tour__li-info" id="departure"></span>
             </li>
             <li>
               <svg><use xlink:href="#food"></use></svg
-              ><span class="tour__li-info">Завтраки</span>
+              ><span class="tour__li-info" id="foods"></span>
             </li>
             <li>
               <svg><use xlink:href="#house"></use></svg
-              ><span class="tour__li-info">Стандарт</span>
+              ><span class="tour__li-info" id="rooms"></span>
             </li>
           </ul>
           <div class="tour__price">
-            <span data-price="429" class="tour__price-sum">429</span
+            <span data-price="429" class="tour__price-sum"></span
             ><span class="tour__price-euro">€</span
             ><span class="tour__price-people">/чел</span>
           </div>
@@ -206,7 +59,7 @@
           </ul>
           <div class="tour__total-sum">
             <span class="tour__total-info">Общая стоимость тура:</span>
-            <span class="tour__total-price">0</span
+            <span class="tour__total-price"></span
             ><span class="tour__total-euro">€</span>
           </div>
           <div class="tour__button">
