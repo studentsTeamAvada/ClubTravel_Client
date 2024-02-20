@@ -5,11 +5,15 @@
   <link rel="icon" type="image/ico+xml" href="/ClubTravel.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Личный кабинет клиента</title>
-  <link rel="stylesheet" crossorigin href="/assets/Hot_offers-FYxyP47X.css">
+  <script type="module" crossorigin src="/assets/Account-lHFgfqDi.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/jquery-DgZYk2H_.js">
+  <link rel="modulepreload" crossorigin href="/assets/header-ARewE4Ia.js">
+  <link rel="stylesheet" crossorigin href="/assets/Account-ejIxCl_w.css">
 </head>
 
   <body>
-    <header class="header header_preload">
+    <div class="wrapper">
+      <header class="header header_preload">
   <div class="header__container">
     <div class="header__logo">
       <a href="index.html" aria-label="Главная страница" class="header__logo-link">
@@ -42,6 +46,7 @@
           </li>
 
           <li>
+
             <a href="company.html" class="bottom-list__link bottom-list__link-offer"><svg>
                 <use xlink:href="#offer"></use></svg><span>Кампании</span>
             </a>
@@ -112,7 +117,11 @@
           </li>
           
           <li>
-            <a href="Account.html" class="top-list__link top-list__link-avatar" aria-label="Пользователь">
+            <a
+              href="account.html"
+              class="top-list__link top-list__link-avatar"
+              aria-label="Пользователь"
+            >
               <div class="top-list__img"></div>
               <span class="top-list__name">Eesti</span>
             </a>
@@ -123,7 +132,309 @@
   </div>
 </header>
 
-    <footer class="footer">
+      <div class="page">
+        <section class="account-bg">
+    <div class="account-bg__img">
+      <picture class="account-bg__image">
+        <source srcset="/assets/banner-5tmXyVm0.webp " type="image/webp" />
+        <img src="/assets/banner-NG-0nreI.png" alt="bg" />
+      </picture>
+      <img
+        class="account-bg__line"
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABVYAAAA6CAYAAABbNwKUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAVvSURBVHgB7d3bcatIFEDR4wjsDKwMZjIYZz4p3BBaGdgR+BoVWK1WA3qLx1pVKhA09v+uo+YlYCW+v783xaW39pPbVB6treuuv0a/TQzr+7tjLn3uEVJcLp247rP99Pkaud/3/NDfrd57eXlJAQAAAKzSS8AEFNFzUxwbeUx877leBscpB0iWqxZh04nrtiNras8cXBN7AQAA4DGEVa6SBdHy+JZ9XkfWAPeTzvheTvvm94Yi7+dP0B2aEgYAAIDFEVYp4+hb8emmQ7vv+VqAmtRznsfYoYhbPTeNCwAAwJQIqwvzE0nzKLopzl977gHMTRo5z8NtHnTztb/XRVsAAADOJazOQBZLN3EYRN/jOJIKpQCX64uw3Xkt2H5Wrom1AAAACyesPlFPMG2Or3EcUQGYp8EAG/uXlg2ts48tAADAxAird9JG000cBtNuwvTfEEwBuEwqjvn5UKTdrTFJCwAAcBvC6oXaFz7lH9EUgDnpja9xHGhT+YwJWgAAYO2E1R5tOO1CaXP+HochFQA4nqDt4mvf9Kw4CwAALMJqw2q2v2kXTpvPe5g4BYBH6puc/Sq+29YAAACYlMWH1XbytIun/8RhTAUA5i/F+WHWxCwAAHCVRYTVdvq0i6XN8T3EUwBgXN8+st1WBqlyFGUBAIB5hdXK9Gl37mf7AMCjnRJlTcoCAMBCTTKsCqgAwMKVUbY5fsXhfrP5PUEWAAAm5qlhNfsJf/MRUAEAhgmyAAAwEQ8Lq+0U6kfYAxUA4NEEWQAAuLG7hNWfiNpNoeaTqKZQAQDmJcVhfC33kE35OjEWAIA1uTqsthH1I/yUHwCA+gRs7YVeuzViLAAAc3VWWC1+zv9fiKgAAFyvC7EmYwEAmI3esNpG1HIaVUQFAGAKUhyH2Hxa9vfeT4hNAQAAN7YLqz8RtQmm+Z6oH+HFUgAALMfYFgW/14VYAABO8fITVf8P06gAAFBKcRhiv2IfZ/PrticAAFihJqx+BwAAcK0UJmIBAFZDWAUAgMfr25rAHrEAADMhrAIAwPSVwTWPsKldYxoWAOCBhFUAAFieFP0h9nda1t6wAACXE1YBAGDdUoxvSSDCAgAUhFUAAOBUKURYAIAdYRUAALiHFMMR1p6wAMCsCasAAMAzjb2Ya3ddhAUApkZYBQAA5iJFtuVAmIIFAJ5IWAUAAJamNgWb4jjC2gsWALiYsAoAAKxZin1srW1DIMACAFXCKgAAwLgUAiwAkBFWAQAAbifFYYDNvzcv4foTAMAiCKsAAACPdbDXa3gJFwDMkrAKAAAwTSlsPwAAkyWsAgAAzFff9Ouf2G8/kAIAuDlhFQAAYPk+Yx9fI/YRtjvPr3+ahAWAccIqAAAANSn2QTbfjuAo0pqKBWCNhFUAAABuJcWJMTZMxgIwc8IqAAAAz5TiML52Qba7l9pzL+wCYFKEVQAAAOamNgH7FaZjAXggYRUAAIC1qEXXRrllwe/H/rEA9BFWAQAAYFyKfXDtvvdNyYqyACsgrAIAAMB9pRiPsrVpWdsXAEyYsAoAAADTVZ2GDWEW4OmEVQAAAFiuMrg2UnvcFt9T+Yw4C9BPWAUAAACG1OJsd74dWJO6ewItsETCKgAAAPAI1egah1sb5PdS9uzu3AvBgCkRVgEAAIA5SsUxP9+euM40LXAxYRUAAADgeIq2PN+esVawhRUQVgEAAADup7YFQnm9Fm2H1gu3MAHCKgAAAMC8pZ7zPMbm+9gOrSu/i7jQQ1gFAAAA4FRlhE0j97fF/TTy/eial5YxVcIqAAAAAHNSxttGOnHd9sR1tWuD/8tk7/oIqwAAAABwP+dG2nPub+O6/3/N2ls8N/g3px6r/wL66kFoUa7T8QAAAABJRU5ErkJggg=="
+        alt="bg-line"
+      />
+    </div>
+  </section>
+  
+        <section class="account">
+  <div class="account__container">
+    <div class="account__wrapper">
+      <div class="account__left-wrapper">
+        <div class="account__left">
+          <div class="account__left-photo">
+            <picture>
+              <source
+                srcset="data:image/webp;base64,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 "
+                type="image/webp"
+              />
+              <img src="/assets/photo1-6xwJWOCk.png" alt="bg" />
+            </picture>
+          </div>
+          <p class="account__left-name">Еле Колонаева</p>
+          <button class="account__left-order active">
+            <svg><use xlink:href="#order"></use></svg>
+            <p>Мои заказы</p>
+          </button>
+          <button class="account__left-history-order">
+            <svg><use xlink:href="#history-order"></use></svg>
+            <p>История платежей</p>
+          </button>
+          <button class="account__left-settings">
+            <svg><use xlink:href="#account-settings"></use></svg>
+            <p>Настройки</p>
+          </button>
+          <a href="#" class="account__left-exit">
+            <svg><use xlink:href="#exit"></use></svg>
+            <p>Выход</p>
+          </a>
+        </div>
+        <div class="account__polite-wrapper">
+          <a class="account__polite">Политика конфиденциальности</a>
+          <a class="account__polite">Политика использования</a>
+        </div>
+      </div>
+      <div class="account__right">
+        <h4 class="account__right-title">Заказы</h4>
+        <div class="account__right-table">
+          <table id="accountTable" border="1">
+            <thead>
+              <tr>
+                <th>Номер заказа</th>
+                <th>Сумма</th>
+                <th>E-mail</th>
+                <th>Cтатус</th>
+                <th>Дата</th>
+              </tr>
+            </thead>
+            <tbody>
+              <td>1588665993</td>
+              <td>554.00</td>
+              <td>admin@admin.ee</td>
+              <td>
+                <p class="account__payment-success">Оплачено</p>
+                <p class="account__payment-processing">В обработке</p>
+              </td>
+              <td>18 июня 2020 15:01</td>
+            </tbody>
+            <tbody>
+              <td>1588665993</td>
+              <td>554.00</td>
+              <td>admin@admin.ee</td>
+              <td>
+                <p class="account__payment-success">Оплачено</p>
+                <p class="account__payment-processing">В обработке</p>
+              </td>
+              <td>18 июня 2020 15:01</td>
+            </tbody>
+            <tbody>
+              <td>1588665993</td>
+              <td>554.00</td>
+              <td>admin@admin.ee</td>
+              <td>
+                <p class="account__payment-success">Оплачено</p>
+                <p class="account__payment-processing">В обработке</p>
+              </td>
+              <td>18 июня 2020 15:01</td>
+            </tbody>
+            <tbody>
+              <td>1588665993</td>
+              <td>554.00</td>
+              <td>admin@admin.ee</td>
+              <td>
+                <p class="account__payment-success">Оплачено</p>
+                <p class="account__payment-processing">В обработке</p>
+              </td>
+              <td>18 июня 2020 15:01</td>
+            </tbody>
+            <tbody>
+              <td>1588665993</td>
+              <td>554.00</td>
+              <td>admin@admin.ee</td>
+              <td>
+                <p class="account__payment-success">Оплачено</p>
+                <p class="account__payment-processing">В обработке</p>
+              </td>
+              <td>18 июня 2020 15:01</td>
+            </tbody>
+            <tbody>
+              <td>1588665993</td>
+              <td>554.00</td>
+              <td>admin@admin.ee</td>
+              <td>
+                <p class="account__payment-success">Оплачено</p>
+                <p class="account__payment-processing">В обработке</p>
+              </td>
+              <td>18 июня 2020 15:01</td>
+            </tbody>
+            <tbody>
+              <td>1588665993</td>
+              <td>554.00</td>
+              <td>admin@admin.ee</td>
+              <td>
+                <p class="account__payment-success">Оплачено</p>
+                <p class="account__payment-processing">В обработке</p>
+              </td>
+              <td>18 июня 2020 15:01</td>
+            </tbody>
+            <tbody>
+              <td>1588665993</td>
+              <td>554.00</td>
+              <td>admin@admin.ee</td>
+              <td>
+                <p class="account__payment-success">Оплачено</p>
+                <p class="account__payment-processing">В обработке</p>
+              </td>
+              <td>18 июня 2020 15:01</td>
+            </tbody>
+            <tbody>
+              <td>1588665993</td>
+              <td>554.00</td>
+              <td>admin@admin.ee</td>
+              <td>
+                <p class="account__payment-success">Оплачено</p>
+                <p class="account__payment-processing">В обработке</p>
+              </td>
+              <td>18 июня 2020 15:01</td>
+            </tbody>
+          </table>
+          <div class="account__right-table-bottom account__table-bottom">
+            <div class="account__table-bottom-left">
+              <p>Показано <span>9</span> из <span>13</span></p>
+            </div>
+            <div class="account__table-bottom-right">
+              <button
+                class="account__table-bottom-button"
+                id="account-button-prev"
+              >
+                Назад
+              </button>
+              <div class="account__table-bottom-pagination">
+                <p>
+                  Страница
+                  <span class="account__table-pagination active">1</span> из
+                  <span class="account__table-pagination">2</span>
+                </p>
+              </div>
+              <button
+                class="account__table-bottom-button"
+                id="account-button-next"
+              >
+                Вперед
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="account__right-table-mobile account-mobile__table">
+          <div class="account-mobile__table-wrapper">
+            <div class="account-mobile__table-left">
+              <p class="account-mobile__table-left-number">Номер заказа</p>
+              <p>Сумма</p>
+              <p>E-mail</p>
+              <p>Cтатус</p>
+              <p>Дата</p>
+            </div>
+            <div class="account-mobile__table-right">
+              <p class="account-mobile__table-right-number">1588665993</p>
+              <p>554.00</p>
+              <p>admin@admin.ru</p>
+              <p class="account-mobile__payment-success">Оплачено</p>
+              <p class="account-mobile__payment-processing">В обработке</p>
+              <p>18 июня 2020 15:01</p>
+            </div>
+          </div>
+          <div class="account-mobile__table-wrapper">
+            <div class="account-mobile__table-left">
+              <p class="account-mobile__table-left-number">Номер заказа</p>
+              <p>Сумма</p>
+              <p>E-mail</p>
+              <p>Cтатус</p>
+              <p>Дата</p>
+            </div>
+            <div class="account-mobile__table-right">
+              <p class="account-mobile__table-right-number">1588665993</p>
+              <p>554.00</p>
+              <p>admin@admin.ru</p>
+              <p class="account-mobile__payment-success">Оплачено</p>
+              <p class="account-mobile__payment-processing">В обработке</p>
+              <p>18 июня 2020 15:01</p>
+            </div>
+          </div>
+          <div class="account-mobile__table-wrapper">
+            <div class="account-mobile__table-left">
+              <p class="account-mobile__table-left-number">Номер заказа</p>
+              <p>Сумма</p>
+              <p>E-mail</p>
+              <p>Cтатус</p>
+              <p>Дата</p>
+            </div>
+            <div class="account-mobile__table-right">
+              <p class="account-mobile__table-right-number">1588665993</p>
+              <p>554.00</p>
+              <p>admin@admin.ru</p>
+              <p class="account-mobile__payment-success">Оплачено</p>
+              <p class="account-mobile__payment-processing">В обработке</p>
+              <p>18 июня 2020 15:01</p>
+            </div>
+          </div>
+          <div class="account-mobile__table-wrapper">
+            <div class="account-mobile__table-left">
+              <p class="account-mobile__table-left-number">Номер заказа</p>
+              <p>Сумма</p>
+              <p>E-mail</p>
+              <p>Cтатус</p>
+              <p>Дата</p>
+            </div>
+            <div class="account-mobile__table-right">
+              <p class="account-mobile__table-right-number">1588665993</p>
+              <p>554.00</p>
+              <p>admin@admin.ru</p>
+              <p class="account-mobile__payment-success">Оплачено</p>
+              <p class="account-mobile__payment-processing">В обработке</p>
+              <p>18 июня 2020 15:01</p>
+            </div>
+          </div>
+          <div class="account-mobile__table-wrapper">
+            <div class="account-mobile__table-left">
+              <p class="account-mobile__table-left-number">Номер заказа</p>
+              <p>Сумма</p>
+              <p>E-mail</p>
+              <p>Cтатус</p>
+              <p>Дата</p>
+            </div>
+            <div class="account-mobile__table-right">
+              <p class="account-mobile__table-right-number">1588665993</p>
+              <p>554.00</p>
+              <p>admin@admin.ru</p>
+              <p class="account-mobile__payment-success">Оплачено</p>
+              <p class="account-mobile__payment-processing">В обработке</p>
+              <p>18 июня 2020 15:01</p>
+            </div>
+          </div>
+          <div class="account-mobile__table-bottom">
+            <div class="account__table-bottom-left">
+              <p>Показано <span>9</span> из <span>13</span></p>
+              <div class="account__table-bottom-right account-mobile__table-bottom-right">
+                <button
+                  class="account__table-bottom-button"
+                  id="account-button-prev"
+                >
+                  Назад
+                </button>
+                <div class="account__table-bottom-pagination">
+                  <p>
+                    Страница
+                    <span class="account__table-pagination active">1</span> из
+                    <span class="account__table-pagination">2</span>
+                  </p>
+                </div>
+                <button
+                  class="account__table-bottom-button"
+                  id="account-button-next"
+                >
+                  Вперед
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+      </div>
+      <footer class="footer">
   <div class="footer__container">
     <div class="footer__main">
       <div class="footer__popular popular">
@@ -170,33 +481,29 @@
         <p class="contacts__info">Clubs Travel OÜ</p>
         <ul class="contacts__main">
           <li class="contacts__li">
-            <svg><use xlink:href="#clock"></use></svg
-            ><span class="contacts__li-text"
-              >Пн-Пт 9:30-18:00, Сб 11:00-15:00</span
-            >
+            <svg><use xlink:href="#clock"></use></svg>
+            <span class="contacts__li-text">
+              Пн-Пт 9:30-18:00, Сб 11:00-15:00
+              </span>
           </li>
           <li class="contacts__li">
-            <svg><use xlink:href="#point"></use></svg
-            ><span class="contacts__li-text"
-              >Narva mnt 7D, Tallinn (корпус B) 4 этаж</span
-            >
+            <svg><use xlink:href="#point"></use></svg>
+            <span class="contacts__li-text">
+              Narva mnt 7D, Tallinn (корпус B) 4 этаж
+            </span>
           </li>
           <li class="contacts__li">
-            <svg><use xlink:href="#phone"></use></svg
-            ><span class="contacts__li-text contacts__li-phones"
-              ><a href="tel:+37255560310">+372 555 60 310</a>|<a
-                href="tel:+3726130633"
-                >+372 61 30 633</a
-              ></span
-            >
+            <svg><use xlink:href="#phone"></use></svg>
+            <span class="contacts__li-text contacts__li-phones">
+              <a href="tel:+37255560310">+372 555 60 310</a>|
+              <a href="tel:+3726130633">+372 61 30 633</a>
+            </span>
           </li>
           <li class="contacts__li">
-            <svg><use xlink:href="#mail"></use></svg
-            ><span class="contacts__li-text contacts__li-mail"
-              ><a href="mailto:info@clubstravel.ee"
-                >info@clubstravel.ee</a
-              ></span
-            >
+            <svg><use xlink:href="#mail"></use></svg>
+            <span class="contacts__li-text contacts__li-mail">
+              <a href="mailto:info@clubstravel.ee">info@clubstravel.ee</a>
+            </span>
           </li>
         </ul>
       </div>
@@ -268,6 +575,19 @@
       fill="white"
     />
   </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" id="exit">
+    <path d="M7.09 12.59L8.5 14L13.5 9L8.5 4L7.09 5.41L9.67 8H0V10H9.67L7.09 12.59ZM16 0H2C1.46957 0 0.960859 0.210714 0.585786 0.585786C0.210714 0.960859 0 1.46957 0 2V6H2V2H16V16H2V12H0V16C0 16.5304 0.210714 17.0391 0.585786 17.4142C0.960859 17.7893 1.46957 18 2 18H16C17.1 18 18 17.1 18 16V2C18 0.9 17.1 0 16 0Z" fill="#999999"/>
+    </symbol>
+    
+  <symbol xmlns="http://www.w3.org/2000/svg" id="account-settings">
+    <path d="M20.7133 8.47998L18.48 7.81331C18.3256 7.27419 18.1132 6.75337 17.8466 6.25998L18.94 4.21331C18.981 4.13606 18.996 4.04764 18.9828 3.96117C18.9696 3.8747 18.9289 3.79479 18.8666 3.73331L17.2733 2.13331C17.2118 2.07109 17.1319 2.03035 17.0455 2.01714C16.959 2.00393 16.8706 2.01896 16.7933 2.05998L14.76 3.14665C14.2617 2.86709 13.7341 2.6435 13.1866 2.47998L12.52 0.273313C12.4918 0.191991 12.4385 0.121713 12.3678 0.0725945C12.2971 0.0234765 12.2127 -0.00194823 12.1266 -1.99578e-05H9.87331C9.78674 0.000383091 9.70256 0.0284031 9.63301 0.0799622C9.56347 0.131521 9.51219 0.203929 9.48665 0.286647L8.81998 2.48665C8.26799 2.6493 7.73582 2.8729 7.23331 3.15331L5.23331 2.07331C5.15606 2.03229 5.06764 2.01727 4.98117 2.03048C4.8947 2.04369 4.81479 2.08443 4.75331 2.14665L3.13331 3.72665C3.07109 3.78813 3.03035 3.86803 3.01714 3.9545C3.00393 4.04097 3.01896 4.12939 3.05998 4.20665L4.13998 6.20665C3.86002 6.70704 3.63643 7.23695 3.47331 7.78665L1.26665 8.45331C1.18393 8.47886 1.11152 8.53013 1.05996 8.59968C1.0084 8.66922 0.980384 8.75341 0.97998 8.83998V11.0933C0.980384 11.1799 1.0084 11.2641 1.05996 11.3336C1.11152 11.4032 1.18393 11.4544 1.26665 11.48L3.48665 12.1466C3.65154 12.6872 3.8751 13.2081 4.15331 13.7L3.05998 15.7933C3.01896 15.8706 3.00393 15.959 3.01714 16.0455C3.03035 16.1319 3.07109 16.2118 3.13331 16.2733L4.72665 17.8666C4.78813 17.9289 4.86803 17.9696 4.9545 17.9828C5.04097 17.996 5.12939 17.981 5.20665 17.94L7.26665 16.84C7.75396 17.1029 8.26799 17.313 8.79998 17.4666L9.46665 19.7133C9.49219 19.796 9.54347 19.8684 9.61301 19.92C9.68256 19.9716 9.76674 19.9996 9.85331 20H12.1066C12.1932 19.9996 12.2774 19.9716 12.3469 19.92C12.4165 19.8684 12.4678 19.796 12.4933 19.7133L13.16 17.46C13.6874 17.3056 14.197 17.0955 14.68 16.8333L16.7533 17.94C16.8306 17.981 16.919 17.996 17.0055 17.9828C17.0919 17.9696 17.1718 17.9289 17.2333 17.8666L18.8266 16.2733C18.8889 16.2118 18.9296 16.1319 18.9428 16.0455C18.956 15.959 18.941 15.8706 18.9 15.7933L17.7933 13.7266C18.0582 13.2418 18.2705 12.73 18.4266 12.2L20.6733 11.5333C20.756 11.5078 20.8284 11.4565 20.88 11.3869C20.9316 11.3174 20.9596 11.2332 20.96 11.1466V8.87331C20.9639 8.79041 20.9424 8.7083 20.8983 8.63799C20.8542 8.56768 20.7897 8.51254 20.7133 8.47998ZM11 13.6666C10.2748 13.6666 9.56587 13.4516 8.96289 13.0487C8.35991 12.6458 7.88994 12.0731 7.61242 11.4032C7.3349 10.7332 7.26229 9.99591 7.40377 9.28465C7.54525 8.57339 7.89446 7.92005 8.40726 7.40725C8.92005 6.89446 9.57339 6.54525 10.2846 6.40377C10.9959 6.26229 11.7332 6.3349 12.4032 6.61242C13.0731 6.88994 13.6458 7.35991 14.0487 7.96289C14.4516 8.56587 14.6666 9.27478 14.6666 9.99998C14.6666 10.9724 14.2803 11.9051 13.5927 12.5927C12.9051 13.2803 11.9724 13.6666 11 13.6666Z" fill="#F68521"/>
+    </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" id="history-order">
+    <path d="M18 0H2C0.89 0 0.00999999 0.89 0.00999999 2L0 14C0 15.11 0.89 16 2 16H18C19.11 16 20 15.11 20 14V2C20 0.89 19.11 0 18 0ZM18 14H2V8H18V14ZM18 4H2V2H18V4Z" fill="#F68521"/>
+    </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" id="order">
+    <path d="M2 0C1.46957 0 0.960859 0.210714 0.585786 0.585786C0.210714 0.960859 0 1.46957 0 2V6C0.530433 6 1.03914 6.21071 1.41421 6.58579C1.78929 6.96086 2 7.46957 2 8C2 8.53043 1.78929 9.03914 1.41421 9.41421C1.03914 9.78929 0.530433 10 0 10V14C0 14.5304 0.210714 15.0391 0.585786 15.4142C0.960859 15.7893 1.46957 16 2 16H18C18.5304 16 19.0391 15.7893 19.4142 15.4142C19.7893 15.0391 20 14.5304 20 14V10C19.4696 10 18.9609 9.78929 18.5858 9.41421C18.2107 9.03914 18 8.53043 18 8C18 7.46957 18.2107 6.96086 18.5858 6.58579C18.9609 6.21071 19.4696 6 20 6V2C20 1.46957 19.7893 0.960859 19.4142 0.585786C19.0391 0.210714 18.5304 0 18 0H2ZM13.5 3L15 4.5L6.5 13L5 11.5L13.5 3ZM6.81 3.04C7.79 3.04 8.58 3.83 8.58 4.81C8.58 5.27943 8.39352 5.72964 8.06158 6.06158C7.72964 6.39352 7.27943 6.58 6.81 6.58C5.83 6.58 5.04 5.79 5.04 4.81C5.04 4.34057 5.22648 3.89036 5.55842 3.55842C5.89036 3.22648 6.34057 3.04 6.81 3.04ZM13.19 9.42C14.17 9.42 14.96 10.21 14.96 11.19C14.96 11.6594 14.7735 12.1096 14.4416 12.4416C14.1096 12.7735 13.6594 12.96 13.19 12.96C12.21 12.96 11.42 12.17 11.42 11.19C11.42 10.7206 11.6065 10.2704 11.9384 9.93842C12.2704 9.60648 12.7206 9.42 13.19 9.42Z" fill="#F68521"/>
+    </symbol>
   <symbol xmlns="http://www.w3.org/2000/svg" id="map-marker">
     <g opacity="0.5">
       <path
@@ -570,5 +890,6 @@
 </svg>
 
 
+    </div>
   </body>
 </html>
