@@ -129,7 +129,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     points(num: number = 1) {
-      console.log(num);
       const btnOne = document.querySelector(".form__tab-one");
       const btnTwo = document.querySelector(".form__tab-two");
       const btnThree = document.querySelector(".form__tab-three");
@@ -218,7 +217,6 @@ document.addEventListener("DOMContentLoaded", () => {
           input.value = new AsYouType().input(input.value)
         })
       })
-      
     }
 
 
@@ -227,7 +225,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const element = $(inputWrap) as JQueryValidateForm;
 
       ($ as addValidator).validator.addMethod("min", function(value : string) {
-        return  value.replace(/ |\+/g, '').length >= 10;
+        if(/\+380/.test(value)){
+          return  value.replace(/ |\+/g, '').length >= 12;
+        }else{
+          return  value.replace(/ |\+/g, '').length >= 10;
+        }
       }, 'Номер должен состоять из 10 цифр');
 
       element.validate({
