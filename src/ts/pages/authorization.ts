@@ -4,8 +4,6 @@ import { Preloader } from "../components/preloader";
 import { Authorization } from "../code/authorization/authorization";
 
 
-
-
 document.addEventListener("DOMContentLoaded", () => {
     new Header();
     justValidateAuthorization();
