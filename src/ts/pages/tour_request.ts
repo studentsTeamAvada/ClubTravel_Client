@@ -174,9 +174,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     clickFormBtn() {
       this.formBtn.on("click", () => {
-        const oneState = $(".form").is(".form_state-one");
-        const twoState = $(".form").is(".form_state-two");
-        const threeState = $(".form").is(".form_state-three");
+        // const oneState = $(".form").is(".form_state-one");
+        // const twoState = $(".form").is(".form_state-two");
+        // const threeState = $(".form").is(".form_state-three");
 
 
         // if (oneState) {
@@ -270,17 +270,17 @@ document.addEventListener("DOMContentLoaded", () => {
         $("#drop-calendar").valid();
       });
 
-      ($ as addValidator).validator.addMethod("dropCountry", function(value : string) {
+      ($ as addValidator).validator.addMethod("dropCountry", function() {
         const checkCountry = $(".drop-country__county").html();
         return checkCountry !== "Страна"
       }, 'Выбирите тур');
 
-      ($ as addValidator).validator.addMethod("departure", function(value : string) {
+      ($ as addValidator).validator.addMethod("departure", function() {
         const startDate = $("#start-date").html();
         return startDate.length > 0
       }, 'Выберите дату вылета');
 
-      ($ as addValidator).validator.addMethod("arrived", function(value : string) {
+      ($ as addValidator).validator.addMethod("arrived", function() {
         const finalDate = $("#final-date").html();
         return finalDate.length > 0
       }, 'Выберите дату возвращения');
@@ -295,7 +295,7 @@ document.addEventListener("DOMContentLoaded", () => {
             dropCountry: true,
           },
         },
-      submitHandler(form : JQuery<HTMLElement>) {
+      submitHandler() {
         alert("Мы скоро с вами свяжемся")
       }
      });
