@@ -99,13 +99,6 @@
     }
   }
 
-  &__input-error {
-    position: absolute;
-    bottom: -18px;
-    padding-left: 1px;
-    font-size: 12px;
-  }
-
   &__btn {
     height: 42px;
     flex: 1 0 33%;
@@ -320,6 +313,13 @@
       margin-bottom: 7px;
     }
 
+    &-hover{
+      opacity: 0;
+      height: 0;
+      width: 0;
+      pointer-events: none;
+    }
+
     &-tags {
       display: flex;
       flex-wrap: wrap;
@@ -488,11 +488,6 @@
       }
     }
 
-    &-error {
-      font-size: 12px;
-      transition: all 300ms ease 0s;
-      color: rgb(199 41 41);
-    }
   }
   &__input {
     border-radius: 6px;
@@ -503,6 +498,13 @@
     margin-bottom: 16px;
     &-wrap {
       position: relative;
+      label{
+        position: absolute;
+        top: -18px;
+        font-size: 12px;
+        color: rgb(199 41 41);
+        right: 5px;
+      }
 
     }
     &-for-validate{
@@ -523,21 +525,7 @@
 
   }
 
-  &__error {
-    position: absolute;
-    right: 0;
-    bottom: 0px;
-    font-size: 12px;
-    transition: all 300ms ease 0s;
-    color: rgb(199 41 41);
-  }
-  &__error-food {
-    bottom: -16px;
-    opacity: 0;
-    &_active {
-      opacity: 1;
-    }
-  }
+
 
   &__stars {
     margin: 0 0 12px 11px;
@@ -582,7 +570,7 @@
       display: none;
     }
     &-third {
-      display: none;
+      opacity: 0;
     }
   }
   
@@ -654,6 +642,7 @@
           }
           &-third {
             display: block;
+            opacity: 1;
           }
         }
   
@@ -674,7 +663,6 @@
 }
 
 .input{
-
   position: relative;
   &::before {
     content: "+380";
@@ -713,14 +701,6 @@
       right: 5px;
       top: -18px;
     }
-  }
-  .border-error{
-    border: 1px solid rgb(199 41 41) ;
-    border-right: 0px ;
-    @include media-breakpoint-down(xs) {
-      border-right: 1px solid rgb(199 41 41) ;
-    }
-
   }
 }
 

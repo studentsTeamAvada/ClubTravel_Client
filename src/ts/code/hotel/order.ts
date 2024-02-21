@@ -2,7 +2,7 @@ import $ from "jquery";
 import {app} from "./../../modules/firebase"
 // import { getFirestore, getDocs, collection  } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { doc, setDoc, getFirestore } from "firebase/firestore"; 
+import { doc, setDoc,getDoc, updateDoc, arrayUnion, getFirestore } from "firebase/firestore"; 
 
 interface user{
     uid: string
@@ -62,10 +62,19 @@ export class Order{
 
                 this.objData.price = +$(".tour__total-price").html().replace(" ", '');
                 this.objData.payStatus = false;
-          
-                await setDoc(doc(db, "users", uid), {
-                    orders: this.objData
-                });
+
+                const userDocRef = doc(db, "users", uid);
+                const docSnap = await getDoc(userDocRef);
+
+                if (docSnap.exists()) {
+                    await updateDoc(userDocRef, {
+                        orders: arrayUnion(this.objData)
+                    });
+                }else{
+                    await setDoc(doc(db, "users", uid), {
+                        orders: [this.objData]
+                    });
+                }
 
                 const question = confirm("Тур добавлен и ожидает оплаты, перейти в личный кабинет?")
                 if(question){
