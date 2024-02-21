@@ -3,6 +3,7 @@ import { Footer } from "../components/footer";
 import $ from "jquery";
 import 'jquery-validation';
 import { Preloader } from "../components/preloader";
+import { AsYouType, validatePhoneNumberLength } from 'libphonenumber-js'
 
 type JQueryValidateForm = JQuery<HTMLFormElement>;
 
@@ -29,6 +30,7 @@ class Contacts {
 
   init() {
     this.validateForm();
+    this.inputMask()
   }
 
   validateForm() {
@@ -38,11 +40,19 @@ class Contacts {
       return /^(?!.*\.\.)[\w.-]{3,20}@[\wа-я.][\wа-я.-]{3,20}[\wа-я.]\.[a-z]{2,10}/.test(value);
     }, 'Введите корректный email');
 
+    ($ as addValidator).validator.addMethod("min", function(value : string) {
+      if(/\+380/.test(value)){
+        return  value.replace(/ |\+/g, '').length >= 12;
+      }else{
+        return  value.replace(/ |\+/g, '').length >= 10;
+      }
+    }, 'Номер должен состоять из 10 цифр');
+
     element.validate({
       rules: {
         phone: {
           required: true,
-          minlength: 13,
+          min: true,
         },
         main: {
           laxEmail: true,
@@ -53,7 +63,6 @@ class Contacts {
       messages: {
         phone: {
           required: "Введите номер",
-          minlength: "Номер должен состоять из 10 цифр"
         },
         main: {
           required: "Введите почту",
@@ -71,6 +80,25 @@ class Contacts {
         $(form).trigger("reset");
       }
     });
+  }
+
+  inputMask() {
+    const inputs = document.querySelectorAll("input[name='phone']")
+    inputs.forEach(item => {
+      const input = item as HTMLInputElement
+      input.addEventListener("input", () => {
+        if(input.value.length === 1){
+          input.value = "+" + input.value
+          if(input.value === "+0"){
+            input.value = "+380"
+          }
+        }
+        if(validatePhoneNumberLength(input.value + '0') === "TOO_LONG"){
+          input.value = input.value.slice(0, -1)
+        }
+        input.value = new AsYouType().input(input.value)
+      })
+    })
   }
 }
 

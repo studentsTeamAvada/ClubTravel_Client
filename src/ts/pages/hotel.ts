@@ -1,7 +1,6 @@
 import { Header } from "../components/header";
 import { Footer } from "../components/footer";
 import { InfoBlock } from "../code/hotel/info-block";
-import { Preloader } from "../components/preloader";
 import { PullData } from "../code/hotel/pull-data";
 import { Order } from "../code/hotel/order";
 
@@ -25,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
     init() {}
   }
   new Hotel();
-  new Preloader();
 });
 
 

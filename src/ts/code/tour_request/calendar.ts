@@ -68,6 +68,7 @@ export class Calendar {
             maxDate: maxData
           })
           context.selectCount()
+          console.log(1)
         }else if(myDate[0]){
           context.currentSelDate = new Date(myDate[0]);
           context.newDate();
@@ -90,9 +91,10 @@ export class Calendar {
     // const finishDate = new Date(new Date().setDate(this.currentSelDate.getDate() + this.between)) 
 
     const between: number = this.currentNextDate.getTime() - this.currentSelDate.getTime();
+    console.log(this.currentNextDate)
 
     const daysBetween: number = Math.floor(between / (1000 * 60 * 60 * 24));
-    console.log(daysBetween)
+
     $('.form__counter-count').html(String(daysBetween))
   }
 
@@ -133,8 +135,7 @@ export class Calendar {
     this.datepicker?.clear();
     this.datepicker?.selectDate(this.currentSelDate); 
     this.datepicker?.selectDate(finish);
-    console.log(this.currentSelDate)
-    console.log(this.currentNextDate)
+
 
   }
 

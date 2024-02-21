@@ -2,6 +2,7 @@ import $ from "jquery";
 import {app} from "./../../modules/firebase"
 import { getFirestore, getDocs, collection  } from "firebase/firestore";
 import { HotelSlider, HotelSecondSlider } from "../../code/swiper";
+import { Preloader } from "../../components/preloader";
 
 interface Photo{
     urlWebp: string;
@@ -53,7 +54,6 @@ export class PullData{
     }
 
     async getData(){
-
         const db = getFirestore(this.app);
         const querySnapshot = await getDocs(collection(db, "hotels"));
 
@@ -74,8 +74,7 @@ export class PullData{
         });
 
         new HotelSecondSlider();
-
-
+        new Preloader();
     }
 
     bottomSlide(data: object){
@@ -121,7 +120,7 @@ export class PullData{
                     <div class="slide__img">
                         <picture>
                         <source srcset="${img.urlWebp}"/>
-                        <img src="${img.url}" width="1366" height="550" loading="lazy"/>
+                        <img src="${img.url}" width="1366" height="550" loading="lazy" alt="hotel-image"/>
                         </picture>
                     </div>
                 
@@ -250,5 +249,20 @@ export class PullData{
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
