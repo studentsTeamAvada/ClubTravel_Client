@@ -80,7 +80,13 @@ export enum Departure {
   lviv = 2,
 }
 
+export enum Kids {
+  all = 0,
+  no = 1,
+}
+
 export interface Hotel {
+  length: any;
   id: string;
   name: string;
   country: Destination;
@@ -100,9 +106,12 @@ export interface Hotel {
   date: string;
   img: { url: string; urlWebp: string }[];
   description: { main: string; additional: string }[];
-  room: string | string[];
+  room: string[];
   meals: string;
   beach: string;
+  isKids: boolean;
+  [key: string]: string | number | boolean | any[] | object;
+
 }
 
 

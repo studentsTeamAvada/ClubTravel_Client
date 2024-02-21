@@ -1,71 +1,25 @@
 import $ from 'jquery';
+import { Filtering } from './filteringCountry';
 import noUiSlider, { target } from 'nouislider';
 import 'nouislider/dist/nouislider.css';
-import { Country } from './filterCountry';
 import { Hotel, Meals, Stars, Departure } from './type';
-
-export class Hotels extends Country {
-  mealsFilterArr: Hotel[];
-  starsFilterArr: Hotel[];
-  priceFilterArr: Hotel[];
+export class Hotels extends Filtering {
+  urlParams: URLSearchParams;
 
   constructor() {
     super();
-    this.mealsFilterArr = [];
-    this.starsFilterArr = [];
-    this.priceFilterArr = [];
 
-    this.selectMeal();
-    this.selectStars();
+    this.urlParams = new URLSearchParams(window.location.search);
+    this.initial();
+  }
+
+  initial(): void {
+    this.selectingMeals();
+    this.selectingStars();
     this.priceSlider();
-    this.selectTourAndFlight();
-    this.selectDeparture();
-  }
-
-  restoreFilterFromUrl(): void {
-    super.restoreFilterFromUrl();
-    const urlParams = new URLSearchParams(window.location.search);
-
-    urlParams.forEach((_value, key) => {
-      switch (key) {
-        case 'isMeals':
-          this.filterMeals();
-          break;
-        case 'isStar':
-          this.filterStars();
-          break;
-        case 'priceMin':
-        case 'priceMax':
-          this.filterPrice();
-          break;
-        case 'isTour':
-        case 'flight':
-          this.selectTourAndFlight();
-          break;
-        case 'departure':
-          this.filterDeparture();
-          break;
-      }
-    });
-  }
-
-  selectMeal(): void {
-    $('.category__btns-meals[data-meals]').on('click', event => {
-      const mealName = $(event.currentTarget).data('meals');
-      const meal = this.numberToMeals(mealName);
-
-      const newUrl = new URL(window.location.href);
-      const isMealParam = newUrl.searchParams.get('isMeals');
-
-      if (isMealParam === meal.toString()) {
-        newUrl.searchParams.delete('isMeals');
-      } else {
-        newUrl.searchParams.set('isMeals', meal.toString());
-      }
-
-      window.history.pushState({}, '', newUrl.toString());
-      window.location.reload();
-    });
+    this.filterPrice();
+    this.selectiongTourAndFlight();
+    this.selectingDeparture();
   }
 
   numberToMeals(info: string): Meals {
@@ -87,44 +41,12 @@ export class Hotels extends Country {
     }
   }
 
-  filterMeals() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const savedMeals = urlParams.get('isMeals');
-    const meals = parseInt(savedMeals as string);
+  selectingMeals(): void {
+    $('.category__btns-meals').on('click', event => {
+      const mealName = $(event.currentTarget).data('meals');
+      const meal = this.numberToMeals(mealName);
 
-    this.mealsFilterArr = this.countryArr.filter((item: Hotel) => {
-      if (meals === Meals.all) {
-        return true;
-      } else {
-        return item.isMeals === meals;
-      }
-    });
-
-    this.renderHotels(this.mealsFilterArr);
-    this.renderRegions(this.mealsFilterArr);
-    this.renderInfo(this.mealsFilterArr);
-
-    const newUrl = new URL(window.location.href);
-    newUrl.searchParams.set('isMeals', meals.toString());
-    window.history.pushState({}, '', newUrl.toString());
-  }
-
-  selectStars(): void {
-    $('.category__btns-stars[data-stars]').on('click', event => {
-      const starsName = $(event.currentTarget).data('stars');
-      const stars = this.numberToStars(starsName);
-
-      const newUrl = new URL(window.location.href);
-      const isStarParam = newUrl.searchParams.get('isStar');
-
-      if (isStarParam === stars.toString()) {
-        newUrl.searchParams.delete('isStar');
-      } else {
-        newUrl.searchParams.set('isStar', stars.toString());
-      }
-
-      window.history.pushState({}, '', newUrl.toString());
-      window.location.reload();
+      this.filterByKeyValue('isMeals', meal, Meals.all);
     });
   }
 
@@ -143,28 +65,18 @@ export class Hotels extends Country {
     }
   }
 
-  filterStars(): void {
-    const urlParams = new URLSearchParams(window.location.search);
-    const savedStars = urlParams.get('isStar');
-    const stars = parseInt(savedStars as string);
+  selectingStars() {
+    $('.category__btns-stars').on('click', event => {
+      const starsName = $(event.currentTarget).data('stars');
+      const stars = this.numberToStars(starsName);
 
-    this.starsFilterArr = this.countryArr.filter((item: Hotel) => {
-      if (stars === Stars.all) {
-        return true;
-      } else {
-        return item.isStar === stars;
-      }
+      this.filterByKeyValue('isStar', stars, Stars.all);
     });
-
-    this.renderHotels(this.starsFilterArr);
-    this.renderRegions(this.starsFilterArr);
-    this.renderInfo(this.starsFilterArr);
   }
 
   priceSlider(): void {
-    const urlParams = new URLSearchParams(window.location.search);
-    const savedPriceMin = urlParams.get('priceMin');
-    const savedPriceMax = urlParams.get('priceMax');
+    const savedPriceMin = this.urlParams.get('priceMin');
+    const savedPriceMax = this.urlParams.get('priceMax');
 
     const startMin = savedPriceMin ? parseInt(savedPriceMin) : 300;
     const startMax = savedPriceMax ? parseInt(savedPriceMax) : 4300;
@@ -213,73 +125,38 @@ export class Hotels extends Country {
   }
 
   filterPrice(): void {
-    const urlParams = new URLSearchParams(window.location.search);
-    const savedPriceMin = urlParams.get('priceMin');
-    const savedPriceMax = urlParams.get('priceMax');
+    const savedPriceMin = this.urlParams.get('priceMin');
+    const savedPriceMax = this.urlParams.get('priceMax');
     let priceMin = parseInt(savedPriceMin || '400');
     let priceMax = parseInt(savedPriceMax || '4000');
-    console.log(123);
+
     if (isNaN(priceMin) || isNaN(priceMax) || priceMin > priceMax) {
       priceMin = 400;
       priceMax = 4000;
     }
 
-    this.priceFilterArr = this.countryArr.filter((item: Hotel) => {
+    const priceFilterArr = this.countryArr.filter((item: Hotel) => {
       return item.price.some(price => price >= priceMin && price <= priceMax);
     });
 
-    console.log(this.priceFilterArr);
-    this.renderHotels(this.priceFilterArr);
-    this.renderRegions(this.priceFilterArr);
-    this.renderInfo(this.priceFilterArr);
+    this.renderHotels(priceFilterArr);
+    this.renderRegions(priceFilterArr);
+    this.renderInfo(priceFilterArr);
+
+    this.removeParametersFromUrl(['isCountry']);
   }
 
-  selectTourAndFlight(): void {
-    const newUrl = new URL(window.location.href);
-
-    $('.category__btns-tour[data-tour]').on('click', event => {
+  selectiongTourAndFlight(): void {
+    $('.category__btns-tour').on('click', event => {
       const tourName = $(event.currentTarget).data('tour');
 
       if (tourName === 'tour') {
-        newUrl.searchParams.set('isTour', 'true');
-        newUrl.searchParams.delete('flight');
+        this.filterByKeyValue('touristPackage', true || '');
+        this.removeParametersFromUrl(['flight']);
       } else {
-        newUrl.searchParams.delete('isTour');
-        newUrl.searchParams.set('flight', 'true');
+        this.filterByKeyValue('flight', true || '');
+        this.removeParametersFromUrl(['touristPackage']);
       }
-
-      if (tourName === 'tour') {
-        const filterTour = this.countryArr.filter(
-          (item: Hotel) => item.touristPackage === true
-        );
-
-        this.renderHotels(filterTour);
-        this.renderRegions(filterTour);
-        this.renderInfo(filterTour);
-      } else {
-        const filterFly = this.countryArr.filter(
-          (item: Hotel) => item.flight === true
-        );
-
-        this.renderHotels(filterFly);
-        this.renderRegions(filterFly);
-        this.renderInfo(filterFly);
-      }
-
-      window.history.pushState({}, '', newUrl.toString());
-      // window.location.reload();
-    });
-  }
-
-  selectDeparture() {
-    $('.category__btns-city[data-city]').on('click', event => {
-      const cityName = $(event.currentTarget).data('city');
-      const city = this.numberToDeparture(cityName);
-
-      const newUrl = new URL(window.location.href);
-      newUrl.searchParams.set('departure', city.toString());
-      window.history.pushState({}, '', newUrl.toString());
-      window.location.reload();
     });
   }
 
@@ -294,18 +171,12 @@ export class Hotels extends Country {
     }
   }
 
-  filterDeparture() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const savedDeparture = urlParams.get('departure');
-    const departure = parseInt(savedDeparture as string);
+  selectingDeparture() {
+    $('.category__btns-city[data-city]').on('click', event => {
+      const cityName = $(event.currentTarget).data('city');
+      const city = this.numberToDeparture(cityName);
 
-    this.priceFilterArr = this.countryArr.filter((item: Hotel) => {
-      return item.departure === departure;
+      this.filterByKeyValue('departure', city, Departure.all);
     });
-
-    console.log(this.priceFilterArr);
-    this.renderHotels(this.priceFilterArr);
-    this.renderRegions(this.priceFilterArr);
-    this.renderInfo(this.priceFilterArr);
   }
 }

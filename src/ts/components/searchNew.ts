@@ -1,4 +1,3 @@
-
 import $ from 'jquery';
 export class AdvancedSearch {
   filterRow: JQuery<HTMLElement>;
@@ -252,6 +251,10 @@ export class AdvancedSearch {
     const savedDestination = urlParams.get('isCountry');
     const savedDuration = urlParams.get('isDuration');
     const savedDate = urlParams.get('date');
+    const savedAdults = urlParams.get('adults');
+    const savedKids = urlParams.get('kids');
+    const savedYears = urlParams.get('years');
+    const yearsArr = savedYears ? savedYears.match(/\d+ \D+/g) : [];
 
     const country: { [key: string]: string } = {
       '0': 'Все направления',
@@ -278,27 +281,39 @@ export class AdvancedSearch {
       '5': '21 ночь',
     };
 
+ 
+
     if (savedDestination && country[savedDestination]) {
       this.destinationCurrent.text(country[savedDestination]);
     } else if (this.destinationCurrent.text() === '') {
       this.destinationCurrent.text('Направление');
     }
 
-    if(savedDate) {
+    if (savedDate) {
       this.dateCurrent.text(savedDate);
-    }else if (this.dateCurrent.text() === '') {
+      console.log(savedDate);
+    } else if (this.dateCurrent.text() === '') {
       this.dateCurrent.text('Дата');
     }
 
-    if (savedDuration && duration[savedDuration]) {
-      this.durationCurrent.text(duration[savedDuration]);
-    } else if (this.durationCurrent.text() === '') {
-      this.durationCurrent.text('Длительность');
+    if (savedAdults || savedKids) {
+      $('.info__guests-counter').text(savedAdults !== null ? savedAdults : '');
+      $('.info__guests-subcounter').text(savedKids !== null ? savedKids : '');
+      $('.info__guests-counters_adults').text(savedAdults !== null ? savedAdults : '');
+      $('.info__guests-counters_kids').text(savedKids !== null ? savedKids : '');
     }
+    else{
+      $('.info__guests-counters_adults').text('0');
+      $('.info__guests-counters_kids').text('0');
+    }
+
+      $(document).ready(function() {
+        if (yearsArr) {
+            $.each(yearsArr, function(index, item) {
+                $('.info__guests-item-current').eq(index).text(item);
+            });
+        }
+    });
   }
 }
 
-// new Region();
-// new Hotels();
-// new SelectData();
-// new AdvancedSearch();
