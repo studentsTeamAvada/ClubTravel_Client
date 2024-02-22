@@ -162,7 +162,7 @@ import{$ as c,H as Pe}from"./header-9Fuft6xP.js";import{a as Ee}from"./firebase-
         <use xlink:href="#check-circle"></use>
       </svg>
       ${s.region}
-    </button>`;c(".category__regions-item").append(n)}),this.selectRegion(),c(".category__regions-item").children().length>5?c(".category__regions-item").removeClass("category__regions-item_change"):c(".category__regions-item").addClass("category__regions-item_change")}renderInfo(t){c(".result__header").html(""),c(".result__header-column").html("");const s=t.length,o=`
+    </button>`;c(".category__regions-item").append(n)}),this.selectRegion(),c(".category__regions-item").children().length>5?c(".category__regions-item").removeClass("category__regions-item_change"):c(".category__regions-item").addClass("category__regions-item_change")}renderInfo(t){c(".result__header").html(""),c(".result__calendar").html("");const s=t.length,o=`
     <h3 class="result__header-title">
       Найдено <span class="result__header-offers">${t.reduce((u,p)=>u+p.room.length,0)}</span> предложения в
       <span class="result__header-hotel">${s}</span>
@@ -172,7 +172,7 @@ import{$ as c,H as Pe}from"./header-9Fuft6xP.js";import{a as Ee}from"./firebase-
     <div class="result__header-item">
     <div class="result__header-calendar">
       <button class="result__header-btn">
-        <img src="/src/images/calendarOne.svg" alt="Calendar" />
+        <img src="./src/images/calendarOne.svg" alt="Calendar" />
         Цены на календаре
       </button>
 
