@@ -1,7 +1,8 @@
+
 import { app } from "../../modules/firebase";
 import { getAuth, Auth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
 import { FirebaseApp } from "firebase/app";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
 import { fbUser } from "../../type";
 
 export class Authorization {
@@ -26,7 +27,8 @@ export class Authorization {
     signInWithEmailAndPassword(this.auth, email, password)
       .then((userData) => {
         const user = userData.user;
-        alert("Пользователь вошел");
+
+        window.location.href = 'index.html';
         emailInput.value = "";
         passwordInput.value = "";
         console.log("User signed in:", user);
@@ -45,7 +47,6 @@ export class Authorization {
     signInWithPopup(this.auth, provider)
       .then((result) => {
         const user = result.user;
-        
         const userDataWithGoogle: fbUser = {
           email: user.email || '',
           name: user.displayName || '',
@@ -53,9 +54,9 @@ export class Authorization {
           orders: []
         };
 
-        this.addUserToFirebase(userDataWithGoogle);
-
-        console.log("Registration with Google successful:", user);
+        this.addUserToFirebase(user.uid, userDataWithGoogle);
+        window.location.href = 'index.html';
+        console.log("Authorization with Google successful. UID:", user.uid);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -65,7 +66,7 @@ export class Authorization {
       });
   }
 
-  authorizationFacebook() {
+  authorizationWithFacebook() {
     const provider = new FacebookAuthProvider();
 
     signInWithPopup(this.auth, provider)
@@ -77,9 +78,10 @@ export class Authorization {
           photo: user.photoURL || '',
           orders: []
         };
-        this.addUserToFirebase(userDataWithFacebook);
 
-        console.log("Registration with Facebook successful:", user);
+        this.addUserToFirebase(user.uid, userDataWithFacebook);
+        window.location.href = 'index.html';
+        console.log("Authorization with Facebook successful. UID:", user.uid);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -89,13 +91,12 @@ export class Authorization {
       });
   }
 
-  addUserToFirebase(userData: fbUser) {
+  addUserToFirebase(uid: string, userData: fbUser) {
     const db = getFirestore(app);
-    addDoc(collection(db, "users"), userData)
-      .then((user) => {
-        console.log(user);
-        
-        console.log("Document written with ID: ", user.id);
+    const userRef = doc(collection(db, "users"), uid);
+    setDoc(userRef, userData)
+      .then(() => {
+        console.log("Document written with UID as documentId:", uid);
       })
       .catch((error) => {
         console.error("Error adding document: ", error);

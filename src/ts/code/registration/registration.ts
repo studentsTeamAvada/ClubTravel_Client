@@ -2,7 +2,7 @@
 import { app } from "../../modules/firebase";
 import { getAuth, Auth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
 import { FirebaseApp } from "firebase/app";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
 import { fbUser } from "../../type";
  
 export class Registration {
@@ -34,13 +34,15 @@ export class Registration {
           photo: '',
           orders: []
         };
+        
 
-        this.addUserToFirebase(userDataWithEmail);
+        this.addUserToFirebase(user.uid, userDataWithEmail);
 
         emailInput.value = '';
         passwordInput.value = '';
         repeatPasswordInput.value = '';
-        alert('Вы зарегистрированы!');
+
+        window.location.href = 'index.html';
         console.log("Registration with email successful:", user);
       })
       .catch((error) => {
@@ -63,8 +65,8 @@ export class Registration {
           orders: []
         };
 
-        this.addUserToFirebase(userDataWithGoogle);
-
+        this.addUserToFirebase(user.uid, userDataWithGoogle);
+        window.location.href = 'index.html';
         console.log("Registration with Google successful:", user);
       })
       .catch((error) => {
@@ -87,8 +89,8 @@ export class Registration {
           photo: user.photoURL || '',
           orders: []
         };
-        this.addUserToFirebase(userDataWithFacebook);
-
+        this.addUserToFirebase(user.uid, userDataWithFacebook);
+        window.location.href = 'index.html';
         console.log("Registration with Facebook successful:", user);
       })
       .catch((error) => {
@@ -98,11 +100,12 @@ export class Registration {
       });
   }
 
-  addUserToFirebase(userData: fbUser) {
+  addUserToFirebase(uid: string, userData: fbUser) {
     const db = getFirestore(app);
-    addDoc(collection(db, "users"), userData)
-      .then((user) => {
-        console.log("Document written with ID: ", user.id);
+    const userRef = doc(collection(db, "users"), uid);
+    setDoc(userRef, userData)
+      .then(() => {
+        console.log("Document written with UID: ", uid);
       })
       .catch((error) => {
         console.error("Error adding document: ", error);
