@@ -182,7 +182,7 @@ export class PullData{
         $("#local").html(doc.region);
         $("#date-flight").html(this.dateFormat(doc.date));
         $("#days").html(doc.duration);
-        $("#departure").html(doc.departure);
+        $("#departure").html(doc.departureIn);
         $("#foods").html(doc.meals);
         $("#rooms").html(doc.room.join(", "));
         $(".tour__price-sum").html(doc.price[0]).attr('data-price', doc.price);

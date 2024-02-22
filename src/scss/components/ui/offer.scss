@@ -5,6 +5,11 @@
   background-size: cover;
   background-repeat: no-repeat;
 
+  @include media-breakpoint-down(md) {
+    height: 923px;
+    background-image: url("/src/images/offer/offerBannerMob.png");
+  }
+
   &__container {
     @include media-breakpoint-down(xxs) {
       padding: 0 10px;

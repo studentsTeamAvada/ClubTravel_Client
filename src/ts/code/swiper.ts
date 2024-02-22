@@ -238,3 +238,35 @@ export class HotelSecondSlider {
     });
   }
 }
+
+export class ResultSwiper {
+  constructor() {
+    this.swiperResult();
+  }
+  swiperResult() {
+    new Swiper(".result__swiper", {
+      spaceBetween: 10,
+      loop: true,
+      navigation: {
+        nextEl: ".result__btn-next",
+        prevEl: ".result__btn-prev",
+      },
+    });
+  }
+}
+
+export class CalendarSwiper{
+  constructor(){
+    this.swiperCalendar();
+  }
+
+  swiperCalendar(){
+    new Swiper(".result__header-swiper", {
+      spaceBetween: 44,
+      navigation: {
+        nextEl: ".calendar__btn-next",
+        prevEl: ".calendar__btn-prev",
+      },
+    });
+  }
+}

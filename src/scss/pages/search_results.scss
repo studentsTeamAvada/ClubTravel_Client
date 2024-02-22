@@ -1,8 +1,8 @@
-@import "./../style";
-@import "./../components/ui/find";
-@import "./../components/ui/offer";
-@import "./../config/media-breakpoints";
-@import "../libs/swiper";
+@import './../style';
+@import './../components/ui/find';
+@import './../components/ui/offer';
+@import './../config/media-breakpoints';
+@import '../libs/swiper';
 
 .banner {
   &__oval {
@@ -16,7 +16,6 @@
   }
 
   &__oval {
-
     img {
       width: 100%;
       height: auto;
@@ -28,16 +27,14 @@
   position: relative;
   margin-top: 100px;
   height: 320px;
-  background-image: url("./../../images/banner.webp");
+  background-image: url('./../../images/banner.webp');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .result {
-
   &__slider {
-    
     position: relative;
     overflow: hidden;
     margin-bottom: 20px;
@@ -102,7 +99,6 @@
   }
 
   &__info {
-
     &-title {
       @include media-breakpoint-down(sm) {
       }
@@ -113,7 +109,6 @@
     }
 
     &-location {
-
       svg {
         width: 10px;
         height: 15px;
@@ -196,7 +191,6 @@
   }
 
   &__rating {
-
     &-subitem {
       @include media-breakpoint-down(xs) {
         display: grid;
@@ -209,7 +203,6 @@
     }
 
     &-star {
-
       svg {
         width: 18px;
         height: 18px;
@@ -233,7 +226,6 @@
     &-meal,
     &-room,
     &-beach {
-
       svg {
         margin-right: 18px;
         width: 18px;
@@ -268,9 +260,7 @@
   }
 
   &__price {
-
     &-num {
-
       span {
         &:nth-child(2) {
           font-weight: 700;
@@ -289,7 +279,6 @@
     }
 
     &-btn {
-
       &_act {
         border: 1px solid #f68521;
         background: #fff;
@@ -324,7 +313,6 @@
     max-width: 200px;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
 
-
     @include media-breakpoint-down(my) {
       margin-left: 20px;
     }
@@ -332,8 +320,6 @@
       margin-left: 0;
       max-width: 100%;
     }
-
-    
   }
 
   &__btn-next {
@@ -351,16 +337,115 @@
     }
   }
 
-  &__header{
+  &__header {
+    margin-top: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     &-title {
       font-weight: 400;
       font-size: 24px;
       color: #222;
-     
-    
+    }
+
+    &-text {
+      font-weight: 400;
+      font-size: 14px;
+      color: #555;
+      margin: 0 12px 0 28px;
+    }
+
+    &-select,
+    &-subselect {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 149px;
+      height: 42px;
+      border: 1px solid #e2e2e2;
+      border-radius: 6px;
+    }
+
+    &-subselect {
+      width: 200px;
+      margin-left: 10px;
+    }
+
+    &-row,
+    &-subrow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    &-item,
+    &-sort,
+    &-subitem {
+      display: flex;
+      align-items: center;
+    }
+
+    &-sort {
+    }
+
+    &-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 400;
+      font-size: 14px;
+      color: #f68521;
+      width: 201px;
+      height: 42px;
+      border: 1px solid #f68521;
+      text-align: center;
+      border-radius: 6px;
+      padding: 0 13px 0 17px;
+
+      img {
+        display: block;
+      }
+    }
+
+    &-slide {
+      margin-top: 35px;
+      width: 258px !important;
+      // height: 278px !important;
+      .air-datepicker {
+        height: 278px;
+      }
+
+      .air-datepicker-nav {
+        border: none;
+      }
+
+      .air-datepicker-body--day-name {
+        font-weight: 400;
+        font-size: 14px;
+        font-family: 'Open Sans', sans-serif;
+        color: #222;
+      }
+
+      .air-datepicker-nav--action {
+        display: none;
+      }
+      .air-datepicker-nav--action {
+      }
+      .air-datepicker-nav--title {
+        font-weight: 400;
+        font-size: 16px;
+        text-align: center;
+        width: 100%;
+        color: #222;
+      }
+
+      .air-datepicker-body--cells {
+        margin-top: 16px;
+        grid-template-columns: repeat(7, var(--adp-day-cell-width));
+      }
+    }
   }
-    margin-top: 45px;
-}
   margin-bottom: 80px;
 
   &__swiper,
@@ -495,7 +580,6 @@
     display: flex;
     justify-content: space-between;
   }
-
 }
 
 @keyframes scale-up-ver-top {
