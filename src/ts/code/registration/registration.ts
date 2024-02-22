@@ -1,6 +1,10 @@
+
 import { app } from "../../modules/firebase";
 import { getAuth, Auth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
 import { FirebaseApp } from "firebase/app";
+import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
+import { fbUser } from "../../type";
+ 
 export class Registration {
   app: FirebaseApp;
   auth: Auth;
@@ -22,15 +26,26 @@ export class Registration {
     }
 
     createUserWithEmailAndPassword(this.auth, email, password)
-      .then((userData: any) => {
+      .then((userData) => {
         const user = userData.user;
+        const userDataWithEmail: fbUser = {
+          email: user.email || '',
+          name: '',
+          photo: '',
+          orders: []
+        };
+        
+
+        this.addUserToFirebase(user.uid, userDataWithEmail);
+
         emailInput.value = '';
         passwordInput.value = '';
         repeatPasswordInput.value = '';
-        alert('Вы зарегистрированы!');
+
+        window.location.href = 'index.html';
         console.log("Registration with email successful:", user);
       })
-      .catch((error: any) => {
+      .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.error("Registration with email failed:", errorCode, errorMessage);
@@ -43,6 +58,15 @@ export class Registration {
     signInWithPopup(this.auth, googleProvider)
       .then((result) => {
         const user = result.user;
+        const userDataWithGoogle: fbUser = {
+          email: user.email || '',
+          name: user.displayName || '',
+          photo: user.photoURL || '',
+          orders: []
+        };
+
+        this.addUserToFirebase(user.uid, userDataWithGoogle);
+        window.location.href = 'index.html';
         console.log("Registration with Google successful:", user);
       })
       .catch((error) => {
@@ -53,11 +77,20 @@ export class Registration {
   }
 
   registrationWithFacebook() {
-    const facebookProvider =  new FacebookAuthProvider();
+    const facebookProvider = new FacebookAuthProvider();
 
     signInWithPopup(this.auth, facebookProvider)
       .then((result) => {
         const user = result.user;
+
+        const userDataWithFacebook: fbUser = {
+          email: user.email || '',
+          name: user.displayName || '',
+          photo: user.photoURL || '',
+          orders: []
+        };
+        this.addUserToFirebase(user.uid, userDataWithFacebook);
+        window.location.href = 'index.html';
         console.log("Registration with Facebook successful:", user);
       })
       .catch((error) => {
@@ -67,7 +100,15 @@ export class Registration {
       });
   }
 
-
+  addUserToFirebase(uid: string, userData: fbUser) {
+    const db = getFirestore(app);
+    const userRef = doc(collection(db, "users"), uid);
+    setDoc(userRef, userData)
+      .then(() => {
+        console.log("Document written with UID: ", uid);
+      })
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
+  }
 }
-
-

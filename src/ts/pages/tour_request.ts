@@ -5,18 +5,15 @@ import { Calendar } from "../code/tour_request/calendar";
 import { DropDown } from "../code/tour_request/dropdown";
 import { Food } from "../code/tour_request/food";
 import { Preloader } from "../components/preloader";
-import { AsYouType, validatePhoneNumberLength } from 'libphonenumber-js'
+import { AsYouType, validatePhoneNumberLength } from 'libphonenumber-js';
+import { IsAuthorization } from "../components/isAuthorization";
 import $ from "jquery";
 import 'jquery-validation';
-
 
 
 interface JQueryValidateForm extends JQuery<HTMLElement> {
   validate(object: Object): any;
 }
-
-
-
 
 
 // type addMet = {
@@ -28,9 +25,8 @@ interface addValidator extends JQueryStatic {
 }
 
 
-
-
 document.addEventListener("DOMContentLoaded", () => {
+
   class TourRequest {
     header: Header;
     footer: Footer;
@@ -350,5 +346,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
   new TourRequest();
-  new Preloader()
+  new Preloader();
+  new IsAuthorization();
 });

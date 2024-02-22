@@ -9,6 +9,7 @@ import { HotDealsProduct } from '../code/main/hot-deals';
 import { WinterTourProduct } from '../code/main/winter-tour';
 import { SummerTourProduct } from '../code/main/summer-tour';
 import { Preloader } from "../components/preloader";
+import { IsAuthorization } from "../components/isAuthorization";
 
 
 
@@ -16,6 +17,8 @@ import { Preloader } from "../components/preloader";
 
 
 document.addEventListener("DOMContentLoaded", async function() {
+    new IsAuthorization();
+    
     const productCompany = new CompanyProduct();
     const productHotDeals = new HotDealsProduct();
     const productWinterTour = new WinterTourProduct();

@@ -18,3 +18,10 @@ export interface Users {
   payStatus: boolean;
   price: number;
 }
+
+export interface fbUser {
+  email: string;
+  name: string;
+  photo: string;
+  orders: [];
+}

@@ -281,6 +281,13 @@ export class AdvancedSearch {
       '5': '21 ночь',
     };
 
+
+    if (savedDuration && duration[savedDuration]) {
+      this.durationCurrent.text(duration[savedDuration]);
+    } else if (this.durationCurrent.text() === '') {
+      this.durationCurrent.text('Длительность');
+    }
+
  
 
     if (savedDestination && country[savedDestination]) {

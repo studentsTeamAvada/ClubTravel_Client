@@ -1,5 +1,5 @@
 import { app } from './../../modules/firebase';
-import { collection, doc, getDocs, getFirestore } from 'firebase/firestore';
+import { collection,  getDocs, getFirestore } from 'firebase/firestore';
 import { Hotel, Regions } from './type';
 import { ResultSwiper, CalendarSwiper } from '../swiper';
 import $ from 'jquery';
@@ -22,14 +22,14 @@ export class Filtering {
 
     this.init();
 
-    const localStorageData = localStorage.getItem('countryArr');
-    if (localStorageData) {
-      this.countryArr = JSON.parse(localStorageData);
-    }
+    // const localStorageData = localStorage.getItem('countryArr');
+    // if (localStorageData) {
+    //   this.countryArr = JSON.parse(localStorageData);
+    // }
   }
 
   async init(): Promise<void> {
-    // await this.getCountry();
+    await this.getCountry();
   }
 
   bindEvents(eventName: string, key: string, allValue?: number | string): void {

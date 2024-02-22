@@ -2,7 +2,7 @@ import $ from 'jquery';
 import { Filtering } from './filteringCountry';
 import noUiSlider, { target } from 'nouislider';
 import 'nouislider/dist/nouislider.css';
-import { Hotel, Meals, Stars, Departure } from './type';
+import { Meals, Stars, Departure } from './type';
 export class Hotels extends Filtering {
   urlParams: URLSearchParams;
 
