@@ -3,6 +3,7 @@ import { Footer } from "../components/footer";
 import { InfoBlock } from "../code/hotel/info-block";
 import { PullData } from "../code/hotel/pull-data";
 import { Order } from "../code/hotel/order";
+import { IsAuthorization } from "../components/isAuthorization";
 
 document.addEventListener("DOMContentLoaded", () => {
   class Hotel {
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     init() {}
   }
   new Hotel();
+  new IsAuthorization();
 });
 
 

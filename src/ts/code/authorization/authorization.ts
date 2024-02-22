@@ -3,6 +3,7 @@ import { getAuth, Auth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthP
 import { FirebaseApp } from "firebase/app";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { fbUser } from "../../type";
+
 export class Authorization {
   app: FirebaseApp;
   auth: Auth;
@@ -44,6 +45,7 @@ export class Authorization {
     signInWithPopup(this.auth, provider)
       .then((result) => {
         const user = result.user;
+        
         const userDataWithGoogle: fbUser = {
           email: user.email || '',
           name: user.displayName || '',
@@ -91,6 +93,8 @@ export class Authorization {
     const db = getFirestore(app);
     addDoc(collection(db, "users"), userData)
       .then((user) => {
+        console.log(user);
+        
         console.log("Document written with ID: ", user.id);
       })
       .catch((error) => {
