@@ -1,9 +1,7 @@
-
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 
-
- export class Calendar {
+export class Calendar {
   constructor() {}
 
   initCalendar() {
@@ -18,7 +16,7 @@ import 'air-datepicker/air-datepicker.css';
       calendar.id = 'calendar-' + index;
       slide.appendChild(calendar);
 
-      const nextMonthDate = new Date(currentYear, currentMonth + index + 1, 1);
+      const nextMonthDate = new Date(currentYear, currentMonth + index - 1);
 
       new AirDatepicker('#' + calendar.id, {
         inline: true,
