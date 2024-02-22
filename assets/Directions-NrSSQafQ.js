@@ -1,4 +1,4 @@
-import"./jquery-eLIhC4UN.js";import{H as u}from"./header-4uj2AVG8.js";import{g as m,b as h,c as v}from"./index.esm2017-rx8I47mm.js";import{a as f}from"./firebase-IW9Y5CYr.js";import{P as g}from"./preloader-hw-o7nAZ.js";import{I as y}from"./isAuthorization-0V39ZNC-.js";import"./index.esm2017-NEpo2ibe.js";import"./index-e24386e7-jS-Ti_7U.js";const a=document.querySelector(".directions__wrapper");class w{app;db;productsArray;constructor(){this.app=f,this.db=m(this.app),this.productsArray=[]}async loadCards(){(await h(v(this.db,"hotels"))).forEach(c=>{const t=c.data();this.productsArray.push(t)}),this.renderProducts()}renderProducts(){this.productsArray.forEach(c=>{const t=c,{img:r,country:n,region:e,price:p,work:i}=t;if(r&&Array.isArray(r)&&r.length>0){const{url:l,urlWebp:_}=r[0];let s=`
+import{H as u}from"./header-9Fuft6xP.js";import{g as m,a as h,c as v}from"./index.esm2017-wHUIDPvp.js";import{a as f}from"./firebase-IW9Y5CYr.js";import{P as g}from"./preloader-a9ovPH_o.js";import{I as y}from"./isAuthorization-Z2v30n0e.js";import"./index.esm2017-NEpo2ibe.js";import"./index-e24386e7-jS-Ti_7U.js";const i=document.querySelector(".directions__wrapper");class w{app;db;productsArray;constructor(){this.app=f,this.db=m(this.app),this.productsArray=[]}async loadCards(){(await h(v(this.db,"hotels"))).forEach(c=>{const t=c.data();this.productsArray.push(t)}),this.renderProducts()}renderProducts(){this.productsArray.forEach(c=>{const t=c,{img:r,country:n,region:e,price:p,work:a}=t;if(r&&Array.isArray(r)&&r.length>0){const{url:l,urlWebp:_}=r[0];let s=`
         <div class="directions__card">
         <div class="directions__card-img">
           <picture class="hero__bg-img">
@@ -22,8 +22,8 @@ import"./jquery-eLIhC4UN.js";import{H as u}from"./header-4uj2AVG8.js";import{g a
         </div>
         <div class="directions__card-season-wrapper">
             <div class="directions__card-season">
-                <p class="directions__card-season-start-end">${i[0]}</p>
-                <p class="directions__card-season-start-end">${i[1]}</p>
+                <p class="directions__card-season-start-end">${a[0]}</p>
+                <p class="directions__card-season-start-end">${a[1]}</p>
             </div>
             <svg>
               <use xlink:href="#directions-calendar"></use>
@@ -31,4 +31,4 @@ import"./jquery-eLIhC4UN.js";import{H as u}from"./header-4uj2AVG8.js";import{g a
         </div>
         <a href="#" class="directions__btn btn">Выбрать тур</a>
       </div>
-        `,a&&a.insertAdjacentHTML("beforeend",s)}})}}document.addEventListener("DOMContentLoaded",async function(){await new w().loadCards(),new u,new g,new y});
+        `,i&&i.insertAdjacentHTML("beforeend",s)}})}}document.addEventListener("DOMContentLoaded",async function(){await new w().loadCards(),new u,new g,new y});
