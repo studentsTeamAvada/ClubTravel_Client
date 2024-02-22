@@ -1,4 +1,4 @@
-import{r as e,k as a}from"./index.esm2017-ZxaceZ0h.js";var r="firebase",p="10.7.2";/**
+import{r as e,i as a}from"./index.esm2017-NEpo2ibe.js";var r="firebase",p="10.1.0";/**
  * @license
  * Copyright 2020 Google LLC
  *
