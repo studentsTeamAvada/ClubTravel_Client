@@ -310,7 +310,7 @@ export class Filtering {
 
   renderInfo(item: Hotel[]): void {
     $('.result__header').html('');
-    $('.result__header-column').html('');
+    $('.result__calendar').html('');
     const hotels = item.length;
     const offers = item.reduce((acc, item) => acc + item.room.length, 0);
     const infoHtml = `
@@ -323,7 +323,7 @@ export class Filtering {
     <div class="result__header-item">
     <div class="result__header-calendar">
       <button class="result__header-btn">
-        <img src="/src/images/calendarOne.svg" alt="Calendar" />
+        <img src="./src/images/calendarOne.svg" alt="Calendar" />
         Цены на календаре
       </button>
 
