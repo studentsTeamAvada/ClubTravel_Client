@@ -10,3 +10,11 @@ export interface Tours {
   work: [string, string];
   img: { url: string; urlWebp: string };
 }
+
+export interface Users {
+  date: string;
+  email: string;
+  idOrder: number;
+  payStatus: boolean;
+  price: number;
+}

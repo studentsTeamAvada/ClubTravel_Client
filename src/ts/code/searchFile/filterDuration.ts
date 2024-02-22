@@ -9,7 +9,7 @@ export class Duration extends Filtering {
     super();
     this.durationCurrent = $('.info__duration-current');
     this.selectDuration();
-    this.bindEvents('load', 'isDuration', this.durationCurrent.text().trim());
+    // this.bindEvents('load', 'isDuration', this.durationCurrent.text().trim());
   }
 
   durationToNumber(duration: string): number {

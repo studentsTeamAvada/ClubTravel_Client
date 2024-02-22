@@ -203,7 +203,6 @@ export class Guests extends Filtering {
   }
 
   haldelsClik() {
-        // window.addEventListener('load', () => this.filterGuests());
     this.searchPanelBtn.on('click', () => {
       const destinationName = this.destinationCurrent.text().trim();
       const destination = country.countryToNumber(destinationName);

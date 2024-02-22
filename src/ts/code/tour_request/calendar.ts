@@ -34,12 +34,14 @@ export class Calendar {
   newDate(start: boolean = true, finish: boolean = false){
     if(start){
       $("#start-date").html(this.formatDate(this.currentSelDate))
+      document.dispatchEvent(new Event('startDate'));
     }else{
       $("#start-date").html("")
     }
 
     if(finish){
       $("#final-date").html(this.formatDate(this.currentNextDate))
+      document.dispatchEvent(new Event('finalDate'));
     }else{
       $("#final-date").html("")
     }

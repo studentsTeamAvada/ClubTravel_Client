@@ -12,6 +12,7 @@ export class DropDown {
   error: JQuery<HTMLElement>;
   currentAbdul: number;
   currentKids: number;
+  customEvent: CustomEvent;
 
   constructor(className: string) {
     this.dropDown = $(className).find(".dropdown");
@@ -23,6 +24,7 @@ export class DropDown {
     this.btn = this.dropDown.find(".dropdown__btn");
     this.children = this.dropDown.find(".dropdown__children");
     this.tegContainer = $(".tour__quantity-tegs");
+    this.customEvent = new CustomEvent("myCustomEvent");
     this.currentAbdul = 1;
     this.currentKids = 0;
     this.init();
@@ -326,6 +328,7 @@ export class DropDown {
         $("#kids-quantity").html(String(this.currentKids))
         this.timeout(this.currentKids, 3)
       }
+      document.dispatchEvent(this.customEvent);
     })
   }
 
@@ -411,8 +414,7 @@ export class DropDown {
             <li>${key} x${kidsObj[key]} <span>+</span></li>
           `);
         }
-        const customEvent = new CustomEvent("myCustomEvent");
-        document.dispatchEvent(customEvent);
+        document.dispatchEvent(this.customEvent);
       }
     });
   }

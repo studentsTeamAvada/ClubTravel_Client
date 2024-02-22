@@ -2,19 +2,18 @@ import $ from "jquery";
 import { DropDown } from "./dropdown";
 
 export class InfoBlock {
-  priceOnePerson: JQuery<HTMLElement>;
   totalPrice: JQuery<HTMLElement>;
   dropDown: DropDown;
   constructor() {
-    this.priceOnePerson = $(".tour__price-sum").data("price");
     this.totalPrice = $(".tour__total-price");
     this.dropDown = new DropDown(".tour__quantity-drop");
     this.priceCalculator();
   }
   priceCalculator() {
     document.addEventListener("myCustomEvent", () => {
+      const priceOnePerson = $(".tour__price-sum").data("price");
       const allPeople = this.dropDown.getKids() + this.dropDown.getAbduls();
-      const total = String(+this.priceOnePerson * allPeople);
+      const total = String(+priceOnePerson * allPeople);
       let sum = "";
       if (total.length > 3) {
         let count = 0;

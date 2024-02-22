@@ -17,7 +17,6 @@ export class Hotels extends Filtering {
     this.selectingMeals();
     this.selectingStars();
     this.priceSlider();
-    this.filterPrice();
     this.selectiongTourAndFlight();
     this.selectingDeparture();
   }
@@ -77,11 +76,10 @@ export class Hotels extends Filtering {
   priceSlider(): void {
     const savedPriceMin = this.urlParams.get('priceMin');
     const savedPriceMax = this.urlParams.get('priceMax');
-
     const startMin = savedPriceMin ? parseInt(savedPriceMin) : 300;
     const startMax = savedPriceMax ? parseInt(savedPriceMax) : 4300;
-
     const slider = document.querySelector('.category__slider') as target;
+    const self = this;
 
     noUiSlider.create(slider, {
       start: [startMin, startMax],
@@ -109,41 +107,25 @@ export class Hotels extends Filtering {
           typeof values[0] === 'string'
             ? values[0].slice(0, -1)
             : values[0].toString();
+
         const priceMax =
           typeof values[1] === 'string'
             ? values[1].slice(0, -1)
             : values[1].toString();
+
+        function filterPrice(priceMin: number, priceMax: number): void {
+          self.filterByKeyValue('price', true, undefined, priceMin, priceMax);
+        }
 
         const newUrl = new URL(window.location.href);
         newUrl.searchParams.set('priceMin', priceMin);
         newUrl.searchParams.set('priceMax', priceMax);
 
         window.history.pushState({}, '', newUrl.toString());
-        window.location.reload();
+
+        filterPrice(+priceMin, +priceMax);
       }
     );
-  }
-
-  filterPrice(): void {
-    const savedPriceMin = this.urlParams.get('priceMin');
-    const savedPriceMax = this.urlParams.get('priceMax');
-    let priceMin = parseInt(savedPriceMin || '400');
-    let priceMax = parseInt(savedPriceMax || '4000');
-
-    if (isNaN(priceMin) || isNaN(priceMax) || priceMin > priceMax) {
-      priceMin = 400;
-      priceMax = 4000;
-    }
-
-    const priceFilterArr = this.countryArr.filter((item: Hotel) => {
-      return item.price.some(price => price >= priceMin && price <= priceMax);
-    });
-
-    this.renderHotels(priceFilterArr);
-    this.renderRegions(priceFilterArr);
-    this.renderInfo(priceFilterArr);
-
-    this.removeParametersFromUrl(['isCountry']);
   }
 
   selectiongTourAndFlight(): void {

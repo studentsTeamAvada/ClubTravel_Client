@@ -81,6 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
       this.inputMask();
       this.SelectStars();
       this.validateMainFormOne();
+      this.validateMainFormThree();
 
     }
 
@@ -129,7 +130,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     points(num: number = 1) {
-      console.log(num);
       const btnOne = document.querySelector(".form__tab-one");
       const btnTwo = document.querySelector(".form__tab-two");
       const btnThree = document.querySelector(".form__tab-three");
@@ -162,6 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
         btnTwo?.classList.remove("form__tab_active");
         btnThree?.classList.add("form__tab_active");
 
+
         this.form.removeClass("form_state-one form_state-two");
         this.form.addClass("form_state-three");
 
@@ -173,18 +174,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     clickFormBtn() {
       this.formBtn.on("click", () => {
-        const oneState = $(".form").is(".form_state-one");
-        const twoState = $(".form").is(".form_state-two");
-        const threeState = $(".form").is(".form_state-three");
+        // const oneState = $(".form").is(".form_state-one");
+        // const twoState = $(".form").is(".form_state-two");
+        // const threeState = $(".form").is(".form_state-three");
 
 
-        if (oneState) {
-        }
-        else if (twoState) {
-          this.points(3);
-        } else if (threeState) {
-          this.points(1);
-        }
+        // if (oneState) {
+        // }
+        // else if (twoState) {
+        //   this.points(3);
+        // } else if (threeState) {
+        //   this.points(1);
+        // }
       });
     }
 
@@ -218,7 +219,6 @@ document.addEventListener("DOMContentLoaded", () => {
           input.value = new AsYouType().input(input.value)
         })
       })
-      
     }
 
 
@@ -227,7 +227,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const element = $(inputWrap) as JQueryValidateForm;
 
       ($ as addValidator).validator.addMethod("min", function(value : string) {
-        return  value.replace(/ |\+/g, '').length >= 10;
+        if(/\+380/.test(value)){
+          return  value.replace(/ |\+/g, '').length >= 12;
+        }else{
+          return  value.replace(/ |\+/g, '').length >= 10;
+        }
       }, 'Номер должен состоять из 10 цифр');
 
       element.validate({
@@ -242,31 +246,104 @@ document.addEventListener("DOMContentLoaded", () => {
             required: "Введите номер"
           },
         },
-        highlight: function(element: JQuery<HTMLElement>, _errorClass: string, validClass: string) {
-          $(element).addClass("border-error").removeClass(validClass);
-        },
-        unhighlight: function(element: JQuery<HTMLElement>, _errorClass: string, validClass: string) {
-          $(element).addClass(validClass).removeClass("border-error");
-        },
         submitHandler(form : JQuery<HTMLElement>) {
           $(inputWrap).find(".input-row").removeClass("input_active")
           console.log($(inputWrap))
           alert("Мы скоро с вами свяжемся")
           $(form).trigger("reset");
-
         }
        });
     }
 
     validateMainFormOne(){
-      function validateCountry(){
-        console.log(12)
-        const ruleCounrty: boolean = $(".drop-country__county").html() === "Страна";
-        if(ruleCounrty){
-          $('.drop-country').addClass("drop-country_error")
-        }
+      const element = $("#form-state-one") as JQueryValidateForm;
+
+      document.addEventListener("selectTour", () => {
+        $("#drop-country").valid();
+      });
+
+      document.addEventListener("startDate", () => {
+        $("#drop-calendar").valid();
+      });
+
+      document.addEventListener("finalDate", () => {
+        $("#drop-calendar").valid();
+      });
+
+      ($ as addValidator).validator.addMethod("dropCountry", function() {
+        const checkCountry = $(".drop-country__county").html();
+        return checkCountry !== "Страна"
+      }, 'Выбирите тур');
+
+      ($ as addValidator).validator.addMethod("departure", function() {
+        const startDate = $("#start-date").html();
+        return startDate.length > 0
+      }, 'Выберите дату вылета');
+
+      ($ as addValidator).validator.addMethod("arrived", function() {
+        const finalDate = $("#final-date").html();
+        return finalDate.length > 0
+      }, 'Выберите дату возвращения');
+
+      element.validate({
+        rules: {
+          dropCalendar: {
+            departure: true,
+            arrived: true,
+          },
+          dropCountry: {
+            dropCountry: true,
+          },
+        },
+      submitHandler() {
+        alert("Мы скоро с вами свяжемся")
       }
-      $(".form__btn-first-state").on("click", validateCountry)
+     });
+    }
+
+    validateMainFormThree(){
+      const element = $("#form-state-three") as JQueryValidateForm;
+
+      // document.addEventListener("selectTour", () => {
+      //   $("#drop-country").valid();
+      // });
+
+      ($ as addValidator).validator.addMethod("laxEmail", function(value: string) {
+        return /^(?!.*\.\.)[\w.-]{3,20}@[\wа-я.][\wа-я.-]{3,20}[\wа-я.]\.[a-z]{2,10}/.test(value);
+      }, 'Введите корректный email');
+
+      ($ as addValidator).validator.addMethod("min", function(value : string) {
+        if(/\+380/.test(value)){
+          return  value.replace(/ |\+/g, '').length >= 12;
+        }else{
+          return  value.replace(/ |\+/g, '').length >= 10;
+        }
+      }, 'Номер должен состоять из 10 цифр');
+
+      element.validate({
+        rules: {
+          phone: {
+            min: true,
+          },
+          email: {
+            laxEmail: true,
+          },
+          name: {
+            required: true,
+            minlength: 3,
+          },
+        },
+        messages: {
+          name: {
+            required: "Введите ваше имя",
+            minlength: "Минимум три символа",
+          }
+        },
+      submitHandler(form : JQuery<HTMLElement>) {
+        alert("Мы скоро с вами свяжемся2")
+        $(form).trigger("reset");
+      }
+     });
     }
   
 

@@ -1,13 +1,15 @@
 import { app } from './../../modules/firebase';
-import { collection, getDocs, getFirestore } from 'firebase/firestore';
+import { collection, doc, getDocs, getFirestore } from 'firebase/firestore';
 import { Hotel, Regions } from './type';
-import { ResultSwiper } from '../../pages/code/swiper';
+import { ResultSwiper, CalendarSwiper } from '../swiper';
 import $ from 'jquery';
 import { DropdownSearch } from '../../components/dropSearch';
+import { Calendar } from './priceCalendar';
 
 new DropdownSearch('.info__destination-select');
 new DropdownSearch('.info__duration-select');
 new DropdownSearch('.info__date-select');
+new DropdownSearch('.info__guests-select');
 new DropdownSearch('.info__guests-select');
 
 export class Filtering {
@@ -65,13 +67,27 @@ export class Filtering {
     }
   }
 
-  filterByKeyValue(key: string, value: number | string | boolean, allValue?: number | string): void {
+  filterByKeyValue(
+    key: string,
+    value: number | string | boolean,
+    allValue?: number | string,
+    priceMin?: number,
+    priceMax?: number
+  ): void {
     if (value === allValue) {
       this.filterArr = this.countryArr;
     } else {
-      this.filterArr = this.countryArr.filter((item: Hotel) => {
-        return item[key] === value;
-      });
+      if (key === 'price') {
+        this.filterArr = this.countryArr.filter((item: Hotel) => {
+          return item.price.some(
+            price => price >= (priceMin ?? 0) && price <= (priceMax ?? 0)
+          );
+        });
+      } else {
+        this.filterArr = this.countryArr.filter((item: Hotel) => {
+          return item[key] === value;
+        });
+      }
     }
 
     this.renderHotels(this.filterArr);
@@ -294,6 +310,7 @@ export class Filtering {
 
   renderInfo(item: Hotel[]): void {
     $('.result__header').html('');
+    $('.result__header-column').html('');
     const hotels = item.length;
     const offers = item.reduce((acc, item) => acc + item.room.length, 0);
     const infoHtml = `
@@ -301,12 +318,86 @@ export class Filtering {
       Найдено <span class="result__header-offers">${offers}</span> предложения в
       <span class="result__header-hotel">${hotels}</span>
       отелях
-    </h3>`;
+    </h3>
+    
+    <div class="result__header-item">
+    <div class="result__header-calendar">
+      <button class="result__header-btn">
+        <img src="/src/images/calendarOne.svg" alt="Calendar" />
+        Цены на календаре
+      </button>
+
+    </div>
+
+    <div class="result__header-sort">
+      <p class="result__header-text">Сортировать:</p>
+      <div class="result__header-subitem">
+        <div class="result__header-select dropdown">
+          <div class="result__header-row dropdown__row">
+            <p class="result__header-current dropdown__current">Цена</p>
+            <svg class="result__header-icon dropdown__icon">
+              <use xlink:href="#chevron-left"></use>
+            </svg>
+          </div>
+          <ul class="result__header-list dropdown__list">
+            <li class="dropdown__item">От дешевых к дорогим</li>
+            <li class="dropdown__item">От дорогих к дешевым</li>
+          </ul>
+        </div>
+
+        <div class="result__header-subselect dropdown">
+          <div class="result__header-subrow  dropdown__row">
+            <p class="result__header-subcurrent result__header-current-rating dropdown__current">Рейтинг</p>
+            <svg class="result__header-subicon dropdown__icon">
+              <use xlink:href="#chevron-left"></use>
+            </svg>
+          </div>
+          <ul class="result__header-sublist dropdown__list">
+            <li class="dropdown__item">Возрастающий</li>
+            <li class="dropdown__item">Убывающий</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+    `;
+
+    const calendarHtml = `
+    <div class="result__header-slider">
+    <div class="result__header-swiper swiper">
+      <div class="result__header-wrapper swiper-wrapper">
+        <div class="result__header-slide swiper-slide"></div>
+        <div class="result__header-slide swiper-slide"></div>
+        <div class="result__header-slide swiper-slide"></div>
+        <div class="result__header-slide swiper-slide"></div>
+        <div class="result__header-slide swiper-slide"></div>
+        <div class="result__header-slide swiper-slide"></div>
+        <div class="result__header-slide swiper-slide"></div>
+        <div class="result__header-slide swiper-slide"></div>
+        <div class="result__header-slide swiper-slide"></div>
+        <div class="result__header-slide swiper-slide"></div>
+        <div class="result__header-slide swiper-slide"></div>
+        <div class="result__header-slide swiper-slide"></div>
+      </div>
+
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+    `;
 
     $('.result__header').append(infoHtml);
+    $('.result__calendar').append(calendarHtml);
+
+    new DropdownSearch('.result__header-select');
+    new DropdownSearch('.result__header-subselect');
+    new Calendar().initCalendar();
+    new CalendarSwiper().swiperCalendar();
   }
 
-  selectRegion() {
+  selectRegion(): void {
     $('.category__btns-regions').on('click', event => {
       const regionName = $(event.currentTarget).data('region');
       const region = this.regionToNumber(regionName);

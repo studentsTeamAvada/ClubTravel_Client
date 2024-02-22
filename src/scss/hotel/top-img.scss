@@ -54,10 +54,11 @@
       border-radius: 8px;
       padding: 12px 19px 13px;
       height: 85px;
-      min-width: 304px;
+      max-width: 400px;
       color: #222;
       background: #fff;
       transition: transform 300ms ease 0s;
+
       cursor: pointer;
 
       &:hover {
@@ -90,6 +91,10 @@
     &-name {
       font-weight: 700;
       font-size: 26px;
+      max-width: 100%;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
 
       @include media-breakpoint-down(xs) {
         overflow: hidden;

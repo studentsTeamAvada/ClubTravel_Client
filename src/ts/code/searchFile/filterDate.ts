@@ -10,8 +10,7 @@ export class SelectData extends Filtering {
     super();
     this.dateCurrent = $('.info__date-current');
     this.calendar();
-    this.bindEvents('load', 'date', this.dateCurrent.text().trim());
-   
+    // this.bindEvents('load', 'date', this.dateCurrent.text().trim());
   }
 
   calendar() {
@@ -19,13 +18,13 @@ export class SelectData extends Filtering {
       onSelect: function ({ date }) {
         const dateObj = Array.isArray(date) ? date[0] : date;
         const day = String(dateObj.getDate()).padStart(2, '0');
-        const month = String(dateObj.getMonth() + 1).padStart(2, '0'); 
+        const month = String(dateObj.getMonth() + 1).padStart(2, '0');
         const year = dateObj.getFullYear();
-  
+
         const formattedDate = `${day}.${month}.${year}`;
-  
+
         $('.info__date-current').text(formattedDate);
-  
+
         const currentUrl = new URL(window.location.href);
         currentUrl.searchParams.set('date', formattedDate);
         window.history.pushState(
@@ -33,11 +32,7 @@ export class SelectData extends Filtering {
           '',
           currentUrl.href
         );
-
-      
       },
     });
   }
-
-
 }

@@ -1,24 +1,16 @@
 import { Tours } from "../../type";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
-import { initializeApp } from "firebase/app";
-const firebaseConfig = {
-  apiKey: "AIzaSyAVwhQr2zeNEAr1FSrD6ygo5dJeLkxjtRk",
-  authDomain: "clubtravel-6eff6.firebaseapp.com",
-  projectId: "clubtravel-6eff6",
-  storageBucket: "clubtravel-6eff6.appspot.com",
-  messagingSenderId: "883499742498",
-  appId: "1:883499742498:web:b0bf6b06d8073d249a217b",
-};
+import { getFirestore, collection, getDocs, Firestore } from "firebase/firestore";
+import { FirebaseApp } from "firebase/app";
+import { app } from "../../modules/firebase";
 
 const companyWrapper = document.querySelector(".directions__wrapper");
-
 export class DirectionProduct {
-  private app: any;
-  private db: any;
+  private app: FirebaseApp;
+  private db: Firestore;
   private productsArray: Tours[];
 
   constructor() {
-    this.app = initializeApp(firebaseConfig);
+    this.app = app;
     this.db = getFirestore(this.app);
     this.productsArray = [];
   }
@@ -57,13 +49,13 @@ export class DirectionProduct {
             <div class="directions__card-place">
             `;
 
-        if (region.length < 10) {
+        if (region.length < 8) {
           template += `
                     <p class="directions__card-place-town">${region}</p>
                 `;
         } else {
           template += `
-                    <p class="directions__card-place-town">${region.slice(0, 10) + "..."}</p>
+                    <p class="directions__card-place-town">${region.slice(0, 8) + "..."}</p>
                 `;
         }
 
