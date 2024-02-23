@@ -39,6 +39,18 @@ export class Account {
     });
   }
 
+  exitAccount() {
+    console.log('yes');
+    
+    const auth = getAuth();
+    auth.signOut().then(() => {
+        
+        console.log('Пользователь вышел из аккаунта');
+    }).catch((error) => {
+        console.error('Ошибка при выходе из аккаунта:', error);
+    });
+  }
+
   async renderUserName() {
 
     const querySnapshot = await getDocs(collection(this.db, "users"));
@@ -129,15 +141,15 @@ export class Account {
               <p>${price}</p>
               `;
               if(email.length < 23) {
-                  template += `
+                templateMobile += `
                     <p>${email}</p>
                   `;
               } else {
-                  template += `
+                templateMobile += `
                   <p>${email.slice(0, 23) + "..."}</p>
               `;
               }
-                template += `
+              templateMobile += `
               ${
                 payStatus == false
                 ? `<p class="account__payment-processing">В обработке</p>`
