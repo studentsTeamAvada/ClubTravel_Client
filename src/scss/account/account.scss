@@ -328,7 +328,8 @@
     padding: 24px 20px;
 
     @include media-breakpoint-down(sm) {
-      display: block;
+      display: flex;
+      flex-direction: column-reverse;
       max-width: 500px;
       margin: 0 auto;
     }
@@ -337,6 +338,11 @@
       padding: 12px 7px;
       padding-bottom: 25px;
     }
+  }
+
+  &__table-bottom-left-mobile {
+    display: flex;
+    flex-direction: column-reverse;
   }
 }
 

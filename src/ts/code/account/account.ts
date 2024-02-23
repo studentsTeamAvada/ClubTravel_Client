@@ -6,6 +6,8 @@ import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 
 const accountOrder = document.querySelector(".account__order");
 const accountOrders = document.querySelector(".account__table-bottom-left");
+const accountOrdersMobile = document.querySelector(".account__table-bottom-left-mobile");
+const accountLeftWrapper = document.querySelector(".account-mobile__table");
 
 export class Account {
   private app: FirebaseApp;
@@ -62,11 +64,12 @@ export class Account {
     
     const querySnapshot = await getDocs(collection(this.db, "users"));
     querySnapshot.forEach((doc) => {
-      const user = doc.data().orders as Users;
-      
-      if (user.email === userEmail) {
-        this.usersArray.push(user);
-      }
+      const users = doc.data().orders;
+      users.forEach((user: Users) => {
+        if (user.email === userEmail) {
+          this.usersArray.push(user);
+        }
+      })
     });
 
     this.renderUsers();
@@ -74,10 +77,13 @@ export class Account {
  
 
   renderUsers() {
+    console.log('da');
+    
     const users = this.usersArray;
+    console.log(users);
+    
     
     users.forEach((user) => {
-      
         const content = user;
         const { date, email, idOrder, payStatus, price } = content;
         
@@ -108,6 +114,43 @@ export class Account {
         if (accountOrder) {
           accountOrder.insertAdjacentHTML("beforeend", template);
           }
+
+          let templateMobile = `
+          <div class="account-mobile__table-wrapper">
+            <div class="account-mobile__table-left">
+              <p class="account-mobile__table-left-number">Номер заказа</p>
+              <p>Сумма</p>
+              <p>E-mail</p>
+              <p>Cтатус</p>
+              <p>Дата</p>
+            </div>
+            <div class="account-mobile__table-right">
+              <p class="account-mobile__table-right-number">${idOrder}</p>
+              <p>${price}</p>
+              `;
+              if(email.length < 23) {
+                  template += `
+                    <p>${email}</p>
+                  `;
+              } else {
+                  template += `
+                  <p>${email.slice(0, 23) + "..."}</p>
+              `;
+              }
+                template += `
+              ${
+                payStatus == false
+                ? `<p class="account__payment-processing">В обработке</p>`
+                : `<p class="account__payment-success">Оплачено</p>`
+                }
+              <p>${date}</p>
+            </div>
+          </div>
+          `;
+
+          if (accountLeftWrapper) {
+            accountLeftWrapper.insertAdjacentHTML("beforeend", templateMobile);
+          }
     }) 
 
     let ordersTotal = `
@@ -116,6 +159,14 @@ export class Account {
 
     if (accountOrders) {
       accountOrders.insertAdjacentHTML("beforeend", ordersTotal);
+    }
+
+    let ordersTotalMobile = `
+      <p>Показано <span>${this.usersArray.length > 9 ? 9 : this.usersArray.length}</span> из <span>${this.usersArray.length}</span></p>
+    `
+
+    if (accountOrdersMobile) {
+      accountOrdersMobile.insertAdjacentHTML("beforeend", ordersTotalMobile);
     }
   }
  

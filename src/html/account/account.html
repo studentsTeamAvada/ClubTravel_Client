@@ -80,39 +80,10 @@
           </div>
         </div>
         <div class="account__right-table-mobile account-mobile__table">
-          <div class="account-mobile__table-wrapper">
-            <div class="account-mobile__table-left">
-              <p class="account-mobile__table-left-number">Номер заказа</p>
-              <p>Сумма</p>
-              <p>E-mail</p>
-              <p>Cтатус</p>
-              <p>Дата</p>
-            </div>
-            <div class="account-mobile__table-right">
-              <p class="account-mobile__table-right-number">${idOrder}</p>
-              <p>${price}</p>
-              <!-- `;
-              if(email.length < 23) {
-                  template += `
-                    <p>${email}</p>
-                  `;
-              } else {
-                  template += `
-                  <p>${email.slice(0, 23) + "..."}</p>
-              `;
-              }
-                template += `
-              ${
-                payStatus == false
-                ? `<p class="account__payment-processing">В обработке</p>`
-                : `<p class="account__payment-success">Оплачено</p>`
-                } -->
-              <p>${date}</p>
-            </div>
-          </div>
+          
           <div class="account-mobile__table-bottom">
-            <div class="account__table-bottom-left">
-              <p>Показано <span>9</span> из <span>${this.usersArray.length}</span></p>
+            <div class="account__table-bottom-left account__table-bottom-left-mobile">
+                
               <div class="account__table-bottom-right account-mobile__table-bottom-right">
                 <button
                   class="account__table-bottom-button"
