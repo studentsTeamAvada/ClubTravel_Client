@@ -30,6 +30,7 @@
   }
 
   &__swiper-round {
+    display: flex;
 
     @media (width >= 1024px) {
       &:hover {

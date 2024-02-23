@@ -2,7 +2,7 @@
 import { app } from "../../modules/firebase";
 import { getAuth, Auth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
 import { FirebaseApp } from "firebase/app";
-import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
+import { getFirestore, collection, doc, setDoc, getDoc } from "firebase/firestore";
 import { fbUser } from "../../type";
 
 export class Authorization {
@@ -27,7 +27,7 @@ export class Authorization {
     signInWithEmailAndPassword(this.auth, email, password)
       .then((userData) => {
         const user = userData.user;
-
+        
         window.location.href = 'index.html';
         emailInput.value = "";
         passwordInput.value = "";
@@ -102,4 +102,5 @@ export class Authorization {
         console.error("Error adding document: ", error);
       });
   }
+
 }

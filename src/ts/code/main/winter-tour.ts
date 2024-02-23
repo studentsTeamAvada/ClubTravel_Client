@@ -27,6 +27,7 @@ export class WinterTourProduct {
     const querySnapshot = await getDocs(filterWinterTour);
     querySnapshot.forEach((doc) => {
       const product = doc.data() as Tours;
+      product.id = doc.id;
 
       this.productsArray.push(product);
     });
@@ -39,8 +40,11 @@ export class WinterTourProduct {
 
     products.forEach((product) => {
       const content = product;
-
-      const { country, img, price } = content;
+      console.log(product);
+      
+      const { country, img, price, id } = content;
+      console.log(id);
+      
 
       if (img && Array.isArray(img) && img.length > 0) {
         const { url, urlWebp } = img[0];

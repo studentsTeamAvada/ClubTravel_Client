@@ -19,14 +19,16 @@ export class Account {
     this.usersArray = [];
     this.currentUser = null;
     this.initAuth();
+    this.renderUserName();
   }
 
   initAuth() {
     const auth = getAuth();
 
-    onAuthStateChanged(auth, (user) => {
-      this.currentUser = user;
-      if (user) {
+    onAuthStateChanged(auth, (users) => {
+      this.currentUser = users;
+      
+      if (users) {
         this.loadCards();
       } else {
         this.usersArray = [];
@@ -34,6 +36,24 @@ export class Account {
       }
     });
   }
+
+  async renderUserName() {
+
+    const querySnapshot = await getDocs(collection(this.db, "users"));
+
+    if (!this.currentUser) return;
+
+    const userEmail = this.currentUser.email;
+
+    querySnapshot.forEach((doc) => {
+        const user = doc.data();
+        
+        if (user.email === userEmail) {
+            const { email, name, photo } = user;
+            console.log(email);
+        }
+    });
+}
   
 
   async loadCards() {
@@ -43,7 +63,6 @@ export class Account {
     const querySnapshot = await getDocs(collection(this.db, "users"));
     querySnapshot.forEach((doc) => {
       const user = doc.data().orders as Users;
-      console.log(user.email);
       
       if (user.email === userEmail) {
         this.usersArray.push(user);
@@ -52,12 +71,15 @@ export class Account {
 
     this.renderUsers();
   }
+ 
 
   renderUsers() {
     const users = this.usersArray;
+    
     users.forEach((user) => {
+      
         const content = user;
-        const { date, email, idOrder, payStatus, price} = content;
+        const { date, email, idOrder, payStatus, price } = content;
         
         let template = `
         <td>${idOrder}</td>
@@ -98,3 +120,5 @@ export class Account {
   }
  
 }
+
+

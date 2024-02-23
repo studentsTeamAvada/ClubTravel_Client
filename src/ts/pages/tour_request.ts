@@ -6,7 +6,6 @@ import { DropDown } from "../code/tour_request/dropdown";
 import { Food } from "../code/tour_request/food";
 import { Preloader } from "../components/preloader";
 import { AsYouType, validatePhoneNumberLength } from 'libphonenumber-js';
-import { IsAuthorization } from "../components/isAuthorization";
 import $ from "jquery";
 import 'jquery-validation';
 
@@ -347,5 +346,4 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   new TourRequest();
   new Preloader();
-  new IsAuthorization();
 });

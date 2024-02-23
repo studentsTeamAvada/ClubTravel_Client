@@ -111,4 +111,7 @@ export class Registration {
         console.error("Error adding document: ", error);
       });
   }
+
+ 
+
 }
