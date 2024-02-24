@@ -68,7 +68,7 @@ export class PullData{
             }
             else if(doc.id !== this.id && i < 4){
                 i++
-                this.bottomSlide(querySnapshot.docs[random].data())
+                this.bottomSlide(querySnapshot.docs[random].data(), querySnapshot.docs[random].id)
             }
 
         });
@@ -77,7 +77,7 @@ export class PullData{
         new Preloader();
     }
 
-    bottomSlide(data: object){
+    bottomSlide(data: object, id: string){
         const sliderWrapper = $("#bottom-slider");
 
         const currentData =  data as BottomSlide
@@ -138,14 +138,13 @@ export class PullData{
                 
                     <div class="slide__info">
                     <div class="slide__row slide__row-one">
-                        <div class="slide__title">${name}</div>
+                        <a class="slide__title" href="/hotel.html?id=${id}">${name}</a>
                         <div class="slide__stars">${renderStars()}</div>
                     </div>
                 
                     <div class="slide__row slide__row-two">
                         <div class="slide__price"><span><span id="price">${sale? newPrice : price}</span>€</span>/чел</div>
                 
-
                         ${sale? renderOldPrice : ""}
                 
                         ${sale ? renderSale : ""}

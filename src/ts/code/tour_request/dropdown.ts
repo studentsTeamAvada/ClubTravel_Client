@@ -68,7 +68,7 @@ export class DropDown {
     }
     function removeOne(): void {
       let current = +total.text();
-      if (current > 1) {
+      if (current > 1 || (kids && current > 0)) {
         const sum = current - 1;
         total.html(String(sum));
         if (kids) {
