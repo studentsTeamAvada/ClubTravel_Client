@@ -1,0 +1,1 @@
+import{$ as e}from"./header-9Fuft6xP.js";class o{header;preloader;body;constructor(){this.header=e(".header"),this.preloader=e(".preloader"),this.body=e("body"),this.removePreloader()}removePreloader(){setTimeout(()=>{this.header.removeClass("header_preload"),this.body.addClass("preloder-hidden"),this.preloader.addClass("preloader_hidden")},300)}}export{o as P};
