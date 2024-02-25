@@ -39,6 +39,10 @@ body {
   overflow: auto;
 }
 
+.burger-active {
+  overflow: hidden;
+}
+
 [class*="__container"] {
   margin: 0 auto;
   padding: 0 15px;

@@ -117,10 +117,35 @@
       }
     }
   }
-  &_preload{
-    // padding: 0 8px 0 0;
 
+  &__mobile-decor{
+    &::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: -15px;
+      border-radius: 50%;
+      width: 107px;
+      height: 107px;
+      transform: translateX(-50%);
+      transition: all 300ms ease 100ms;
+      z-index: 1;
+      background: #fff;
+    }
+
+
+
+    @include media-breakpoint-up(md) {
+      display: none;
+    }
+  }
+
+  &_preload{
     box-shadow: 0 4px 8px rgb(0 0 0 / 30%);
+
+    @include media-breakpoint-up(md) {
+      padding: 0 8px 0 0;
+    }
 
     &::after {
       box-shadow: 0 2px 4px rgb(0 0 0 / 30%);
@@ -136,11 +161,9 @@
         }
       }
 
-    }
-    .menu {
-      &__body {
+      &__mobile-decor {
         &::before {
-          box-shadow: 0 3px 6px rgb(0 0 0 / 30%);
+          box-shadow: 0 4px 6px rgb(0 0 0 / 30%);
         }
       }
     }
@@ -167,20 +190,6 @@
       height: 100%;
       transition: all 300ms ease 0s;
       background: #fff;
-
-      &::before {
-        content: "";
-        position: fixed;
-        left: 50%;
-        top: -15px;
-        border-radius: 50%;
-        width: 107px;
-        height: 107px;
-        transform: translateX(-50%);
-        transition: all 300ms ease 100ms;
-        z-index: 1;
-        background: #fff;
-      }
     }
   }
 
@@ -211,6 +220,7 @@
   }
 
   &__user-mobile-link {
+    display: block;
     svg {
       width: 32px;
       height: 32px;
@@ -382,19 +392,28 @@
     }
   }
 
-    &__link-user {
+  &__link-user {
+    width: 24px;
+    height: 24px;
+      svg{
+          margin: 0;
+          width: 24px;
+          height: 24px;
+      }
+      @include media-breakpoint-down(md){
+          display: none;
+      }
+  }
 
-        svg{
-            margin: 0;
-            width: 24px;
-            height: 24px;
-        }
-        @include media-breakpoint-down(md){
-            display: none;
-        }
+  &__not-sing{
+    svg{
+      width: 24px;
+      height: 22px;
     }
+  }
 
   &__link-avatar {
+
     @include media-breakpoint-down(md) {
       border-top: 1px solid rgb(0 0 0 / 10%);
       padding-top: 19px;
@@ -404,10 +423,15 @@
 
   &__img {
     border-radius: 50%;
-    padding: 2px;
     width: 20px;
     height: 20px;
-    background-color: brown;
+    overflow: hidden;
+
+    img{
+      height: 100%;
+      width: 100%;
+    }
+    
   }
 
   &__name {
@@ -539,19 +563,21 @@
 }
 
 .burger-active {
-  overflow: hidden;
+
   .header {
     &::after {
       box-shadow: 0 2px 4px rgb(0 0 0 / 30%);
+    }
+
+    &__mobile-decor {
+      &::before {
+        box-shadow: 0 4px 6px rgb(0 0 0 / 30%);
+      }
     }
   }
   .menu {
     &__body {
       top: 0;
-
-      &::before {
-        box-shadow: 0 3px 6px rgb(0 0 0 / 30%);
-      }
     }
 
     &__icon {
@@ -568,12 +594,19 @@
 
 .scroll {
   .header {
+    background: rgb(255 255 255 / 50%);
+
     &__logo {
       &-decor{
         background: rgb(255 255 255 / 50%);
       }
     }
-    background: rgb(255 255 255 / 50%);
+
+    &__mobile-decor {
+      &::before {
+        box-shadow: 0 4px 6px rgb(0 0 0 / 30%);
+      }
+    }
 
     &::after {
       box-shadow: 0 2px 4px rgb(0 0 0 / 30%);
@@ -588,12 +621,5 @@
       background-color: #fff;
     }
 
-    .menu {
-      &__body {
-        &::before {
-          box-shadow: 0 4px 6px rgb(0 0 0 / 30%);
-        }
-      }
-    }
   }
 }

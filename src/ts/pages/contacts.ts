@@ -37,7 +37,7 @@ class Contacts {
     const element = $("#form") as JQueryValidateForm;
 
     ($ as addValidator).validator.addMethod("laxEmail", function(value: string) {
-      return /^(?!.*\.\.)[\w.-]{3,20}@[\wа-я.][\wа-я.-]{3,20}[\wа-я.]\.[a-z]{2,10}/.test(value);
+      return /^(?!.*\.\.)[\w.-]{3,20}@[\wа-я.][\wа-я.-]{1,20}[\wа-я.]\.[a-z]{2,10}/.test(value);
     }, 'Введите корректный email');
 
     ($ as addValidator).validator.addMethod("min", function(value : string) {

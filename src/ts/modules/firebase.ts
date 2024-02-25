@@ -17,12 +17,12 @@ export const app = initializeApp(firebaseConfig);
 
 export class GetSing{
     promise(){
-      return new Promise((resolve, reject) => {
+      return new Promise(resolve => {
         onAuthStateChanged(getAuth(), (user) => {
           if(user){
             resolve(user)
           }else{
-            reject("Пользователь не авторизирован")
+            resolve(false)
           }
         })
       })

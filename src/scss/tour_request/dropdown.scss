@@ -70,9 +70,6 @@
     border-radius: 6px;
     height: 42px;
 
-    @include media-breakpoint-down(sm) {
-      height: 60px;
-    }
 
     span {
       margin-left: 12px;
