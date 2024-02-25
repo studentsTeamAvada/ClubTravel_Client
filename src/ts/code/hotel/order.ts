@@ -1,11 +1,15 @@
 import $ from "jquery";
-import {app} from "./../../modules/firebase"
+import {app, GetSing} from "./../../modules/firebase"
 // import { getFirestore, getDocs, collection  } from "firebase/firestore";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 import { doc, setDoc,getDoc, updateDoc, arrayUnion, getFirestore } from "firebase/firestore"; 
+
+
+
 
 interface user{
     uid: string
+    email?: string | null
 }
 
 type objData = {
@@ -38,13 +42,12 @@ export class Order{
         this.dateOrder()
     }
 
-    getSing(){
-        onAuthStateChanged(getAuth(), (user) => {
-            if(user){
-                this.user = user
-                this.objData.email = user.email? user.email: null
-            }
-        })
+    async getSing(){
+        const user = await new GetSing().promise() as user
+        if(user){
+            this.user = user
+            this.objData.email = user.email? user.email: null
+        }
     }
 
     dateOrder(){

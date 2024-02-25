@@ -198,10 +198,10 @@ export class DropDown {
         if (i > quantitySelect - 1) {
           this.children.append(`
             <div id="drop-${i}" class="children__drop">
-                <button class="children__btn">
+                <div class="children__btn">
                     <span class="children__current">Укажите возраст</span>
                     <svg><use xlink:href="#chevron-left"></use></svg> 
-                </button>
+                </div>
                 <ul class="children__list">
                     <li>Укажите возраст</li>
                     <li>&lt; 1 год</li>
@@ -411,7 +411,13 @@ export class DropDown {
             <li>${key} x${kidsObj[key]} <span>+</span></li>
           `);
         }
-        const customEvent = new CustomEvent("myCustomEvent");
+
+        const customEvent = new CustomEvent("myCustomEvent", {
+          detail: {
+            kids: this.currentKids,
+            abduls: this.currentAbdul
+          }
+        });
         document.dispatchEvent(customEvent);
       }
     });

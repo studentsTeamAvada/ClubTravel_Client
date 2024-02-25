@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 // import { getStorage, ref,  uploadBytesResumable,getDownloadURL } from "firebase/storage";
 const firebaseConfig = {
   apiKey: "AIzaSyAVwhQr2zeNEAr1FSrD6ygo5dJeLkxjtRk",
@@ -10,6 +11,23 @@ const firebaseConfig = {
 };
 
 export const app = initializeApp(firebaseConfig);
+
+
+
+
+export class GetSing{
+    promise(){
+      return new Promise((resolve, reject) => {
+        onAuthStateChanged(getAuth(), (user) => {
+          if(user){
+            resolve(user)
+          }else{
+            reject("Пользователь не авторизирован")
+          }
+        })
+      })
+    }
+}
 
 // const storage = getStorage(app);
 
