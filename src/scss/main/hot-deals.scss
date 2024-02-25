@@ -346,6 +346,10 @@
     }
 
     @include media-breakpoint-down(xs) {
+      top: 53%;
+    }
+
+    @include media-breakpoint-down(xxs) {
       top: 55%;
     }
   }

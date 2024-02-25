@@ -116,3 +116,26 @@ export function justValidatePasswordRecovery() {
     ]);
   }
 }
+
+export function justValidateChangeName() {
+  const validateForm = document.querySelector("#settingsForm");
+
+  if (validateForm) {
+    const validate = new JustValidate("#settingsForm");
+
+    validate.addField("#changeName", [
+      {
+        rule: "required",
+        errorMessage: "Email is required",
+      },
+      {
+        rule: "minLength",
+        value: 2,
+      },
+      {
+        rule: "maxLength",
+        value: 20,
+      },
+    ]);
+  }
+}

@@ -47,8 +47,20 @@
 
   &__left-photo {
     text-align: center;
+    width: 126px;
+    height: 126px;
+    background: #c4c4c4;
+    border-radius: 100%;
+    margin: 0 auto;
     margin-top: 16px;
     margin-bottom: 20px;
+
+    img {
+      width: 126px;
+      height: 126px;
+      object-fit: cover;
+      border-radius: 100%;
+    }
   }
 
   // .account__left-name
@@ -117,6 +129,11 @@
     gap: 15px;
     position: relative;
 
+    &.active {
+      background: #f1efef;
+      border-radius: 4px;
+    }
+
     &::after {
       position: absolute;
       content: "";
@@ -177,6 +194,10 @@
   &__right {
     width: 100%;
     max-width: 800px;
+
+    &.active {
+      display: none;
+    }
 
     @include media-breakpoint-down(md) {
       margin: 0 auto;
@@ -260,12 +281,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     @include media-breakpoint-down(sm) {
       margin: 0;
     }
-
-  
   }
 
   &__right-table-bottom {
@@ -344,6 +363,72 @@
   &__table-bottom-left-mobile {
     display: flex;
     flex-direction: column-reverse;
+  }
+
+  &__settings {
+    width: 100%;
+    max-width: 800px;
+
+    @include media-breakpoint-down(md) {
+      margin: 0 auto;
+      max-width: 580px;
+    }
+
+    &.active {
+      display: none;
+    }
+  }
+
+  &__settings-form {
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    max-width: 580px;
+    padding: 15px 25px 18px 14px;
+
+    label {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    #changeName {
+      width: 79%;
+      height: 60%;
+      border: 1px solid #e2e2e2;
+      margin-left: 6px;
+      padding-left: 6px;
+      font-size: 16px;
+    }
+
+    #photoChange {
+      margin-left: 6px;
+    }
+  }
+
+  &__settings-input {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    &::after {
+      position: absolute;
+      content: "";
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #e2e2e2;
+    }
+
+    .just-validate-error-label {
+      position: absolute;
+      top: 45px;
+    }
+  }
+
+  &__settings-button {
+    max-width: 250px;
+    margin: 0 auto;
+    margin-top: 20px;
   }
 }
 

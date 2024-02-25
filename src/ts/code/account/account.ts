@@ -8,6 +8,7 @@ const accountOrder = document.querySelector(".account__order");
 const accountOrders = document.querySelector(".account__table-bottom-left");
 const accountOrdersMobile = document.querySelector(".account__table-bottom-left-mobile");
 const accountLeftWrapper = document.querySelector(".account-mobile__table");
+const accountLeft = document.querySelector('.account__left');
 
 export class Account {
   private app: FirebaseApp;
@@ -21,7 +22,7 @@ export class Account {
     this.usersArray = [];
     this.currentUser = null;
     this.initAuth();
-    this.renderUserName();
+    this.renderAccountLeft();
   }
 
   initAuth() {
@@ -40,7 +41,7 @@ export class Account {
   }
 
   exitAccount() {
-    console.log('yes');
+    console.log('Пользователь вышел из аккаунта');
     
     const auth = getAuth();
     auth.signOut().then(() => {
@@ -51,7 +52,7 @@ export class Account {
     });
   }
 
-  async renderUserName() {
+  async renderAccountLeft() {
 
     const querySnapshot = await getDocs(collection(this.db, "users"));
 
@@ -65,10 +66,74 @@ export class Account {
         if (user.email === userEmail) {
             const { email, name, photo } = user;
             console.log(email);
+
+            let templateRenderLeft = `
+            <div class="account__left-photo">
+            
+            <img src="${photo}" alt="bg" />
+            
+          </div>
+          <p class="account__left-name">${name ? name : 'Пользователь'}</p>
+          <button class="account__left-order active">
+            <svg><use xlink:href="#order"></use></svg>
+            <p>Мои заказы</p>
+          </button>
+          <button class="account__left-history-order">
+            <svg><use xlink:href="#history-order"></use></svg>
+            <p>История платежей</p>
+          </button>
+          <button class="account__left-settings">
+            <svg><use xlink:href="#account-settings"></use></svg>
+            <p>Настройки</p>
+          </button>
+          <a href="#" class="account__left-exit">
+            <svg><use xlink:href="#exit"></use></svg>
+            <p>Выход</p>
+          </a>
+        `;
+
+        if(accountLeft) {
+          accountLeft.insertAdjacentHTML("beforeend", templateRenderLeft)
         }
+
+        }      
     });
-}
+
+    this.settings();
+  }
   
+
+  settings() {
+    const buttonSettings = document.querySelector('.account__left-settings');
+    const buttonOrders = document.querySelector('.account__left-order');
+    const accountRight = document.querySelector('.account__right');
+    const accountSettings = document.querySelector('.account__settings');
+
+    const accountLeftWrapper = document.querySelector('.account__left-wrapper');
+
+    accountLeftWrapper?.addEventListener('click', (e) => {
+      const clickElement = e.target as HTMLElement;
+
+      if (clickElement) {
+        const clickContent = clickElement.textContent;
+
+        if (clickContent && clickContent.includes('Настройки')) {
+          buttonSettings?.classList.add('active');
+          buttonOrders?.classList.remove('active');
+          accountRight?.classList.add('active');
+          accountSettings?.classList.remove('active');
+          
+        } else if (clickContent && clickContent.includes('Мои заказы')) {
+          buttonOrders?.classList.add('active');
+          buttonSettings?.classList.remove('active');
+          accountRight?.classList.remove('active');
+          accountSettings?.classList.add('active');
+        }
+
+      } 
+    });
+  
+  }
 
   async loadCards() {
     if (!this.currentUser) return;
@@ -89,12 +154,8 @@ export class Account {
  
 
   renderUsers() {
-    console.log('da');
-    
     const users = this.usersArray;
-    console.log(users);
-    
-    
+
     users.forEach((user) => {
         const content = user;
         const { date, email, idOrder, payStatus, price } = content;
