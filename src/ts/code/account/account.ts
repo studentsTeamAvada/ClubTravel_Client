@@ -64,7 +64,7 @@ export class Account {
         const user = doc.data();
         
         if (user.email === userEmail) {
-            const { email } = user;
+            const { email, name, photo } = user;
             console.log(email);
 
             let templateRenderLeft = `
