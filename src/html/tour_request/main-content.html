@@ -26,7 +26,7 @@
 
         <button class="adviser__btn btn">перезвонить</button>
 
-        <button class="adviser__btn-form">заполнить форму</button>
+        <a href="#main-form" class="adviser__btn-form">заполнить форму</a>
       </form>
 
       <h3 class="adviser__title">Связаться с нашим консультантом</h3>
@@ -58,7 +58,7 @@
         </div>
     </section>
 
-    <section class="main-content__column form">
+    <section id="main-form" class="main-content__column form form_error">
       <div class="form__wrapper">
         <div class="form__tabs">
           <button class="form__tab form__tab-one">Основное</button>
@@ -78,14 +78,14 @@
 
             <div class="form__drop">
               <load ="/src/html/tour_request/drop-country.html" />
-              <input type="text" id="drop-country" class="form__drop-hover" name="dropCountry">
+              <input type="text" id="drop-country" class="form__drop-hover" name="dropCountry"  readonly >
             </div>
 
             <h3 class="form__title">Дата вылета</h3>
 
             <div class="form__drop">
               <load ="/src/html/tour_request/calendar.html" />
-              <input type="text" id="drop-calendar" class="form__drop-hover" name="dropCalendar">
+              <input type="text" id="drop-calendar" class="form__drop-hover" name="dropCalendar" readonly >
             </div>
 
             <h3 class="form__title">Гости</h3>
@@ -107,7 +107,7 @@
                 </svg>
               </div>
 
-              <div class="form__counter-count">1</div>
+              <div class="form__counter-count">0</div>
 
               <div class="form__counter-btn form__counter-add">
                 <svg>
@@ -124,8 +124,7 @@
           <form id="form-state-two" class="form__state form__state-second">
             <h3 class="form__title">Желаемая цена на одного человека (€)</h3>
             <div class="form__input-wrap input-row">
-              <input type="text" id="input-price" class="form__input" />
-              <span class="form__error form__error-input-price"></span>
+              <input type="number" id="input-price" class="form__input" />
             </div>
 
             <h3 class="form__title">Питание</h3>

@@ -28,6 +28,7 @@ export class Food {
       item.addEventListener("click", () => {
         this.currentSelect.html(String(item.textContent));
         this.errorFood.removeClass("form__error-food_active");
+        document.dispatchEvent(new Event('selectFood'));
       });
     });
   }

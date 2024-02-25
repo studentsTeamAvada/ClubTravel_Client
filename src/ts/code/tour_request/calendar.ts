@@ -49,14 +49,13 @@ export class Calendar {
 
   airDatepicker(){
     const context = this
-    const tomorrow = new Date().setDate(new Date().getDate() + 1)
     const maxData = new Date().setDate(new Date().getFullYear() + 5)
 
     this.datepicker =  new AirDatepicker('#el', {
       range: true, 
       toggleSelected: true,
       multipleDatesSeparator: ' -', 
-      minDate: tomorrow,
+      minDate: new Date(),
       onSelect({date}) {
         const myDate = date as Array<Date> 
 
@@ -66,10 +65,11 @@ export class Calendar {
           context.currentNextDate = new Date(myDate[1]);
           context.newDate(true, true);
           context.datepicker?.update({
-            minDate: tomorrow,
+            minDate: new Date(),
             maxDate: maxData
           })
-          context.selectCount()
+          context.selectCount();
+          context.calendar.removeClass("calendar_active");
         }else if(myDate[0]){
           context.currentSelDate = new Date(myDate[0]);
           context.newDate();
@@ -79,7 +79,7 @@ export class Calendar {
           })
         } else{
           context.datepicker?.update({
-            minDate: tomorrow,
+            minDate: new Date(),
             maxDate: maxData
           })
           context.newDate(false, false);
@@ -107,7 +107,7 @@ export class Calendar {
 
     function addOne(): void {
       let current = +total.text();
-      if (current < 100) {
+      if (current < 21) {
         const sum = current + 1;
         selectSum(String(sum));
       }
@@ -131,13 +131,12 @@ export class Calendar {
   }
 
   selectFinishDate(num: number = 1): void{
-    const finish = new Date(new Date().setDate(this.currentSelDate.getDate() + num)) 
+    const finish = new Date(this.currentSelDate);
+    finish.setDate(this.currentSelDate.getDate() + num);
+    
     this.datepicker?.clear();
     this.datepicker?.selectDate(this.currentSelDate); 
     this.datepicker?.selectDate(finish);
-    console.log(this.currentSelDate)
-    console.log(this.currentNextDate)
-
   }
 
   formatDate(date: Date): string {

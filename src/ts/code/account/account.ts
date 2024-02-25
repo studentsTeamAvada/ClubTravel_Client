@@ -63,7 +63,7 @@ export class Account {
         const user = doc.data();
         
         if (user.email === userEmail) {
-            const { email, name, photo } = user;
+            const { email } = user;
             console.log(email);
         }
     });

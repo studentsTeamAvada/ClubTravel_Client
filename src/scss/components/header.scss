@@ -12,11 +12,10 @@
   &::after {
     content: "";
     position: absolute;
-    top: 100px;
     left: 0;
-    top: 0;
+    top: -150px;
     width: 100%;
-    height: 50px;
+    height: 200px;
     transition: all 300ms ease 100ms;
     z-index: 1;
     background: #fff;
@@ -120,26 +119,30 @@
   }
   &_preload{
     // padding: 0 8px 0 0;
+
     box-shadow: 0 4px 8px rgb(0 0 0 / 30%);
-    
+
+    &::after {
+      box-shadow: 0 2px 4px rgb(0 0 0 / 30%);
+    }
+
     .header {
       &__logo {
         &-decor{
-          box-shadow: 0 4px 8px rgb(0 0 0 / 30%);
+          @include media-breakpoint-up(md) {
+            box-shadow: 0 4px 8px rgb(0 0 0 / 30%);
+          }
+
         }
       }
-    }
 
+    }
     .menu {
       &__body {
         &::before {
-          box-shadow: 0 5px 12px rgb(0 0 0 / 30%);
+          box-shadow: 0 3px 6px rgb(0 0 0 / 30%);
         }
       }
-    }
-
-    &::after {
-      box-shadow: 0 4px 8px rgb(0 0 0 / 30%);
     }
   }
 }
@@ -203,7 +206,7 @@
       top: 3px;
       display: block;
       padding: 5px;
-      z-index: 1;
+      z-index: 2;
     }
   }
 
@@ -536,9 +539,10 @@
 }
 
 .burger-active {
+  overflow: hidden;
   .header {
     &::after {
-      box-shadow: 0 4px 8px rgb(0 0 0 / 30%);
+      box-shadow: 0 2px 4px rgb(0 0 0 / 30%);
     }
   }
   .menu {
@@ -546,7 +550,7 @@
       top: 0;
 
       &::before {
-        box-shadow: 0 5px 12px rgb(0 0 0 / 30%);
+        box-shadow: 0 3px 6px rgb(0 0 0 / 30%);
       }
     }
 
@@ -560,7 +564,6 @@
       }
     }
   }
-  overflow: hidden;
 }
 
 .scroll {
@@ -572,6 +575,10 @@
     }
     background: rgb(255 255 255 / 50%);
 
+    &::after {
+      box-shadow: 0 2px 4px rgb(0 0 0 / 30%);
+    }
+
     &:hover {
       .header__logo {
         &-decor{
@@ -579,6 +586,14 @@
         }
       }
       background-color: #fff;
+    }
+
+    .menu {
+      &__body {
+        &::before {
+          box-shadow: 0 4px 6px rgb(0 0 0 / 30%);
+        }
+      }
     }
   }
 }

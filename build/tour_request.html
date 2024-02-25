@@ -5,30 +5,16 @@
   <link rel="icon" type="image/ico+xml" href="/ClubTravel.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Запрос тура</title>
-<<<<<<< HEAD
-  <script type="module" crossorigin src="/assets/Tour_request-Zzf-fJwz.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/jquery-DgZYk2H_.js">
-  <link rel="modulepreload" crossorigin href="/assets/header-ARewE4Ia.js">
-  <link rel="modulepreload" crossorigin href="/assets/footer-QL4Ufj9G.js">
-  <link rel="modulepreload" crossorigin href="/assets/air-datepicker-D2xVSEhC.js">
-  <link rel="modulepreload" crossorigin href="/assets/preloader-995_IHTn.js">
-  <link rel="modulepreload" crossorigin href="/assets/index.esm2017-ZxaceZ0h.js">
-  <link rel="modulepreload" crossorigin href="/assets/index-dd468b12-T5X4n-5H.js">
-  <link rel="modulepreload" crossorigin href="/assets/isAuthorization-fnme_ga3.js">
-  <link rel="modulepreload" crossorigin href="/assets/AsYouType-EoxT6__x.js">
-=======
-  <script type="module" crossorigin src="/assets/Tour_request-hWvfTY2B.js"></script>
+  <script type="module" crossorigin src="/assets/Tour_request-vEY-UwAB.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/header-9Fuft6xP.js">
   <link rel="modulepreload" crossorigin href="/assets/footer-pXvuOvyE.js">
   <link rel="modulepreload" crossorigin href="/assets/air-datepicker-qFfkxUFE.js">
-  <link rel="modulepreload" crossorigin href="/assets/preloader-a9ovPH_o.js">
-  <link rel="modulepreload" crossorigin href="/assets/index.esm2017-NEpo2ibe.js">
-  <link rel="modulepreload" crossorigin href="/assets/index-e24386e7-jS-Ti_7U.js">
-  <link rel="modulepreload" crossorigin href="/assets/isAuthorization-Z2v30n0e.js">
+  <link rel="modulepreload" crossorigin href="/assets/preloader-U3P-yeaR.js">
+  <link rel="modulepreload" crossorigin href="/assets/firebase-F47n0dmT.js">
+  <link rel="modulepreload" crossorigin href="/assets/index.esm2017-HY_ETrW2.js">
   <link rel="modulepreload" crossorigin href="/assets/AsYouType-wvV6Yh-b.js">
->>>>>>> artem-dev
   <link rel="stylesheet" crossorigin href="/assets/air-datepicker-vjRodfbR.css">
-  <link rel="stylesheet" crossorigin href="/assets/Tour_request-8mOFRcnr.css">
+  <link rel="stylesheet" crossorigin href="/assets/Tour_request-tJxGz9XP.css">
 </head>
 
   <body>
@@ -202,7 +188,7 @@
 
         <button class="adviser__btn btn">перезвонить</button>
 
-        <button class="adviser__btn-form">заполнить форму</button>
+        <a href="#main-form" class="adviser__btn-form">заполнить форму</a>
       </form>
 
       <h3 class="adviser__title">Связаться с нашим консультантом</h3>
@@ -234,7 +220,7 @@
         </div>
     </section>
 
-    <section class="main-content__column form">
+    <section id="main-form" class="main-content__column form form_error">
       <div class="form__wrapper">
         <div class="form__tabs">
           <button class="form__tab form__tab-one">Основное</button>
@@ -253,10 +239,10 @@
             <h3 class="form__title">Направление</h3>
 
             <div class="form__drop">
-              <div class="drop-country">
+              <div class="drop-country drop-country_bottom">
   <div class="drop-country__btn">
     <span class="drop-country__county">Страна</span>
-    <!-- <span class="drop-country__arrow"></span>&gt;</span> -->
+    <span class="drop-country__arrow"></span>&gt;</span>
     <span class="drop-country__tour">Тур</span>
     <svg class="drop-country__btn-arrow">
       <use xlink:href="#chevron-left"></use>
@@ -420,13 +406,13 @@
 </div>
 
 
-              <input type="text" id="drop-country" class="form__drop-hover" name="dropCountry">
+              <input type="text" id="drop-country" class="form__drop-hover" name="dropCountry"  readonly >
             </div>
 
             <h3 class="form__title">Дата вылета</h3>
 
             <div class="form__drop">
-              <div class="calendar">
+              <div class="calendar calendar_bottom">
   <div class="calendar__btn">
     <span class="calendar__btn-info"
       ><span id="start-date"></span> - <span id="final-date"></span
@@ -438,7 +424,7 @@
   </div>
 </div>
 
-              <input type="text" id="drop-calendar" class="form__drop-hover" name="dropCalendar">
+              <input type="text" id="drop-calendar" class="form__drop-hover" name="dropCalendar" readonly >
             </div>
 
             <h3 class="form__title">Гости</h3>
@@ -500,7 +486,7 @@
 
     <div class="dropdown__children children"></div>
 
-    <button class="dropdown__button-add">Добавить</button>
+    <div class="dropdown__button-add">Добавить</div>
     <div class="dropdown__error">
       <span class="dropdown__error-for-kids"
         >Укажите возраст для всех детей!</span
@@ -527,7 +513,7 @@
                 </svg>
               </div>
 
-              <div class="form__counter-count">1</div>
+              <div class="form__counter-count">0</div>
 
               <div class="form__counter-btn form__counter-add">
                 <svg>
@@ -544,13 +530,12 @@
           <form id="form-state-two" class="form__state form__state-second">
             <h3 class="form__title">Желаемая цена на одного человека (€)</h3>
             <div class="form__input-wrap input-row">
-              <input type="text" id="input-price" class="form__input" />
-              <span class="form__error form__error-input-price"></span>
+              <input type="number" id="input-price" class="form__input" />
             </div>
 
             <h3 class="form__title">Питание</h3>
             <div class="form__drop form__drop-food">
-              <div class="food">
+              <div class="food food_bottom">
   <div class="food__btn">
     <span class="food__btn-info">Выбрать</span>
     <svg><use xlink:href="#chevron-left"></use></svg>
