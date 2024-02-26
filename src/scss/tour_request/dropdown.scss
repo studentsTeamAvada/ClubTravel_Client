@@ -31,15 +31,6 @@
     color: #222;
   }
 
-  &__adults {
-  }
-
-  &__kids {
-  }
-
-  &__arrow {
-  }
-
   &__main {
     position: absolute;
     top: 42px;
@@ -70,15 +61,8 @@
     border-radius: 6px;
     height: 42px;
 
-
     span {
       margin-left: 12px;
-    }
-
-    &-adults {
-    }
-
-    &-kids {
     }
   }
 
@@ -133,15 +117,6 @@
           height: 20px;
         }
       }
-    }
-
-    &-add {
-    }
-
-    &-current {
-    }
-
-    &-remove {
     }
   }
 
@@ -354,9 +329,6 @@
       }
       
     }
-  }
-
-  &_active {
   }
 
   &_top {

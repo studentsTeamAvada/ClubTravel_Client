@@ -96,24 +96,3 @@
   }
 }
 
-.air-datepicker {
-  border: none !important;
-  width: 100% !important;
-
-  .air-datepicker-body--day-name {
-    font-family: "Open Sans", sans-serif;
-    color: #f68521;
-  }
-
-  .-selected- {
-    background: #f68521 !important;
-  }
-
-  .-current- {
-    color: #255296 !important;
-
-    &.-selected- {
-      color: #fff !important;
-    }
-  }
-}

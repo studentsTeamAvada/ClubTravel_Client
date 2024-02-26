@@ -33,7 +33,6 @@ export class PullData{
     }
 
     async init(){
-        this.addQuery();
         this.getData();
 
     }
@@ -47,31 +46,31 @@ export class PullData{
         }
     }
 
-    addQuery(){
-        this.currentUrl.search = ''
-        this.currentUrl.searchParams.append("id", "2xvc7W065aSKXG4o5mw7")
-        history.replaceState({}, '', this.currentUrl);
-    }
-
     async getData(){
         const db = getFirestore(this.app);
         const querySnapshot = await getDocs(collection(db, "hotels"));
 
         let i = 0;
         const length: number = querySnapshot.docs.length - 1
+
+        let loadStatus = false 
         querySnapshot.forEach((doc) => {
             const random: number =  +(Math.random() * length).toFixed()
+
             if(doc.id === this.id){
-
                 this.changeInfo(doc.data())
-
+                loadStatus = true
             }
-            else if(doc.id !== this.id && i < 4){
+
+            if(doc.id !== this.id && i < 4){
                 i++
                 this.bottomSlide(querySnapshot.docs[random].data(), querySnapshot.docs[random].id)
             }
-
         });
+
+        if(!loadStatus){
+            window.location.href = "404.html"
+        }        
 
         new HotelSecondSlider();
         new Preloader();
