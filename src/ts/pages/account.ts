@@ -8,9 +8,14 @@ document.addEventListener("DOMContentLoaded", async function() {
     new Header();
     new IsAuthorization();
     const productAccount = new Account();
+    productAccount.isChangeInput();
     await productAccount.loadCards();
     justValidateChangeName();
     
+    const button = document.querySelector('.account__settings-button');
+    button?.addEventListener('click', () => {
+        productAccount.getFormData();
+    })
 })
 
 
