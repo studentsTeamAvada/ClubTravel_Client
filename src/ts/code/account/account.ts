@@ -42,7 +42,6 @@ export class Account {
   }
 
   exitAccount() {
-    console.log('Пользователь вышел из аккаунта');
 
     const auth = getAuth();
     auth
