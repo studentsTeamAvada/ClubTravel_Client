@@ -4,7 +4,6 @@ import { DropCountry } from "../code/tour_request/drop-country";
 import { Calendar } from "../code/tour_request/calendar";
 import { DropDown } from "../code/tour_request/dropdown";
 import { Food } from "../code/tour_request/food";
-import { Preloader } from "../components/preloader";
 import { AsYouType, validatePhoneNumberLength } from 'libphonenumber-js';
 import {SendDate} from "../code/tour_request/sendDate"
 import $ from "jquery";
@@ -28,7 +27,6 @@ interface addValidator extends JQueryStatic {
 document.addEventListener("DOMContentLoaded", () => {
 
   class TourRequest {
-    header: Header;
     footer: Footer;
     food: Food;
     sendDate: SendDate;
@@ -46,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
     formInfo : Object
 
     constructor() {
-      this.header = new Header();
       this.footer = new Footer();
       this.food = new Food();
       this.dropDown = new DropCountry();
@@ -362,5 +359,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
   new TourRequest();
-  new Preloader();
+  new Header();
 });

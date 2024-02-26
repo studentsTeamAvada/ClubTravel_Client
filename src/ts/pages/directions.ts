@@ -1,6 +1,5 @@
 import { Header } from "../components/header";
 import { DirectionProduct } from "../code/directions/directions";
-import { Preloader } from "../components/preloader";
 
 
 document.addEventListener("DOMContentLoaded", async function() {
@@ -8,6 +7,5 @@ document.addEventListener("DOMContentLoaded", async function() {
     await productDirection.loadCards();
     
     new Header();
-    new Preloader();
 })
 

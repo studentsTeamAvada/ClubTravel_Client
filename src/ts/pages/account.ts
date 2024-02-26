@@ -5,7 +5,6 @@ import { justValidateChangeName } from "../modules/justValidate";
 
 
 document.addEventListener("DOMContentLoaded", async function() {
-    new Header();
     new IsAuthorization();
     const productAccount = new Account();
     await productAccount.loadCards();
@@ -16,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         e.preventDefault();
         productAccount.exitAccount();
     })
-    
+    new Header();
 })
 
 

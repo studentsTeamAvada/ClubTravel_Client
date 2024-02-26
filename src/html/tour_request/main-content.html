@@ -17,7 +17,7 @@
 
       <form id="adviser__form" class="adviser__row-input">
         <div class="adviser__input input input-row">
-          <input name="phone" id="adviser-inp" type="tel" placeholder="Ваш номер телефона"/>
+          <input name="phone" id="adviser-inp" type="tel" aria-label="phone" placeholder="Ваш номер телефона"/>
         </div>
 
         <div class="adviser__input-error"></div>
@@ -81,7 +81,7 @@
             <div class="form__drop">
               <load ="/src/html/tour_request/drop-country.html" />
 
-              <input type="text" id="drop-country" class="form__drop-hover" name="dropCountry"  readonly >
+              <input type="text" id="drop-country" class="form__drop-hover" aria-label="drop-country" name="dropCountry"  readonly >
             </div>
 
             <h3 class="form__title">Дата вылета</h3>
@@ -89,7 +89,7 @@
             <div class="form__drop">
               <load ="/src/html/tour_request/calendar.html" />
 
-              <input type="text" id="drop-calendar" class="form__drop-hover" name="dropCalendar" readonly >
+              <input type="text" id="drop-calendar" class="form__drop-hover" aria-label="dropCalendar" name="dropCalendar" readonly >
             </div>
 
             <h3 class="form__title">Гости</h3>
@@ -130,7 +130,7 @@
             <h3 class="form__title">Желаемая цена на одного человека (€)</h3>
 
             <div class="form__input-wrap input-row">
-              <input type="number" id="input-price" class="form__input" />
+              <input type="number" id="input-price" aria-label="price" class="form__input" />
             </div>
 
             <h3 class="form__title">Питание</h3>
@@ -194,19 +194,19 @@
             <h3 class="form__title">Имя</h3>
 
             <div class="form__input-wrap">
-              <input type="text" id="input-name" class="form__input" name="name"/>
+              <input type="text" id="input-name" aria-label="name" class="form__input" name="name"/>
             </div>
 
             <h3 class="form__title">Телефон</h3>
 
             <div class="form__input-wrap form__phone">
-              <input type="text" id="input-tel" name="phone" class="form__input" />
+              <input type="text" id="input-tel" name="phone" aria-label="phone" class="form__input" />
             </div>
 
             <h3 class="form__title">Эл. почта</h3>
 
             <div class="form__input-wrap">
-              <input type="text" id="input-mail" class="form__input" name="email"/>
+              <input type="text" id="input-mail" class="form__input" aria-label="mail" name="email"/>
             </div>
 
             <button class="form__btn form__btn-three-state">подобрать тур</button>

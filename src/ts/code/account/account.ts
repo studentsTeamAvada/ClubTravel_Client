@@ -3,13 +3,13 @@ import {getFirestore, collection, getDocs, Firestore,} from "firebase/firestore"
 import { FirebaseApp } from "firebase/app";
 import { app } from "../../modules/firebase";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
+import { Pagination } from "./pagination";
 
 const accountOrder = document.querySelector(".account__order");
 const accountOrders = document.querySelector(".account__table-bottom-left");
 const accountOrdersMobile = document.querySelector(".account__table-bottom-left-mobile");
 const accountLeftWrapper = document.querySelector(".account-mobile__table");
 const accountLeft = document.querySelector('.account__left');
-
 export class Account {
   private app: FirebaseApp;
   private db: Firestore;
@@ -24,6 +24,8 @@ export class Account {
     this.initAuth();
     this.renderAccountLeft();
   }
+
+
 
   initAuth() {
     const auth = getAuth();
@@ -150,13 +152,14 @@ export class Account {
     });
 
     this.renderUsers();
+    new Pagination(this.usersArray.length)
   }
  
 
   renderUsers() {
     const users = this.usersArray;
 
-    users.forEach((user) => {
+    users.forEach((user, index) => {
         const content = user;
         const { date, email, idOrder, payStatus, price } = content;
         
@@ -164,32 +167,32 @@ export class Account {
         <td>${idOrder}</td>
         <td>${price}</td>
         `;
-      if(email.length < 23) {
-          template += `
-              <td>${email}</td>
-          `;
-      } else {
-          template += `
-          <td>${email.slice(0, 23) + "..."}</td>
-      `;
-      }
+        if(email.length < 23) {
+            template += `
+                <td>${email}</td>
+            `;
+        } else {
+            template += `
+            <td>${email.slice(0, 23) + "..."}</td>
+        `;
+        }
         template += `
         <td>
-        ${
+          ${
             payStatus == false
             ? `<p class="account__payment-processing">В обработке</p>`
             : `<p class="account__payment-success">Оплачено</p>`
-        }
-      </td>
+          }
+        </td>
         <td>${date}</td>
         `;
-        
+        const wrapperTemplate = `<tr class="order" id=${index} >${template}</tr>`
         if (accountOrder) {
-          accountOrder.insertAdjacentHTML("beforeend", template);
-          }
+          accountOrder.insertAdjacentHTML("beforeend", wrapperTemplate);
+        }
 
-          let templateMobile = `
-          <div class="account-mobile__table-wrapper">
+        let templateMobile = `
+          <div id=${index} class="account-mobile__table-wrapper">
             <div class="account-mobile__table-left">
               <p class="account-mobile__table-left-number">Номер заказа</p>
               <p>Сумма</p>
@@ -219,11 +222,11 @@ export class Account {
               <p>${date}</p>
             </div>
           </div>
-          `;
-
-          if (accountLeftWrapper) {
-            accountLeftWrapper.insertAdjacentHTML("beforeend", templateMobile);
-          }
+        `;
+        
+        if (accountLeftWrapper) {
+          accountLeftWrapper.insertAdjacentHTML("beforeend", templateMobile);
+        }
     }) 
 
     let ordersTotal = `
