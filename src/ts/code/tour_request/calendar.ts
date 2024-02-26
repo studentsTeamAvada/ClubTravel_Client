@@ -57,8 +57,8 @@ export class Calendar {
       multipleDatesSeparator: ' -', 
       minDate: new Date(),
       onSelect({date}) {
-        const myDate = date as Array<Date> 
-
+        const myDate = date as Array<Date>
+        //todo: delete
 
 
         if(myDate[1]){

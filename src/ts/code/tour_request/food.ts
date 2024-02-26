@@ -33,7 +33,7 @@ export class Food {
     });
   }
 
-  checkInput(): boolean {
+  checkInput(): boolean { //todo: refactoring
     const info = this.currentSelect.html();
     if (info == "Выбрать") {
       this.errorFood.addClass("form__error-food_active");

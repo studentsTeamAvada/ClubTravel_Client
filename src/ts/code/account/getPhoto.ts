@@ -7,8 +7,8 @@ export async function uploadImageToFirebaseStorage(photo: File) {
     const storageRef = ref(storage, 'images/' + photo.name);
     const snapshot = await uploadBytes(storageRef, photo);
     console.log(snapshot);
-    
-    const downloadURL = await getDownloadURL(storageRef);
+
+    const downloadURL = await getDownloadURL(storageRef); // todo: refactoring
 
     return downloadURL;
   } catch (error) {

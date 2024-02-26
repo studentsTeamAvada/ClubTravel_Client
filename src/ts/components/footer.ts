@@ -8,7 +8,7 @@ export class Footer {
   }
 
   fbPluginReload() {
-    window.addEventListener("resize", () => {
+    window.addEventListener("resize", () => { //todo: delete trash
       // const plugin = this.fb.html()
       // this.fb.html('');
       // plugin.replace(/width=\d+/, 'width=300');

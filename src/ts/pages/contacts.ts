@@ -99,6 +99,8 @@ class Contacts {
   }
 }
 
+// todo: delete trash code
+
 document.addEventListener("DOMContentLoaded", () => {
   new Contacts();
   new Header();

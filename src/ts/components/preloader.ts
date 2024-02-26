@@ -20,7 +20,7 @@ export class Preloader{
     removePreloader(){
         setTimeout(() => {
             this.header.removeClass("header_preload");
-            this.body.addClass("preloder-hidden");
+            this.body.addClass("preloder-hidden"); //todo очепятка
             this.preloader.addClass("preloader_hidden");
 
         },300)

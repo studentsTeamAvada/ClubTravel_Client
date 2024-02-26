@@ -1,5 +1,7 @@
 import $ from "jquery";
 
+//todo: refactoring
+
 export class DropDown {
   dropDown: JQuery<HTMLElement>;
   dropMain: JQuery<HTMLElement>;
@@ -15,7 +17,7 @@ export class DropDown {
   customEvent: CustomEvent;
 
   constructor(className: string) {
-    this.dropDown = $(className).find(".dropdown");
+    this.dropDown = $(className).find(".dropdown"); //todo: refactoring
     this.dropMain = this.dropDown.find(".dropdown__main");
     this.quatityAdults = this.dropDown.find("#adults-quantity");
     this.quatityKids = this.dropDown.find("#kids-quantity");

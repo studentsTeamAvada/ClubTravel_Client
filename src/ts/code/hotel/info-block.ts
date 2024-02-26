@@ -29,7 +29,7 @@ export class InfoBlock {
         sum = total;
       }
       this.totalPrice.html(sum);
-      console.log(total);
+      console.log(total); //todo refactoring
     });
   }
 }

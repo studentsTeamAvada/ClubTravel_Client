@@ -30,6 +30,8 @@ export class CompanyProduct {
   renderProducts() {
     const products = this.productsArray;
 
+    //todo refactoring
+
     products.forEach((product) => {
       const content = product;
       const { name, price, img, date } = content;

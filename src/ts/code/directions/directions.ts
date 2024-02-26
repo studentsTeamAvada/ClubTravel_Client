@@ -5,7 +5,7 @@ import { app } from "../../modules/firebase";
 
 const companyWrapper = document.querySelector(".directions__wrapper");
 export class DirectionProduct {
-  private app: FirebaseApp;
+  private app: FirebaseApp; //todo refactoring
   private db: Firestore;
   private productsArray: Tours[];
 
@@ -30,8 +30,10 @@ export class DirectionProduct {
   renderProducts() {
     const products = this.productsArray;
 
+    //todo refactoring function
+
     products.forEach((product) => {
-      const content = product;
+      const content = product; //todo refactoring
 
       const { img, country, region, price, work, id } = content;
 

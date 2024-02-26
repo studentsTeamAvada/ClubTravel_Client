@@ -81,5 +81,5 @@ export class DropdownSearch {
 
   changeCurrentVal(info: string): void {
     this.dropdownCurrent.text(info);
-  }
+  } // todo refactoring
 }

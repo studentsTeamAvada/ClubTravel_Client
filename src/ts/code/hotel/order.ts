@@ -2,10 +2,10 @@ import $ from "jquery";
 import {app, GetSing} from "./../../modules/firebase"
 // import { getFirestore, getDocs, collection  } from "firebase/firestore";
 
-import { doc, setDoc,getDoc, updateDoc, arrayUnion, getFirestore } from "firebase/firestore"; 
+import { doc, setDoc,getDoc, updateDoc, arrayUnion, getFirestore } from "firebase/firestore";
 
 
-
+//todo refactoring 
 
 interface user{
     uid: string

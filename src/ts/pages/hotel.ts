@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       this.order = new Order();
     }
   }
-  
+  // todo: delete class
   new Hotel();
   new Header()
 });

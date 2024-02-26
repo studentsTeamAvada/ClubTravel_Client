@@ -48,7 +48,7 @@ export class CompanySwiper {
           slidesPerView: 3,
         },
         1920: {
-          slidesPerView: 3,
+          slidesPerView: 3, //todo: refactoring slidesPerView
         },
       },
 
@@ -85,7 +85,7 @@ export class HotDealsSwiper {
           slidesPerView: 3,
         },
         1920: {
-          slidesPerView: 3,
+          slidesPerView: 3, //todo: refactoring slidesPerView
         },
       },
 
@@ -125,7 +125,7 @@ export class WinterTourSwiper {
           slidesPerView: 4,
         },
         1920: {
-          slidesPerView: 4,
+          slidesPerView: 4, //todo: refactoring slidesPerView
         },
       },
 
@@ -165,7 +165,7 @@ export class SummerTourSwiper {
           slidesPerView: 4,
         },
         1920: {
-          slidesPerView: 4,
+          slidesPerView: 4, //todo: refactoring slidesPerView
         },
       },
 
@@ -227,7 +227,7 @@ export class HotelSecondSlider {
       breakpoints: {
         576: {
           spaceBetween: 0,
-          slidesPerView: 2,
+          slidesPerView: 2, //todo: refactoring slidesPerView
         },
         768: {
           spaceBetween: 10,

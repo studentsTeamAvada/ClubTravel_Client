@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ) as HTMLElement;
   buttonSend.addEventListener("click", () => {
     passwordRecoveryInstance.passwordRecovery();
-  });
+  }); // todo: components
   
   new Header();
 })

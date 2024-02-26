@@ -49,7 +49,7 @@
   &__swiper-round {
     display: flex;
 
-    @media (width >= 1024px) {
+    @media (width >= 1024px) { //todo refactoring
       &:hover {
         &::before {
           opacity: 0.4;
@@ -224,7 +224,7 @@
       padding: 16px 10px 5px 21px;
     }
 
-    @media (width >= 1024px) {
+    @media (width >= 1024px) { //todo refactoring
       &:hover {
         a {
           color: #f68521;

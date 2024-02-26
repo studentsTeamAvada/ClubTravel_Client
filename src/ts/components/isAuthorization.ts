@@ -9,7 +9,7 @@ export class IsAuthorization {
     }
 
     async checkAuthorizationAvatar() {
-        const user = await getAuth().currentUser;
+        const user = await getAuth().currentUser; // todo: fixed bugs
         if (user) {
             console.log('Пользователь авторизован:', user.uid);
             window.location.href = "account.html"; 
@@ -19,8 +19,10 @@ export class IsAuthorization {
         }
     }
 
+    //todo: delete duplicate code
+
     async checkAuthorizationUser() {
-        const user = await getAuth().currentUser;
+        const user = getAuth().currentUser; // todo: fixed bugs
         if (user) {
             console.log('Пользователь авторизован:', user.uid);
             window.location.href = "account.html"; 

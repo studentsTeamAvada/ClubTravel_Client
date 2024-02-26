@@ -19,5 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         authorizationInstance.authorizationWithGoogle();
     })
 
+    // todo: components
+
     new Header();
 })

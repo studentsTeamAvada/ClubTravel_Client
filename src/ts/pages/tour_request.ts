@@ -20,7 +20,7 @@ interface JQueryValidateForm extends JQuery<HTMLElement> {
 // }
 
 interface addValidator extends JQueryStatic {
-  validator: any
+  validator: any // убрать
 }
 
 
@@ -357,7 +357,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
 
 
-  }
+  } // todo: Delete
   new TourRequest();
   new Header();
 });

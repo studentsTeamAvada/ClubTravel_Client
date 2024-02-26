@@ -6,7 +6,7 @@ import { FirebaseApp } from "firebase/app";
 const companyWrapper = document.querySelector(".main-company__swiper-wrapper");
 
 export class CompanyProduct {
-  private app: FirebaseApp;
+  private app: FirebaseApp; // todo : readonly
   private db: Firestore;
   private productsArray: Tours[];
 
@@ -27,11 +27,13 @@ export class CompanyProduct {
     this.renderProducts();
   }
 
+  // todo: add function composeables 
+
   renderProducts() {
     const products = this.productsArray;
 
     products.forEach((product) => {
-      const content = product;
+      const content = product; //todo: redunant
       const { name, price, img, date } = content;
 
       if (img && Array.isArray(img) && img.length > 0) {

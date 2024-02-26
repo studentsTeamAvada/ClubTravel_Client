@@ -36,7 +36,7 @@ export class HotDealsProduct {
     const products = this.productsArray;
 
     products.forEach((product) => {
-      const content = product;
+      const content = product; //todo: refactoring redunant
 
       const { name, price, country, region, star, img, date } = content;
 

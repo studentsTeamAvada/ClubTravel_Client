@@ -4,6 +4,8 @@ import { CompanySwiper } from '../code/swiper';
 import { HotDealsSwiper } from '../code/swiper';
 import { WinterTourSwiper } from '../code/swiper';
 import { SummerTourSwiper } from '../code/swiper';
+//todo: delete
+
 import { CompanyProduct } from '../code/main/main-company';
 import { HotDealsProduct } from '../code/main/hot-deals';
 import { WinterTourProduct } from '../code/main/winter-tour';

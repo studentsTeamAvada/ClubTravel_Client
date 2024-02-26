@@ -34,8 +34,8 @@ export class Header {
   }
 
   scroll() {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 70 || window.pageYOffset > 70) {
+    window.addEventListener("scroll", () => { //todo: check error function
+      if (window.scrollY > 70 || window.pageYOffset > 70) { //todo: delete trash
         this.body.addClass("scroll");
       } else {
         this.body.removeClass("scroll");
@@ -47,7 +47,7 @@ export class Header {
   resize() {
     const context = this
 
-    function scheckScreen(){
+    function scheckScreen(){ //todo: очепятка
         if (navigator.maxTouchPoints) {
             context.body.addClass("touch-screen");
         } else {
@@ -59,12 +59,12 @@ export class Header {
     window.addEventListener('resize' ,  scheckScreen)
 }
 
-  async getSing(){
+  async getSing(){ //todo: check error function
     const user = await new GetSing().promise() as user 
     const icon = $(".top-list__link-user")
     const mobIcon = $(".menu__user-mobile-link")
     
-    if(user){
+    if(user){ //
       icon.html('<svg id="icon-account"><use xlink:href="#user"></use></svg>')
       icon.removeClass("top-list__not-sing")
       icon.attr("href", "Account.html");
@@ -72,7 +72,7 @@ export class Header {
       mobIcon.attr("href", "Account.html");
       mobIcon.html('<svg id="icon-account"><use xlink:href="#user"></use></svg>')
 
-      console.log("Пользователь авторизирован")
+      console.log("Пользователь авторизирован") //todo: delete
     }else{
       icon.html('<svg id="icon-account"><use xlink:href="#sing"></use></svg>')
       icon.addClass("top-list__not-sing")
@@ -80,7 +80,7 @@ export class Header {
 
       mobIcon.attr("href", "authorization.html");
       mobIcon.html('<svg id="icon-account"><use xlink:href="#sing"></use></svg>')
-      console.log("Пользователь не авторизирован")
+      console.log("Пользователь не авторизирован") //todo: delete
     }
   }
 }
