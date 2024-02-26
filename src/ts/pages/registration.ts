@@ -17,10 +17,5 @@ document.addEventListener("DOMContentLoaded", () => {
         registrationInstance.registrationWithGoogle();
     })
     
-    const buttonRegistrationFacebook = document.querySelector('.registration__form-btn-facebook') as HTMLElement;
-    buttonRegistrationFacebook.addEventListener('click', () => {
-        registrationInstance.registrationWithFacebook();
-    })
-
     new Header();
 })

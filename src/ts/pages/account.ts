@@ -7,14 +7,15 @@ import { justValidateChangeName } from "../modules/justValidate";
 document.addEventListener("DOMContentLoaded", async function() {
     new IsAuthorization();
     const productAccount = new Account();
+    productAccount.isChangeInput();
     await productAccount.loadCards();
     justValidateChangeName();
-
-    const exitButton = document.querySelector('.account__left-exit');
-    exitButton?.addEventListener('click', (e) => {
-        e.preventDefault();
-        productAccount.exitAccount();
+    
+    const button = document.querySelector('.account__settings-button');
+    button?.addEventListener('click', () => {
+        productAccount.getFormData();
     })
+
     new Header();
 })
 
