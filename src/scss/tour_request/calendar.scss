@@ -1,6 +1,6 @@
 .calendar {
   height: 100%;
-  position: relative;
+  position: relative; //todo refactoring
   &__btn {
     display: flex;
     align-items: center;
@@ -10,7 +10,7 @@
     border: 1px solid #e2e2e2;
     transition: border 300ms ease 0s;
     user-select: none;
-    cursor: pointer;
+    cursor: pointer; //todo refactoring
     &-info {
       font-family: Roboto;
       margin-left: 16px;

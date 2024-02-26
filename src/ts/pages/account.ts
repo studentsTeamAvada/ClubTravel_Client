@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         productAccount.getFormData();
     })
 
+    // todo: components
     new Header();
 })
 

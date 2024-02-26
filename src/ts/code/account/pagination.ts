@@ -28,6 +28,8 @@ export class Pagination{
         if(allPagesMob){
           allPagesMob.textContent = String(quantityPages)
         }
+
+      // todo: refactoring
     
         btnPrev?.addEventListener("click", () => {
           minus()

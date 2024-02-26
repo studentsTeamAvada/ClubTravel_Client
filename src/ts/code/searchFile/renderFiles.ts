@@ -142,7 +142,7 @@ export class RenderHotels {
       $('.result__content').append(hotelsHtml);
 
       $('.result__price-btn').each(function () {
-        $(this).on('click', function () {
+        $(this).on('click', function () { //todo: refactoring
 
 
 

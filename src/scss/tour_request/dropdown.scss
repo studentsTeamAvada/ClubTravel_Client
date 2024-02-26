@@ -88,7 +88,7 @@
       align-items: center;
       justify-content: center;
       transition: scale 100ms ease 0s;
-      transition: opacity 300ms ease 0s;
+      transition: opacity 300ms ease 0s; //todo refactoring
       cursor: pointer;
 
       @include media-breakpoint-down(sm) {

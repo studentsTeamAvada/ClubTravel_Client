@@ -120,7 +120,7 @@
   &__swiper-round {
     display: flex;
 
-    @media (width >= 1024px) {
+    @media (width >= 1024px) { //todo refactoring
       &:hover {
         &::before {
           opacity: 0.4;

@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const buttonRegistrationGoogle = document.querySelector('.registration__form-btn-google') as HTMLElement;
     buttonRegistrationGoogle.addEventListener('click', () => {
         registrationInstance.registrationWithGoogle();
-    })
+    }) // todo: components
     
     new Header();
 })

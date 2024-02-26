@@ -3,7 +3,7 @@ import $ from "jquery";
 import { collection, addDoc, getFirestore } from "firebase/firestore"; 
 
 type dateObj = {
-    counrty?: string
+    counrty?: string //todo: refactoring
     region?: string
     dataStart?: string
     dataFinish?: string
@@ -17,7 +17,7 @@ type dateObj = {
     email?: string
 }
 
-interface castumEvent extends Event {
+interface castumEvent extends Event { //todo: refactoring
     detail: {stars: string} ,
 
 }
@@ -26,7 +26,7 @@ export class SendDate{
     dateObj : dateObj
     constructor (){
         this.dateObj = {}
-        this.dateObj.people = {kids: 0, abduls: 1}
+        this.dateObj.people = {kids: 0, abduls: 1} //todo: refactoring
 
         this.init()
     }
@@ -34,7 +34,7 @@ export class SendDate{
         this.selecDate()
     }
 
-    selecDate(){
+    selecDate(){ //todo: refactoring
         console.log(this.dateObj, 1)
         document.addEventListener("selectTour", () => {
             this.dateObj.counrty = $(".drop-country__county").html()

@@ -33,7 +33,7 @@ export class PullData{
     }
 
     async init(){
-        this.getData();
+        this.getData(); //todo refactoring
 
     }
 

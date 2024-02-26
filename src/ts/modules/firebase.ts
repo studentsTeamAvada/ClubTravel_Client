@@ -10,12 +10,7 @@ const firebaseConfig = {
   appId: "1:883499742498:web:b0bf6b06d8073d249a217b",
 };
 
-export const app = initializeApp(firebaseConfig);
-
-
-
-
-export class GetSing{
+class GetSing{
   promise(){
     return new Promise(resolve => {
       onAuthStateChanged(getAuth(), (user) => {
@@ -28,6 +23,8 @@ export class GetSing{
     })
   }
 }
+const app = initializeApp(firebaseConfig);
+export {app, GetSing} //todo: make to export
 
 // const user = await new GetSing().promise() 
 

@@ -8,7 +8,7 @@ const winterTourWrapper = document.querySelector(
 );
 
 export class WinterTourProduct {
-  private app: FirebaseApp;
+  private app: FirebaseApp; //todo refactoring
   private db: Firestore;
   private productsArray: Tours[];
 
@@ -39,7 +39,7 @@ export class WinterTourProduct {
     const products = this.productsArray;
 
     products.forEach((product) => {
-      const content = product;
+      const content = product; //todo refactoring
       
       const { country, img, price, id } = content; 
 

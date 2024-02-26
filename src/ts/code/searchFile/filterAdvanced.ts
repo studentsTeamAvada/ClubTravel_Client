@@ -12,7 +12,7 @@ export class SelectedFilter {
     const minPrice = urlParams.get('priceMin');
     const maxPrice = urlParams.get('priceMax');
 
-    if (savedCountry !== null) {
+    if (savedCountry !== null) { //todo: refactoring
       new FilteringData().filterAdvanced('isCountry', +savedCountry, key, value);
     }
     if (savedDuration !== null) {

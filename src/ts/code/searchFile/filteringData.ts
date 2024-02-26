@@ -72,7 +72,7 @@ export class FilteringData {
         advancedFilterArr = hotelsFiltered.filter((item: Hotel) => {
           return Number(item[key2]) >= Number(value) && Number(item[key2]) <= Number(value2);
         });
-      } else {
+      } else { //todo: refactoring
         advancedFilterArr = hotelsFiltered.filter((item: Hotel) => {
           return item[key2] === value2;
         });
@@ -90,7 +90,7 @@ export class FilteringData {
       }
 
       return advancedFilterArr;
-    } else {
+    } else { //todo: refactoring
       return [];
     }
   }

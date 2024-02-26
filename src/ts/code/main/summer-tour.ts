@@ -8,7 +8,7 @@ const summerTourWrapper = document.querySelector(
 );
 
 export class SummerTourProduct {
-  private app: FirebaseApp;
+  private app: FirebaseApp; //todo refactoring
   private db: Firestore;
   private productsArray: Tours[];
 

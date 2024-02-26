@@ -23,7 +23,7 @@
     img {
       width: 100%;
       height: auto;
-    }
+    } //todo refactoring
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -66,13 +66,13 @@
     }
 
     @include media-breakpoint-down(xs) {
-      height: 350px;
+      height: 350px; //todo refactoring
       @include media-breakpoint-up(xxs) {
         height: 280px;
       }
     }
 
-    @include media-breakpoint-down(xxs) {
+    @include media-breakpoint-down(xxs) { //todo refactoring
       height: 200px;
     }
   }
@@ -141,7 +141,7 @@ margin-bottom: 10px;
     }
 
     &-descript {
-      display: box;
+      display: box; //todo refactoring
       overflow: hidden;
       margin-bottom: 48px;
       width: 100%;
@@ -173,7 +173,7 @@ margin-bottom: 10px;
       font-weight: 400;
       font-size: 16px;
       color: #555;
-      margin-left: 8px;
+      margin-left: 8px; //todo refactoring
       @include media-breakpoint-down(sm) {
         position: absolute;
         right: 0;
