@@ -100,6 +100,14 @@ export class Account {
     });
 
     this.settings();
+
+    const exitButton = document.querySelector('.account__left-exit');
+    
+    exitButton?.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.exitAccount();
+        
+    })
   }
   
 

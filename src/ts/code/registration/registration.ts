@@ -35,14 +35,18 @@ export class Registration {
           orders: []
         };
         
-        this.addUserToFirebase(user.uid, userDataWithEmail);
+        this.addUserToFirebase(user.uid, userDataWithEmail)
+          .then(() => {
+            emailInput.value = '';
+            passwordInput.value = '';
+            repeatPasswordInput.value = '';
 
-        emailInput.value = '';
-        passwordInput.value = '';
-        repeatPasswordInput.value = '';
-
-        window.location.href = 'index.html';
-        console.log("Registration with email successful:", user);
+            window.location.href = 'account.html';
+            console.log("Registration with email successful:", user);
+          })
+          .catch((error) => {
+            console.error("Error adding user to Firebase: ", error);
+          }) 
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -64,38 +68,21 @@ export class Registration {
           orders: []
         };
 
-       this.addUserToFirebase(user.uid, userDataWithGoogle);
-        // window.location.href = 'index.html';
-        console.log("Registration with Google successful:", user);
+       this.addUserToFirebase(user.uid, userDataWithGoogle)
+        .then(() => {
+          window.location.href = 'account.html';
+          console.log("Registration with Google successful:", user);
+        })
+          .catch((error) => {
+            console.error("Error adding user to Firebase: ", error);
+          })
+        
+        
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.error("Registration with Google failed:", errorCode, errorMessage);
-      });
-  }
-
-  registrationWithFacebook() {
-    const facebookProvider = new FacebookAuthProvider();
-
-    signInWithPopup(this.auth, facebookProvider)
-      .then((result) => {
-        const user = result.user;
-
-        const userDataWithFacebook: fbUser = {
-          email: user.email || '',
-          name: user.displayName || '',
-          photo: user.photoURL || '',
-          orders: []
-        };
-        this.addUserToFirebase(user.uid, userDataWithFacebook);
-        window.location.href = 'index.html';
-        console.log("Registration with Facebook successful:", user);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error("Registration with Facebook failed:", errorCode, errorMessage);
       });
   }
 

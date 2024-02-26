@@ -10,12 +10,6 @@ document.addEventListener("DOMContentLoaded", async function() {
     const productAccount = new Account();
     await productAccount.loadCards();
     justValidateChangeName();
-
-    const exitButton = document.querySelector('.account__left-exit');
-    exitButton?.addEventListener('click', (e) => {
-        e.preventDefault();
-        productAccount.exitAccount();
-    })
     
 })
 

@@ -40,11 +40,8 @@ export class WinterTourProduct {
 
     products.forEach((product) => {
       const content = product;
-      console.log(product);
       
-      const { country, img, price, id } = content;
-      console.log(id);
-      
+      const { country, img, price, id } = content; 
 
       if (img && Array.isArray(img) && img.length > 0) {
         const { url, urlWebp } = img[0];
@@ -68,7 +65,7 @@ export class WinterTourProduct {
             <p class="winter-tour__card-price-new">от <span>${price[0]}€</span>/чел</p>
             
         </div>
-        <a href="#" class="winter-tour__btn btn">Выбрать тур</a>
+        <a href="https://club-travel.netlify.app/hotel.html?id=${id}" class="winter-tour__btn btn">Выбрать тур</a>
         `;
 
         if (winterTourWrapper) {

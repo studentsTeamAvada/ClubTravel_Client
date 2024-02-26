@@ -28,7 +28,7 @@ export class Authorization {
       .then((userData) => {
         const user = userData.user;
         
-        window.location.href = 'index.html';
+        window.location.href = 'account.html';
         emailInput.value = "";
         passwordInput.value = "";
         console.log("User signed in:", user);
@@ -54,39 +54,21 @@ export class Authorization {
           orders: []
         };
 
-        this.addUserToFirebase(user.uid, userDataWithGoogle);
-        // window.location.href = 'index.html';
-        console.log("Authorization with Google successful. UID:", user.uid);
+        this.addUserToFirebase(user.uid, userDataWithGoogle)
+          .then(() => {
+            window.location.href = 'account.html';
+            console.log("Authorization with Google successful. UID:", user.uid);
+          })
+          .catch((error) => {
+            console.error("Error adding user to Firebase: ", error);
+          })
+        
+        
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         alert("Не удалось войти с помощью Google");
-        console.error("Login failed:", errorCode, errorMessage);
-      });
-  }
-
-  authorizationWithFacebook() {
-    const provider = new FacebookAuthProvider();
-
-    signInWithPopup(this.auth, provider)
-      .then((result) => {
-        const user = result.user;
-        const userDataWithFacebook: fbUser = {
-          email: user.email || '',
-          name: user.displayName || '',
-          photo: user.photoURL || '',
-          orders: []
-        };
-
-        this.addUserToFirebase(user.uid, userDataWithFacebook);
-        window.location.href = 'index.html';
-        console.log("Authorization with Facebook successful. UID:", user.uid);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert("Не удалось войти с помощью Facebook");
         console.error("Login failed:", errorCode, errorMessage);
       });
   }

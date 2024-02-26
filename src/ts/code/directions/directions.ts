@@ -19,6 +19,7 @@ export class DirectionProduct {
     const querySnapshot = await getDocs(collection(this.db, "hotels"));
     querySnapshot.forEach((doc) => {
       const product = doc.data() as Tours;
+      product.id = doc.id;
 
       this.productsArray.push(product);
     });
@@ -32,7 +33,7 @@ export class DirectionProduct {
     products.forEach((product) => {
       const content = product;
 
-      const { img, country, region, price, work } = content;
+      const { img, country, region, price, work, id } = content;
 
       if (img && Array.isArray(img) && img.length > 0) {
         const { url, urlWebp } = img[0];
@@ -76,7 +77,7 @@ export class DirectionProduct {
               <use xlink:href="#directions-calendar"></use>
             </svg>
         </div>
-        <a href="#" class="directions__btn btn">Выбрать тур</a>
+        <a href="https://club-travel.netlify.app/hotel.html?id=${id}" class="directions__btn btn">Выбрать тур</a>
       </div>
         `;
 
