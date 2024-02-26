@@ -71,7 +71,7 @@
 
   &__request {
     &-text {
-      margin-bottom: 36px;
+      margin-bottom: 38px;
       width: 100%;
       max-width: 380px;
       font-weight: 400;
@@ -86,7 +86,7 @@
     &-link {
       display: inline-block;
       border-radius: 6px;
-      padding: 12px 52px;
+      padding: 12px 53px;
       font-weight: 400;
       text-transform: uppercase;
       letter-spacing: 0.7px;
@@ -125,6 +125,7 @@
     text-align: center;
     font-size: 14px;
     color: #fff;
+    margin-right: 9px;
 
     &::before {
       bottom: 30px;
@@ -169,6 +170,7 @@
   }
 
   &__assistant {
+    margin-right: 6px;
     &-text {
       margin-bottom: 16px;
       font-weight: 400;

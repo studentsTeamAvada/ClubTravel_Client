@@ -1,16 +1,20 @@
 import $ from 'jquery';
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
-import { Filtering } from './filteringCountry';
+import { FilteringData } from './filteringData';
 
-export class SelectData extends Filtering {
+export class SelectData {
   dateCurrent: JQuery<HTMLElement>;
 
   constructor() {
-    super();
     this.dateCurrent = $('.info__date-current');
     this.calendar();
-    // this.bindEvents('load', 'date', this.dateCurrent.text().trim());
+    const urlParams = new URLSearchParams(window.location.search);
+    const date = urlParams.get('date');
+
+    if (date) {
+      new FilteringData().restoreFilterFromUrl('date');
+    }
   }
 
   calendar() {
@@ -27,11 +31,9 @@ export class SelectData extends Filtering {
 
         const currentUrl = new URL(window.location.href);
         currentUrl.searchParams.set('date', formattedDate);
-        window.history.pushState(
-          { path: currentUrl.href },
-          '',
-          currentUrl.href
-        );
+        window.history.pushState({ path: currentUrl.href }, '', currentUrl.href);
+
+        new FilteringData().removeParametersFromUrl(['isCountry', 'isDuration', 'kids', 'adults', 'isStar']);
       },
     });
   }

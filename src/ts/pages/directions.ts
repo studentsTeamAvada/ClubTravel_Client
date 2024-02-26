@@ -4,8 +4,6 @@ import { Preloader } from "../components/preloader";
 import { IsAuthorization } from "../components/isAuthorization";
 
 
-
-
 document.addEventListener("DOMContentLoaded", async function() {
     const productDirection = new DirectionProduct();
     await productDirection.loadCards();
@@ -13,5 +11,6 @@ document.addEventListener("DOMContentLoaded", async function() {
     new Header();
     new Preloader();
     new IsAuthorization();
+ 
 })
 

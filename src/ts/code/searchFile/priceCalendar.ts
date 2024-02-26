@@ -18,9 +18,40 @@ export class Calendar {
 
       const nextMonthDate = new Date(currentYear, currentMonth + index - 1);
 
+      const startDate = new Date(nextMonthDate);
+      startDate.setDate(startDate.getDate());
+
       new AirDatepicker('#' + calendar.id, {
         inline: true,
-        startDate: nextMonthDate,
+        startDate: startDate,
+
+        onRenderCell({ date}) {
+          const dates = [19, 22];
+          const isDay = date.getDate();
+          const month = date.getMonth();
+          let money = '';
+
+          if (month === 2) {
+            if (isDay === 19) {
+              money = '500€';
+            } else if (isDay === 22) {
+              money = '600€';
+            } else {
+              money = '400€';
+            }
+          }
+
+          const shouldChangeContent = isDay && dates.includes(isDay);
+          const dateMoney = shouldChangeContent ? `${isDay} <span>${money}</span>` : '';
+
+          return {
+            html: shouldChangeContent ? dateMoney : undefined,
+            classes: shouldChangeContent ? '-money-' : undefined,
+            attrs: {
+              title: shouldChangeContent ? dateMoney : '',
+            },
+          };
+        },
       });
     });
   }

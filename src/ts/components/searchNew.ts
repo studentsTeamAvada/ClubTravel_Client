@@ -25,7 +25,10 @@ export class AdvancedSearch {
 
   accordion() {
     $('.search__btn').on('click', function () {
+      $('.search__btn').addClass('search__btn_act');
       $('.search__row-bottom').addClass('search__row-bottom_active');
+
+
       $('.search__btn-close').removeClass('search__btn-close_act');
       $('.search__line').removeClass('search__line_act');
     });

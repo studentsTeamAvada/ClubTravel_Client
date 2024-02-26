@@ -5,14 +5,18 @@
 @import '../libs/swiper';
 
 .banner {
-  &__oval {
+  &__bg {
+    position: relative;
+    top: 100px;
+    height: 321px;
+
+    
+
     img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
     }
-    position: absolute;
-    bottom: 0;
-    width: 100%;
   }
 
   &__oval {
@@ -24,16 +28,25 @@
     bottom: 0;
     width: 100%;
   }
-  position: relative;
-  margin-top: 100px;
-  height: 320px;
-  background-image: url('./../../images/banner.webp');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+
+
+
+  &__search {
+    position: relative;
+    z-index: 5;
+  }
+  // position: relative;
+  // margin-top: 100px;
+  // height: 320px;
+  // background-image: url('./../../images/banner.webp');
+  // background-position: center;
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // padding-top: 321px;
 }
 
 .result {
+  margin-bottom: 80px;
   &__slider {
     position: relative;
     overflow: hidden;
@@ -73,20 +86,20 @@
     }
   }
 
-  &__btn-next {
-    left: auto;
-    right: 10px;
-    transform: rotate(-90deg);
-  }
-
   &__hotel {
-    margin: 40px 0 0px;
+    // margin-bottom: 80px;
     border-top: 1px solid #e2e2e2;
-    padding: 40px 0 0;
+    display: flex;
+    padding-top: 36px;
+margin-bottom: 10px;
+    &:first-child {
+      padding: 0px 0 0;
+    }
 
     &:first-child,
     &:last-child {
       border: none;
+      padding: 0px 0 0;
     }
 
     &:last-child {
@@ -99,9 +112,12 @@
   }
 
   &__info {
+    max-width: 295px;
+    width: 100%;
     &-title {
       @include media-breakpoint-down(sm) {
       }
+
       margin-bottom: 12px;
       font-weight: 400;
       font-size: 18px;
@@ -127,7 +143,7 @@
     &-descript {
       display: box;
       overflow: hidden;
-      margin-bottom: 50px;
+      margin-bottom: 48px;
       width: 100%;
       height: 95px;
       min-width: 100px;
@@ -157,6 +173,7 @@
       font-weight: 400;
       font-size: 16px;
       color: #555;
+      margin-left: 8px;
       @include media-breakpoint-down(sm) {
         position: absolute;
         right: 0;
@@ -176,6 +193,7 @@
       font-size: 14px;
       color: #222;
     }
+
     @include media-breakpoint-down(my) {
       margin-left: 20px;
       max-width: 240px;
@@ -191,7 +209,18 @@
   }
 
   &__rating {
+    display: flex;
+    justify-content: space-between;
+    max-width: 416px;
+    margin: 5px 0 0 40px;
+    // margin-bottom: 24px;
+
+    &-item {
+      width: 167px;
+    }
+
     &-subitem {
+      margin-top: 20px;
       @include media-breakpoint-down(xs) {
         display: grid;
         grid-column-gap: 100px;
@@ -208,19 +237,12 @@
         height: 18px;
         fill: #f5c213;
       }
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 24px;
-      width: fit-content;
     }
 
     &-duration {
       @include media-breakpoint-down(xs) {
       }
     }
-    display: flex;
-    margin-left: 40px;
 
     &-duration,
     &-meal,
@@ -260,6 +282,17 @@
   }
 
   &__price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 40px;
+    margin-right: 16px;
+    border-radius: 10px;
+    width: 214px;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 46px 0px 20px;
+    height: 245px;
     &-num {
       span {
         &:nth-child(2) {
@@ -271,6 +304,8 @@
           font-size: 24px;
         }
       }
+      max-width: 140px;
+      width: 100%;
       margin-bottom: 12px;
       font-weight: 400;
       text-align: center;
@@ -304,14 +339,6 @@
         width: 100%;
       }
     }
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-left: 40px;
-    border-radius: 10px;
-    max-width: 200px;
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
 
     @include media-breakpoint-down(my) {
       margin-left: 20px;
@@ -322,13 +349,8 @@
     }
   }
 
-  &__btn-next {
-    left: auto;
-    right: 10px;
-    transform: rotate(-90deg);
-  }
-
   &__row {
+    display: flex;
     justify-content: space-between;
     width: 100%;
 
@@ -338,7 +360,7 @@
   }
 
   &__header {
-    margin-top: 45px;
+    margin: 45px 0 36px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -352,7 +374,7 @@
       font-weight: 400;
       font-size: 14px;
       color: #555;
-      margin: 0 12px 0 28px;
+      margin: 0 11px 0 25px;
     }
 
     &-select,
@@ -387,6 +409,8 @@
     }
 
     &-sort {
+      &_hihe {
+      }
     }
 
     &-btn {
@@ -401,17 +425,36 @@
       border: 1px solid #f68521;
       text-align: center;
       border-radius: 6px;
-      padding: 0 13px 0 17px;
+      padding: 0 17px 0 12px;
 
-      img {
-        display: block;
+      svg {
+        width: 24px;
+        height: 24px;
+        fill: #f68521;
+        use {
+          fill: #f68521;
+        }
+      }
+
+      &_act {
+        background: #d56a12;
+        color: #fff;
       }
     }
 
     &-slide {
       margin-top: 35px;
-      width: 258px !important;
-      // height: 278px !important;
+      max-width: 258px;
+
+      .air-datepicker--content {
+        padding: 0;
+        height: 100%;
+      }
+
+      .air-datepicker-body {
+        height: 100%;
+      }
+
       .air-datepicker {
         height: 278px;
       }
@@ -442,11 +485,53 @@
 
       .air-datepicker-body--cells {
         margin-top: 16px;
-        grid-template-columns: repeat(7, var(--adp-day-cell-width));
+        grid-template-columns: repeat(7, 37px) !important;
+        grid-auto-rows: 39px !important;
+        width: 100%;
+        height: 100%;
       }
+
+      .air-datepicker-cell {
+        border: 1px solid #e2e2e2;
+        border-radius: 0px;
+        background: #f1f1f1;
+        display: flex;
+        flex-direction: column;
+
+        span {
+          display: block;
+          font-size: 12px;
+          color: #222;
+        }
+        &-selected- {
+          background: #f68521;
+        }
+
+        &-focus- {
+          background: #f68521 !important;
+        }
+
+        &-day- {
+          font-weight: 400;
+          font-size: 14px;
+          color: #b4b4b4;
+        }
+      }
+
+      .-other-month- {
+        background: #fff;
+      }
+
+      .air-datepicker-cell.-focus- {
+        background: #f68521 !important;
+        color: #fff !important;
+      }
+
+      // .-selected- {
+      //   background: #f68521;
+      // }
     }
   }
-  margin-bottom: 80px;
 
   &__swiper,
   &__wrapper {
@@ -463,7 +548,7 @@
     }
     position: absolute;
     left: 10px;
-    top: 50%;
+    top: 46%;
     border-radius: 50%;
     width: 24px;
     height: 24px;
@@ -471,18 +556,36 @@
     transform: rotate(90deg);
     z-index: 50;
     background: rgb(0 0 0 / 20%);
+
+    &:hover:hover {
+      background: #f68521;
+    }
   }
 
-  &__hotel,
-  &__row {
-    display: flex;
+  &__btn-next {
+    left: auto;
+    right: 10px;
+    transform: rotate(-90deg);
+  }
+
+  &__calendar {
+    max-height: 0;
+    transition: 0.5s;
+    overflow: hidden;
+    &_show {
+      max-height: 313px;
+    }
   }
 }
 
 .table {
+  border-radius: 10px 0 10px 10px;
+  padding: 18px 22px 10px 25px;
+  width: 100%;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  background: #f4f6fa;
   &_act {
     display: none;
-    animation: scale-up-ver-bottom 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   }
 
   &__thead {
@@ -561,12 +664,8 @@
       display: none;
     }
   }
-  overflow: hidden;
-  border-radius: 10px 0 10px 10px;
-  padding: 18px 22px 10px 25px;
-  width: 100%;
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-  background: #f4f6fa;
+  // overflow: hidden;
+
   &__sub-tbody,
   &__sub-td {
     width: 100%;
@@ -579,35 +678,5 @@
   @include media-breakpoint-down(xs) {
     display: flex;
     justify-content: space-between;
-  }
-}
-
-@keyframes scale-up-ver-top {
-  0% {
-    -webkit-transform: scaleY(0.4);
-    transform: scaleY(0.4);
-    -webkit-transform-origin: 100% 0%;
-    transform-origin: 100% 0%;
-  }
-  100% {
-    -webkit-transform: scaleY(1);
-    transform: scaleY(1);
-    -webkit-transform-origin: 100% 0%;
-    transform-origin: 100% 0%;
-  }
-}
-
-@keyframes scale-up-ver-bottom {
-  100% {
-    -webkit-transform: scaleY(1);
-    transform: scaleY(1);
-    -webkit-transform-origin: 100% 0%;
-    transform-origin: 100% 0%;
-  }
-  0% {
-    -webkit-transform: scaleY(0.4);
-    transform: scaleY(0.4);
-    -webkit-transform-origin: 100% 0%;
-    transform-origin: 100% 0%;
   }
 }
