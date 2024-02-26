@@ -35,7 +35,6 @@ export class Registration {
           orders: []
         };
         
-
         this.addUserToFirebase(user.uid, userDataWithEmail);
 
         emailInput.value = '';
@@ -52,7 +51,7 @@ export class Registration {
       });
   }
 
-  registrationWithGoogle() {
+    registrationWithGoogle() {
     const googleProvider = new GoogleAuthProvider();
 
     signInWithPopup(this.auth, googleProvider)
@@ -65,8 +64,8 @@ export class Registration {
           orders: []
         };
 
-        this.addUserToFirebase(user.uid, userDataWithGoogle);
-        window.location.href = 'index.html';
+       this.addUserToFirebase(user.uid, userDataWithGoogle);
+        // window.location.href = 'index.html';
         console.log("Registration with Google successful:", user);
       })
       .catch((error) => {
@@ -100,10 +99,10 @@ export class Registration {
       });
   }
 
-  addUserToFirebase(uid: string, userData: fbUser) {
+    async addUserToFirebase(uid: string, userData: fbUser) {
     const db = getFirestore(app);
     const userRef = doc(collection(db, "users"), uid);
-    setDoc(userRef, userData)
+    await setDoc(userRef, userData)
       .then(() => {
         console.log("Document written with UID: ", uid);
       })

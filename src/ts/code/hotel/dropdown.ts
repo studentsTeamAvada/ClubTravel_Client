@@ -70,7 +70,7 @@ export class DropDown {
     }
     function removeOne(): void {
       let current = +total.text();
-      if (current > 1) {
+      if (current > 1 || (kids && current > 0)) {
         const sum = current - 1;
         total.html(String(sum));
         if (kids) {
@@ -200,10 +200,10 @@ export class DropDown {
         if (i > quantitySelect - 1) {
           this.children.append(`
             <div id="drop-${i}" class="children__drop">
-                <button class="children__btn">
+                <div class="children__btn">
                     <span class="children__current">Укажите возраст</span>
                     <svg><use xlink:href="#chevron-left"></use></svg> 
-                </button>
+                </div>
                 <ul class="children__list">
                     <li>Укажите возраст</li>
                     <li>&lt; 1 год</li>

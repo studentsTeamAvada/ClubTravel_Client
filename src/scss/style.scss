@@ -6,11 +6,15 @@
 @import "./components/footer";
 @import "./components/ui/btn";
 
+html{
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   color: #222;
-  // overflow: hidden;
+  overflow: hidden;
   ::-webkit-scrollbar-thumb {
     background-color: rgb(246 133 33 / 80%);
     border-radius: 3px;
@@ -31,6 +35,14 @@ body {
   
 }
 
+.preloder-hidden{
+  overflow: auto;
+}
+
+.burger-active {
+  overflow: hidden;
+}
+
 [class*="__container"] {
   margin: 0 auto;
   padding: 0 15px;
@@ -40,13 +52,14 @@ body {
 .wrapper {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   min-height: 100%;
 }
 
 .page {
   flex: 1 1 auto;
   position: relative;
-  overflow: hidden;
+
 }
 
 .preloader{

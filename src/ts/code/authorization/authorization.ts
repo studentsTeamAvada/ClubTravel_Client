@@ -27,7 +27,7 @@ export class Authorization {
     signInWithEmailAndPassword(this.auth, email, password)
       .then((userData) => {
         const user = userData.user;
-
+        
         window.location.href = 'index.html';
         emailInput.value = "";
         passwordInput.value = "";
@@ -55,7 +55,7 @@ export class Authorization {
         };
 
         this.addUserToFirebase(user.uid, userDataWithGoogle);
-        window.location.href = 'index.html';
+        // window.location.href = 'index.html';
         console.log("Authorization with Google successful. UID:", user.uid);
       })
       .catch((error) => {
@@ -91,10 +91,10 @@ export class Authorization {
       });
   }
 
-  addUserToFirebase(uid: string, userData: fbUser) {
+  async addUserToFirebase(uid: string, userData: fbUser) {
     const db = getFirestore(app);
     const userRef = doc(collection(db, "users"), uid);
-    setDoc(userRef, userData)
+    await setDoc(userRef, userData)
       .then(() => {
         console.log("Document written with UID as documentId:", uid);
       })
@@ -102,4 +102,5 @@ export class Authorization {
         console.error("Error adding document: ", error);
       });
   }
+
 }

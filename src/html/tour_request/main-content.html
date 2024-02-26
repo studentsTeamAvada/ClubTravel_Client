@@ -13,9 +13,7 @@
         течении 1 часа в рабочее время
       </p>
 
-      <h2 class="adviser__title">
-        Оставьте свой номер телефона и мы вам перезвоним
-      </h2>
+      <h2 class="adviser__title">Оставьте свой номер телефона и мы вам перезвоним</h2>
 
       <form id="adviser__form" class="adviser__row-input">
         <div class="adviser__input input input-row">
@@ -26,7 +24,7 @@
 
         <button class="adviser__btn btn">перезвонить</button>
 
-        <button class="adviser__btn-form">заполнить форму</button>
+        <a href="#main-form" class="adviser__btn-form">заполнить форму</a>
       </form>
 
       <h3 class="adviser__title">Связаться с нашим консультантом</h3>
@@ -37,6 +35,7 @@
               <img src="/src/images/tour_request/assistant.jpg" alt="Description of the image" width="3000" height="2000"/>
             </picture>
           </div>
+
           <div class="adviser__contacts-main">
             <h3 class="adviser__contacts-title">Марина Каасик</h3>
 
@@ -45,11 +44,14 @@
             <ul class="adviser__contacts-list">
               <li>
                 <svg><use xlink:href="#phone"></use></svg>
+
                 <a href="tel:+3726130633">+372 <span>61 30 633</span></a>
               </li>
+
               <li>
                 <svg><use xlink:href="#mail"></use></svg><a href="mailto:contact@email.ee">contact@email.ee</a>
               </li>
+
               <li>
                 <svg><use xlink:href="#messanger"></use></svg>Написать в Messenger
               </li>
@@ -58,7 +60,7 @@
         </div>
     </section>
 
-    <section class="main-content__column form">
+    <section id="main-form" class="main-content__column form form_error">
       <div class="form__wrapper">
         <div class="form__tabs">
           <button class="form__tab form__tab-one">Основное</button>
@@ -78,19 +80,22 @@
 
             <div class="form__drop">
               <load ="/src/html/tour_request/drop-country.html" />
-              <input type="text" id="drop-country" class="form__drop-hover" name="dropCountry">
+
+              <input type="text" id="drop-country" class="form__drop-hover" name="dropCountry"  readonly >
             </div>
 
             <h3 class="form__title">Дата вылета</h3>
 
             <div class="form__drop">
               <load ="/src/html/tour_request/calendar.html" />
-              <input type="text" id="drop-calendar" class="form__drop-hover" name="dropCalendar">
+
+              <input type="text" id="drop-calendar" class="form__drop-hover" name="dropCalendar" readonly >
             </div>
 
             <h3 class="form__title">Гости</h3>
 
             <div class="form__drop form__drop-guests">
+              
               <load ="/src/html/tour_request/dropdown.html" />
             </div>
 
@@ -107,7 +112,7 @@
                 </svg>
               </div>
 
-              <div class="form__counter-count">1</div>
+              <div class="form__counter-count">0</div>
 
               <div class="form__counter-btn form__counter-add">
                 <svg>
@@ -123,16 +128,15 @@
 
           <form id="form-state-two" class="form__state form__state-second">
             <h3 class="form__title">Желаемая цена на одного человека (€)</h3>
+
             <div class="form__input-wrap input-row">
-              <input type="text" id="input-price" class="form__input" />
-              <span class="form__error form__error-input-price"></span>
+              <input type="number" id="input-price" class="form__input" />
             </div>
 
             <h3 class="form__title">Питание</h3>
+
             <div class="form__drop form__drop-food">
               <load ="/src/html/tour_request/food.html" />
-
-
             </div>
 
             <h3 class="form__title">Категория отеля</h3>

@@ -3,25 +3,34 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 55px;
+
     @include media-breakpoint-down(sm) {
       display: block;
     }
   }
+
   &__column-one {
     max-width: 521px;
     width: 100%;
     margin-right: 30px;
+
     @include media-breakpoint-down(sm) {
       max-width: 100%;
     }
   }
+
   &__column-two {
     max-width: 418px;
     width: 100%;
+
     @include media-breakpoint-down(sm) {
       max-width: 100%;
     }
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 .adviser {
@@ -35,13 +44,16 @@
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 15px;
+
     @include media-breakpoint-down(sm) {
       text-align: center;
     }
+
     @include media-breakpoint-down(xs) {
       text-align: left;
       line-height: 100%;
     }
+
     @include media-breakpoint-down(xs) {
       margin-bottom: 24px;
     }
@@ -49,6 +61,7 @@
   &__info {
     max-width: 455px;
     margin-bottom: 33px;
+
     @include media-breakpoint-down(sm) {
       max-width: 100%;
       margin-bottom: 15px;
@@ -58,15 +71,18 @@
   }
   &__info-opacity {
     opacity: 0.5;
+
     @include media-breakpoint-down(sm) {
       line-height: normal;
       margin-bottom: 17px;
     }
   }
+
   &__title {
     font-size: 18px;
     margin-bottom: 16px;
   }
+
   &__row-input {
     display: flex;
     margin-bottom: 33px;
@@ -75,18 +91,22 @@
       display: block;
     }
   }
+
   &__input {
     flex: 1 0 67%;
     height: 42px;
+
     input {
       border: 1px solid #e2e2e2;
       border-radius: 6px 0px 0px 6px;
       height: 100%;
       width: 100%;
       padding-left: 15px;
+
       &::placeholder {
         font-size: 14px;
       }
+
       @include media-breakpoint-down(xs) {
         border-radius: 6px;
       }
@@ -103,14 +123,18 @@
     height: 42px;
     flex: 1 0 33%;
     border-radius: 0px 6px 6px 0px;
+
     @include media-breakpoint-down(xs) {
       margin-bottom: 22px;
       border-radius: 6px;
     }
   }
+
   &__btn-form {
     background: #fff;
     border: 1px solid #f68521;
+    align-items: center;
+    justify-content: center;
     border-radius: 6px;
     width: 100%;
     height: 42px;
@@ -122,17 +146,21 @@
     &:active {
       transform: scale(0.97);
     }
+
     @include media-breakpoint-down(xs) {
-      display: block;
+      display: flex;
     }
   }
+
   &__contacts {
     display: flex;
     justify-content: space-between;
+
     @include media-breakpoint-down(md) {
       display: block;
     }
   }
+
   &__contacts-image {
     max-width: 270px;
     max-height: 181px;
@@ -140,34 +168,42 @@
     border-radius: 6px;
     overflow: hidden;
     margin-right: 15px;
+
     img {
       max-width: 100%;
       height: 100%;
       object-fit: cover;
     }
+
     @include media-breakpoint-down(md) {
       margin: 0 0 10px 0;
       max-width: 100%;
       max-height: 100%;
     }
+
     @include media-breakpoint-down(xs) {
       aspect-ratio: 1.82/1;
       margin-bottom: 24px;
     }
   }
+
   &__contacts-main {
     width: 100%;
     max-width: 219px;
+
     @include media-breakpoint-down(md) {
       max-width: 100%;
     }
   }
+
   &__contacts-title {
     font-size: 22px;
     margin-bottom: 4px;
+
     @include media-breakpoint-down(md) {
       text-align: center;
     }
+
     @include media-breakpoint-down(xs) {
       text-align: left;
     }
@@ -176,13 +212,16 @@
     color: #555;
     font-size: 14px;
     margin-bottom: 24px;
+
     @include media-breakpoint-down(md) {
       text-align: center;
     }
+
     @include media-breakpoint-down(xs) {
       text-align: left;
     }
   }
+
   &__contacts-list {
     svg {
       width: 24px;
@@ -191,24 +230,27 @@
       opacity: 0.5;
       margin-right: 12px;
     }
+
     a {
       color: #222;
     }
+
     li {
       display: flex;
       align-items: center;
       margin: 0 0 16px 0;
+
       @include media-breakpoint-down(sm) {
         margin: 0 10px 16px 0;
       }
     }
+
     @include media-breakpoint-down(sm) {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
     }
   }
-
 }
 
 .form {
@@ -233,6 +275,7 @@
       transform: translateY(0);
     }
   }
+
   &__tabs {
     height: 58px;
     overflow: hidden;
@@ -240,6 +283,7 @@
     position: relative;
     display: flex;
     border-radius: 9px 9px 0 0;
+
     &-slider {
       position: absolute;
       background-color: #fff;
@@ -257,6 +301,7 @@
       background: #fff;
     }
   }
+
   &__tab {
     flex: 1 0 33%;
     display: flex;
@@ -268,8 +313,19 @@
     position: relative;
     z-index: 1;
     cursor: pointer;
+
     &_active {
       opacity: 1;
+    }
+
+    @include media-breakpoint-down(sm) {
+      &-two{
+        display: none;
+      }
+
+      &-three{
+        display: none;
+      }
     }
 
     @include media-breakpoint-down(sm) {
@@ -279,18 +335,22 @@
 
   &__main {
     padding: 22px;
+
     @include media-breakpoint-down(sm) {
       padding: 18px 16px 16px 16px;
     }
   }
+
   &___state {
     min-height: 378px;
   }
+
   &__title {
     color: #888;
     font-size: 13px;
     margin: 0 0 5px 15px;
   }
+
   &__drop {
     width: 100%;
     height: 42px;
@@ -361,8 +421,6 @@
           cursor: pointer;
           width: 13px;
           height: 13px;
-
-
         }
 
         &:hover{
@@ -394,8 +452,8 @@
     &-btn {
       padding: 5px;
       border-radius: 50%;
-      width: 24px;
-      height: 24px;
+      width: 30px;
+      height: 30px;
       opacity: 0.5;
       transition: scale 100ms ease 0s;
       transition: opacity 300ms ease 0s;
@@ -418,18 +476,13 @@
         fill: #f68521;
 
         @include media-breakpoint-down(sm) {
-          width: 14px;
-          height: 14px;
+          width: 20px;
+          height: 20px;
         }
       }
     }
-    &-remove {
-    }
-    &-count {
-    }
-    &-add {
-    }
   }
+
   &__btn {
     border: 1px solid #f68521;
     border-radius: 6px;
@@ -496,8 +549,10 @@
     width: 100%;
     padding-left: 18px;
     margin-bottom: 16px;
+
     &-wrap {
       position: relative;
+      
       label{
         position: absolute;
         top: -18px;
@@ -505,8 +560,8 @@
         color: rgb(199 41 41);
         right: 5px;
       }
-
     }
+
     &-for-validate{
       width: 100%;
       background-color: red;
@@ -517,12 +572,6 @@
       height: 0;
       top: 0;
     }
-
-
-  }
-
-  &__phone {
-
   }
 
 
@@ -535,17 +584,19 @@
     &-one-star {
       opacity: 0.5;
       transition: opacity 300ms ease 0s;
+
       svg {
         width: 18px;
         height: 18px;
         fill: #f5c213;
         margin-left: 4px;
-
         cursor: pointer;
       }
+
       &:hover {
         transform: scale(1.1);
       }
+
       &_active {
         opacity: 1;
       }
@@ -563,14 +614,18 @@
 
   &__state{
     animation: animation 500ms ease-in-out;
+
     &-first {
       display: block;
     }
+
     &-second {
       display: none;
     }
+
     &-third {
       opacity: 0;
+      height: 0;
     }
   }
   
@@ -581,19 +636,26 @@
           &-first {
             display: block;
           }
+
           &-second {
             display: none;
           }
+
           &-third {
             display: none;
           }
         }
 
-        @include media-breakpoint-down(sm) {
-          &__tab{
+        &__tab{
+          @include media-breakpoint-down(sm) {
+            &-one{
+              display: block;
+            }
+
             &-two{
               display: none;
             }
+
             &-three{
               display: none;
             }
@@ -608,21 +670,26 @@
           &-first {
             display: none;
           }
+
           &-second {
-  
             display: block;
           }
+
           &-third {
             display: none;
           }
         }
   
-        @include media-breakpoint-down(sm) {
-          &__tab{
+        &__tab{
+          @include media-breakpoint-down(sm) {
             &-one{
               display: none;
             }
-  
+
+            &-two{
+              display: block;
+            }
+
             &-three{
               display: none;
             }
@@ -637,33 +704,41 @@
           &-first {
             display: none;
           }
+
           &-second {
             display: none;
           }
+
           &-third {
             display: block;
             opacity: 1;
+            height: 100%;
           }
         }
   
-        @include media-breakpoint-down(sm) {
-          &__tab{
+        &__tab{
+          @include media-breakpoint-down(sm) {
             &-one{
               display: none;
             }
+
             &-two{
               display: none;
+            }
+
+            &-three{
+              display: block;
             }
           }
         }
       }
     }  
   }
-
 }
 
 .input{
   position: relative;
+
   &::before {
     content: "+380";
     color: #255296;
@@ -677,12 +752,14 @@
     line-height: 44px;
     opacity: 0;
   }
+
   &_active {
     input {
       font-style: italic;
       transition: all 300ms ease 0s;
       padding-left: 45px;
     }
+
     &::before {
       opacity: 1;
       transition: all 300ms ease 150ms;
@@ -693,10 +770,12 @@
     position: absolute;
     color: rgb(199 41 41);
     font-size: 12px;
+
     @include media-breakpoint-up(xs) {
       left: 5px;
       bottom: -18px;
     }
+    
     @include media-breakpoint-down(xs) {
       right: 5px;
       top: -18px;

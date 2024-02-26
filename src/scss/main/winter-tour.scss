@@ -1,7 +1,7 @@
 .winter-tour {
 
   &__text {
-    padding-bottom: 37px;
+    padding-bottom: 42px;
     text-align: center;
     font-size: 14px;
     color: #888;
@@ -98,6 +98,7 @@
   }
 
   &__swiper-round {
+    display: flex;
 
     @media (width >= 1024px) {
       &:hover {
@@ -216,12 +217,12 @@
   }
 
   &__swiper {
-    margin-bottom: 36px;
-    padding: 2px;
+    margin-bottom: 28px;
+    padding: 0 2px 10px 2px;
 
-    @include media-breakpoint-down(xs) {
-      margin-bottom: 36px;
-    }
+    // @include media-breakpoint-down(xs) {
+    //   margin-bottom: 36px;
+    // }
   }
 
   &__card {

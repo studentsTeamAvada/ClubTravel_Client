@@ -33,7 +33,6 @@ export class PullData{
     }
 
     async init(){
-        this.addQuery();
         this.getData();
 
     }
@@ -47,37 +46,37 @@ export class PullData{
         }
     }
 
-    addQuery(){
-        this.currentUrl.search = ''
-        this.currentUrl.searchParams.append("id", "2xvc7W065aSKXG4o5mw7")
-        history.replaceState({}, '', this.currentUrl);
-    }
-
     async getData(){
         const db = getFirestore(this.app);
         const querySnapshot = await getDocs(collection(db, "hotels"));
 
         let i = 0;
         const length: number = querySnapshot.docs.length - 1
+
+        let loadStatus = false 
         querySnapshot.forEach((doc) => {
             const random: number =  +(Math.random() * length).toFixed()
+
             if(doc.id === this.id){
-
                 this.changeInfo(doc.data())
-
+                loadStatus = true
             }
-            else if(doc.id !== this.id && i < 4){
+
+            if(doc.id !== this.id && i < 4){
                 i++
-                this.bottomSlide(querySnapshot.docs[random].data())
+                this.bottomSlide(querySnapshot.docs[random].data(), querySnapshot.docs[random].id)
             }
-
         });
+
+        if(!loadStatus){
+            window.location.href = "404.html"
+        }        
 
         new HotelSecondSlider();
         new Preloader();
     }
 
-    bottomSlide(data: object){
+    bottomSlide(data: object, id: string){
         const sliderWrapper = $("#bottom-slider");
 
         const currentData =  data as BottomSlide
@@ -116,39 +115,40 @@ export class PullData{
 
         sliderWrapper.append(`
             <div class="swiper-slide slide">
-                <div class="slide__image">
-                    <div class="slide__img">
-                        <picture>
-                        <source srcset="${img.urlWebp}"/>
-                        <img src="${img.url}" width="1366" height="550" loading="lazy" alt="hotel-image"/>
-                        </picture>
-                    </div>
-                
-                    <div class="slide__tag slide__tag-date">
-                        <svg><use xlink:href="#clock"></use></svg>
-                
-                        <span>${date}</span>
-                    </div>
-                
-                    <a class="slide__tag slide__tag-location" href="https://www.google.com/maps/search/?api=1&query=${country}${beach === ''?"":"," + beach}" target="_blank">
-                        <svg><use xlink:href="#point"></use></svg>
-                        <span>${country}${beach === ''?"":"," + beach}</span>
-                    </a>
-                    </div>
-                
-                    <div class="slide__info">
-                    <div class="slide__row slide__row-one">
-                        <div class="slide__title">${name}</div>
-                        <div class="slide__stars">${renderStars()}</div>
-                    </div>
-                
-                    <div class="slide__row slide__row-two">
-                        <div class="slide__price"><span><span id="price">${sale? newPrice : price}</span>€</span>/чел</div>
-                
-
-                        ${sale? renderOldPrice : ""}
-                
-                        ${sale ? renderSale : ""}
+                <div class="slide__wrap">
+                    <div class="slide__image">
+                        <div class="slide__img">
+                            <picture>
+                            <source srcset="${img.urlWebp}"/>
+                            <img src="${img.url}" width="1366" height="550" loading="lazy" alt="hotel-image"/>
+                            </picture>
+                        </div>
+                    
+                        <div class="slide__tag slide__tag-date">
+                            <svg><use xlink:href="#clock"></use></svg>
+                    
+                            <span>${date}</span>
+                        </div>
+                    
+                        <a class="slide__tag slide__tag-location" href="https://www.google.com/maps/search/?api=1&query=${country}${beach === ''?"":"," + beach}" target="_blank">
+                            <svg><use xlink:href="#point"></use></svg>
+                            <span>${country}${beach === ''?"":"," + beach}</span>
+                        </a>
+                        </div>
+                    
+                        <div class="slide__info">
+                        <div class="slide__row slide__row-one">
+                            <a class="slide__title" href="/hotel.html?id=${id}">${name}</a>
+                            <div class="slide__stars">${renderStars()}</div>
+                        </div>
+                    
+                        <div class="slide__row slide__row-two">
+                            <div class="slide__price"><span><span id="price">${sale? newPrice : price}</span>€</span>/чел</div>
+                    
+                            ${sale? renderOldPrice : ""}
+                    
+                            ${sale ? renderSale : ""}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 36px;
-    &__column {}
+
     @include media-breakpoint-down(sm) {
         display: block;
         margin-bottom: 32px;
@@ -66,9 +66,6 @@
         line-height: 22px;
         margin-bottom: 32px;
     }
-    &__list {
-
-    }
     &__li {
         display: flex;
         align-items: center;
@@ -76,19 +73,16 @@
         a {
           color: #255296;
         }
-      }
+    }
     
-      svg {
+    svg {
         margin-right: 12px;
         padding: 2px;
         width: 24px;
         height: 24px;
         fill: green;
         opacity: 0.5;
-      }
-    &__li-text {}
-    &__li-mail {}
-    &__li-phones {}
+    }
 }
 .form {
     max-width: 418px;

@@ -6,7 +6,7 @@ import { DropDown } from "../code/tour_request/dropdown";
 import { Food } from "../code/tour_request/food";
 import { Preloader } from "../components/preloader";
 import { AsYouType, validatePhoneNumberLength } from 'libphonenumber-js';
-import { IsAuthorization } from "../components/isAuthorization";
+import {SendDate} from "../code/tour_request/sendDate"
 import $ from "jquery";
 import 'jquery-validation';
 
@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     header: Header;
     footer: Footer;
     food: Food;
+    sendDate: SendDate;
     input: JQuery<HTMLInputElement>;
     inputBtn: JQuery<HTMLButtonElement>;
     tabsBtn: JQuery<HTMLElement>;
@@ -42,16 +43,19 @@ document.addEventListener("DOMContentLoaded", () => {
     formBtn: JQuery<HTMLElement>;
     stars: JQuery<HTMLElement>;
     inputForm: JQuery<HTMLElement>;
+    formInfo : Object
 
     constructor() {
       this.header = new Header();
       this.footer = new Footer();
       this.food = new Food();
       this.dropDown = new DropCountry();
+      this.sendDate = new SendDate();
 
       this.calendar = new Calendar();
       this.DropPeople = new DropDown(".form__drop-guests");
       this.stars = $(".form__stars-one-star");
+      this.formInfo = {}
 
       this.input = $("#adviser-inp");
       this.inputBtn = $(".adviser__btn");
@@ -75,18 +79,27 @@ document.addEventListener("DOMContentLoaded", () => {
       this.stopReload();
       this.clickFormBtn();
       this.inputMask();
-      this.SelectStars();
+      this.selectStars();
       this.validateMainFormOne();
       this.validateMainFormThree();
 
+
     }
 
-    SelectStars() {
+
+    selectStars() {
       const context = this;
 
       this.stars.each((_index, item) => {
         item.addEventListener("click", () => {
           addActive(Number(item.getAttribute("data-num")));
+
+          const customEvent = new CustomEvent("selectStars", {
+            detail: {
+              stars: item.getAttribute("data-num")
+            }
+          });
+          document.dispatchEvent(customEvent);
         });
       });
 
@@ -129,9 +142,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const btnOne = document.querySelector(".form__tab-one");
       const btnTwo = document.querySelector(".form__tab-two");
       const btnThree = document.querySelector(".form__tab-three");
-      const noErrorFirst = !$(".form").is(".form_erroe-one");
-      const noErrorSecond = !$(".form").is(".form_erroe-two");
-      if (num === 1) {
+      const noError = !$(".form").is(".form_error");
+      if (num === 1 && noError) {
         btnThree?.classList.remove("form__tab_active");
         btnTwo?.classList.remove("form__tab_active");
         btnOne?.classList.add("form__tab_active");
@@ -142,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
         this.tabsSlider.css({
           left: "0",
         });
-      } else if (num === 2 && noErrorFirst) {
+      } else if (num === 2 && noError) {
         btnThree?.classList.remove("form__tab_active");
         btnOne?.classList.remove("form__tab_active");
         btnTwo?.classList.add("form__tab_active");
@@ -153,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
         this.tabsSlider.css({
           left: "33.3%",
         });
-      } else if (num === 3 && noErrorFirst && noErrorSecond) {
+      } else if (num === 3 && noError) {
         btnOne?.classList.remove("form__tab_active");
         btnTwo?.classList.remove("form__tab_active");
         btnThree?.classList.add("form__tab_active");
@@ -170,18 +182,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     clickFormBtn() {
       this.formBtn.on("click", () => {
-        // const oneState = $(".form").is(".form_state-one");
-        // const twoState = $(".form").is(".form_state-two");
-        // const threeState = $(".form").is(".form_state-three");
+        const twoState = $(".form").is(".form_state-two");
 
-
-        // if (oneState) {
-        // }
-        // else if (twoState) {
-        //   this.points(3);
-        // } else if (threeState) {
-        //   this.points(1);
-        // }
+        if (twoState) {
+          this.points(3);
+        }
       });
     }
 
@@ -220,6 +225,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     validateTel(inputWrap: string){
+      const context = this
+
       const element = $(inputWrap) as JQueryValidateForm;
 
       ($ as addValidator).validator.addMethod("min", function(value : string) {
@@ -245,6 +252,7 @@ document.addEventListener("DOMContentLoaded", () => {
         submitHandler(form : JQuery<HTMLElement>) {
           $(inputWrap).find(".input-row").removeClass("input_active")
           console.log($(inputWrap))
+          context.sendDate.sendDate(false)
           alert("Мы скоро с вами свяжемся")
           $(form).trigger("reset");
         }
@@ -252,6 +260,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     validateMainFormOne(){
+      const context = this
+
       const element = $("#form-state-one") as JQueryValidateForm;
 
       document.addEventListener("selectTour", () => {
@@ -292,12 +302,16 @@ document.addEventListener("DOMContentLoaded", () => {
           },
         },
       submitHandler() {
-        alert("Мы скоро с вами свяжемся")
+        // alert("Мы скоро с вами свяжемся")
+        $(".form").removeClass("form_error");
+        context.points(2)
       }
      });
     }
 
     validateMainFormThree(){
+      const context = this
+
       const element = $("#form-state-three") as JQueryValidateForm;
 
       // document.addEventListener("selectTour", () => {
@@ -305,7 +319,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // });
 
       ($ as addValidator).validator.addMethod("laxEmail", function(value: string) {
-        return /^(?!.*\.\.)[\w.-]{3,20}@[\wа-я.][\wа-я.-]{3,20}[\wа-я.]\.[a-z]{2,10}/.test(value);
+        return /^(?!.*\.\.)[\w.-]{3,20}@[\wа-я.][\wа-я.-]{1,20}[\wа-я.]\.[a-z]{2,10}/.test(value);
       }, 'Введите корректный email');
 
       ($ as addValidator).validator.addMethod("min", function(value : string) {
@@ -338,6 +352,8 @@ document.addEventListener("DOMContentLoaded", () => {
       submitHandler(form : JQuery<HTMLElement>) {
         alert("Мы скоро с вами свяжемся2")
         $(form).trigger("reset");
+        context.sendDate.sendDate()
+        context.points(1)
       }
      });
     }
@@ -347,5 +363,4 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   new TourRequest();
   new Preloader();
-  new IsAuthorization();
 });

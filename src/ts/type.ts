@@ -9,6 +9,7 @@ export interface Tours {
   region: string;
   work: [string, string];
   img: { url: string; urlWebp: string };
+  id: string;
 }
 
 export interface Users {

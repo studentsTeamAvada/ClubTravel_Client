@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+// import { getStorage, ref,  uploadBytesResumable,getDownloadURL } from "firebase/storage";
 const firebaseConfig = {
   apiKey: "AIzaSyAVwhQr2zeNEAr1FSrD6ygo5dJeLkxjtRk",
   authDomain: "clubtravel-6eff6.firebaseapp.com",
@@ -10,6 +11,23 @@ const firebaseConfig = {
 };
 
 export const app = initializeApp(firebaseConfig);
+
+
+
+
+export class GetSing{
+    promise(){
+      return new Promise(resolve => {
+        onAuthStateChanged(getAuth(), (user) => {
+          if(user){
+            resolve(user)
+          }else{
+            resolve(false)
+          }
+        })
+      })
+    }
+}
 
 // const storage = getStorage(app);
 

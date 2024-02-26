@@ -8,12 +8,19 @@ export class Preloader{
         this.header = $('.header');
         this.preloader = $(".preloader");
         this.body = $("body");
+
+        this.init()
+
+    }
+
+    init(){
         this.removePreloader();
     }
+
     removePreloader(){
         setTimeout(() => {
             this.header.removeClass("header_preload");
-            this.body.css("overflow", "auto");
+            this.body.addClass("preloder-hidden");
             this.preloader.addClass("preloader_hidden");
 
         },300)

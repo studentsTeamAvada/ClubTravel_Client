@@ -46,6 +46,7 @@ export class DropCountry {
       }
     });
   }
+  
   observer(): void {
     const mainDropHeight: number = Number(this.dropMain.height());
     const context = this;
@@ -101,6 +102,7 @@ export class DropCountry {
           context.countryMainDrop.html(city);
           context.tourMainDrop.html(String(item.textContent));
           context.dropDown.removeClass("drop-country_active");
+          
           document.dispatchEvent(new Event('selectTour'));
         });
       });

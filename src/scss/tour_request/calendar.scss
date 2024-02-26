@@ -35,12 +35,10 @@
     height: 240px;
     overflow: auto;
     border: 1px solid #e2e2e2;
-    // border: 1px solid red;
     transform: scaleY(0);
     transform-origin: 0 0;
     transition: all 300ms ease 0s;
     background: #fff;
-    // overflow: hidden;
   }
 
   &_active {
@@ -50,6 +48,7 @@
           transform: translateY(-50%) rotate(180deg);
         }
       }
+      
       &__main {
         transform: scaleY(1);
       }
@@ -59,14 +58,14 @@
   &_bottom {
     .calendar {
       &__main {
-        top: 46px;
+        top: 43px;
       }
     }
   }
   &_top {
     .calendar {
       &__main {
-        bottom: 46px;
+        bottom: 43px;
         transform-origin: 100% 100%;
       }
     }

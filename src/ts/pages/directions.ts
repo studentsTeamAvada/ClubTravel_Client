@@ -1,7 +1,6 @@
 import { Header } from "../components/header";
 import { DirectionProduct } from "../code/directions/directions";
 import { Preloader } from "../components/preloader";
-import { IsAuthorization } from "../components/isAuthorization";
 
 
 document.addEventListener("DOMContentLoaded", async function() {
@@ -10,7 +9,5 @@ document.addEventListener("DOMContentLoaded", async function() {
     
     new Header();
     new Preloader();
-    new IsAuthorization();
- 
 })
 

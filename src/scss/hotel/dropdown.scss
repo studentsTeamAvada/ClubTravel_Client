@@ -31,21 +31,12 @@
     color: #222;
   }
 
-  &__adults {
-  }
-
-  &__kids {
-  }
-
-  &__arrow {
-  }
-
   &__main {
     position: absolute;
     left: -1px;
     border: 1px solid #e2e2e2;
     border-radius: 6px;
-    padding: 16px;
+    padding: 16px 16px 20px;
     width: calc(100% + 2px);
     background: #fff;
     opacity: 0;
@@ -71,12 +62,6 @@
 
     span {
       margin-left: 12px;
-    }
-
-    &-adults {
-    }
-
-    &-kids {
     }
   }
 
@@ -119,15 +104,6 @@
         }
       }
     }
-
-    &-add {
-    }
-
-    &-current {
-    }
-
-    &-remove {
-    }
   }
 
   &__button-add {
@@ -139,6 +115,9 @@
     font-size: 16px;
     color: #222;
     transition: all 300ms ease 0s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
       @include media-breakpoint-up(md) {
@@ -162,8 +141,8 @@
 
   &__error {
     position: absolute;
-    bottom: 2px;
-    font-size: 10px;
+    bottom: 0px;
+    font-size: 12px;
     color: rgb(199 41 41);
     opacity: 0;
     transition: opacity 300ms ease 0s;
@@ -249,6 +228,7 @@
     border: 1px solid #e2e2e2;
     border-radius: 4px;
     padding: 0 7px;
+    font-size: 12px;
     width: 100%;
     height: 40px;
     transition: all 300ms ease 0s;
@@ -341,9 +321,6 @@
         }
       }
     }
-  }
-
-  &_active {
   }
 
   &_top {
