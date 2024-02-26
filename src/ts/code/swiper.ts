@@ -202,10 +202,6 @@ export class HotelSlider {
     this.swiperOne = new Swiper(".hotel-swiper-two", {
       loop: true,
       spaceBetween: 10,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
       thumbs: {
         swiper: this.swiperTwo,
       },
@@ -218,6 +214,13 @@ export class HotelSecondSlider {
   constructor() {
     this.swiper = new Swiper(".similars__slider", {
       loop: true,
+      navigation: {
+        nextEl: ".similars__btn-two",
+        prevEl: ".similars__btn-one",
+      },
+      autoplay: {
+        delay: 2500,
+      },
       spaceBetween: 0,
       slidesPerView: 1,
       freeMode: true,
