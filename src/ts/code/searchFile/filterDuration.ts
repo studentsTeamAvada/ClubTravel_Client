@@ -1,42 +1,31 @@
 import $ from 'jquery';
-import { Filtering } from './filteringCountry';
-import { Durations } from './type';
+import { FilteringData } from './filteringData';
 
-export class Duration extends Filtering {
+export class Duration {
   durationCurrent: JQuery<HTMLElement>;
 
   constructor() {
-    super();
     this.durationCurrent = $('.info__duration-current');
     this.selectDuration();
-    // this.bindEvents('load', 'isDuration', this.durationCurrent.text().trim());
+    const urlParams = new URLSearchParams(window.location.search);
+    const isDuration = urlParams.get('isDuration');
+
+    if (isDuration) {
+      new FilteringData().restoreFilterFromUrl('isDuration');
+    }
+    
   }
 
-  durationToNumber(duration: string): number {
-    switch (duration) {
-      case '3 ночи':
-        return Durations.three;
-      case '7 ночей':
-        return Durations.seven;
-      case '10 ночей':
-        return Durations.ten;
-      case '14 ночей':
-        return Durations.fourteen;
-      case '21 ночь':
-        return Durations.twentyOne;
-      default:
-        return Durations.all;
-    }
-  }
 
   selectDuration(): void {
     $('.info__duration-list li').on('click', event => {
-      const durationName = $(event.target).data('duration');
-      const duration = this.durationToNumber(durationName);
+      const duration = $(event.target).index()+1;
 
       const newUrl = new URL(window.location.href);
       newUrl.searchParams.set('isDuration', duration.toString());
       window.history.pushState({}, '', newUrl.toString());
+
+      new FilteringData().removeParametersFromUrl(['isCountry', 'date', 'kids', 'adults','isStar']);
     });
   }
 }

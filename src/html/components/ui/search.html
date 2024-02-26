@@ -1,5 +1,6 @@
 <div class="search">
   <div class="search__row search__row-top">
+    <img class="search__row-svg"  src="./src/images/clock.svg" alt="clock" />
     <h1 class="search__row-title">{=$title}</h1>
   </div>
 
@@ -9,42 +10,32 @@
         <p class="info__destination-text">Направление</p>
         <div class="info__destination-select dropdown">
           <div class="info__destination-row dropdown__row">
-            <p class="info__destination-current dropdown__current">
-              Направление
-            </p>
+            <p class="info__destination-current dropdown__current">Направление</p>
             <svg class="info__destination-icon dropdown__icon">
               <use xlink:href="#chevron-left"></use>
             </svg>
           </div>
           <ul class="info__destination-list dropdown__list">
-            <li data-destination="All" class="dropdown__item">
-              Все направления
-            </li>
-            <li data-destination="Egypt" class="dropdown__item">Египет</li>
-            <li data-destination="AOE" class="dropdown__item">АОЭ</li>
-            <li data-destination="Thailand" class="dropdown__item">Таиланд</li>
-            <li data-destination="Bulgaria" class="dropdown__item">Болгария</li>
-            <li data-destination="Chornogoria" class="dropdown__item">
-              Чорногория
-            </li>
-            <li data-destination="Indonesia" class="dropdown__item">
-              Индонезия
-            </li>
-            <li data-destination="Georgia" class="dropdown__item">Грузия</li>
-            <li data-destination="Greece" class="dropdown__item">Греция</li>
-            <li data-destination="Turkey" class="dropdown__item">Турция</li>
-            <li data-destination="Cyprus" class="dropdown__item">Кипр</li>
-            <li data-destination="Tunisia" class="dropdown__item">Тунис</li>
-            <li data-destination="Spain" class="dropdown__item">Испания</li>
-            <li data-destination="Ukraine" class="dropdown__item">Украина</li>
+            <li class="dropdown__item">Все направления</li>
+            <li class="dropdown__item">Египет</li>
+            <li class="dropdown__item">АОЭ</li>
+            <li class="dropdown__item">Таиланд</li>
+            <li class="dropdown__item">Болгария</li>
+            <li class="dropdown__item">Чорногория</li>
+            <li class="dropdown__item">Индонезия</li>
+            <li class="dropdown__item">Грузия</li>
+            <li class="dropdown__item">Греция</li>
+            <li class="dropdown__item">Турция</li>
+            <li class="dropdown__item">Кипр</li>
+            <li class="dropdown__item">Тунис</li>
+            <li class="dropdown__item">Испания</li>
+            <li class="dropdown__item">Украина</li>
           </ul>
         </div>
       </div>
 
       <div class="info__duration">
-        <p class="info__duration-text info__destination-text">
-          Длительность тура
-        </p>
+        <p class="info__duration-text info__destination-text">Длительность тура</p>
         <div class="info__duration-select dropdown">
           <div class="info__duration-row dropdown__row">
             <p class="info__duration-current dropdown__current"></p>
@@ -53,11 +44,11 @@
             </svg>
           </div>
           <ul class="info__duration-list dropdown__list">
-            <li data-duration="One" class="dropdown__item">3 ночи</li>
-            <li data-duration="Seven" class="dropdown__item">7 ночей</li>
-            <li data-duration="Ten" class="dropdown__item">10 ночей</li>
-            <li data-duration="Fourteen" class="dropdown__item">14 ночей</li>
-            <li data-duration="TwentyOne" class="dropdown__item">21 ночь</li>
+            <li class="dropdown__item">3 ночи</li>
+            <li class="dropdown__item">7 ночей</li>
+            <li class="dropdown__item">10 ночей</li>
+            <li class="dropdown__item">14 ночей</li>
+            <li class="dropdown__item">21 ночь</li>
           </ul>
         </div>
       </div>
@@ -92,9 +83,7 @@
             </svg>
           </div>
           <ul class="info__guests-list dropdown__list">
-            <li class="info__guests-item">
-              Добавьте необходимое кол-во гостей и укажите возраст
-            </li>
+            <li class="info__guests-item">Добавьте необходимое кол-во гостей и укажите возраст</li>
 
             <li class="info__guests-item info__guests-item_adults">
               <div class="info__guests-subitem">
@@ -105,10 +94,7 @@
                       <use xlink:href="#minus-circle"></use>
                     </svg>
                   </button>
-                  <span
-                    class="info__guests-counters info__guests-counters_adults"
-                    >0</span
-                  >
+                  <span class="info__guests-counters info__guests-counters_adults">0</span>
                   <button class="info__guests-plus info__guests-plus_adults">
                     <svg>
                       <use xlink:href="#plus-circle"></use>
@@ -128,11 +114,7 @@
                       <use xlink:href="#minus-circle"></use>
                     </svg>
                   </button>
-                  <span
-                    class="info__guests-counters info__guests-counters_kids"
-                  >
-                    0
-                  </span>
+                  <span class="info__guests-counters info__guests-counters_kids"> 0 </span>
                   <button class="info__guests-plus info__guests-plus_kids">
                     <svg>
                       <use xlink:href="#plus-circle"></use>
@@ -179,10 +161,8 @@
         <div class="category__rating">
           <div class="category__rating-stars">
             <h2 class="category__title">Категория размещения</h2>
-            <button
-              data-stars="three"
-              class="category__btns category__btns-stars"
-            >
+
+            <button class="category__btns category__btns-stars">
               <svg>
                 <use xlink:href="#star"></use>
               </svg>
@@ -193,10 +173,8 @@
                 <use xlink:href="#star"></use>
               </svg>
             </button>
-            <button
-              data-stars="four"
-              class="category__btns category__btns-stars"
-            >
+
+            <button class="category__btns category__btns-stars">
               <svg>
                 <use xlink:href="#star"></use>
               </svg>
@@ -210,10 +188,8 @@
                 <use xlink:href="#star"></use>
               </svg>
             </button>
-            <button
-              data-stars="five"
-              class="category__btns category__btns-stars"
-            >
+
+            <button class="category__btns category__btns-stars">
               <svg>
                 <use xlink:href="#star"></use>
               </svg>
@@ -230,10 +206,8 @@
                 <use xlink:href="#star"></use>
               </svg>
             </button>
-            <button
-              data-stars="apart"
-              class="category__btns category__btns-apart"
-            >
+
+            <button class="category__btns category__btns-stars">
               <svg>
                 <use xlink:href="#house"></use>
               </svg>
@@ -243,45 +217,42 @@
           <div class="category__rating-meal">
             <h2 class="category__title">Питание</h2>
 
-            <button data-meals="ao" class="category__btns category__btns-meals">
+            <button class="category__btns category__btns-meals">
               <svg>
                 <use xlink:href="#check-circle"></use>
               </svg>
               Без питания
             </button>
 
-            <button data-meals="bb" class="category__btns category__btns-meals">
+            <button class="category__btns category__btns-meals">
               <svg>
                 <use xlink:href="#check-circle"></use>
               </svg>
               Завтрак
             </button>
 
-            <button data-meals="hb" class="category__btns category__btns-meals">
+            <button class="category__btns category__btns-meals">
               <svg>
                 <use xlink:href="#check-circle"></use>
               </svg>
               Затрак и ужин
             </button>
 
-            <button data-meals="fb" class="category__btns category__btns-meals">
+            <button class="category__btns category__btns-meals">
               <svg>
                 <use xlink:href="#check-circle"></use>
               </svg>
               Завтрак, обед, ужин
             </button>
 
-            <button data-meals="ai" class="category__btns category__btns-meals">
+            <button class="category__btns category__btns-meals">
               <svg>
                 <use xlink:href="#check-circle"></use>
               </svg>
               Всё включено
             </button>
 
-            <button
-              data-meals="uai"
-              class="category__btns category__btns-meals"
-            >
+            <button class="category__btns category__btns-meals">
               <svg>
                 <use xlink:href="#check-circle"></use>
               </svg>
@@ -308,13 +279,14 @@
           </div>
           <div class="category__departure">
             <h2 class="category__title">Вылет из</h2>
-            <button data-city="kiev" class="category__btns category__btns-city">
+            <button class="category__btns category__btns-city">
               <svg>
                 <use xlink:href="#check-circle"></use>
               </svg>
               Киева
             </button>
-            <button data-city="lviv" class="category__btns category__btns-city">
+
+            <button class="category__btns category__btns-city">
               <svg>
                 <use xlink:href="#check-circle"></use>
               </svg>
@@ -339,14 +311,10 @@
         <div class="category__filter-item">
           <h3 class="category__filter-title">Активные фильтры:</h3>
           <div class="category__filter-row">
-            <h3 class="category__filter-title category__filter-title_main">
-              Категория
-            </h3>
+            <h3 class="category__filter-title category__filter-title_main">Категория</h3>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-

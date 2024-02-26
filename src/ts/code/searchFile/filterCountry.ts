@@ -1,60 +1,29 @@
 import $ from 'jquery';
-import { Filtering } from './filteringCountry';
-import { Destination } from './type';
+import { FilteringData } from './filteringData';
 
-export class Country extends Filtering {
+export class Country {
   destinationCurrent: JQuery<HTMLElement>;
 
   constructor() {
-    super();
     this.destinationCurrent = $('.info__destination-current');
     this.selectCountry();
+    const urlParams = new URLSearchParams(window.location.search);
+    const isCountry = urlParams.get('isCountry');
 
-    this.bindEvents('load', 'isCountry', this.destinationCurrent.text().trim());
-  }
-
-  countryToNumber(info: string): Destination {
-    switch (info) {
-      case 'Египет':
-        return Destination.Egypt;
-      case 'АОЭ':
-        return Destination.AOE;
-      case 'Таиланд':
-        return Destination.Thailand;
-      case 'Болгария':
-        return Destination.Bulgaria;
-      case 'Чорногория':
-        return Destination.Chornogoria;
-      case 'Индонезия':
-        return Destination.Indonesia;
-      case 'Грузия':
-        return Destination.Georgia;
-      case 'Греция':
-        return Destination.Greece;
-      case 'Турция':
-        return Destination.Turkey;
-      case 'Кипр':
-        return Destination.Cyprus;
-      case 'Тунис':
-        return Destination.Tunisia;
-      case 'Испания':
-        return Destination.Spain;
-      case 'Украина':
-        return Destination.Ukraine;
-      default:
-        return Destination.All;
+    if (isCountry) {
+      new FilteringData().restoreFilterFromUrl('isCountry');
     }
   }
 
   selectCountry(): void {
-    $('.info__destination-list li').on('click', event => {
-      const destinationName = $(event.currentTarget).data('destination');
-      const destination = this.countryToNumber(destinationName);
+    $('.info__destination-list li').on('click', (event) => {
+      const index = $(event.currentTarget).index();
 
       const newUrl = new URL(window.location.href);
-      newUrl.searchParams.set('isCountry', destination.toString());
+      newUrl.searchParams.set('isCountry', index.toString());
       window.history.pushState({}, '', newUrl.toString());
-  
+
+      new FilteringData().removeParametersFromUrl(['isDuration', 'date', 'kids', 'adults', 'isStar']);
     });
   }
 }
