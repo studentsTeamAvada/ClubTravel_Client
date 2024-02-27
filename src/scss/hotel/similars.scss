@@ -18,29 +18,30 @@
     }
   }
 
+  &__wrap{
+    position: relative;
+  }
+
   &__slider {
     width: 100%;
     user-select: none;
 
     @include media-breakpoint-down(xs) {
-      max-width: 90vw;
-    }
-
-    @include media-breakpoint-down(xxs) {
       max-width: 100%;
     }
+
   }
 
   &__btn {
     position: absolute;
     z-index: 2;
-    top: 35vw;
+    top: 110px;
     width: 48px;
     height: 48px;
     border-radius: 50%;
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
-    background: rgb(255, 255, 255);
-    display: none;
+    background: #f7f7f7;
+    display: flex;
     align-items: center;
     justify-content: center;
     svg{
@@ -49,8 +50,20 @@
       color: #3e7739;
     }
 
+    @include media-breakpoint-down(my) {
+      top: 9vw;
+    }
+    
+    @include media-breakpoint-down(md) {
+      top: 15vw;
+    }
+
+    @include media-breakpoint-down(sm) {
+      top: 13vw;
+    }
+
     @include media-breakpoint-down(xs) {
-      display: flex;
+      top: 35vw;
     }
 
     @include media-breakpoint-down(xxs) {
@@ -59,26 +72,32 @@
   }
 
   &__btn-one {
-    left: 15px;
+    left: -80px;
+    @include media-breakpoint-down(my) {
+      left: 15px;
+    }
   }
 
   &__btn-two {
-    transform: rotate(180deg);
-    right: 15px;
+    right: -80px;
+    svg{
+      transform: rotate(180deg);
+    }
+    @include media-breakpoint-down(my) {
+      right: 15px;
+    }
   }
 }
 
 .slide {
   &__wrap{
-    box-shadow: 5px 5px 5px rgb(0 0 0 / 30%);
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
     overflow: hidden;
     border-radius: 10px;
     margin: 0 5px 5px;
 
     @include media-breakpoint-down(xs) {
       aspect-ratio: 1/1.095;
-      margin: 0 2px 2px;
-      box-shadow: 2px 2px 2px rgb(0 0 0 / 30%);
     }
   }
 
