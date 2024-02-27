@@ -5,12 +5,11 @@
   <link rel="icon" type="image/ico+xml" href="/ClubTravel.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Личный кабинет клиента</title>
-  <script type="module" crossorigin src="/assets/Account-jbPnDojM.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/header-Eu9nKmC_.js">
-  <link rel="modulepreload" crossorigin href="/assets/index.esm2017-rngiDz6t.js">
-  <link rel="modulepreload" crossorigin href="/assets/isAuthorization-WmDnPX5c.js">
+  <script type="module" crossorigin src="/assets/Account-S0LtrlrO.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/header-30OnrdDG.js">
+  <link rel="modulepreload" crossorigin href="/assets/index.esm2017-fee6Juqa.js">
   <link rel="modulepreload" crossorigin href="/assets/justValidate-ywqcVI2V.js">
-  <link rel="stylesheet" crossorigin href="/assets/Account-d0gejiUW.css">
+  <link rel="stylesheet" crossorigin href="/assets/Account-ANADcmRw.css">
 </head>
 
   <body>
@@ -163,27 +162,29 @@
       <div class="account__right">
         <h4 class="account__right-title">Заказы</h4>
         <div class="account__right-table">
-          <table id="accountTable" border="1">
-            <thead>
-              <tr>
-                <th>Номер заказа</th>
-                <th>Сумма</th>
-                <th>E-mail</th>
-                <th>Cтатус</th>
-                <th>Дата</th>
-              </tr>
-            </thead>
-            <tbody class="account__order">
-              
-            </tbody>
-          </table>
+          <div class="account__teble-wrap">
+            <table id="accountTable" border="1">
+              <thead>
+                <tr>
+                  <th>Номер заказа</th>
+                  <th>Сумма</th>
+                  <th>E-mail</th>
+                  <th>Cтатус</th>
+                  <th>Дата</th>
+                </tr>
+              </thead>
+                <tbody class="account__order">
+                
+                </tbody>
+            </table>
+          </div>
           <div class="account__right-table-bottom account__table-bottom">
             <div class="account__table-bottom-left">
 
             </div>
             <div class="account__table-bottom-right">
               <button
-                class="account__table-bottom-button"
+                class="account__table-bottom-button btn"
                 id="account-button-prev"
               >
                 Назад
@@ -191,12 +192,12 @@
               <div class="account__table-bottom-pagination">
                 <p>
                   Страница
-                  <span class="account__table-pagination active">1</span> из
-                  <span class="account__table-pagination">2</span>
+                  <span id="current-page" class="account__table-pagination active">1</span> из
+                  <span id="all-pages" class="account__table-pagination">2</span>
                 </p>
               </div>
               <button
-                class="account__table-bottom-button"
+                class="account__table-bottom-button btn"
                 id="account-button-next"
               >
                 Вперед
@@ -211,21 +212,21 @@
                 
               <div class="account__table-bottom-right account-mobile__table-bottom-right">
                 <button
-                  class="account__table-bottom-button"
-                  id="account-button-prev"
+                  class="account__table-bottom-button btn"
+                  id="account-button-prev-mob"
                 >
                   Назад
                 </button>
                 <div class="account__table-bottom-pagination">
                   <p>
                     Страница
-                    <span class="account__table-pagination active">1</span> из
-                    <span class="account__table-pagination">2</span>
+                    <span id="current-page-mob" class="account__table-pagination active">1</span> из
+                    <span id="all-pages-mob" class="account__table-pagination">2</span>
                   </p>
                 </div>
                 <button
-                  class="account__table-bottom-button"
-                  id="account-button-next"
+                  class="account__table-bottom-button btn"
+                  id="account-button-next-mob"
                 >
                   Вперед
                 </button>
@@ -240,7 +241,7 @@
         <form class="account__settings-form" id="settingsForm">
           <div class="account__settings-input">
               <label for="nameInput">Сменить имя:</label>
-              <input type="text" id="changeName" name="name">
+              <input type="text" value="" id="changeName" name="name">
           </div>
           <div class="account__settings-input">
               <label for="photoInput">Сменить фото:</label>

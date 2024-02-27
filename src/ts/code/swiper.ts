@@ -221,16 +221,11 @@ export class HotelSecondSlider {
       autoplay: {
         delay: 2500,
       },
-      spaceBetween: 0,
+      spaceBetween: 10,
       slidesPerView: 1,
       freeMode: true,
       breakpoints: {
         576: {
-          spaceBetween: 0,
-          slidesPerView: 2,
-        },
-        768: {
-          spaceBetween: 10,
           slidesPerView: 2,
         },
         1024: {
