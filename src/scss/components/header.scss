@@ -337,17 +337,34 @@
       line-height: 28px;
     }
 
+    &-email{
+      padding-left: 24px;
+      position: relative;
+    }
+
+    &-phone{
+      position: relative;
+      padding-left: 24px;
+    }
+
     a {
       font-size: 12px;
       color: #666;
     }
 
     svg {
-      margin-right: 8px;
+      position: absolute;
+      left: 0;
+      top: 1px;
+      pointer-events: none;
       width: 16px;
       height: 16px;
       fill: #999;
       opacity: 0.5;
+
+      @include media-breakpoint-down(md) {
+        top: 6px;
+      }
     }
     
     &:hover {
@@ -485,7 +502,9 @@
 }
 
 .bottom-list {
-
+  @include media-breakpoint-down(md){
+    margin-bottom: 18px;
+  }
   &__link-offer {
     span {
       @include media-breakpoint-up(md) {
@@ -496,6 +515,9 @@
     svg {
       margin-right: 6px;
       width: 24px;
+      @include media-breakpoint-down(md){
+        display: none;
+      }
     }
   }
 
@@ -509,6 +531,9 @@
     svg {
       margin-right: 5px;
       width: 27px;
+      @include media-breakpoint-down(md){
+        display: none;
+      }
     }
   }
 
