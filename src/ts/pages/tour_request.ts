@@ -14,11 +14,6 @@ interface JQueryValidateForm extends JQuery<HTMLElement> {
   validate(object: Object): any;
 }
 
-
-// type addMet = {
-//   addMethod(str: string, callback: Function, errorInfo: string): void
-// }
-
 interface addValidator extends JQueryStatic {
   validator: any
 }

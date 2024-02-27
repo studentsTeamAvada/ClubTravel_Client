@@ -1,4 +1,3 @@
-import { Header } from "../components/header";
 import { Footer } from "../components/footer";
 import { InfoBlock } from "../code/hotel/info-block";
 import { PullData } from "../code/hotel/pull-data";
@@ -20,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   
   new Hotel();
-  new Header()
 });
 
 

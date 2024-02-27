@@ -1,8 +1,8 @@
 import $ from "jquery";
+import { Header } from "../../components/header";
 import {app} from "./../../modules/firebase"
 import { getFirestore, getDocs, collection  } from "firebase/firestore";
 import { HotelSlider, HotelSecondSlider } from "../../code/swiper";
-import { Preloader } from "../../components/preloader";
 
 interface Photo{
     urlWebp: string;
@@ -73,7 +73,7 @@ export class PullData{
         }        
 
         new HotelSecondSlider();
-        new Preloader();
+        new Header()
     }
 
     bottomSlide(data: object, id: string){
