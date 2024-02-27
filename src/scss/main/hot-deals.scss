@@ -204,15 +204,12 @@
   }
 
   &__button-wrapper {
-    a {
-      transition: all 0.2s ease;
-      color: #555;
-    }
-
-    svg {
-      width: 24px;
-      height: 24px;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: fit-content;
+    margin: 0 auto;
 
     @media (width >= 1024px) {
       &:hover {
@@ -221,10 +218,16 @@
         }
       }
     }
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+
+    a {
+      transition: all 0.2s ease;
+      color: #555;
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+    } 
   }
 
   &__title {

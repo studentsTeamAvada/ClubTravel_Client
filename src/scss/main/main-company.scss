@@ -121,6 +121,20 @@
   }
 
   &__button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: fit-content;
+    margin: 0 auto;
+
+    @media (width >= 1024px) {
+      &:hover {
+        a {
+          color: #f68521;
+        }
+      }
+    }
 
     a {
       transition: all 0.2s ease;
@@ -130,19 +144,7 @@
     svg {
       width: 24px;
       height: 24px;
-    }
-
-    @media (width >= 1024px) {
-      &:hover {
-        a {
-          color: #f68521;
-        }
-      }
-    }
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+    }  
   }
 
 
@@ -202,6 +204,7 @@
     height: 330px;
     box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
     background: #fff;
+    margin: 4px;
   }
 
 

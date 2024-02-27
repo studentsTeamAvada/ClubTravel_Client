@@ -2,7 +2,7 @@
 import { app } from "../../modules/firebase";
 import { getAuth, Auth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { FirebaseApp } from "firebase/app";
-import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
+import { getFirestore, collection, doc, setDoc, getDoc } from "firebase/firestore";
 import { fbUser } from "../../type";
  
 export class Registration {
@@ -86,15 +86,23 @@ export class Registration {
       });
   }
 
-    async addUserToFirebase(uid: string, userData: fbUser) {
+  async addUserToFirebase(uid: string, userData: fbUser) {
     const db = getFirestore(app);
-    const userRef = doc(collection(db, "users"), uid);
+    const userRef = doc(collection(db, 'users'), uid);
+
+    const userDoc = await getDoc(userRef);
+
+    if (userDoc.exists()) {
+      console.log('User document already exists. Skipping addition.');
+      return;
+    }
+
     await setDoc(userRef, userData)
       .then(() => {
-        console.log("Document written with UID: ", uid);
+        console.log('Document written with UID as documentId:', uid);
       })
       .catch((error) => {
-        console.error("Error adding document: ", error);
+        console.error('Error adding document: ', error);
       });
   }
 }

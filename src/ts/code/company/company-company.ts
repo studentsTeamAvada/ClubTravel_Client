@@ -20,7 +20,8 @@ export class CompanyProduct {
     const querySnapshot = await getDocs(collection(this.db, "hotels"));
     querySnapshot.forEach((doc) => {
       const product = doc.data() as Tours;
-
+      product.id = doc.id;
+      
       this.productsArray.push(product);
     });
 
@@ -32,13 +33,13 @@ export class CompanyProduct {
 
     products.forEach((product) => {
       const content = product;
-      const { name, price, img, date } = content;
+      const { name, price, img, date, id } = content;
 
       if (img && Array.isArray(img) && img.length > 0) {
         const { url, urlWebp } = img[0];
 
         let template = `
-        <div class="company-company__card">
+        <div class="company-company__card" data-id="${id}">
         <div class="company-company__card-img">
           <picture class="hero__bg-img">
             <source srcset=${urlWebp} type="image/webp" />
@@ -74,6 +75,20 @@ export class CompanyProduct {
         if (companyWrapper) {
           companyWrapper.insertAdjacentHTML("beforeend", template);
         }
+      }
+    });
+    this.getTourId();
+  }
+
+  getTourId() {
+    const cards = document.querySelectorAll('.company-company__card');
+    cards.forEach((card) => {
+      const divElement = card as HTMLDivElement;
+      if (divElement.dataset.id) {
+        divElement.addEventListener('click', () => {
+          const id = divElement.dataset.id;
+          window.location.href = `https://club-travel.netlify.app/hotel.html?id=${id}`;
+        });
       }
     });
   }
