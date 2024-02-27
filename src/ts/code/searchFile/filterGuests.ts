@@ -1,5 +1,7 @@
 import $ from 'jquery';
 import { FilteringData } from './filteringData';
+import { RenderHotTour } from './renderFiles';
+import { Hotel } from './type';
 
 export class Guests {
   guestsItemAdults: JQuery<HTMLElement>;
@@ -9,6 +11,7 @@ export class Guests {
   destinationCurrent: JQuery<HTMLElement>;
   dateCurrent: JQuery<HTMLElement>;
   kidsCounter: JQuery<HTMLElement>;
+  url: URL;
 
   constructor() {
     this.guestsItemAdults = $('.info__guests-item_adults');
@@ -23,17 +26,16 @@ export class Guests {
     this.closeDropDown();
     this.haldelsClik();
 
+    this.url = new URL(window.location.href);
+
     // const urlParams = new URLSearchParams(window.location.search);
     // const kids = urlParams.get('kids');
     // const isKids = urlParams.get('isKids');
-    
-  
-    
+
     // if (kids === '0') {
     //   new FilteringData().restoreFilterFromUrl('isKids', false);
     // }
-    
-  }    
+  }
 
   updateGuests(): void {
     let adultsCounter = $('.guests__current-counter');
@@ -102,7 +104,7 @@ export class Guests {
       newUrl.searchParams.set('kids', counterKids.text());
       history.pushState({}, '', newUrl.toString());
 
-      new FilteringData().removeParametersFromUrl(['isCountry', 'isDuration', 'date', ]);
+      new FilteringData().removeParametersFromUrl(['isCountry', 'isDuration', 'date']);
     });
 
     plusBtn.on('click', function () {
@@ -122,7 +124,7 @@ export class Guests {
       newUrl.searchParams.set('kids', counterKids.text());
       history.pushState({}, '', newUrl.toString());
 
-      new FilteringData().removeParametersFromUrl(['isCountry', 'isDuration', 'date', ]);
+      new FilteringData().removeParametersFromUrl(['isCountry', 'isDuration', 'date']);
     });
 
     function createYearsHtml(numKids: number) {
@@ -185,17 +187,16 @@ export class Guests {
   }
 
   haldelsClik() {
-    this.searchPanelBtn.on('click', () => {
+    this.searchPanelBtn.on('click', async () => {
       const urlParams = new URLSearchParams(window.location.search);
       const allParams = Array.from(urlParams.keys());
       const saveKids = urlParams.get('kids');
       const saveCountry = urlParams.get('isCountry') ?? '';
       const saveDuration = urlParams.get('isDuration') ?? '';
       const date = this.dateCurrent.text().trim();
-
+      console.log(allParams);
       if (allParams.includes('isCountry')) {
         new FilteringData().getHotelsByFilter('isCountry', +saveCountry);
-
         allParams.shift();
       }
 
@@ -208,6 +209,20 @@ export class Guests {
       if (allParams.includes('date')) {
         new FilteringData().getHotelsByFilter('date', date);
         allParams.shift();
+      }
+
+      if (this.url.pathname === '/hot_offers.html') {
+        const hotels = await new FilteringData().getHotelsByFilter('hotTour', true);
+        if (hotels.length > 0) {
+          const filteredHotels = hotels.filter((hotel) => hotel.isCountry === +saveCountry);
+          if (filteredHotels.length > 0) {
+            new RenderHotTour().renderTable(filteredHotels);
+          } else {
+            new RenderHotTour().renderTable(filteredHotels);
+          }
+        } else {
+          console.log('Немає готелів з hotTour = true');
+        }
       }
 
       if (allParams.includes('kids')) {

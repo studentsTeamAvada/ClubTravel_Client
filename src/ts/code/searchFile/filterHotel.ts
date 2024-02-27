@@ -2,6 +2,7 @@ import $ from 'jquery';
 import { FilteringData } from './filteringData';
 import { SelectedFilter } from './filterAdvanced';
 import noUiSlider, { target } from 'nouislider';
+
 import 'nouislider/dist/nouislider.css';
 
 export class Hotels {
@@ -21,12 +22,16 @@ export class Hotels {
   }
 
   selectingMeals(): void {
-    $('.category__btns-meals').on('click', (event) => {
-      const meals = $(event.currentTarget).index();
-
+    $('.category__btns-meals').on('click', function(event) {
+      const meals = $(this).index();
+      $('.category__btns-meals').removeClass('category__btns-meals_act');
+      $(this).toggleClass('category__btns-meals_act');
+  
       new SelectedFilter().selectedFilter('isMeals', meals);
     });
   }
+
+  
 
   selectingStars() {
     $('.category__btns-stars').on('click', (event) => {

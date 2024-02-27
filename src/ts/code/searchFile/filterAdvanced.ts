@@ -3,7 +3,7 @@ import { FilteringData } from './filteringData';
 export class SelectedFilter {
   constructor() {}
 
-  selectedFilter(key: string, value:string| number | boolean): void {
+  selectedFilter(key: string, value: string | number | boolean): void {
     const urlParams = new URLSearchParams(window.location.search);
     const savedCountry = urlParams.get('isCountry');
     const savedDuration = urlParams.get('isDuration');
@@ -12,16 +12,16 @@ export class SelectedFilter {
     const minPrice = urlParams.get('priceMin');
     const maxPrice = urlParams.get('priceMax');
 
-    if (savedCountry !== null) {
+    if (savedCountry) {
       new FilteringData().filterAdvanced('isCountry', +savedCountry, key, value);
     }
-    if (savedDuration !== null) {
+    if (savedDuration) {
       new FilteringData().filterAdvanced('isDuration', +savedDuration, key, value);
     }
-    if (savedDate !== null) {
+    if (savedDate) {
       new FilteringData().filterAdvanced('date', savedDate, key, value);
     }
-    if (savedKids !== null) {
+    if (savedKids ) {
       if (savedKids !== '0') {
         new FilteringData().filterAdvanced('isKids', true, key, value);
       } else {
@@ -29,9 +29,8 @@ export class SelectedFilter {
       }
     }
 
-    if (minPrice !== null && maxPrice !== null) {
+    if (minPrice && maxPrice ) {
       new FilteringData().filterAdvanced('priceMin', +minPrice, 'priceMax', +maxPrice);
     }
-    
   }
 }

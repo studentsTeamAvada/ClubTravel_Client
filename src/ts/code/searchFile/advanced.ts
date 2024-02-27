@@ -1,4 +1,8 @@
 import $ from 'jquery';
+import {rating, meals, regions, departure, star, country, duration} from './obgFile';
+
+
+
 export class AdvancedSearch {
   filterRow: JQuery<HTMLElement>;
   destinationCurrent: JQuery<HTMLElement>;
@@ -28,7 +32,6 @@ export class AdvancedSearch {
       $('.search__btn').addClass('search__btn_act');
       $('.search__row-bottom').addClass('search__row-bottom_active');
 
-
       $('.search__btn-close').removeClass('search__btn-close_act');
       $('.search__line').removeClass('search__line_act');
     });
@@ -37,7 +40,6 @@ export class AdvancedSearch {
       $('.search__row-bottom').removeClass('search__row-bottom_active');
       $('.search__btn-close').addClass('search__btn-close_act');
       $('.search__line').addClass('search__line_act');
-      console.log(123);
     });
   }
 
@@ -68,13 +70,6 @@ export class AdvancedSearch {
   }
 
   rating(val: string) {
-    const rating: { [key: string]: string } = {
-      '2': '3 звезды',
-      '3': '4 звезды',
-      '4': '5 звезд',
-      '5': 'Апартаменты',
-    };
-
     if (rating[val]) {
       this.filterRow.append(
         `<div class="category__filter-rating">
@@ -86,15 +81,6 @@ export class AdvancedSearch {
   }
 
   meals(val: string) {
-    const meals: { [key: string]: string } = {
-      '1': 'Без питания',
-      '2': 'Завтрак',
-      '3': 'Завтрак и ужин',
-      '4': 'Завтрак, обед, ужин',
-      '5': 'Всё включено',
-      '6': 'Ультра все включено',
-    };
-
     if (meals[val]) {
       this.filterRow.append(
         `<div class="category__filter-meals">
@@ -129,29 +115,6 @@ export class AdvancedSearch {
 
   region(val: string) {
     const filterRow = $('.category__filter-row');
-    const regions: { [key: string]: string } = {
-      '1': 'Шарм-эль-Шейх',
-      '2': 'Хургада',
-      '3': 'Дубай',
-      '4': 'Абу-Даби',
-      '5': 'Бангкок',
-      '6': 'Хуа Хин',
-      '7': 'Солнечный берег',
-      '8': 'Золотые пески',
-      '9': 'Будва',
-      '10': 'Свети Стефан',
-      '11': 'Бали',
-      '13': 'Батумі',
-      '15': 'Родос',
-      '17': 'Мармарис',
-      '19': 'Пафос',
-      '21': 'Сусс',
-      '23': 'Тенерифе',
-      '25': 'Буковуль',
-      '27': 'Улудаг',
-      '28': 'Бансько',
-      '29': 'Інше',
-    };
 
     if (regions[val]) {
       filterRow.append(`
@@ -164,11 +127,6 @@ export class AdvancedSearch {
   }
 
   departure(val: string) {
-    const departure: { [key: string]: string } = {
-      '1': 'Киев',
-      '2': 'Львов',
-    };
-
     if (departure[val]) {
       this.filterRow.append(
         `<div class="category__filter-flying">
@@ -183,17 +141,10 @@ export class AdvancedSearch {
     const urlParams = new URLSearchParams(window.location.search);
     const savedStar = urlParams.get('isStar');
 
-    const star: { [key: string]: string } = {
-      '2': 'three',
-      '3': 'four',
-      '4': 'five',
-      '5': 'apart',
-    };
+
 
     if (savedStar && star[savedStar]) {
-      $(`.category__btns-stars[data-stars="${star[savedStar]}"]`).addClass(
-        'category__btns-stars_act'
-      );
+      $(`.category__btns-stars[data-stars="${star[savedStar]}"]`).addClass('category__btns-stars_act');
     }
   }
 
@@ -211,9 +162,7 @@ export class AdvancedSearch {
     };
 
     if (savedMeals && meals[savedMeals]) {
-      $(`.category__btns-meals[data-meals="${meals[savedMeals]}"]`).addClass(
-        'category__btns-meals_act'
-      );
+      $(`.category__btns-meals[data-meals="${meals[savedMeals]}"]`).addClass('category__btns-meals_act');
     }
   }
 
@@ -223,13 +172,9 @@ export class AdvancedSearch {
     const savedFlight = urlParams.get('flight');
 
     if (savedTour === 'true') {
-      $('.category__btns-tour[data-tour="tour"]').addClass(
-        'category__btns-tour_act'
-      );
+      $('.category__btns-tour[data-tour="tour"]').addClass('category__btns-tour_act');
     } else if (savedFlight === 'true') {
-      $('.category__btns-tour[data-tour="fly"]').addClass(
-        'category__btns-tour_act'
-      );
+      $('.category__btns-tour[data-tour="fly"]').addClass('category__btns-tour_act');
     }
   }
 
@@ -243,9 +188,7 @@ export class AdvancedSearch {
     };
 
     if (savedDeparture && departure[savedDeparture]) {
-      $(
-        `.category__btns-city[data-city="${departure[savedDeparture]}"]`
-      ).addClass('category__btns-city_act');
+      $(`.category__btns-city[data-city="${departure[savedDeparture]}"]`).addClass('category__btns-city_act');
     }
   }
 
@@ -259,30 +202,6 @@ export class AdvancedSearch {
     const savedYears = urlParams.get('years');
     const yearsArr = savedYears ? savedYears.match(/\d+ \D+/g) : [];
 
-    const country: { [key: string]: string } = {
-      '0': 'Все направления',
-      '1': 'Египет',
-      '2': 'ОАЭ',
-      '3': 'Таиланд',
-      '4': 'Болгария',
-      '5': 'Черногория',
-      '6': 'Индонезия',
-      '7': 'Грузия',
-      '8': 'Греция',
-      '9': 'Турция',
-      '10': 'Кипр',
-      '11': 'Тунис',
-      '12': 'Испания',
-      '13': 'Украина',
-    };
-
-    const duration: { [key: string]: string } = {
-      '1': '3 ночи',
-      '2': '7 ночей',
-      '3': '10 ночей',
-      '4': '14 ночей',
-      '5': '21 ночь',
-    };
 
 
     if (savedDuration && duration[savedDuration]) {
@@ -290,8 +209,6 @@ export class AdvancedSearch {
     } else if (this.durationCurrent.text() === '') {
       this.durationCurrent.text('Длительность');
     }
-
- 
 
     if (savedDestination && country[savedDestination]) {
       this.destinationCurrent.text(country[savedDestination]);
@@ -311,19 +228,28 @@ export class AdvancedSearch {
       $('.info__guests-subcounter').text(savedKids !== null ? savedKids : '');
       $('.info__guests-counters_adults').text(savedAdults !== null ? savedAdults : '');
       $('.info__guests-counters_kids').text(savedKids !== null ? savedKids : '');
-    }
-    else{
+    } else {
       $('.info__guests-counters_adults').text('0');
       $('.info__guests-counters_kids').text('0');
     }
 
-      $(document).ready(function() {
-        if (yearsArr) {
-            $.each(yearsArr, function(index, item) {
-                $('.info__guests-item-current').eq(index).text(item);
-            });
-        }
+    $(document).ready(function () {
+      if (yearsArr) {
+        $.each(yearsArr, function (index, item) {
+          $('.info__guests-item-current').eq(index).text(item);
+        });
+      }
+    });
+  }
+
+  showAdvancedInfoHotTour() {
+    const tableBtn = document.querySelectorAll('.table__btn');
+    const subThead = document.querySelector('.table__row');
+    tableBtn.forEach(function (btn) {
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('table__btn_act');
+        subThead?.classList.toggle('table__row_show');
+      });
     });
   }
 }
-
