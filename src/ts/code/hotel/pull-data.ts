@@ -110,17 +110,14 @@ export class PullData{
             </div>
         `;   
         
-
-
-
         sliderWrapper.append(`
             <div class="swiper-slide slide">
                 <div class="slide__wrap">
                     <div class="slide__image">
                         <div class="slide__img">
                             <picture>
-                            <source srcset="${img.urlWebp}"/>
-                            <img src="${img.url}" width="1366" height="550" loading="lazy" alt="hotel-image"/>
+                                <source srcset="${img.urlWebp}"/>
+                                <img src="${img.url}" width="1024" height="683" loading="lazy" alt="hotel-image"/>
                             </picture>
                         </div>
                     
@@ -185,7 +182,7 @@ export class PullData{
         $("#departure").html(doc.departureIn);
         $("#foods").html(doc.meals);
         $("#rooms").html(doc.room.join(", "));
-        $(".tour__price-sum").html(doc.price[0]).attr('data-price', doc.price);
+        $(".tour__price-sum").html(doc.price[0]).attr('data-price', doc.price.length === 1?doc.price[0]: doc.price[1] );
         $(".tour__total-price").html(doc.price[0]);
         $(".text-block__main-text").html(doc.hotelInfo.description)
         $("#location").html(doc.hotelInfo.location)
@@ -229,7 +226,7 @@ export class PullData{
                 <div class="swiper-slide">
                 <picture>
                     <source srcset="${photoUrl.urlWebp}"/>
-                    <img src="${photoUrl.url}" alt="Description of the image" ${index !== 0? 'loading="lazy"': ''} width="730" height="499"/>
+                    <img src="${photoUrl.url}" alt="Description of the image" ${index !== 0? 'loading="lazy"': ''} width="1024" height="768"/>
                 </picture>
                 </div>
             `);
@@ -238,7 +235,7 @@ export class PullData{
             <div class="swiper-slide">
             <picture>
                 <source srcset="${photoUrl.urlWebp}"/>
-                <img src="${photoUrl.url}" alt="Description of the image" ${index > 3? 'loading="lazy"': ''} width="730" height="499"/>
+                <img src="${photoUrl.url}" alt="Description of the image" ${index > 3? 'loading="lazy"': ''} width="1024" height="768"/>
             </picture>
             </div>
         `);

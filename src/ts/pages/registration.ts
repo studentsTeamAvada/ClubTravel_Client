@@ -1,10 +1,8 @@
 import { Header } from "../components/header";
 import { justValidateRegistration } from "../modules/justValidate";
 import { Registration } from "../code/registration/registration";
-import { Preloader } from "../components/preloader";
 
 document.addEventListener("DOMContentLoaded", () => {
-    new Header();
     justValidateRegistration();
     
     const registrationInstance = new Registration();
@@ -19,9 +17,5 @@ document.addEventListener("DOMContentLoaded", () => {
         registrationInstance.registrationWithGoogle();
     })
     
-    const buttonRegistrationFacebook = document.querySelector('.registration__form-btn-facebook') as HTMLElement;
-    buttonRegistrationFacebook.addEventListener('click', () => {
-        registrationInstance.registrationWithFacebook();
-    })
-    new Preloader()
+    new Header();
 })

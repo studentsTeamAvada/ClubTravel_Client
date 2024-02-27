@@ -16,18 +16,27 @@ export const app = initializeApp(firebaseConfig);
 
 
 export class GetSing{
-    promise(){
-      return new Promise(resolve => {
-        onAuthStateChanged(getAuth(), (user) => {
-          if(user){
-            resolve(user)
-          }else{
-            resolve(false)
-          }
-        })
+  promise(){
+    return new Promise(resolve => {
+      onAuthStateChanged(getAuth(), (user) => {
+        if(user){
+          resolve(user)
+        }else{
+          resolve(false)
+        }
       })
-    }
+    })
+  }
 }
+
+// const user = await new GetSing().promise() 
+
+
+
+
+
+
+
 
 // const storage = getStorage(app);
 

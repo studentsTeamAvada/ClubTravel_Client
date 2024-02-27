@@ -1,15 +1,16 @@
-import { Users } from "../../type";
-import {getFirestore, collection, getDocs, Firestore,} from "firebase/firestore";
-import { FirebaseApp } from "firebase/app";
-import { app } from "../../modules/firebase";
-import { getAuth, onAuthStateChanged, User } from "firebase/auth";
+import { Users } from '../../type';
+import { getFirestore, collection, getDocs, Firestore, doc, updateDoc } from 'firebase/firestore';
+import { FirebaseApp } from 'firebase/app';
+import { app } from '../../modules/firebase';
+import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
+import { uploadImageToFirebaseStorage } from '../account/getPhoto'
+import { Pagination } from "./pagination";
 
-const accountOrder = document.querySelector(".account__order");
-const accountOrders = document.querySelector(".account__table-bottom-left");
-const accountOrdersMobile = document.querySelector(".account__table-bottom-left-mobile");
-const accountLeftWrapper = document.querySelector(".account-mobile__table");
+const accountOrder = document.querySelector('.account__order');
+const accountOrders = document.querySelector('.account__table-bottom-left');
+const accountOrdersMobile = document.querySelector('.account__table-bottom-left-mobile');
+const accountLeftWrapper = document.querySelector('.account-mobile__table');
 const accountLeft = document.querySelector('.account__left');
-
 export class Account {
   private app: FirebaseApp;
   private db: Firestore;
@@ -25,12 +26,14 @@ export class Account {
     this.renderAccountLeft();
   }
 
+
+
   initAuth() {
     const auth = getAuth();
 
     onAuthStateChanged(auth, (users) => {
       this.currentUser = users;
-      
+
       if (users) {
         this.loadCards();
       } else {
@@ -41,33 +44,32 @@ export class Account {
   }
 
   exitAccount() {
-    console.log('Пользователь вышел из аккаунта');
-    
+
     const auth = getAuth();
-    auth.signOut().then(() => {
-        
+    auth
+      .signOut()
+      .then(() => {
         console.log('Пользователь вышел из аккаунта');
-    }).catch((error) => {
+      })
+      .catch((error) => {
         console.error('Ошибка при выходе из аккаунта:', error);
-    });
+      });
   }
 
   async renderAccountLeft() {
-
-    const querySnapshot = await getDocs(collection(this.db, "users"));
+    const querySnapshot = await getDocs(collection(this.db, 'users'));
 
     if (!this.currentUser) return;
 
     const userEmail = this.currentUser.email;
 
     querySnapshot.forEach((doc) => {
-        const user = doc.data();
-        
-        if (user.email === userEmail) {
-            const { email, name, photo } = user;
-            console.log(email);
+      const user = doc.data();
 
-            let templateRenderLeft = `
+      if (user.email === userEmail) {
+        const { name, photo } = user;
+
+        let templateRenderLeft = `
             <div class="account__left-photo">
             
             <img src="${photo}" alt="bg" />
@@ -92,16 +94,21 @@ export class Account {
           </a>
         `;
 
-        if(accountLeft) {
-          accountLeft.insertAdjacentHTML("beforeend", templateRenderLeft)
+        if (accountLeft) {
+          accountLeft.insertAdjacentHTML('beforeend', templateRenderLeft);
         }
-
-        }      
+      }
     });
 
     this.settings();
+
+    const exitButton = document.querySelector('.account__left-exit');
+
+    exitButton?.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.exitAccount();
+    });
   }
-  
 
   settings() {
     const buttonSettings = document.querySelector('.account__left-settings');
@@ -122,41 +129,95 @@ export class Account {
           buttonOrders?.classList.remove('active');
           accountRight?.classList.add('active');
           accountSettings?.classList.remove('active');
-          
         } else if (clickContent && clickContent.includes('Мои заказы')) {
           buttonOrders?.classList.add('active');
           buttonSettings?.classList.remove('active');
           accountRight?.classList.remove('active');
           accountSettings?.classList.add('active');
         }
-
-      } 
+      }
     });
+  }
+
+  isChangeInput() {
+    const input = document.querySelector('.account__settings-input input') as HTMLFormElement;
+    const button = document.querySelector('.account__settings-button') as HTMLButtonElement;
+    if (input.value === '') {
+      button.disabled = true;
+    }
+
+    input?.addEventListener('input', () => {
+      
+      if (input.value === '' || input.value.length < 3 || input.value.length > 20) {
+        button.disabled = true;
+      } else {
+        button.disabled = false;
+      }
+    });
+  }
+
+  async updateUserProfile(name: string, photo?: string) {
+    try {
+      if (!this.currentUser) throw new Error('No user is currently signed in.');
+
+      const userDocRef = doc(this.db, 'users', this.currentUser.uid);
+      await updateDoc(userDocRef, { name, photo });
+
+      console.log('User profile updated successfully!');
+      window.location.href = 'account.html';
+    } catch (error) {
+      console.error('Failed to update user profile:', error);
+    }
+  }
+
+  async getFormData() {
+    const form = document.querySelector('#settingsForm') as HTMLFormElement;
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
   
+      const formData = new FormData(form);
+      const name = formData.get('name') as string;
+      const photo = formData.get('photo') as File;
+  
+      let imageUrl: string | undefined;
+  
+      if (photo && photo.size > 0) {
+        try {
+          imageUrl = await uploadImageToFirebaseStorage(photo);
+        } catch (error) {
+          console.error("Failed to upload image to Firebase Storage:", error);
+        }
+      } else {
+        const photoHtml = document.querySelector('.account__left-photo img') as HTMLImageElement;
+        imageUrl = photoHtml.src;
+      }
+  
+      await this.updateUserProfile(name, imageUrl);
+    });
   }
 
   async loadCards() {
     if (!this.currentUser) return;
     const userEmail = this.currentUser.email;
-    
-    const querySnapshot = await getDocs(collection(this.db, "users"));
+
+    const querySnapshot = await getDocs(collection(this.db, 'users'));
     querySnapshot.forEach((doc) => {
       const users = doc.data().orders;
       users.forEach((user: Users) => {
         if (user.email === userEmail) {
           this.usersArray.push(user);
         }
-      })
+      });
     });
 
     this.renderUsers();
+    new Pagination(this.usersArray.length)
   }
- 
 
   renderUsers() {
     const users = this.usersArray;
 
-    users.forEach((user) => {
+    users.forEach((user, index) => {
         const content = user;
         const { date, email, idOrder, payStatus, price } = content;
         
@@ -164,32 +225,32 @@ export class Account {
         <td>${idOrder}</td>
         <td>${price}</td>
         `;
-      if(email.length < 23) {
-          template += `
-              <td>${email}</td>
-          `;
-      } else {
-          template += `
-          <td>${email.slice(0, 23) + "..."}</td>
-      `;
-      }
+        if(email.length < 23) {
+            template += `
+                <td>${email}</td>
+            `;
+        } else {
+            template += `
+            <td>${email.slice(0, 23) + "..."}</td>
+        `;
+        }
         template += `
         <td>
-        ${
+          ${
             payStatus == false
             ? `<p class="account__payment-processing">В обработке</p>`
             : `<p class="account__payment-success">Оплачено</p>`
-        }
-      </td>
+          }
+        </td>
         <td>${date}</td>
         `;
-        
+        const wrapperTemplate = `<tr class="order" id=${index} >${template}</tr>`
         if (accountOrder) {
-          accountOrder.insertAdjacentHTML("beforeend", template);
-          }
+          accountOrder.insertAdjacentHTML("beforeend", wrapperTemplate);
+        }
 
-          let templateMobile = `
-          <div class="account-mobile__table-wrapper">
+        let templateMobile = `
+          <div id=${index} class="account-mobile__table-wrapper">
             <div class="account-mobile__table-left">
               <p class="account-mobile__table-left-number">Номер заказа</p>
               <p>Сумма</p>
@@ -201,29 +262,25 @@ export class Account {
               <p class="account-mobile__table-right-number">${idOrder}</p>
               <p>${price}</p>
               `;
-              if(email.length < 23) {
-                templateMobile += `
+      if (email.length < 23) {
+        templateMobile += `
                     <p>${email}</p>
                   `;
-              } else {
-                templateMobile += `
-                  <p>${email.slice(0, 23) + "..."}</p>
+      } else {
+        templateMobile += `
+                  <p>${email.slice(0, 23) + '...'}</p>
               `;
-              }
-              templateMobile += `
-              ${
-                payStatus == false
-                ? `<p class="account__payment-processing">В обработке</p>`
-                : `<p class="account__payment-success">Оплачено</p>`
-                }
+      }
+      templateMobile += `
+              ${payStatus == false ? `<p class="account__payment-processing">В обработке</p>` : `<p class="account__payment-success">Оплачено</p>`}
               <p>${date}</p>
             </div>
           </div>
-          `;
-
-          if (accountLeftWrapper) {
-            accountLeftWrapper.insertAdjacentHTML("beforeend", templateMobile);
-          }
+        `;
+        
+        if (accountLeftWrapper) {
+          accountLeftWrapper.insertAdjacentHTML("beforeend", templateMobile);
+        }
     }) 
 
     let ordersTotal = `
@@ -231,18 +288,15 @@ export class Account {
     `;
 
     if (accountOrders) {
-      accountOrders.insertAdjacentHTML("beforeend", ordersTotal);
+      accountOrders.insertAdjacentHTML('beforeend', ordersTotal);
     }
 
     let ordersTotalMobile = `
       <p>Показано <span>${this.usersArray.length > 9 ? 9 : this.usersArray.length}</span> из <span>${this.usersArray.length}</span></p>
-    `
+    `;
 
     if (accountOrdersMobile) {
-      accountOrdersMobile.insertAdjacentHTML("beforeend", ordersTotalMobile);
+      accountOrdersMobile.insertAdjacentHTML('beforeend', ordersTotalMobile);
     }
   }
- 
 }
-
-

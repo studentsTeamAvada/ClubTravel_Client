@@ -23,7 +23,7 @@ export class IsAuthorization {
         const user = await getAuth().currentUser;
         if (user) {
             console.log('Пользователь авторизован:', user.uid);
-            window.location.href = "index.html"; 
+            window.location.href = "account.html"; 
         } else {
             console.log('Пользователь не авторизован');
             window.location.href = "authorization.html";

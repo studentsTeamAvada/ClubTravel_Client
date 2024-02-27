@@ -7,23 +7,20 @@ import { Order } from "../code/hotel/order";
 document.addEventListener("DOMContentLoaded", () => {
   class Hotel {
     infoBlock: InfoBlock;
-    header: Header;
     footer: Footer;
     pullData: PullData;
     order: Order
 
     constructor() {
       this.infoBlock = new InfoBlock();
-      this.header = new Header();
       this.footer = new Footer();
       this.pullData = new PullData();
       this.order = new Order();
-
-      this.init();
     }
-    init() {}
   }
+  
   new Hotel();
+  new Header()
 });
 
 

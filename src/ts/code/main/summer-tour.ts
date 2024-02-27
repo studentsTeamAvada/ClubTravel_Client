@@ -27,6 +27,7 @@ export class SummerTourProduct {
     const querySnapshot = await getDocs(filterSummerTours);
     querySnapshot.forEach((doc) => {
       const product = doc.data() as Tours;
+      product.id = doc.id;
 
       this.productsArray.push(product);
     });
@@ -40,7 +41,7 @@ export class SummerTourProduct {
     products.forEach((product) => {
       const content = product;
 
-      const { country, img, price } = content;
+      const { country, img, price, id } = content;
 
       if (img && Array.isArray(img) && img.length > 0) {
         const { url, urlWebp } = img[0];
@@ -64,7 +65,7 @@ export class SummerTourProduct {
             <p class="summer-tour__card-price-new">от <span>${price[0]}€</span>/чел</p>
             
         </div>
-        <a href="#" class="summer-tour__btn btn">Выбрать тур</a>
+        <a href="https://club-travel.netlify.app/hotel.html?id=${id}" class="summer-tour__btn btn">Выбрать тур</a>
         `;
 
         if (summerTourWrapper) {

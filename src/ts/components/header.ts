@@ -1,5 +1,6 @@
 import $ from "jquery";
 import { GetSing} from "./../modules/firebase"
+import { Preloader } from "./preloader";
 
 interface user{
   uid: string
@@ -15,10 +16,14 @@ export class Header {
   }
 
   init(){
+    new Preloader()
     this.burger();
-    this.scroll();
     this.getSing();
     this.resize();
+
+    setTimeout(() => {
+      this.scroll();
+    },300)
   }
 
   burger(): void {
@@ -58,6 +63,7 @@ export class Header {
     const user = await new GetSing().promise() as user 
     const icon = $(".top-list__link-user")
     const mobIcon = $(".menu__user-mobile-link")
+    
     if(user){
       icon.html('<svg id="icon-account"><use xlink:href="#user"></use></svg>')
       icon.removeClass("top-list__not-sing")
@@ -74,7 +80,7 @@ export class Header {
 
       mobIcon.attr("href", "authorization.html");
       mobIcon.html('<svg id="icon-account"><use xlink:href="#sing"></use></svg>')
-      console.log("Пользователь авторизирован")
+      console.log("Пользователь не авторизирован")
     }
   }
 }

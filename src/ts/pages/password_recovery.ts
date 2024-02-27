@@ -1,10 +1,9 @@
 import { Header } from "../components/header";
 import { justValidatePasswordRecovery } from "../modules/justValidate";
 import { PasswordRecovery } from "../code/password-recovery/password-recovery";
-import { Preloader } from "../components/preloader";
 
 document.addEventListener("DOMContentLoaded", () => {
-  new Header();
+
   justValidatePasswordRecovery();
   
   const passwordRecoveryInstance = new PasswordRecovery();
@@ -16,5 +15,5 @@ document.addEventListener("DOMContentLoaded", () => {
     passwordRecoveryInstance.passwordRecovery();
   });
   
-  new Preloader()
+  new Header();
 })

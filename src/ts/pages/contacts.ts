@@ -2,7 +2,6 @@ import { Header } from "../components/header";
 import { Footer } from "../components/footer";
 import $ from "jquery";
 import 'jquery-validation';
-import { Preloader } from "../components/preloader";
 import { AsYouType, validatePhoneNumberLength } from 'libphonenumber-js'
 
 type JQueryValidateForm = JQuery<HTMLFormElement>;
@@ -19,11 +18,9 @@ type addValidator = {
 };
 
 class Contacts {
-  header: Header;
   footer: Footer;
 
   constructor() {
-    this.header = new Header();
     this.footer = new Footer();
     this.init();
   }
@@ -54,7 +51,7 @@ class Contacts {
           required: true,
           min: true,
         },
-        main: {
+        mail: {
           laxEmail: true,
           required: true,
           minlength: 13,
@@ -64,7 +61,7 @@ class Contacts {
         phone: {
           required: "Введите номер",
         },
-        main: {
+        mail: {
           required: "Введите почту",
           minlength: "Номер должен состоять из 10 цифр"
         },
@@ -104,5 +101,5 @@ class Contacts {
 
 document.addEventListener("DOMContentLoaded", () => {
   new Contacts();
-  new Preloader()
+  new Header();
 })

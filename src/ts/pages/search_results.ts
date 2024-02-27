@@ -1,11 +1,13 @@
 import { AdvancedSearch } from '../code/searchFile/advanced';
 import { AllImportFile } from '../code/searchFile/allImportFile';
 import { Header } from '../components/header';
-import { Preloader } from '../components/preloader';
 
 document.addEventListener('DOMContentLoaded', async () => {
-  new Header();
   new AllImportFile();
   new AdvancedSearch();
+<<<<<<< HEAD
   new Preloader();
+=======
+  new Header();
+>>>>>>> 9420ec2d5a78d21bd820b10149f0f2c3b3013946
 });
