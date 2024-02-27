@@ -86,8 +86,7 @@ export class Guests {
         counter.text(currentVal - 1);
         kidsCounter.text(currentVal - 1);
         counterKids.text(currentVal - 1);
-        $('.info__guests-item').eq(3).remove();
-        createYearsHtml(currentVal - 1);
+        // $('.info__guests-item').eq(3).remove();
       }
 
       if (+kidsCounter === 1) {
@@ -111,7 +110,6 @@ export class Guests {
         counter.text(currentVal + 1);
         kidsCounter.text(currentVal + 1);
         counterKids.text(currentVal + 1);
-        createYearsHtml(currentVal + 1);
       }
 
       if (currentVal + 1 === 9) {
@@ -177,6 +175,7 @@ export class Guests {
       updateURL();
     });
   }
+
 
   closeDropDown(): void {
     $('.info__guests-add').on('click', () => {
