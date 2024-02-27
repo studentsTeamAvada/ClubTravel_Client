@@ -5,7 +5,15 @@
   <link rel="icon" type="image/ico+xml" href="/ClubTravel.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Горящие предложения</title>
-  <link rel="stylesheet" crossorigin href="/assets/Hot_offers-ItRleU25.css">
+  <script type="module" crossorigin src="/assets/Hot_offers-vllhCwwI.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/header-Jv2ZkStG.js">
+  <link rel="modulepreload" crossorigin href="/assets/index.esm2017-wBt5Meyf.js">
+  <link rel="modulepreload" crossorigin href="/assets/swiper-LJiYZK07.js">
+  <link rel="modulepreload" crossorigin href="/assets/air-datepicker-F0XLJdot.js">
+  <link rel="modulepreload" crossorigin href="/assets/allImportFile-VED0IQun.js">
+  <link rel="stylesheet" crossorigin href="/assets/air-datepicker-vjRodfbR.css">
+  <link rel="stylesheet" crossorigin href="/assets/allImportFile-tagHhIJe.css">
+  <link rel="stylesheet" crossorigin href="/assets/Hot_offers-qflwQSct.css">
 </head>
 
   <body>
@@ -36,7 +44,7 @@
       <nav class="menu__body">
         <ul class="menu__list bottom-list">
           <li>
-            <a href="index.html" class="bottom-list__link">Поиск тура</a>
+            <a href="search_results.html" class="bottom-list__link">Поиск тура</a>
           </li>
 
           <li>
@@ -448,7 +456,7 @@
         </div>
       </div>
 
-      <div class="category__filter">
+      <!-- <div class="category__filter">
         <hr class="category__filter-line" />
         <div class="category__filter-item">
           <h3 class="category__filter-title">Активные фильтры:</h3>
@@ -456,14 +464,86 @@
             <h3 class="category__filter-title category__filter-title_main">Категория</h3>
           </div>
         </div>
-      </div>
+      </div> -->
+
     </div>
   </div>
 </div>
 
+
             </div>
           </div>
         </section>
+        <section class="hot-result">
+          <div class="hot-result__container">
+            <div class="hot-result__content">
+              <div class="hot-result__table table"></div>
+            </div>
+          </div>
+        </section>
+        <section class="offer">
+  <div class="offer__container">
+    <h2 class="offer__title">НЕТ ВРЕМЕНИ ИСКАТЬ ТУР?</h2>
+    <p class="offer__text">
+      Просто скажите нам как должен выглядеть отдых вашей мечты и мы найдём
+      лучший тур для вас!
+    </p>
+    <div class="offer__content">
+      <div class="offer__request">
+        <p class="offer__request-text">
+          Заполните короткую форму запроса на нашем сайте и мы свяжемся с вами в
+          течении 1 часа в рабочее время
+        </p>
+        <a href="tour_request.html" class="offer__request-link"
+          >ЗАПОЛНИТЬ ЗАЯВКУ НА ПОИСК ТУРА</a
+        >
+      </div>
+      <p class="offer__or">или</p>
+      <div class="offer__assistant">
+        <p class="offer__assistant-text">Свяжитесь с нашим консультантом</p>
+        <div class="offer__assistant-row">
+          <div class="offer__assistant-img">
+            <picture>
+              <source
+                srcset="data:image/webp;base64,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 "
+                type="image/webp"
+              />
+              <img src="/assets/assistant-TM-SmJ5a.png" alt="assistant" />
+            </picture>
+          </div>
+          <div class="offer__assistant-column">
+            <p class="offer__assistant-name">Марина Каасик</p>
+            <p class="offer__assistant-info">Специалист по подбору туров</p>
+            <div class="offer__assistant-social">
+              <a class="offer__assistant-link" href="tel:+372 6 130 633">
+                <svg>
+                  <use xlink:href="#phone"></use>
+                </svg>
+                +372 6 130 633
+              </a>
+              <a class="offer__assistant-link" href="mailto:contact@email.ee">
+                <svg>
+                  <use xlink:href="#mail"></use>
+                </svg>
+                contact@email.ee
+              </a>
+              <a
+                class="offer__assistant-link"
+                href="https://www.messenger.com/"
+              >
+                <svg>
+                  <use xlink:href="#messanger"></use>
+                </svg>
+                Написать в Messenger</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
       </main>
       <footer class="footer">
   <div class="footer__container">
@@ -942,5 +1022,6 @@
 
 
     </div>
+
   </body>
 </html>
