@@ -261,6 +261,12 @@ export class CalendarSwiper{
   swiperCalendar(){
     new Swiper(".result__header-swiper", {
       spaceBetween: 44,
+
+      breakpoints:{
+        320:{
+          slidesPerView: "auto",
+        }
+      },
       navigation: {
         nextEl: ".calendar__btn-next",
         prevEl: ".calendar__btn-prev",

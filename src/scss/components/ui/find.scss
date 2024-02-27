@@ -6,14 +6,16 @@
       display: flex;
       align-items: center;
       border-radius: 10px 10px 0 0;
-      padding: 17px 0 11px 32px;
- 
+      padding: 14px 0 14px 32px;
+      @include media-breakpoint-down(xs) {
+        padding: 14px 0 14px 0px;
+      }
     }
 
     &-bottom {
       position: relative;
       border-radius: 0 0 10px 10px;
-      padding: 16px 32px 19px 33px;
+      padding: 14px 32px 0px 33px;
       max-height: 53px;
       box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
       transition: hidden 0.5s ease;
@@ -38,6 +40,10 @@
       text-transform: uppercase;
       letter-spacing: 0.9px;
       font-size: 18px;
+
+      @include media-breakpoint-down(xs) {
+        margin: 0 auto;
+      }
     }
 
     &-sub {
@@ -185,6 +191,10 @@
     transition: 0.9s ease;
     background: #999;
     opacity: 1;
+
+    @include media-breakpoint-down(xs) {
+      display: none;
+    }
   }
 }
 
@@ -818,6 +828,7 @@
       display: flex;
       align-items: center;
       margin-top: 26px;
+      padding-bottom: 25px;
     }
 
     &-row {
