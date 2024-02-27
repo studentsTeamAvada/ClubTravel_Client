@@ -22,7 +22,7 @@ export class Hotels {
   }
 
   selectingMeals(): void {
-    $('.category__btns-meals').on('click', function(event) {
+    $('.category__btns-meals').on('click', function() {
       const meals = $(this).index();
       $('.category__btns-meals').removeClass('category__btns-meals_act');
       $(this).toggleClass('category__btns-meals_act');

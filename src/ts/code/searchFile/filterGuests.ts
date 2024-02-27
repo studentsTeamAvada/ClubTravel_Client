@@ -1,8 +1,6 @@
 import $ from 'jquery';
 import { FilteringData } from './filteringData';
 import { RenderHotTour } from './renderFiles';
-import { Hotel } from './type';
-
 export class Guests {
   guestsItemAdults: JQuery<HTMLElement>;
   searchPanelBtn: JQuery<HTMLElement>;

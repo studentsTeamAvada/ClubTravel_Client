@@ -3,7 +3,7 @@ import { collection, getFirestore, query, where, getDocs } from 'firebase/firest
 import { Hotel } from './type';
 import { ResultSwiper } from '../swiper';
 import { DropdownSearch } from './dropSearch';
-import { RenderHotels, RenderRegions, RenderInfo, RenderHotTour } from './renderFiles';
+import { RenderHotels, RenderRegions, RenderInfo, } from './renderFiles';
 
 new DropdownSearch('.info__destination-select');
 new DropdownSearch('.info__duration-select');
