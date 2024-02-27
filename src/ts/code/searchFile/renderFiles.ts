@@ -1,9 +1,10 @@
 import $ from 'jquery';
-import { DropdownSearch } from '../../components/dropSearch';
+import { DropdownSearch } from './dropSearch';
 import { Calendar } from './priceCalendar';
 import { CalendarSwiper } from '../swiper';
 import { Hotel } from './type';
 import { FilterRegion } from './filterRegion';
+import { AdvancedSearch } from './advanced';
 
 export class RenderHotels {
   constructor() {}
@@ -88,7 +89,7 @@ export class RenderHotels {
                                 <div class="result__rating-subitem">
                                   <p class="result__rating-duration">
                                     <svg><use xlink:href="#clock"></use></svg>
-                                    ${item.duration}
+                                    ${item.duration} ${new RenderHotTour().getNightForm(item.duration)}
                                   </p>
                         
                                   <p class="result__rating-meal">
@@ -143,19 +144,9 @@ export class RenderHotels {
 
       $('.result__price-btn').each(function () {
         $(this).on('click', function () {
-
-
-
-
-
-
           // $(this).closest('.result__content').find('.table').toggleClass('table_act');
         });
-
-
       });
-    
-      
     }
   }
 }
@@ -309,4 +300,91 @@ export class RenderInfo {
   }
 }
 
+export class RenderHotTour {
+  constructor() {}
 
+  getNightForm(duration: number | string) {
+    if (duration === 1) {
+      return 'ночь';
+    } else if (duration === 3 || duration === 7 || duration === 10 || duration === 14 || duration === 21) {
+      return 'ночей';
+    } else {
+      return 'ночі';
+    }
+  }
+
+  renderTable(info: Hotel[]) {
+    if (info.length > 0) {
+      $('.table').html('');
+
+      const tableHeadHtml = `
+        <div class="table__thead">
+          <div class="table__tr">
+            <p class="table__th">Дата</p>
+            <p class="table__th">Откуда</p>
+            <p class="table__th">Куда</p>
+            <p class="table__th">Длительность</p>
+            <p class="table__th">Цена</p>
+            <p class="table__th"></p>
+          </div>
+        </div>`;
+
+      const tableInfoHead = `
+        <div class="table__row">
+          <div class="table__row-thead">
+            <div class="table__tr">
+              <p class="table__th">Отель</p>
+              <p class="table__th">Категория</p>
+              <p class="table__th">Питание</p>
+              <p class="table__th">Состав тура</p>
+              <p class="table__th">Цена</p>
+              <p class="table__th"></p>
+            </div>
+          </div>
+        </div>`;
+
+      let tableRow = '';
+      info.forEach((item) => {
+        tableRow = `
+          <div class="table__tbody table__tbody_add">
+            <div class="table__tr">
+              <p class="table__td">${item.date}</p>
+              <p class="table__td">${item.departureIn}</p>
+              <p class="table__td">${item.country}</p>
+              <p class="table__td">${item.duration} ${this.getNightForm(item.duration)}</p>
+              <p class="table__td">от <span>${item.price[0]}€</span>/чел</p>
+              <p class="table__td"><button class="table__btn">Открыть</button></p>
+            </div>
+          </div>`;
+      });
+
+      let hotelRow = '';
+      info.forEach((item) => {
+        const starsCount = item.star;
+        const starSvg = '<svg><use xlink:href="#star"></use></svg>';
+        const starsHTML = Array(starsCount).fill(starSvg).join('');
+        hotelRow = `
+          <div class="table__tbody">
+            <div class="table__tr">
+              <p class="table__td table__td_name">${item.name}</p>
+              <p class="table__td table__td_star">${starsHTML}</p>
+              <p class="table__td table__td_meals">${item.meals}</p>
+              <p class="table__td">${item.touristPackage}</p>
+              <p class="table__td">от <span>${item.price[0]}€</span>/чел</p>
+              <p class="table__td"><button class="table__subbtn">выбрать</button></p>
+            </div>
+          </div>`;
+      });
+
+      const render = tableHeadHtml + tableRow;
+
+      $('.table').append(render);
+      $('.table').append(tableInfoHead);
+      $('.table__row').append(hotelRow);
+      new AdvancedSearch().showAdvancedInfoHotTour();
+    } else {
+      $('.table').html('');
+      $('.table').append('<h2 class="table__title">По вашему запросу ничего не найдено</h2>');
+    }
+  }
+}

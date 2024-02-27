@@ -56,18 +56,37 @@ export class DropdownSearch {
     });
   }
 
+  // dropdownObserver(): void {
+  //   const options = {
+  //     rootMargin: `0px 0px -250px 0px`,
+  //     threshold: 1,
+  //   };
+
+  //   const observer = new IntersectionObserver(
+  //     this.callback.bind(this),
+  //     options
+  //   );
+  //   observer.observe(this.dropdown[0]);
+  // }
+
   dropdownObserver(): void {
+    const dropdownElement = this.dropdown[0];
+    if (!(dropdownElement instanceof Element)) {
+      return;
+    }
+  
     const options = {
       rootMargin: `0px 0px -250px 0px`,
       threshold: 1,
     };
-
+  
     const observer = new IntersectionObserver(
       this.callback.bind(this),
       options
     );
-    observer.observe(this.dropdown[0]);
+    observer.observe(dropdownElement);
   }
+  
 
   callback(entries: IntersectionObserverEntry[]): void {
     entries.forEach(entry => {
@@ -79,7 +98,7 @@ export class DropdownSearch {
     });
   }
 
-  changeCurrentVal(info: string): void {
-    this.dropdownCurrent.text(info);
-  }
+  // changeCurrentVal(info: string): void {
+  //   this.dropdownCurrent.text(info);
+  // }
 }

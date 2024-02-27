@@ -1,9 +1,9 @@
 import { app } from '../../modules/firebase';
-import { collection, getFirestore, query, where, getDocs, } from 'firebase/firestore';
+import { collection, getFirestore, query, where, getDocs } from 'firebase/firestore';
 import { Hotel } from './type';
 import { ResultSwiper } from '../swiper';
-import { DropdownSearch } from '../../components/dropSearch';
-import { RenderHotels, RenderRegions, RenderInfo } from './renderFiles';
+import { DropdownSearch } from './dropSearch';
+import { RenderHotels, RenderRegions, RenderInfo, } from './renderFiles';
 
 new DropdownSearch('.info__destination-select');
 new DropdownSearch('.info__duration-select');
@@ -11,13 +11,14 @@ new DropdownSearch('.info__date-select');
 new DropdownSearch('.info__guests-select');
 
 export class FilteringData {
+  url: URL;
   constructor() {
-
+    this.url = new URL(window.location.href);
   }
-
 
   restoreFilterFromUrl(key: string, _keys?: boolean): void {
     const urlParams = new URLSearchParams(window.location.search);
+
     const value = urlParams.get(key);
 
     if (value) {
@@ -48,7 +49,6 @@ export class FilteringData {
     const newUrl = new URL(window.location.href);
     newUrl.searchParams.set(key, value.toString());
     window.history.pushState({}, '', newUrl.toString());
-
 
     if (hotels.length > 0) {
       new RenderHotels().renderHotels(hotels);
