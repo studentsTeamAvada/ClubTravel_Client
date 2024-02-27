@@ -74,10 +74,19 @@ document.addEventListener("DOMContentLoaded", () => {
       this.selectStars();
       this.validateMainFormOne();
       this.validateMainFormThree();
-
+      this.priceVal();
 
     }
 
+    priceVal(){
+      const inputPrice = document.getElementById("input-price") as HTMLInputElement;
+      inputPrice?.addEventListener("input", () => {
+        const test = /^[0-9]{0,7}$/.test(inputPrice.value)
+        if(!test){
+          inputPrice.value = inputPrice.value.slice(0, -1)
+        }
+      })
+    } 
 
     selectStars() {
       const context = this;
