@@ -29,7 +29,7 @@ export class CompanySwiper {
     this.swiper = new Swiper(".main-company__swiper", {
       slidesPerView: "auto",
       speed: 1100,
-      spaceBetween: 15,
+      spaceBetween: 4,
 
       breakpoints: {
         320: {
@@ -66,7 +66,7 @@ export class HotDealsSwiper {
     this.swiper = new Swiper(".hot-deals__swiper", {
       slidesPerView: "auto",
       speed: 1100,
-      spaceBetween: 15,
+      spaceBetween: 4,
 
       breakpoints: {
         320: {
@@ -103,7 +103,7 @@ export class WinterTourSwiper {
     this.swiper = new Swiper(".winter-tour__swiper", {
       slidesPerView: "auto",
       speed: 1100,
-      spaceBetween: 15,
+      spaceBetween: 2,
 
       breakpoints: {
         320: {
@@ -143,7 +143,7 @@ export class SummerTourSwiper {
     this.swiper = new Swiper(".summer-tour__swiper", {
       slidesPerView: "auto",
       speed: 1100,
-      spaceBetween: 15,
+      spaceBetween: 2,
 
       breakpoints: {
         320: {
