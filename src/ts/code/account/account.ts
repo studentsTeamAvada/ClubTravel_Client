@@ -115,29 +115,51 @@ export class Account {
     const buttonOrders = document.querySelector('.account__left-order');
     const accountRight = document.querySelector('.account__right');
     const accountSettings = document.querySelector('.account__settings');
-
     const accountLeftWrapper = document.querySelector('.account__left-wrapper');
-
+  
+    const setActiveTab = (tab: string) => {
+      if (tab === 'settings') {
+        buttonSettings?.classList.add('active');
+        buttonOrders?.classList.remove('active');
+        accountRight?.classList.add('active');
+        accountSettings?.classList.remove('active');
+      } else if (tab === 'orders') {
+        buttonOrders?.classList.add('active');
+        buttonSettings?.classList.remove('active');
+        accountRight?.classList.remove('active');
+        accountSettings?.classList.add('active');
+      }
+    };
+  
     accountLeftWrapper?.addEventListener('click', (e) => {
       const clickElement = e.target as HTMLElement;
-
       if (clickElement) {
         const clickContent = clickElement.textContent;
-
         if (clickContent && clickContent.includes('Настройки')) {
-          buttonSettings?.classList.add('active');
-          buttonOrders?.classList.remove('active');
-          accountRight?.classList.add('active');
-          accountSettings?.classList.remove('active');
+          setActiveTab('settings');
+          localStorage.setItem('selectedTab', 'settings'); 
+          console.log(localStorage);
+          
         } else if (clickContent && clickContent.includes('Мои заказы')) {
-          buttonOrders?.classList.add('active');
-          buttonSettings?.classList.remove('active');
-          accountRight?.classList.remove('active');
-          accountSettings?.classList.add('active');
+          setActiveTab('orders');
+          localStorage.setItem('selectedTab', 'orders');
+          console.log(localStorage);
         }
       }
     });
+  
+    document.addEventListener("DOMContentLoaded", () => {
+      const selectedTab = localStorage.getItem('selectedTab');
+      console.log(localStorage);
+      console.log('da');
+      
+      
+      if (selectedTab) {
+        setActiveTab(selectedTab);
+      }
+    });
   }
+  
 
   isChangeInput() {
     const input = document.querySelector('.account__settings-input input') as HTMLFormElement;

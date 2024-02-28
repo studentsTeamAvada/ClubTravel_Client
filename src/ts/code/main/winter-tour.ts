@@ -1,11 +1,9 @@
 import { Tours } from '../../type';
-import { app } from "../../modules/firebase";
-import { getFirestore, collection, getDocs, query, where, Firestore } from "firebase/firestore";
-import { FirebaseApp } from "firebase/app";
+import { app } from '../../modules/firebase';
+import { getFirestore, collection, getDocs, query, where, Firestore } from 'firebase/firestore';
+import { FirebaseApp } from 'firebase/app';
 
-const winterTourWrapper = document.querySelector(
-  ".winter-tour__swiper-wrapper",
-);
+const winterTourWrapper = document.querySelector('.winter-tour__swiper-wrapper');
 
 export class WinterTourProduct {
   private app: FirebaseApp;
@@ -19,10 +17,7 @@ export class WinterTourProduct {
   }
 
   async loadCards() {
-    const filterWinterTour = query(
-      collection(this.db, "hotels"),
-      where("isWinterTour", "==", true),
-    );
+    const filterWinterTour = query(collection(this.db, 'hotels'), where('isWinterTour', '==', true));
 
     const querySnapshot = await getDocs(filterWinterTour);
     querySnapshot.forEach((doc) => {
@@ -40,8 +35,8 @@ export class WinterTourProduct {
 
     products.forEach((product) => {
       const content = product;
-      
-      const { country, img, price, id } = content; 
+
+      const { country, img, price, id } = content;
 
       if (img && Array.isArray(img) && img.length > 0) {
         const { url, urlWebp } = img[0];
@@ -69,9 +64,18 @@ export class WinterTourProduct {
         `;
 
         if (winterTourWrapper) {
-          winterTourWrapper.insertAdjacentHTML("beforeend", template);
+          winterTourWrapper.insertAdjacentHTML('beforeend', template);
         }
       }
     });
+    this.getYearsSeason();
+  }
+
+  getYearsSeason() {
+    const text = document.querySelector('.winter-tour__text');
+    if (text) {
+      const year = +this.productsArray[0].date.slice(6);
+      text.textContent += `Зима ${year - 1} - ${year}`;
+    }
   }
 }

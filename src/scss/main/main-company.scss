@@ -3,6 +3,7 @@
 
   &__container {
     position: relative;
+    padding: 0;
   }
 
   &__text {
@@ -189,12 +190,16 @@
 
 
   &__swiper {
-    margin-bottom: 28px;
+    margin-bottom: 12px;
     padding: 0 2px 10px 2px;
 
     @include media-breakpoint-down(xs) {
       margin-bottom: 38px;
     }
+  }
+
+  &__swiper-slide {
+    padding: 0 10px 15px;
   }
 
 
@@ -204,7 +209,6 @@
     height: 330px;
     box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
     background: #fff;
-    margin: 4px;
   }
 
 
