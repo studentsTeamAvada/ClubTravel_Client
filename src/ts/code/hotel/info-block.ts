@@ -1,12 +1,12 @@
 import $ from "jquery";
-import { DropDown } from "./dropdown";
+import { DropDown } from "../../components/dropdown";
 
 export class InfoBlock {
   totalPrice: JQuery<HTMLElement>;
   dropDown: DropDown;
   constructor() {
     this.totalPrice = $(".tour__total-price");
-    this.dropDown = new DropDown(".tour__quantity-drop");
+    this.dropDown = new DropDown(".tour__quantity-drop", ".tour__quantity-tegs");
     this.priceCalculator();
   }
   priceCalculator() {
@@ -29,7 +29,6 @@ export class InfoBlock {
         sum = total;
       }
       this.totalPrice.html(sum);
-      console.log(total);
     });
   }
 }

@@ -1,6 +1,7 @@
 .calendar {
   height: 100%;
   position: relative;
+
   &__btn {
     display: flex;
     align-items: center;
@@ -11,10 +12,12 @@
     transition: border 300ms ease 0s;
     user-select: none;
     cursor: pointer;
+
     &-info {
       font-family: Roboto;
       margin-left: 16px;
     }
+    
     svg {
       position: absolute;
       right: 8px;

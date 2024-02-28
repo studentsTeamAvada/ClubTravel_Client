@@ -29,7 +29,6 @@
     @include media-breakpoint-down(xs) {
       max-width: 100%;
     }
-
   }
 
   &__btn {
@@ -43,6 +42,8 @@
     background: #f7f7f7;
     display: flex;
     align-items: center;
+    user-select: none;
+    cursor: pointer;
     justify-content: center;
     svg{
       width: 32px;
@@ -95,6 +96,23 @@
     overflow: hidden;
     border-radius: 10px;
     margin: 0 5px 5px;
+    display: block;
+    cursor: pointer;
+
+    &:hover{
+      @include media-breakpoint-up(md) {
+        .slide {
+          &__image {
+            img{
+              transform: scale(1.05);
+            }
+          }
+          &__title {
+            
+          }
+        }
+      }
+    }
 
     @include media-breakpoint-down(xs) {
       aspect-ratio: 1/1.095;
@@ -104,8 +122,13 @@
   &__image {
     aspect-ratio: 1.47/1;
     position: relative;
+    overflow: hidden;
     grid-row: 1;
     width: 100%;
+
+    img{
+      transition: transform 300ms ease 0s;
+    }
 
     @include media-breakpoint-down(md) {
       max-height: unset;
@@ -151,7 +174,6 @@
 
   &__tag-date {
     bottom: 54px;
-    cursor: default;
 
     @include media-breakpoint-down(sm) {
       display: none;
@@ -160,11 +182,6 @@
 
   &__tag-location {
     bottom: 14px;
-    transition: background-color 300ms ease 0s;
-
-    &:hover {
-      background: rgb(0 0 0 / 100%);
-    }
   }
 
   &__info {
@@ -190,7 +207,7 @@
   &__title {
     position: relative;
     overflow: hidden; 
-    max-width: 230px;
+    max-width: 200px;
     white-space: nowrap; 
     color: #222;
     text-overflow: ellipsis;
@@ -200,7 +217,7 @@
       content: "";
       position: absolute;
       left: 50%;
-      bottom: 1px;
+      bottom: 2px;
       width: 98%;
       height: 1px;
       background: #222;

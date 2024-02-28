@@ -52,11 +52,9 @@ html {
     @include media-breakpoint-down(xs) {
       text-align: left;
       line-height: 100%;
-    }
-
-    @include media-breakpoint-down(xs) {
       margin-bottom: 24px;
     }
+
   }
   &__info {
     max-width: 455px;
@@ -98,7 +96,7 @@ html {
 
     input {
       border: 1px solid #e2e2e2;
-      border-radius: 6px 0px 0px 6px;
+      border-radius: 6px 0 0 6px;
       height: 100%;
       width: 100%;
       padding-left: 15px;
@@ -122,7 +120,7 @@ html {
   &__btn {
     height: 42px;
     flex: 1 0 33%;
-    border-radius: 0px 6px 6px 0px;
+    border-radius: 0 6px 6px 0;
 
     @include media-breakpoint-down(xs) {
       margin-bottom: 22px;
@@ -140,7 +138,7 @@ html {
     height: 42px;
     font-size: 16px;
     color: #222;
-    transition: all 300ms ease 0s;
+    transition: transform 300ms ease 0s;
     display: none;
 
     &:active {
@@ -283,14 +281,13 @@ html {
     position: relative;
     display: flex;
     border-radius: 9px 9px 0 0;
-
     &-slider {
       position: absolute;
       background-color: #fff;
       top: 0;
       height: 100%;
       width: 33%;
-      transition: all 300ms ease 0s;
+      transition: left 300ms ease 0s;
 
       @include media-breakpoint-down(sm) {
         display: none;
@@ -309,7 +306,6 @@ html {
     justify-content: center;
     font-size: 14px;
     opacity: 0.5;
-    transition: all 300ms ease 0s;
     position: relative;
     z-index: 1;
     cursor: pointer;
@@ -319,6 +315,8 @@ html {
     }
 
     @include media-breakpoint-down(sm) {
+      font-size: 18px;
+
       &-two{
         display: none;
       }
@@ -326,10 +324,6 @@ html {
       &-three{
         display: none;
       }
-    }
-
-    @include media-breakpoint-down(sm) {
-      font-size: 18px;
     }
   }
 
@@ -455,8 +449,7 @@ html {
       width: 30px;
       height: 30px;
       opacity: 0.5;
-      transition: scale 100ms ease 0s;
-      transition: opacity 300ms ease 0s;
+      transition: scale 100ms ease 0s, opacity 300ms ease 0s;
       cursor: pointer;
 
       &:active {
@@ -490,7 +483,7 @@ html {
     height: 42px;
     font-size: 16px;
     color: #222;
-    transition: all 300ms ease 0s;
+    transition:color all 300ms ease 0s, background-color all 300ms ease 0s,transform all 300ms ease 0s;
     user-select: none;
 
     @include media-breakpoint-down(sm) {
@@ -501,7 +494,7 @@ html {
     &:hover {
       @include media-breakpoint-up(md) {
         color: #fff;
-        background: #f68521;
+        background-color: #f68521;
       }
     }
 
@@ -751,19 +744,6 @@ html {
     top: 0;
     line-height: 44px;
     opacity: 0;
-  }
-
-  &_active {
-    input {
-      font-style: italic;
-      transition: all 300ms ease 0s;
-      padding-left: 45px;
-    }
-
-    &::before {
-      opacity: 1;
-      transition: all 300ms ease 150ms;
-    }
   }
 
   label {

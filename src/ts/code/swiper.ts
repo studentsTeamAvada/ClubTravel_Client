@@ -220,6 +220,7 @@ export class HotelSecondSlider {
       },
       autoplay: {
         delay: 2500,
+        disableOnInteraction: true,
       },
       spaceBetween: 10,
       slidesPerView: 1,

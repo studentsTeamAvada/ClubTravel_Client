@@ -27,14 +27,8 @@ export class PullData{
         this.app = app;
         this.currentUrl = new URL(window.location.href);
         this.id =  this.currentUrl.searchParams.get("id") || null;
-
          
-        this.init();
-    }
-
-    async init(){
-        this.getData();
-
+        this.loadData();
     }
 
     map(country: string, region: string){
@@ -46,7 +40,7 @@ export class PullData{
         }
     }
 
-    async getData(){
+    async loadData(){
         const db = getFirestore(this.app);
         const querySnapshot = await getDocs(collection(db, "hotels"));
 
@@ -74,6 +68,8 @@ export class PullData{
 
         new HotelSecondSlider();
         new Header()
+
+        this.clickSlide();
     }
 
     bottomSlide(data: object, id: string){
@@ -111,7 +107,7 @@ export class PullData{
         `;   
         
         sliderWrapper.append(`
-            <div class="swiper-slide slide">
+            <div class="swiper-slide slide" data-id="${id}">
                 <div class="slide__wrap">
                     <div class="slide__image">
                         <div class="slide__img">
@@ -127,18 +123,18 @@ export class PullData{
                             <span>${date}</span>
                         </div>
                     
-                        <a class="slide__tag slide__tag-location" href="https://www.google.com/maps/search/?api=1&query=${country}${beach === ''?"":"," + beach}" target="_blank">
+                        <div class="slide__tag slide__tag-location">
                             <svg><use xlink:href="#point"></use></svg>
                             <span>${country}${beach === ''?"":"," + beach}</span>
-                        </a>
                         </div>
+                    </div>
                     
-                        <div class="slide__info">
+                    <div class="slide__info">
                         <div class="slide__row slide__row-one">
-                            <a class="slide__title" href="/hotel.html?id=${id}">${name}</a>
+                            <span class="slide__title">${name}</span>
                             <div class="slide__stars">${renderStars()}</div>
                         </div>
-                    
+                
                         <div class="slide__row slide__row-two">
                             <div class="slide__price"><span><span id="price">${sale? newPrice : price}</span>€</span>/чел</div>
                     
@@ -150,9 +146,16 @@ export class PullData{
                 </div>
             </div>
         `);
+    }
 
-
-
+    clickSlide(){
+        const allSlide = document.querySelectorAll(".slide");
+        allSlide.forEach(item => {
+            item.addEventListener("click", () => {
+                const id = item.getAttribute("data-id");
+                window.location.href = `/hotel.html?id=${id}`
+            })
+        })
     }
 
     dateFormat(date: string){

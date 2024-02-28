@@ -1,11 +1,6 @@
 import $ from "jquery";
 import {app, GetSing} from "./../../modules/firebase"
-// import { getFirestore, getDocs, collection  } from "firebase/firestore";
-
 import { doc, setDoc,getDoc, updateDoc, arrayUnion, getFirestore } from "firebase/firestore"; 
-
-
-
 
 interface user{
     uid: string
@@ -13,12 +8,12 @@ interface user{
 }
 
 type objData = {
-    date?: string
-    idOrder?: number
-    price?: number
-    payStatus?: boolean
-    email?: string | null
-    id?: string | null;
+    date: string
+    idOrder: number
+    price: number
+    payStatus: boolean
+    email: string | null
+    id: string | null;
 }
 
 export class Order{
@@ -29,10 +24,17 @@ export class Order{
 
     constructor(){
         this.currentUrl = new URL(window.location.href);
-        this.objData = {}
-        this.objData.id =  this.currentUrl.searchParams.get("id") || null;
         this.orderBtn = $(".tour__btn");
         this.user = false
+        this.objData = {
+            date: "",
+            idOrder: 0,
+            price: 0,
+            payStatus: false,
+            email: "",
+            id: this.currentUrl.searchParams.get("id") || null
+        }
+
         this.init()
     }
 

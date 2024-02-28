@@ -33,17 +33,6 @@ export class Food {
     });
   }
 
-  checkInput(): boolean {
-    const info = this.currentSelect.html();
-    if (info == "Выбрать") {
-      this.errorFood.addClass("form__error-food_active");
-      return false;
-    } else {
-      this.errorFood.removeClass("form__error-food_active");
-      return true;
-    }
-  }
-
   open(): void {
     this.food.on("click", () => {
       this.food.toggleClass("food_active");

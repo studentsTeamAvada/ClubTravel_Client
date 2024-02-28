@@ -1,13 +1,4 @@
 .btn {
-  &_min {
-    font-size: 12px;
-  }
-
-  &_warp {
-    margin: 30px;
-    height: 50px;
-    max-width: 300px;
-  }
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,6 +15,16 @@
   background-color: rgb(246 133 33 / 100%);
   font-size: 14px;
   color: #fff;
+
+  &_min {
+    font-size: 12px;
+  }
+
+  &_warp {
+    margin: 30px;
+    height: 50px;
+    max-width: 300px;
+  }
 
   &:hover {
     @include media-breakpoint-up(md) {
