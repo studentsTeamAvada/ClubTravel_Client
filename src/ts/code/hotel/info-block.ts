@@ -12,7 +12,7 @@ export class InfoBlock {
   priceCalculator() {
     document.addEventListener("myCustomEvent", () => {
       const priceOnePerson = $(".tour__price-sum").data("price");
-      const allPeople = this.dropDown.getKids() + this.dropDown.getAbduls();
+      const allPeople = this.dropDown.getKids() + this.dropDown.getAdults();
       const total = String(+priceOnePerson * allPeople);
       let sum = "";
       if (total.length > 3) {
