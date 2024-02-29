@@ -12,10 +12,8 @@ export async function uploadImageToFirebaseStorage(photo: File) {
     const storageRef = ref(storage, 'images/' + photo.name);
     const snapshot = await uploadBytes(storageRef, photo);
     console.log(snapshot);
-    
-    const downloadURL = await getDownloadURL(storageRef);
 
-    return downloadURL;
+    return await getDownloadURL(storageRef);
   } catch (error) {
     console.error("Failed to upload image to Firebase Storage:", error);
     throw error;

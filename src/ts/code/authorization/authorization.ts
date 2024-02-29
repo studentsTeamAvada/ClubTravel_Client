@@ -11,6 +11,8 @@ export class Authorization {
   constructor() {
     this.app = app;
     this.auth = getAuth();
+    this.authorizationWithEmail = this.authorizationWithEmail.bind(this);
+    this.authorizationWithGoogle = this.authorizationWithGoogle.bind(this);
   }
 
   authorizationWithEmail() {

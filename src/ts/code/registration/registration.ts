@@ -12,6 +12,8 @@ export class Registration {
   constructor() {
     this.app = app;
     this.auth = getAuth();
+    this.registrationWithEmail = this.registrationWithEmail.bind(this);
+    this.registrationWithGoogle = this.registrationWithGoogle.bind(this);
   }
 
   registrationWithEmail() {

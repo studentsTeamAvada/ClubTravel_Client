@@ -32,9 +32,6 @@ export class CompanySwiper {
       spaceBetween: 4,
 
       breakpoints: {
-        320: {
-          slidesPerView: 1,
-        },
         375: {
           slidesPerView: 1,
         },
@@ -42,12 +39,6 @@ export class CompanySwiper {
           slidesPerView: 2,
         },
         991: {
-          slidesPerView: 3,
-        },
-        1440: {
-          slidesPerView: 3,
-        },
-        1920: {
           slidesPerView: 3,
         },
       },
@@ -69,9 +60,6 @@ export class HotDealsSwiper {
       spaceBetween: 4,
 
       breakpoints: {
-        320: {
-          slidesPerView: 1,
-        },
         375: {
           slidesPerView: 1,
         },
@@ -79,12 +67,6 @@ export class HotDealsSwiper {
           slidesPerView: 2,
         },
         991: {
-          slidesPerView: 3,
-        },
-        1440: {
-          slidesPerView: 3,
-        },
-        1920: {
           slidesPerView: 3,
         },
       },
@@ -106,9 +88,6 @@ export class WinterTourSwiper {
       spaceBetween: 2,
 
       breakpoints: {
-        320: {
-          slidesPerView: 1,
-        },
         375: {
           slidesPerView: 1,
         },
@@ -119,12 +98,6 @@ export class WinterTourSwiper {
           slidesPerView: 3,
         },
         1200: {
-          slidesPerView: 4,
-        },
-        1440: {
-          slidesPerView: 4,
-        },
-        1920: {
           slidesPerView: 4,
         },
       },
@@ -146,9 +119,6 @@ export class SummerTourSwiper {
       spaceBetween: 2,
 
       breakpoints: {
-        320: {
-          slidesPerView: 1,
-        },
         375: {
           slidesPerView: 1,
         },
@@ -159,12 +129,6 @@ export class SummerTourSwiper {
           slidesPerView: 3,
         },
         1200: {
-          slidesPerView: 4,
-        },
-        1440: {
-          slidesPerView: 4,
-        },
-        1920: {
           slidesPerView: 4,
         },
       },
