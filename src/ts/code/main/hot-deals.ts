@@ -1,9 +1,9 @@
 import { Tours } from '../../type';
-import { getFirestore, collection, getDocs, query, where, Firestore } from "firebase/firestore";
-import { FirebaseApp } from "firebase/app";
-import { app } from "../../modules/firebase";
+import { getFirestore, collection, getDocs, query, where, Firestore } from 'firebase/firestore';
+import { FirebaseApp } from 'firebase/app';
+import { app } from '../../modules/firebase';
 
-const hotDealsWrapper = document.querySelector(".hot-deals__swiper-wrapper");
+const hotDealsWrapper = document.querySelector('.hot-deals__swiper-wrapper');
 
 export class HotDealsProduct {
   app: FirebaseApp;
@@ -17,10 +17,7 @@ export class HotDealsProduct {
   }
 
   async loadCards() {
-    const filterHotDeals = query(
-      collection(this.db, "hotels"),
-      where("hotTour", "==", true),
-    );
+    const filterHotDeals = query(collection(this.db, 'hotels'), where('hotTour', '==', true));
 
     const querySnapshot = await getDocs(filterHotDeals);
     querySnapshot.forEach((doc) => {
@@ -33,12 +30,8 @@ export class HotDealsProduct {
   }
 
   renderProducts() {
-    const products = this.productsArray;
-
-    products.forEach((product) => {
-      const content = product;
-
-      const { name, price, country, region, star, img, date } = content;
+    this.productsArray.forEach((product) => {
+      const { name, price, country, region, star, img, date } = product;
 
       if (img && Array.isArray(img) && img.length > 0) {
         const { url, urlWebp } = img[0];
@@ -97,17 +90,14 @@ export class HotDealsProduct {
                   </div>
                 </div>
                 </div>
+                </div>
+              </div>
+            </div>
                   `;
         }
 
-        template += `
-            </div>
-            </div>
-            </div>
-        `;
-
         if (hotDealsWrapper) {
-          hotDealsWrapper.insertAdjacentHTML("beforeend", template);
+          hotDealsWrapper.insertAdjacentHTML('beforeend', template);
         }
       }
     });

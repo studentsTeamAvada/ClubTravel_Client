@@ -55,7 +55,7 @@
   &__swiper-round {
     display: flex;
 
-    @media (width >= 1024px) {
+    @include media-breakpoint-up(my) {
       &:hover {
         &::before {
           opacity: 0.4;
@@ -129,7 +129,7 @@
     width: fit-content;
     margin: 0 auto;
 
-    @media (width >= 1024px) {
+    @include media-breakpoint-up(md) {
       &:hover {
         a {
           color: #f68521;

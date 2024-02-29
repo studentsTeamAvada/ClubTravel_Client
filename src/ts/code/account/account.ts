@@ -3,8 +3,8 @@ import { getFirestore, collection, getDocs, Firestore, doc, updateDoc } from 'fi
 import { FirebaseApp } from 'firebase/app';
 import { app } from '../../modules/firebase';
 import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
-import { uploadImageToFirebaseStorage } from '../account/getPhoto'
-import { Pagination } from "./pagination";
+import { uploadImageToFirebaseStorage } from '../account/getPhoto';
+import { Pagination } from './pagination';
 
 const accountOrder = document.querySelector('.account__order');
 const accountOrders = document.querySelector('.account__table-bottom-left');
@@ -12,10 +12,10 @@ const accountOrdersMobile = document.querySelector('.account__table-bottom-left-
 const accountLeftWrapper = document.querySelector('.account-mobile__table');
 const accountLeft = document.querySelector('.account__left');
 export class Account {
-  private app: FirebaseApp;
-  private db: Firestore;
-  private usersArray: Users[];
-  private currentUser: User | null;
+  app: FirebaseApp;
+  db: Firestore;
+  usersArray: Users[];
+  currentUser: User | null;
 
   constructor() {
     this.app = app;
@@ -25,8 +25,6 @@ export class Account {
     this.initAuth();
     this.renderAccountLeft();
   }
-
-
 
   initAuth() {
     const auth = getAuth();
@@ -44,7 +42,6 @@ export class Account {
   }
 
   exitAccount() {
-
     const auth = getAuth();
     auth
       .signOut()
@@ -116,7 +113,7 @@ export class Account {
     const accountRight = document.querySelector('.account__right');
     const accountSettings = document.querySelector('.account__settings');
     const accountLeftWrapper = document.querySelector('.account__left-wrapper');
-  
+
     const setActiveTab = (tab: string) => {
       if (tab === 'settings') {
         buttonSettings?.classList.add('active');
@@ -130,36 +127,27 @@ export class Account {
         accountSettings?.classList.add('active');
       }
     };
-  
+
     accountLeftWrapper?.addEventListener('click', (e) => {
       const clickElement = e.target as HTMLElement;
       if (clickElement) {
         const clickContent = clickElement.textContent;
         if (clickContent && clickContent.includes('Настройки')) {
           setActiveTab('settings');
-          localStorage.setItem('selectedTab', 'settings'); 
-          console.log(localStorage);
-          
+          localStorage.setItem('selectedTab', 'settings');
         } else if (clickContent && clickContent.includes('Мои заказы')) {
           setActiveTab('orders');
           localStorage.setItem('selectedTab', 'orders');
-          console.log(localStorage);
         }
       }
     });
-  
-    document.addEventListener("DOMContentLoaded", () => {
-      const selectedTab = localStorage.getItem('selectedTab');
-      console.log(localStorage);
-      console.log('da');
-      
-      
-      if (selectedTab) {
-        setActiveTab(selectedTab);
-      }
-    });
+
+    const selectedTab = localStorage.getItem('selectedTab');
+
+    if (selectedTab) {
+      setActiveTab(selectedTab);
+    }
   }
-  
 
   isChangeInput() {
     const input = document.querySelector('.account__settings-input input') as HTMLFormElement;
@@ -169,7 +157,6 @@ export class Account {
     }
 
     input?.addEventListener('input', () => {
-      
       if (input.value === '' || input.value.length < 3 || input.value.length > 20) {
         button.disabled = true;
       } else {
@@ -196,24 +183,24 @@ export class Account {
     const form = document.querySelector('#settingsForm') as HTMLFormElement;
     form?.addEventListener('submit', async (e) => {
       e.preventDefault();
-  
+
       const formData = new FormData(form);
       const name = formData.get('name') as string;
       const photo = formData.get('photo') as File;
-  
+
       let imageUrl: string | undefined;
-  
+
       if (photo && photo.size > 0) {
         try {
           imageUrl = await uploadImageToFirebaseStorage(photo);
         } catch (error) {
-          console.error("Failed to upload image to Firebase Storage:", error);
+          console.error('Failed to upload image to Firebase Storage:', error);
         }
       } else {
         const photoHtml = document.querySelector('.account__left-photo img') as HTMLImageElement;
         imageUrl = photoHtml.src;
       }
-  
+
       await this.updateUserProfile(name, imageUrl);
     });
   }
@@ -233,45 +220,38 @@ export class Account {
     });
 
     this.renderUsers();
-    new Pagination(this.usersArray.length)
+    new Pagination(this.usersArray.length);
   }
 
   renderUsers() {
-    const users = this.usersArray;
+    this.usersArray.forEach((user, index) => {
+      const { date, email, idOrder, payStatus, price } = user;
 
-    users.forEach((user, index) => {
-        const content = user;
-        const { date, email, idOrder, payStatus, price } = content;
-        
-        let template = `
+      let template = `
         <td>${idOrder}</td>
         <td>${price}</td>
         `;
-        if(email.length < 23) {
-            template += `
+      if (email.length < 23) {
+        template += `
                 <td>${email}</td>
             `;
-        } else {
-            template += `
-            <td>${email.slice(0, 23) + "..."}</td>
-        `;
-        }
+      } else {
         template += `
+            <td>${email.slice(0, 23) + '...'}</td>
+        `;
+      }
+      template += `
         <td>
-          ${
-            payStatus == false
-            ? `<p class="account__payment-processing">В обработке</p>`
-            : `<p class="account__payment-success">Оплачено</p>`
-          }
+          ${payStatus == false ? `<p class="account__payment-processing">В обработке</p>` : `<p class="account__payment-success">Оплачено</p>`}
         </td>
         <td>${date}</td>
         `;
-        const wrapperTemplate = `<tr class="order" id=${index} >${template}</tr>`
-        if (accountOrder) {
-          accountOrder.insertAdjacentHTML("beforeend", wrapperTemplate);
-        }
+      const wrapperTemplate = `<tr class="order" id=${index} >${template}</tr>`;
+      if (accountOrder) {
+        accountOrder.insertAdjacentHTML('beforeend', wrapperTemplate);
+      }
 
-        let templateMobile = `
+      let templateMobile = `
           <div id=${index} class="account-mobile__table-wrapper">
             <div class="account-mobile__table-left">
               <p class="account-mobile__table-left-number">Номер заказа</p>
@@ -299,11 +279,11 @@ export class Account {
             </div>
           </div>
         `;
-        
-        if (accountLeftWrapper) {
-          accountLeftWrapper.insertAdjacentHTML("beforeend", templateMobile);
-        }
-    }) 
+
+      if (accountLeftWrapper) {
+        accountLeftWrapper.insertAdjacentHTML('beforeend', templateMobile);
+      }
+    });
 
     let ordersTotal = `
       <p>Показано <span>${this.usersArray.length > 9 ? 9 : this.usersArray.length}</span> из <span>${this.usersArray.length}</span></p>

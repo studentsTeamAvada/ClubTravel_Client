@@ -10,9 +10,6 @@ import { WinterTourProduct } from '../code/main/winter-tour';
 import { SummerTourProduct } from '../code/main/summer-tour';
 import {AllImportFile} from '../code/searchFile/allImportFile';
 
-
-
-
 document.addEventListener("DOMContentLoaded", async function() {
     
     const productCompany = new CompanyProduct();

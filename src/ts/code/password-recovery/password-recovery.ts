@@ -9,6 +9,7 @@ export class PasswordRecovery {
   constructor() {
     this.app = app;
     this.auth = getAuth();
+    this.passwordRecovery = this.passwordRecovery.bind(this);
   }
 
   passwordRecovery() {
@@ -21,6 +22,7 @@ export class PasswordRecovery {
       .then(() => {
         alert("Password reset email sent. Please check your inbox.");
         emailInput.value = "";
+        window.location.href = 'authorization.html';
       })
       .catch((error) => {
         const errorCode = error.code;
