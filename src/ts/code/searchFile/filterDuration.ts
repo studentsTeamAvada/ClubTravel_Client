@@ -10,9 +10,9 @@ export class Duration {
     const urlParams = new URLSearchParams(window.location.search);
     const isDuration = urlParams.get('isDuration');
 
-    if (isDuration) {
-      new FilteringData().restoreFilterFromUrl('isDuration');
-    }
+    // if (isDuration) {
+    //   new FilteringData().restoreFilterFromUrl('isDuration');
+    // }
     
   }
 
@@ -25,7 +25,7 @@ export class Duration {
       newUrl.searchParams.set('isDuration', duration.toString());
       window.history.pushState({}, '', newUrl.toString());
 
-      new FilteringData().removeParametersFromUrl(['isCountry', 'date', 'kids', 'adults','isStar']);
+      // new FilteringData().removeParametersFromUrl(['isCountry', 'date', 'kids', 'adults','isStar']);
     });
   }
 }

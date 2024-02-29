@@ -1,23 +1,17 @@
-import Swiper from "swiper";
-import {
-  Navigation,
-  Pagination,
-  Autoplay,
-  Scrollbar,
-  Thumbs,
-} from "swiper/modules";
+import Swiper from 'swiper';
+import { Navigation, Pagination, Autoplay, Scrollbar, Thumbs } from 'swiper/modules';
 Swiper.use([Navigation, Pagination, Autoplay, Scrollbar, Thumbs]);
 
 export class HeroSwiper {
   swiper: Swiper;
   constructor() {
-    this.swiper = new Swiper(".hero-swiper", {
-      slidesPerView: "auto",
+    this.swiper = new Swiper('.hero-swiper', {
+      slidesPerView: 'auto',
       speed: 1100,
 
       navigation: {
-        nextEl: ".hero__swiper-button-next",
-        prevEl: ".hero__swiper-button-prev",
+        nextEl: '.hero__swiper-button-next',
+        prevEl: '.hero__swiper-button-prev',
       },
     });
   }
@@ -26,8 +20,8 @@ export class HeroSwiper {
 export class CompanySwiper {
   swiper: Swiper;
   constructor() {
-    this.swiper = new Swiper(".main-company__swiper", {
-      slidesPerView: "auto",
+    this.swiper = new Swiper('.main-company__swiper', {
+      slidesPerView: 'auto',
       speed: 1100,
       spaceBetween: 15,
 
@@ -53,8 +47,8 @@ export class CompanySwiper {
       },
 
       navigation: {
-        nextEl: ".main-company__swiper-button-next",
-        prevEl: ".main-company__swiper-button-prev",
+        nextEl: '.main-company__swiper-button-next',
+        prevEl: '.main-company__swiper-button-prev',
       },
     });
   }
@@ -63,8 +57,8 @@ export class CompanySwiper {
 export class HotDealsSwiper {
   swiper: Swiper;
   constructor() {
-    this.swiper = new Swiper(".hot-deals__swiper", {
-      slidesPerView: "auto",
+    this.swiper = new Swiper('.hot-deals__swiper', {
+      slidesPerView: 'auto',
       speed: 1100,
       spaceBetween: 15,
 
@@ -90,8 +84,8 @@ export class HotDealsSwiper {
       },
 
       navigation: {
-        nextEl: ".hot-deals__swiper-button-next",
-        prevEl: ".hot-deals__swiper-button-prev",
+        nextEl: '.hot-deals__swiper-button-next',
+        prevEl: '.hot-deals__swiper-button-prev',
       },
     });
   }
@@ -100,8 +94,8 @@ export class HotDealsSwiper {
 export class WinterTourSwiper {
   swiper: Swiper;
   constructor() {
-    this.swiper = new Swiper(".winter-tour__swiper", {
-      slidesPerView: "auto",
+    this.swiper = new Swiper('.winter-tour__swiper', {
+      slidesPerView: 'auto',
       speed: 1100,
       spaceBetween: 15,
 
@@ -130,8 +124,8 @@ export class WinterTourSwiper {
       },
 
       navigation: {
-        nextEl: ".winter-tour__swiper-button-next",
-        prevEl: ".winter-tour__swiper-button-prev",
+        nextEl: '.winter-tour__swiper-button-next',
+        prevEl: '.winter-tour__swiper-button-prev',
       },
     });
   }
@@ -140,8 +134,8 @@ export class WinterTourSwiper {
 export class SummerTourSwiper {
   swiper: Swiper;
   constructor() {
-    this.swiper = new Swiper(".summer-tour__swiper", {
-      slidesPerView: "auto",
+    this.swiper = new Swiper('.summer-tour__swiper', {
+      slidesPerView: 'auto',
       speed: 1100,
       spaceBetween: 15,
 
@@ -170,8 +164,8 @@ export class SummerTourSwiper {
       },
 
       navigation: {
-        nextEl: ".summer-tour__swiper-button-next",
-        prevEl: ".summer-tour__swiper-button-prev",
+        nextEl: '.summer-tour__swiper-button-next',
+        prevEl: '.summer-tour__swiper-button-prev',
       },
     });
   }
@@ -181,7 +175,7 @@ export class HotelSlider {
   swiperOne: Swiper;
   swiperTwo: Swiper;
   constructor() {
-    this.swiperTwo = new Swiper(".hotel-swiper-one", {
+    this.swiperTwo = new Swiper('.hotel-swiper-one', {
       loop: true,
       spaceBetween: 7,
       slidesPerView: 4,
@@ -199,7 +193,7 @@ export class HotelSlider {
       },
     });
 
-    this.swiperOne = new Swiper(".hotel-swiper-two", {
+    this.swiperOne = new Swiper('.hotel-swiper-two', {
       loop: true,
       spaceBetween: 10,
       thumbs: {
@@ -212,11 +206,11 @@ export class HotelSlider {
 export class HotelSecondSlider {
   swiper: Swiper;
   constructor() {
-    this.swiper = new Swiper(".similars__slider", {
+    this.swiper = new Swiper('.similars__slider', {
       loop: true,
       navigation: {
-        nextEl: ".similars__btn-two",
-        prevEl: ".similars__btn-one",
+        nextEl: '.similars__btn-two',
+        prevEl: '.similars__btn-one',
       },
       autoplay: {
         delay: 2500,
@@ -247,34 +241,46 @@ export class ResultSwiper {
     this.swiperResult();
   }
   swiperResult() {
-    new Swiper(".result__swiper", {
+    new Swiper('.result__hotel-swiper', {
       spaceBetween: 10,
-      loop: true,
+      // loop: true,
+      breakpoints: {
+        320: {
+          slidesPerView: 'auto',
+          spaceBetween: 20,
+        },
+      },
       navigation: {
-        nextEl: ".result__btn-next",
-        prevEl: ".result__btn-prev",
+        nextEl: '.result__hotel-btn-next',
+        prevEl: '.result__hotel-btn-prev',
       },
     });
   }
 }
 
-export class CalendarSwiper{
-  constructor(){
+export class CalendarSwiper {
+  constructor() {
     this.swiperCalendar();
   }
 
-  swiperCalendar(){
-    new Swiper(".result__header-swiper", {
+  swiperCalendar() {
+    new Swiper('.result__header-swiper', {
       spaceBetween: 44,
 
-      breakpoints:{
-        320:{
-          slidesPerView: "auto",
-        }
+      breakpoints: {
+        320: {
+          slidesPerView: 'auto',
+          spaceBetween: 20,
+        },
+
+        576: {
+          slidesPerView: 'auto',
+          spaceBetween: 44,
+        },
       },
       navigation: {
-        nextEl: ".calendar__btn-next",
-        prevEl: ".calendar__btn-prev",
+        nextEl: '.result__header-next',
+        prevEl: '.result__header-prev',
       },
     });
   }

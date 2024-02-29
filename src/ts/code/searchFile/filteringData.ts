@@ -3,7 +3,7 @@ import { collection, getFirestore, query, where, getDocs } from 'firebase/firest
 import { Hotel } from './type';
 import { ResultSwiper } from '../swiper';
 import { DropdownSearch } from './dropSearch';
-import { RenderHotels, RenderRegions, RenderInfo, } from './renderFiles';
+import { RenderHotels, RenderRegions, RenderInfo } from './renderFiles';
 
 new DropdownSearch('.info__destination-select');
 new DropdownSearch('.info__duration-select');
@@ -22,7 +22,7 @@ export class FilteringData {
     const value = urlParams.get(key);
 
     if (value) {
-      this.getHotelsByFilter(key, +value);
+      // this.getHotelsByFilter(key, +value);
     }
   }
 
@@ -43,8 +43,10 @@ export class FilteringData {
 
     querySnapshot.forEach((doc) => {
       const hotelData = doc.data() as Hotel;
+      const hotelId = doc.id;
+      hotelData.id = hotelId;
       hotels.push(hotelData);
-    });
+  });
 
     const newUrl = new URL(window.location.href);
     newUrl.searchParams.set(key, value.toString());
@@ -56,7 +58,6 @@ export class FilteringData {
       new RenderInfo().renderInfo(hotels);
       new ResultSwiper();
     }
-
 
     console.log(hotels);
     return hotels;
@@ -95,11 +96,11 @@ export class FilteringData {
     }
   }
 
-  removeParametersFromUrl(parameterKeys: string[]): void {
-    const url = new URL(window.location.href);
-    for (const key of parameterKeys) {
-      url.searchParams.delete(key);
-    }
-    window.history.replaceState({}, '', url.toString());
-  }
+  // removeParametersFromUrl(parameterKeys: string[]): void {
+  //   const url = new URL(window.location.href);
+  //   for (const key of parameterKeys) {
+  //     url.searchParams.delete(key);
+  //   }
+  //   window.history.replaceState({}, '', url.toString());
+  // }
 }

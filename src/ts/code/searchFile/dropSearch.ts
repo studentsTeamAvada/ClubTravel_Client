@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import {AdvancedSearch} from './advanced'
 export class DropdownSearch {
   dropdown: JQuery<HTMLElement>;
   dropdownRow: JQuery<HTMLElement>;
@@ -43,15 +44,17 @@ export class DropdownSearch {
       this.dropdownCurrent.text($(e.target).text());
       this.dropdownList.removeClass('dropdown__list_show');
       this.dropdownIcon.removeClass('dropdown__icon_rotate');
+      console.log($(e.target).text());
+
     });
 
     $(document).on('click', (e: JQuery.ClickEvent) => {
       const dropdownIs: boolean = this.dropdown.is(e.target);
       const dropdownHas: boolean = this.dropdown.has(e.target).length === 0;
-
       if (!dropdownIs && dropdownHas) {
         this.dropdownList.removeClass('dropdown__list_show');
         this.dropdownIcon.removeClass('dropdown__icon_rotate');
+
       }
     });
   }
@@ -91,7 +94,7 @@ export class DropdownSearch {
   callback(entries: IntersectionObserverEntry[]): void {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        this.dropdownList.css('top', `${this.dropdownRow.outerHeight()}px`);
+        this.dropdownList.css('top', `33px`);
       } else {
         this.dropdownList.css('top', `-${this.dropdownList.outerHeight()}px`);
       }

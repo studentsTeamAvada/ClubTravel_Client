@@ -33,7 +33,7 @@ export class SelectData {
         currentUrl.searchParams.set('date', formattedDate);
         window.history.pushState({ path: currentUrl.href }, '', currentUrl.href);
 
-        new FilteringData().removeParametersFromUrl(['isCountry', 'isDuration', 'kids', 'adults', 'isStar']);
+        // new FilteringData().removeParametersFromUrl(['isCountry', 'isDuration', 'kids', 'adults', 'isStar']);
       },
     });
   }

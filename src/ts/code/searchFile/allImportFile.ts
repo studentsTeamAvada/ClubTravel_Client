@@ -3,7 +3,7 @@ import { Country } from './filterCountry';
 import { Duration } from './filterDuration';
 import { SelectData } from './filterDate';
 import { Guests } from './filterGuests';
-import { Hotels } from './filterHotel';
+// import { Hotels } from './filterHotel';
 import { AdvancedSearch } from './advanced';
 
 export class AllImportFile {
@@ -11,7 +11,7 @@ export class AllImportFile {
   duration: Duration;
   selectData: SelectData;
   guests: Guests;
-  hotels: Hotels;
+  // hotels: Hotels;
   country: Country;
   advanced: AdvancedSearch;
 
@@ -21,7 +21,7 @@ export class AllImportFile {
     this.duration = new Duration();
     this.selectData = new SelectData();
     this.guests = new Guests();
-    this.hotels = new Hotels();
+    // this.hotels = new Hotels();
     this.advanced = new AdvancedSearch()
   }
 }

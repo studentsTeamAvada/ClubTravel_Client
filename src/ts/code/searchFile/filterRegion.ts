@@ -62,7 +62,6 @@ export class FilterRegion {
     $('.category__btns-regions').on('click', (event) => {
       const regionName = $(event.currentTarget).data('region');
       const region = this.regionToNumber(regionName);
-      
       new FilteringData().getHotelsByFilter('isRegion', region);
     });
   }

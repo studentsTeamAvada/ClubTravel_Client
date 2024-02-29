@@ -23,7 +23,7 @@ export class Country {
       newUrl.searchParams.set('isCountry', index.toString());
       window.history.pushState({}, '', newUrl.toString());
 
-      new FilteringData().removeParametersFromUrl(['isDuration', 'date', 'kids', 'adults', 'isStar']);
+      // new FilteringData().removeParametersFromUrl(['isDuration', 'date', 'kids', 'adults', 'isStar']);
     });
   }
 }

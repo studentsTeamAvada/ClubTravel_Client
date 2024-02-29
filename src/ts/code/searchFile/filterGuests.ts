@@ -14,7 +14,7 @@ export class Guests {
   constructor() {
     this.guestsItemAdults = $('.info__guests-item_adults');
     this.counterKids = $('.info__guests-counters_kids');
-    this.searchPanelBtn = $('.search__panel-btn');
+    this.searchPanelBtn = $('.info__btn');
     this.durationCurrent = $('.info__duration-current');
     this.destinationCurrent = $('.info__destination-current');
     this.dateCurrent = $('.info__date-current');
@@ -180,6 +180,7 @@ export class Guests {
   closeDropDown(): void {
     $('.info__guests-add').on('click', () => {
       $('.dropdown__list').removeClass('dropdown__list_show');
+      $('.dropdown__icon').removeClass('dropdown__icon_rotate');
     });
   }
 
@@ -194,18 +195,18 @@ export class Guests {
       console.log(allParams);
       if (allParams.includes('isCountry')) {
         new FilteringData().getHotelsByFilter('isCountry', +saveCountry);
-        allParams.shift();
+        // allParams.shift();
       }
 
       if (allParams.includes('isDuration')) {
         new FilteringData().getHotelsByFilter('isDuration', +saveDuration);
 
-        allParams.shift();
+        // allParams.shift();
       }
 
       if (allParams.includes('date')) {
         new FilteringData().getHotelsByFilter('date', date);
-        allParams.shift();
+        // allParams.shift();
       }
 
       if (this.url.pathname === '/hot_offers.html') {
@@ -229,7 +230,7 @@ export class Guests {
           new FilteringData().getHotelsByFilter('isKids', true);
         }
         // new FilteringData().removeParametersFromUrl(['isCountry', 'isDuration', 'date']);
-        allParams.shift();
+        // allParams.shift();
       }
     });
   }

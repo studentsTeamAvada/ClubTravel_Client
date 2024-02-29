@@ -47,8 +47,6 @@ export interface Hotel {
   beach: string;
   isKids: boolean;
   [key: string]: string | number | boolean | object;
-id: string; 
-departureIn: string;
+  id: string;
+  departureIn: string;
 }
-
-

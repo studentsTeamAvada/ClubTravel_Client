@@ -21,7 +21,7 @@ export class SelectedFilter {
     if (savedDate) {
       new FilteringData().filterAdvanced('date', savedDate, key, value);
     }
-    if (savedKids ) {
+    if (savedKids) {
       if (savedKids !== '0') {
         new FilteringData().filterAdvanced('isKids', true, key, value);
       } else {
@@ -29,8 +29,18 @@ export class SelectedFilter {
       }
     }
 
-    if (minPrice && maxPrice ) {
+    if (minPrice && maxPrice) {
       new FilteringData().filterAdvanced('priceMin', +minPrice, 'priceMax', +maxPrice);
+    }
+  }
+
+  displayFilter(filterRow: JQuery<HTMLElement>, title: string, value: string): void {
+    if (value) {
+      filterRow.html('');
+      filterRow.append(`
+          <h3 class="advanced__filter-title">${title}</h3>
+          <p class="advanced__filter-text">${value}</p>
+        `);
     }
   }
 }
