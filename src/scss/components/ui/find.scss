@@ -110,20 +110,18 @@
   }
 
   &__date {
-    &-item {
-      padding: 0;
-    }
-
-    &-row {
-    }
 
     &-list,
     &-calendar {
       left: 0;
       border-radius: 12px;
       width: 250px;
-      max-width: 250px;
+      min-width: 250px;
       max-height: 260px;
+    }
+
+    &-item {
+      padding: 0 !important;
     }
 
     @include media-breakpoint-down(sm) {

@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import {AdvancedSearch} from './advanced'
+
 export class DropdownSearch {
   dropdown: JQuery<HTMLElement>;
   dropdownRow: JQuery<HTMLElement>;
@@ -25,14 +25,9 @@ export class DropdownSearch {
     this.urlParam = new URLSearchParams(window.location.search);
     this.currentUrl = this.urlParam.get('isCountry');
 
-    // this.currentVal();
     this.toggleDropdown();
     this.dropdownObserver();
   }
-
-  // currentVal(): void {
-  //   this.dropdownCurrent.text('');
-  // }
 
   toggleDropdown(): void {
     this.dropdownRow.on('click', () => {
@@ -45,54 +40,37 @@ export class DropdownSearch {
       this.dropdownList.removeClass('dropdown__list_show');
       this.dropdownIcon.removeClass('dropdown__icon_rotate');
       console.log($(e.target).text());
-
     });
 
     $(document).on('click', (e: JQuery.ClickEvent) => {
       const dropdownIs: boolean = this.dropdown.is(e.target);
       const dropdownHas: boolean = this.dropdown.has(e.target).length === 0;
+      console.log(dropdownIs, dropdownHas);
       if (!dropdownIs && dropdownHas) {
         this.dropdownList.removeClass('dropdown__list_show');
         this.dropdownIcon.removeClass('dropdown__icon_rotate');
-
       }
     });
   }
 
-  // dropdownObserver(): void {
-  //   const options = {
-  //     rootMargin: `0px 0px -250px 0px`,
-  //     threshold: 1,
-  //   };
-
-  //   const observer = new IntersectionObserver(
-  //     this.callback.bind(this),
-  //     options
-  //   );
-  //   observer.observe(this.dropdown[0]);
-  // }
 
   dropdownObserver(): void {
     const dropdownElement = this.dropdown[0];
     if (!(dropdownElement instanceof Element)) {
       return;
     }
-  
+
     const options = {
       rootMargin: `0px 0px -250px 0px`,
       threshold: 1,
     };
-  
-    const observer = new IntersectionObserver(
-      this.callback.bind(this),
-      options
-    );
+
+    const observer = new IntersectionObserver(this.callback.bind(this), options);
     observer.observe(dropdownElement);
   }
-  
 
   callback(entries: IntersectionObserverEntry[]): void {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         this.dropdownList.css('top', `33px`);
       } else {
@@ -101,7 +79,4 @@ export class DropdownSearch {
     });
   }
 
-  // changeCurrentVal(info: string): void {
-  //   this.dropdownCurrent.text(info);
-  // }
 }
