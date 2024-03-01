@@ -54,6 +54,7 @@ export class Account {
   }
 
   async renderAccountLeft() {
+    const accountLeftSkeleton = document.querySelector('.account__left-skeleton');
     const querySnapshot = await getDocs(collection(this.db, 'users'));
 
     if (!this.currentUser) return;
@@ -73,26 +74,11 @@ export class Account {
             
           </div>
           <p class="account__left-name">${name ? name : 'Пользователь'}</p>
-          <button class="account__left-order active">
-            <svg><use xlink:href="#order"></use></svg>
-            <p>Мои заказы</p>
-          </button>
-          <button class="account__left-history-order">
-            <svg><use xlink:href="#history-order"></use></svg>
-            <p>История платежей</p>
-          </button>
-          <button class="account__left-settings">
-            <svg><use xlink:href="#account-settings"></use></svg>
-            <p>Настройки</p>
-          </button>
-          <a href="#" class="account__left-exit">
-            <svg><use xlink:href="#exit"></use></svg>
-            <p>Выход</p>
-          </a>
         `;
 
         if (accountLeft) {
-          accountLeft.insertAdjacentHTML('beforeend', templateRenderLeft);
+          accountLeft.insertAdjacentHTML('afterbegin', templateRenderLeft);
+          accountLeftSkeleton?.classList.add('active');
         }
       }
     });

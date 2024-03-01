@@ -10,10 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const passwordRecoveryInstance = new PasswordRecovery();
 
   new ButtonEventHandler<PasswordRecovery>('.password-recovery__btn-registration', passwordRecoveryInstance, 'passwordRecovery');
-  // const buttonSend = document.querySelector(".password-recovery__btn-registration",) as HTMLElement;
-  // buttonSend.addEventListener("click", () => {
-  //   passwordRecoveryInstance.passwordRecovery();
-  // });
   
   new Header();
 })

@@ -41,6 +41,13 @@
     border: 1px solid #e2e2e2;
     padding: 13px;
     margin-bottom: 24px;
+    min-height: 444px;
+  }
+
+  &__left-skeleton {
+    &.active {
+      display: none;
+    }
   }
 
   // .account__left-photo
@@ -49,7 +56,7 @@
     text-align: center;
     width: 126px;
     height: 126px;
-    background: #c4c4c4;
+    background: #f1efef;
     border-radius: 100%;
     margin: 0 auto;
     margin-top: 16px;
@@ -72,6 +79,15 @@
     width: 100%;
     text-overflow: ellipsis;
     overflow: hidden;
+  }
+
+  &__left-name-skeleton {
+    background: #f1efef;
+    color: #f1efef;
+    width: fit-content;
+    margin: 0 auto;
+    margin-bottom: 24px;
+    border-radius: 6px;
   }
 
   // .account__left-order
@@ -288,8 +304,8 @@
     height: 26px;
     background: #ffbf87;
     margin: 0 auto;
-    color: #f68521 !important;
-    font-size: 12px !important;
+    color: #f68521;
+    font-size: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -486,7 +502,7 @@
     width: 99px;
     height: 26px;
     background: #acd4a8;
-    color: #3e7739 !important;
+    color: #3e7739;
     font-size: 12px;
     display: flex;
     align-items: center;
