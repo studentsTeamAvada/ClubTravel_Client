@@ -39,13 +39,12 @@ export class DropdownSearch {
       this.dropdownCurrent.text($(e.target).text());
       this.dropdownList.removeClass('dropdown__list_show');
       this.dropdownIcon.removeClass('dropdown__icon_rotate');
-      console.log($(e.target).text());
     });
 
     $(document).on('click', (e: JQuery.ClickEvent) => {
       const dropdownIs: boolean = this.dropdown.is(e.target);
       const dropdownHas: boolean = this.dropdown.has(e.target).length === 0;
-      console.log(dropdownIs, dropdownHas);
+
       if (!dropdownIs && dropdownHas) {
         this.dropdownList.removeClass('dropdown__list_show');
         this.dropdownIcon.removeClass('dropdown__icon_rotate');

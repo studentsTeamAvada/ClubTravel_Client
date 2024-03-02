@@ -12,8 +12,12 @@ new DropdownSearch('.info__guests-select');
 
 export class FilteringData {
   url: URL;
+  filter: Hotel[] = [];
+
   constructor() {
     this.url = new URL(window.location.href);
+
+    this.someFunction(1, 1, '22.03.2024', 1, 1);
   }
 
   restoreFilterFromUrl(key: string, _keys?: boolean): void {
@@ -26,19 +30,10 @@ export class FilteringData {
     }
   }
 
-  async getHotelsByFilter(key: string, value: string | number | boolean) {
+  async getHotelsByFilter(isCountry: number, isDuration: number, date: string, adults: number, kids: number) {
     const db = getFirestore(app);
     const hotelsRef = collection(db, 'hotels');
-    let q;
-
-    if (value === 0) {
-      q = hotelsRef;
-    } else {
-      q = query(hotelsRef, where(key, '==', value));
-    }
-
-    const querySnapshot = await getDocs(q);
-
+    const querySnapshot = await getDocs(hotelsRef);
     const hotels: Hotel[] = [];
 
     querySnapshot.forEach((doc) => {
@@ -46,24 +41,31 @@ export class FilteringData {
       const hotelId = doc.id;
       hotelData.id = hotelId;
       hotels.push(hotelData);
-  });
+    });
 
-    const newUrl = new URL(window.location.href);
-    newUrl.searchParams.set(key, value.toString());
-    window.history.pushState({}, '', newUrl.toString());
-
-    if (hotels.length > 0) {
-      new RenderHotels().renderHotels(hotels);
-      new RenderRegions().renderRegions(hotels);
-      new RenderInfo().renderInfo(hotels);
-      new ResultSwiper();
+    switch (true) {
+      case isCountry === 0 && isDuration !== 0:
+        return hotels.filter((item) => item.isDuration === isDuration);
+      case isCountry === 0 && isDuration === 0 && date !== '':
+        return hotels.filter((item) => item.date >= date);
+      case isCountry === 0 && isDuration === 0 && date === '' && adults !== 0 && kids > 0:
+        return hotels.filter((item) => item.isKids === 2);
+      case isCountry === 0 && isDuration === 0 && date === '' && adults >= 0:
+        return hotels;
+      default:
+        return hotels.filter((item) => (item.isCountry === isCountry && item.isDuration === isDuration && item.adults === adults && item.isKids === kids) || item.date === date);
     }
-
-    console.log(hotels);
-    return hotels;
   }
 
-  async filterAdvanced(key: string, value: string | number | boolean, key2: string, value2: string | number | boolean) {
+  async someFunction(key: number, value: number, date: string, adults: number, kids: number) {
+    this.filter = await this.getHotelsByFilter(key, value, date, adults, kids);
+
+    new RenderHotels().renderHotels(this.filter);
+
+    console.log(this.filter);
+  }
+
+  async filterAdvanced(key: string, value: string | number, key2: string, value2: string | number) {
     const hotelsFiltered = await this.getHotelsByFilter(key, value);
 
     if (hotelsFiltered.length > 0) {
@@ -95,12 +97,4 @@ export class FilteringData {
       return [];
     }
   }
-
-  // removeParametersFromUrl(parameterKeys: string[]): void {
-  //   const url = new URL(window.location.href);
-  //   for (const key of parameterKeys) {
-  //     url.searchParams.delete(key);
-  //   }
-  //   window.history.replaceState({}, '', url.toString());
-  // }
 }

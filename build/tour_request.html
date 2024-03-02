@@ -5,14 +5,14 @@
   <link rel="icon" type="image/ico+xml" href="/ClubTravel.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Запрос тура</title>
-  <script type="module" crossorigin src="/assets/Tour_request-sUZbYdDk.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/header-Eu9nKmC_.js">
-  <link rel="modulepreload" crossorigin href="/assets/footer-lm731265.js">
-  <link rel="modulepreload" crossorigin href="/assets/air-datepicker-IlZ4AjHj.js">
-  <link rel="modulepreload" crossorigin href="/assets/index.esm2017-rngiDz6t.js">
-  <link rel="modulepreload" crossorigin href="/assets/AsYouType-1JzKghML.js">
+  <script type="module" crossorigin src="/assets/Tour_request-15yyV-3W.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/header-Z2glgHCi.js">
+  <link rel="modulepreload" crossorigin href="/assets/air-datepicker-M0nQTO3P.js">
+  <link rel="modulepreload" crossorigin href="/assets/dropdown-NzLg2NrV.js">
+  <link rel="modulepreload" crossorigin href="/assets/index.esm2017-VUyrWc--.js">
+  <link rel="modulepreload" crossorigin href="/assets/AsYouType-jLqfV3d8.js">
   <link rel="stylesheet" crossorigin href="/assets/air-datepicker-vjRodfbR.css">
-  <link rel="stylesheet" crossorigin href="/assets/Tour_request-j40K_Izt.css">
+  <link rel="stylesheet" crossorigin href="/assets/Tour_request-Q97Q9k5E.css">
 </head>
 
   <body>
@@ -43,7 +43,7 @@
       <nav class="menu__body">
         <ul class="menu__list bottom-list">
           <li>
-            <a href="index.html" class="bottom-list__link">Поиск тура</a>
+            <a href="search_results.html" class="bottom-list__link">Поиск тура</a>
           </li>
 
           <li>
@@ -91,21 +91,21 @@
           </li>
 
           <li>
-            <span class="top-list__link top-list__link-phone">
+            <a class="top-list__link top-list__link-phone" href="tel:+3726130633">
               <svg>
                 <use xlink:href="#phone"></use>
               </svg>
-                <a href="tel:+3726130633">+372 61 30 633</a>
-              </span>
+              <span>+372 61 30 633</span>
+            </a>
           </li>
 
           <li>
-            <span class="top-list__link top-list__link-email">
+            <a class="top-list__link top-list__link-email" href="mailto:info@clubstravel.ee">
               <svg>
                 <use xlink:href="#mail"></use>
               </svg>
-              <a href="mailto:info@clubstravel.ee">contact@email.ee</a>
-            </span>
+              <span>contact@email.ee</span>
+            </a>
           </li>
 
           <li>
@@ -138,11 +138,10 @@
         <div class="preloader">
           <span></span>
         </div>
-        <div class="top-img">
+        <section class="top-img">
   <picture class="top-img__bg-img">
     <source srcset="/assets/image-bg-rhl2l6Xs.webp " type="image/webp" />
-    
-    <img src="/assets/image-bg-qkNO-IWh.jpg" alt="Description of the image" width="1366" height="550"/>
+    <img src="/assets/image-bg-qkNO-IWh.jpg" alt="Description of the image" width="1226" height="550"/>
   </picture>
 
   <div class="top-img__container">
@@ -150,7 +149,7 @@
       <svg><use xlink:href="#tour_request-bg"></use></svg>
     </div>
   </div>
-</div>
+</section>
 
         <section class="main-content">
   <div class="main-content__container main-content__wrapper">
@@ -562,7 +561,7 @@
             <h3 class="form__title">Желаемая цена на одного человека (€)</h3>
 
             <div class="form__input-wrap input-row">
-              <input type="number" id="input-price" aria-label="price" class="form__input" />
+              <input type="text" id="input-price" aria-label="price" class="form__input" />
             </div>
 
             <h3 class="form__title">Питание</h3>
@@ -770,9 +769,11 @@
 
       <div class="footer__pictures pictures">
         <div class="pictures__insta">
-          <img src="/assets/insta-OYEwA75t.svg" alt="insta" width="25" height="25" loading="lazy"/>
+          <a href="https://www.instagram.com/">
+            <img src="/assets/insta-OYEwA75t.svg" alt="insta" width="25" height="25" loading="lazy"/>
           
-          <span>@booking.clubstravel.ee</span>
+            <span>@booking.clubstravel.ee</span>
+          </a>
         </div>
 
         <div class="pictures__social-window">

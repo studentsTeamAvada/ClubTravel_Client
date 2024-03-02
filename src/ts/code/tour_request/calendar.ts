@@ -2,7 +2,6 @@ import $ from "jquery";
 import AirDatepicker from "air-datepicker";
 import "air-datepicker/air-datepicker.css";
 
-
 export class Calendar {
   calendar: JQuery<HTMLElement>;
   calendarMain: JQuery<HTMLElement>;
@@ -12,6 +11,7 @@ export class Calendar {
   currentNextDate: Date;
   datepicker?: AirDatepicker<HTMLElement>;
   between: number;
+
   constructor() {
     this.form = $(".form");
     this.calendar = $(".calendar");
@@ -22,14 +22,13 @@ export class Calendar {
     this.between = 0;
     this.init();
   }
+
   init() {
     this.open();
     this.observer();
     this.airDatepicker();
     this.counter()
   }
-
-
 
   newDate(start: boolean = true, finish: boolean = false){
     if(start){
@@ -59,8 +58,6 @@ export class Calendar {
       onSelect({date}) {
         const myDate = date as Array<Date> 
 
-
-
         if(myDate[1]){
           context.currentNextDate = new Date(myDate[1]);
           context.newDate(true, true);
@@ -89,16 +86,12 @@ export class Calendar {
   }
 
   selectCount(){
-    // const finishDate = new Date(new Date().setDate(this.currentSelDate.getDate() + this.between)) 
-
     const between: number = this.currentNextDate.getTime() - this.currentSelDate.getTime();
-
     const daysBetween: number = Math.floor(between / (1000 * 60 * 60 * 24));
-    console.log(daysBetween)
+
     $('.form__counter-count').html(String(daysBetween))
   }
 
-  
   counter() {
     const add = $(".form__counter-add");
     const remove = $(".form__counter-remove");

@@ -3,8 +3,8 @@ import $ from "jquery";
 export class DropDown {
   dropDown: JQuery<HTMLElement>;
   dropMain: JQuery<HTMLElement>;
-  quatityAdults: JQuery<HTMLElement>;
-  quatityKids: JQuery<HTMLElement>;
+  quantityAdults: JQuery<HTMLElement>;
+  quantityKids: JQuery<HTMLElement>;
   addBtn: JQuery<HTMLElement>;
   btn: JQuery<HTMLElement>;
   children: JQuery<HTMLElement>;
@@ -14,16 +14,16 @@ export class DropDown {
   currentKids: number;
   customEvent: CustomEvent;
 
-  constructor(className: string) {
+  constructor(className: string, teg: string) {
     this.dropDown = $(className).find(".dropdown");
     this.dropMain = this.dropDown.find(".dropdown__main");
-    this.quatityAdults = this.dropDown.find("#adults-quantity");
-    this.quatityKids = this.dropDown.find("#kids-quantity");
+    this.quantityAdults = this.dropDown.find("#adults-quantity");
+    this.quantityKids = this.dropDown.find("#kids-quantity");
     this.addBtn = this.dropDown.find(".dropdown__button-add");
     this.error = this.dropDown.find(".dropdown__error");
     this.btn = this.dropDown.find(".dropdown__btn");
     this.children = this.dropDown.find(".dropdown__children");
-    this.tegContainer = $(".tour__quantity-tegs");
+    this.tegContainer = $(teg);
     this.customEvent = new CustomEvent("myCustomEvent");
     this.currentAbdul = 1;
     this.currentKids = 0;
@@ -205,7 +205,6 @@ export class DropDown {
                     <svg><use xlink:href="#chevron-left"></use></svg> 
                 </div>
                 <ul class="children__list">
-                    <li>Укажите возраст</li>
                     <li>&lt; 1 год</li>
                     <li>1 год</li>
                     <li>2 года</li>
@@ -401,9 +400,9 @@ export class DropDown {
       const allErrors = this.dropDown.find(".children__drop_error");
 
       if (allErrors.length === 0) {
-        this.quatityAdults.html(String(this.currentAbdul));
+        this.quantityAdults.html(String(this.currentAbdul));
 
-        this.quatityKids.html(String(this.currentKids));
+        this.quantityKids.html(String(this.currentKids));
         this.dropDown.removeClass("dropdown_active");
 
         this.tegContainer.html(`
@@ -414,11 +413,18 @@ export class DropDown {
             <li>${key} x${kidsObj[key]} <span>+</span></li>
           `);
         }
-        document.dispatchEvent(this.customEvent);
+
+        const customEvent = new CustomEvent("myCustomEvent", {
+          detail: {
+            kids: this.currentKids,
+            adults: this.currentAbdul
+          }
+        });
+        document.dispatchEvent(customEvent);
       }
     });
   }
-  getAbduls() {
+  getAdults() {
     return this.currentAbdul;
   }
   getKids() {

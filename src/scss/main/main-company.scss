@@ -3,6 +3,7 @@
 
   &__container {
     position: relative;
+    padding: 0;
   }
 
   &__text {
@@ -121,6 +122,20 @@
   }
 
   &__button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: fit-content;
+    margin: 0 auto;
+
+    @media (width >= 1024px) {
+      &:hover {
+        a {
+          color: #f68521;
+        }
+      }
+    }
 
     a {
       transition: all 0.2s ease;
@@ -130,19 +145,7 @@
     svg {
       width: 24px;
       height: 24px;
-    }
-
-    @media (width >= 1024px) {
-      &:hover {
-        a {
-          color: #f68521;
-        }
-      }
-    }
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+    }  
   }
 
 
@@ -187,12 +190,16 @@
 
 
   &__swiper {
-    margin-bottom: 28px;
+    margin-bottom: 12px;
     padding: 0 2px 10px 2px;
 
     @include media-breakpoint-down(xs) {
       margin-bottom: 38px;
     }
+  }
+
+  &__swiper-slide {
+    padding: 0 10px 15px;
   }
 
 

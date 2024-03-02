@@ -73,5 +73,15 @@ export class SummerTourProduct {
         }
       }
     });
+
+    this.getYearsSeason();
+  }
+
+  getYearsSeason() {
+    const text = document.querySelector('.summer-tour__text');
+    if (text) {
+      const year = +this.productsArray[0].date.slice(6);
+      text.textContent += `Лето ${year - 1} - ${year}`;
+    }
   }
 }

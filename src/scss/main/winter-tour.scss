@@ -1,5 +1,10 @@
 .winter-tour {
 
+  &__container {
+    position: relative;
+    padding: 0;
+  }
+
   &__text {
     padding-bottom: 42px;
     text-align: center;
@@ -33,7 +38,6 @@
   }
 
   &__card-place-wrapper {
-
     svg {
       width: 24px;
       height: 24px;
@@ -50,7 +54,6 @@
   }
 
   &__card-stars-wrapper {
-
     svg {
       width: 18px;
       height: 18px;
@@ -110,7 +113,7 @@
     position: relative;
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       left: 50%;
       top: 50%;
@@ -123,7 +126,7 @@
       background: #3e7739;
       opacity: 0.1;
 
-      @include media-breakpoint-down(md) {
+      @include media-breakpoint-down(my) {
         background: #fff;
         opacity: 1;
       }
@@ -131,14 +134,17 @@
   }
 
   &__swiper-button-next {
-
     svg {
       transform: rotate(180deg);
     }
-    right: 2%;
+    right: -5%;
+
+    @include media-breakpoint-down(my) {
+      right: 4%;
+    }
 
     @include media-breakpoint-down(md) {
-      right: 5%;
+      right: 6%;
     }
 
     @include media-breakpoint-down(xs) {
@@ -147,10 +153,15 @@
   }
 
   &__swiper-button-prev {
-    left: 2%;
+    left: -5%;
+
+    
+    @include media-breakpoint-down(my) {
+      left: 4%;
+    }
 
     @include media-breakpoint-down(md) {
-      left: 5%;
+      left: 6%;
     }
 
     @include media-breakpoint-down(xs) {
@@ -159,6 +170,20 @@
   }
 
   &__button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: fit-content;
+    margin: 0 auto;
+
+    @media (width >= 1024px) {
+      &:hover {
+        a {
+          color: #f68521;
+        }
+      }
+    }
 
     a {
       transition: all 0.2s ease;
@@ -169,18 +194,6 @@
       width: 24px;
       height: 24px;
     }
-
-    @media (width >= 1024px) {
-      &:hover {
-        a {
-          color: #f68521;
-        }
-      }
-    }
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
   }
 
   &__btn {
@@ -217,12 +230,12 @@
   }
 
   &__swiper {
-    margin-bottom: 28px;
+    margin-bottom: 13px;
     padding: 0 2px 10px 2px;
+  }
 
-    // @include media-breakpoint-down(xs) {
-    //   margin-bottom: 36px;
-    // }
+  &__swiper-slide {
+    padding: 0 10px 15px;
   }
 
   &__card {
@@ -234,7 +247,6 @@
   }
 
   &__card-img {
-
     img {
       border-radius: 10px 10px 0 0;
       height: 250px;
@@ -243,7 +255,6 @@
   }
 
   &__card-data-wrapper {
-
     svg {
       width: 16px;
       height: 16px;
@@ -272,21 +283,18 @@
 
   &__swiper-button-prev,
   &__swiper-button-next {
+    position: absolute;
+    top: 50%;
+    display: block;
+    cursor: pointer;
+    z-index: 2;
 
     svg {
       width: 32px;
       height: 32px;
       color: #3e7739;
     }
-    display: none;
 
-    @include media-breakpoint-down(md) {
-      position: absolute;
-      top: 41%;
-      display: block;
-      cursor: pointer;
-      z-index: 2;
-    }
   }
 
   @include media-breakpoint-down(xs) {

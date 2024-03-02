@@ -6,6 +6,7 @@ import { Guests } from './filterGuests';
 // import { Hotels } from './filterHotel';
 import { AdvancedSearch } from './advanced';
 
+
 export class AllImportFile {
   filterinf: FilteringData;
   duration: Duration;
@@ -15,6 +16,7 @@ export class AllImportFile {
   country: Country;
   advanced: AdvancedSearch;
 
+
   constructor() {
     this.filterinf = new FilteringData();
     this.country = new Country();
@@ -23,5 +25,6 @@ export class AllImportFile {
     this.guests = new Guests();
     // this.hotels = new Hotels();
     this.advanced = new AdvancedSearch()
+
   }
 }

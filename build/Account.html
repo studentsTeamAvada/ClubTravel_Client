@@ -5,12 +5,11 @@
   <link rel="icon" type="image/ico+xml" href="/ClubTravel.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Личный кабинет клиента</title>
-  <script type="module" crossorigin src="/assets/Account-jbPnDojM.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/header-Eu9nKmC_.js">
-  <link rel="modulepreload" crossorigin href="/assets/index.esm2017-rngiDz6t.js">
-  <link rel="modulepreload" crossorigin href="/assets/isAuthorization-WmDnPX5c.js">
+  <script type="module" crossorigin src="/assets/Account-AQgKbNTv.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/header-Z2glgHCi.js">
+  <link rel="modulepreload" crossorigin href="/assets/index.esm2017-VUyrWc--.js">
   <link rel="modulepreload" crossorigin href="/assets/justValidate-ywqcVI2V.js">
-  <link rel="stylesheet" crossorigin href="/assets/Account-d0gejiUW.css">
+  <link rel="stylesheet" crossorigin href="/assets/Account-16mY-npr.css">
 </head>
 
   <body>
@@ -41,7 +40,7 @@
       <nav class="menu__body">
         <ul class="menu__list bottom-list">
           <li>
-            <a href="index.html" class="bottom-list__link">Поиск тура</a>
+            <a href="search_results.html" class="bottom-list__link">Поиск тура</a>
           </li>
 
           <li>
@@ -89,21 +88,21 @@
           </li>
 
           <li>
-            <span class="top-list__link top-list__link-phone">
+            <a class="top-list__link top-list__link-phone" href="tel:+3726130633">
               <svg>
                 <use xlink:href="#phone"></use>
               </svg>
-                <a href="tel:+3726130633">+372 61 30 633</a>
-              </span>
+              <span>+372 61 30 633</span>
+            </a>
           </li>
 
           <li>
-            <span class="top-list__link top-list__link-email">
+            <a class="top-list__link top-list__link-email" href="mailto:info@clubstravel.ee">
               <svg>
                 <use xlink:href="#mail"></use>
               </svg>
-              <a href="mailto:info@clubstravel.ee">contact@email.ee</a>
-            </span>
+              <span>contact@email.ee</span>
+            </a>
           </li>
 
           <li>
@@ -163,27 +162,29 @@
       <div class="account__right">
         <h4 class="account__right-title">Заказы</h4>
         <div class="account__right-table">
-          <table id="accountTable" border="1">
-            <thead>
-              <tr>
-                <th>Номер заказа</th>
-                <th>Сумма</th>
-                <th>E-mail</th>
-                <th>Cтатус</th>
-                <th>Дата</th>
-              </tr>
-            </thead>
-            <tbody class="account__order">
-              
-            </tbody>
-          </table>
+          <div class="account__teble-wrap">
+            <table id="accountTable" border="1">
+              <thead>
+                <tr>
+                  <th>Номер заказа</th>
+                  <th>Сумма</th>
+                  <th>E-mail</th>
+                  <th>Cтатус</th>
+                  <th>Дата</th>
+                </tr>
+              </thead>
+                <tbody class="account__order">
+                
+                </tbody>
+            </table>
+          </div>
           <div class="account__right-table-bottom account__table-bottom">
             <div class="account__table-bottom-left">
 
             </div>
             <div class="account__table-bottom-right">
               <button
-                class="account__table-bottom-button"
+                class="account__table-bottom-button btn"
                 id="account-button-prev"
               >
                 Назад
@@ -191,12 +192,12 @@
               <div class="account__table-bottom-pagination">
                 <p>
                   Страница
-                  <span class="account__table-pagination active">1</span> из
-                  <span class="account__table-pagination">2</span>
+                  <span id="current-page" class="account__table-pagination active">1</span> из
+                  <span id="all-pages" class="account__table-pagination">2</span>
                 </p>
               </div>
               <button
-                class="account__table-bottom-button"
+                class="account__table-bottom-button btn"
                 id="account-button-next"
               >
                 Вперед
@@ -211,21 +212,21 @@
                 
               <div class="account__table-bottom-right account-mobile__table-bottom-right">
                 <button
-                  class="account__table-bottom-button"
-                  id="account-button-prev"
+                  class="account__table-bottom-button btn"
+                  id="account-button-prev-mob"
                 >
                   Назад
                 </button>
                 <div class="account__table-bottom-pagination">
                   <p>
                     Страница
-                    <span class="account__table-pagination active">1</span> из
-                    <span class="account__table-pagination">2</span>
+                    <span id="current-page-mob" class="account__table-pagination active">1</span> из
+                    <span id="all-pages-mob" class="account__table-pagination">2</span>
                   </p>
                 </div>
                 <button
-                  class="account__table-bottom-button"
-                  id="account-button-next"
+                  class="account__table-bottom-button btn"
+                  id="account-button-next-mob"
                 >
                   Вперед
                 </button>
@@ -240,11 +241,11 @@
         <form class="account__settings-form" id="settingsForm">
           <div class="account__settings-input">
               <label for="nameInput">Сменить имя:</label>
-              <input type="text" id="changeName" name="name">
+              <input type="text" value="" id="changeName" name="name">
           </div>
           <div class="account__settings-input">
               <label for="photoInput">Сменить фото:</label>
-              <input type="file" id="photoChange" name="photo">
+              <input type="file" id="photoChange" name="photo" accept="image/jpeg, image/png, image/webp">
           </div>
           <button type="submit" class="account__settings-button btn">Сохранить</button>
         </form>
@@ -350,9 +351,11 @@
 
       <div class="footer__pictures pictures">
         <div class="pictures__insta">
-          <img src="/assets/insta-OYEwA75t.svg" alt="insta" width="25" height="25" loading="lazy"/>
+          <a href="https://www.instagram.com/">
+            <img src="/assets/insta-OYEwA75t.svg" alt="insta" width="25" height="25" loading="lazy"/>
           
-          <span>@booking.clubstravel.ee</span>
+            <span>@booking.clubstravel.ee</span>
+          </a>
         </div>
 
         <div class="pictures__social-window">

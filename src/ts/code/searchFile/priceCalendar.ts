@@ -2,14 +2,14 @@ import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 import { RenderInfo } from './renderFiles';
 import { app } from './../../modules/firebase';
-import { collection, getDocs, getFirestore } from 'firebase/firestore';
+import {collection, getDocs, getFirestore } from 'firebase/firestore';
 export class Calendar {
   constructor() {}
 
   async initCalendar() {
     const db = getFirestore(app);
     const hotelsRef = collection(db, 'hotels');
-    let allDates: { date: Date; money: number }[] = []; // Змінна для зберігання всіх дат
+    let allDates: { date: Date; money: number }[] = [];
 
     try {
       const querySnapshot = await getDocs(hotelsRef);
@@ -50,7 +50,7 @@ export class Calendar {
 
             if (selectedDateMoney) {
               new RenderInfo().renderSecelcCalendarInfo(selectedDateString, selectedDateMoney.money);
-            } 
+            }
           },
 
           onRenderCell({ date }) {

@@ -1,43 +1,53 @@
 import {app} from "./../../modules/firebase"
 import $ from "jquery";
 import { collection, addDoc, getFirestore } from "firebase/firestore"; 
-
-type dateObj = {
-    counrty?: string
-    region?: string
-    dataStart?: string
-    dataFinish?: string
-    people?: object
-    price?: string
-    food?: string
-    stars?: string
-    wouldLike?: string
-    name?: string
-    tel?: string
-    email?: string
+interface dateObj extends Object {
+    country: string | null;
+    region: string
+    dataStart: string
+    dataFinish: string
+    people: object
+    price: string
+    food: string
+    stars: string
+    wouldLike: string
+    name: string
+    tel: string
+    email: string
 }
 
-interface castumEvent extends Event {
-    detail: {stars: string} ,
-
+interface castomEvent extends Event {
+    detail: {stars: string} 
 }
 
 export class SendDate{
     dateObj : dateObj
     constructor (){
-        this.dateObj = {}
-        this.dateObj.people = {kids: 0, abduls: 1}
+        this.dateObj = {
+            country:  "",
+            region: "",
+            dataStart: "",
+            dataFinish: "", 
+            people: {kids: 0, adults: 1}, 
+            price: "",
+            food:  "",
+            stars:  "",
+            wouldLike:  "",
+            name:  "",
+            tel:  "",
+            email:  "",
+        }
 
         this.init()
     }
     init(){
-        this.selecDate()
+        this.selectDate()
     }
 
-    selecDate(){
+    selectDate(){
         console.log(this.dateObj, 1)
         document.addEventListener("selectTour", () => {
-            this.dateObj.counrty = $(".drop-country__county").html()
+            this.dateObj.country = $(".drop-country__county").html()
             this.dateObj.region = $(".drop-country__tour").html()
         });
 
@@ -46,8 +56,8 @@ export class SendDate{
             this.dateObj.dataFinish = $("#final-date").html()
         });
 
-        document.addEventListener("myCustomEvent", (e) => {
-            const even = e as castumEvent
+        document.addEventListener("myCustomEvent", (e : Event) => {
+            const even = e as castomEvent
             this.dateObj.people = even.detail
         });
 
@@ -56,7 +66,7 @@ export class SendDate{
         });
 
         document.addEventListener("selectStars", (e) => {
-            const even = e as castumEvent
+            const even = e as castomEvent
             this.dateObj.stars = even.detail.stars
         });
 

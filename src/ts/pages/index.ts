@@ -8,7 +8,7 @@ import { CompanyProduct } from '../code/main/main-company';
 import { HotDealsProduct } from '../code/main/hot-deals';
 import { WinterTourProduct } from '../code/main/winter-tour';
 import { SummerTourProduct } from '../code/main/summer-tour';
-
+import { AllImportFile } from "../code/searchFile/allImportFile";
 
 
 
@@ -30,4 +30,5 @@ document.addEventListener("DOMContentLoaded", async function() {
     await productWinterTour.loadCards();
     await productSummerTour.loadCards();
     new Header();
+    new AllImportFile();
 })

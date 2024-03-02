@@ -4,6 +4,11 @@ const storage = getStorage();
 
 export async function uploadImageToFirebaseStorage(photo: File) {
   try {
+    const allowedFormats = ["image/jpeg", "image/webp", "image/png"];
+    if (!allowedFormats.includes(photo.type)) {
+      throw new Error("Invalid image format. Only JPEG, WEBP, and PNG are allowed.");
+    }
+
     const storageRef = ref(storage, 'images/' + photo.name);
     const snapshot = await uploadBytes(storageRef, photo);
     console.log(snapshot);
@@ -16,3 +21,4 @@ export async function uploadImageToFirebaseStorage(photo: File) {
     throw error;
   }
 }
+
