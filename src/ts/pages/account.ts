@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", async function() {
     const button = document.querySelector('.account__settings-button');
     button?.addEventListener('click', () => {
         productAccount.getFormData();
-        
     })
 
     new Header();

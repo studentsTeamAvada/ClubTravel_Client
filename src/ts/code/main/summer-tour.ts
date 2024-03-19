@@ -8,9 +8,9 @@ const summerTourWrapper = document.querySelector(
 );
 
 export class SummerTourProduct {
-  private app: FirebaseApp;
-  private db: Firestore;
-  private productsArray: Tours[];
+  app: FirebaseApp;
+  db: Firestore;
+  productsArray: Tours[];
 
   constructor() {
     this.app = app;
@@ -36,12 +36,8 @@ export class SummerTourProduct {
   }
 
   renderProducts() {
-    const products = this.productsArray;
-
-    products.forEach((product) => {
-      const content = product;
-
-      const { country, img, price, id } = content;
+    this.productsArray.forEach((product) => {
+      const { country, img, price, id } = product;
 
       if (img && Array.isArray(img) && img.length > 0) {
         const { url, urlWebp } = img[0];

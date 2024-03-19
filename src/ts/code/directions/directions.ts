@@ -5,9 +5,9 @@ import { app } from "../../modules/firebase";
 
 const companyWrapper = document.querySelector(".directions__wrapper");
 export class DirectionProduct {
-  private app: FirebaseApp;
-  private db: Firestore;
-  private productsArray: Tours[];
+  app: FirebaseApp;
+  db: Firestore;
+  productsArray: Tours[];
 
   constructor() {
     this.app = app;
@@ -28,12 +28,8 @@ export class DirectionProduct {
   }
 
   renderProducts() {
-    const products = this.productsArray;
-
-    products.forEach((product) => {
-      const content = product;
-
-      const { img, country, region, price, work, id } = content;
+    this.productsArray.forEach((product) => {
+      const { img, country, region, price, work, id } = product;
 
       if (img && Array.isArray(img) && img.length > 0) {
         const { url, urlWebp } = img[0];

@@ -28,50 +28,6 @@
     padding: 1px;
   }
 
-  &__swiper-round {
-    display: flex;
-
-    @media (width >= 1024px) {
-      &:hover {
-        &::before {
-          opacity: 0.4;
-        }
-      }
-    }
-
-    @media (width >= 1024px) {
-      &:hover {
-        &::before {
-          opacity: 0.4;
-        }
-      }
-    }
-    position: relative;
-
-    &::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      border-radius: 50%;
-      width: 48px;
-      height: 48px;
-      transform: translate(-50%, -50%);
-      transition: opacity 0.2s ease;
-      z-index: -1;
-      background: #3e7739;
-      opacity: 0.1;
-
-      @include media-breakpoint-down(md) {
-        background: #fff;
-        opacity: 1;
-      }
-    }
-  }
-
-  &__container {
-  }
-
   &__card {
     border-radius: 10px;
     width: 100%;

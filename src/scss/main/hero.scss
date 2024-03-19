@@ -45,9 +45,11 @@
       }
     }
 
-    &:hover {
-      &::before {
-        opacity: 0.4;
+    @include media-breakpoint-up(my) {
+      &:hover {
+        &::before {
+          opacity: 0.4;
+        }
       }
     }
   }
