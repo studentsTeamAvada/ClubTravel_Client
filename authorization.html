@@ -4,11 +4,13 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/ico+xml" href="/ClubTravel.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Кампании</title>
-  <script type="module" crossorigin src="/assets/company-0vbpldh2.js"></script>
+  <title>Авторизация</title>
+  <script type="module" crossorigin src="/assets/Authorization-z4cED56j.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/header-u1vxfMaN.js">
+  <link rel="modulepreload" crossorigin href="/assets/justValidate-ywqcVI2V.js">
   <link rel="modulepreload" crossorigin href="/assets/index.esm2017-WC45BDwc.js">
-  <link rel="stylesheet" crossorigin href="/assets/company-4NohJTVP.css">
+  <link rel="modulepreload" crossorigin href="/assets/buttonEventHandler-4aVT9HNW.js">
+  <link rel="stylesheet" crossorigin href="/assets/Authorization-itzBUPg1.css">
 </head>
 
   <body>
@@ -134,30 +136,68 @@
         <div class="preloader">
           <span></span>
         </div>
-        <section class="company-bg">
-  <div class="company-bg__img">
-    <picture class="company-bg__image">
-      <source srcset="/assets/banner-5tmXyVm0.webp " type="image/webp" />
-      <img src="/assets/banner-NG-0nreI.png" alt="bg" />
+        <section class="authorization">
+  <div class="authorization__bg">
+    <picture>
+      <source srcset="/assets/404-GFzYOh1M.webp " type="image/webp" />
+      <img src="/assets/404-xO_aT0Xi.png" alt="bg" />
     </picture>
-
-    <img
-      class="company-bg__line"
-      src="data:image/svg+xml,%3csvg%20width='1366'%20height='33'%20viewBox='0%200%201366%2033'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1366%2033H0C64.3257%2033%20215.102%2012.8442%20327.365%203.16951C456.005%20-10.4086%20583.848%2025.3407%20927.602%204.37879C1155.4%2012.8442%201209.08%2033%201366%2033Z'%20fill='white'/%3e%3c/svg%3e"
-      alt="bg-line"
-    />
   </div>
-</section>
 
-        <section class="company-company">
-  <div class="company-company__container">
-    <h1 class="company-company__title">
-      <svg><use xlink:href="#offer"></use></svg>
-      
-      <span>кампании </span> и новости
-    </h1>
+  <div class="authorization__container">
+    <div class="authorization__form">
+      <div class="authorization__form-wrapper">
+      <h3 class="authorization__form-title">Войдите используя соц. сети</h3>
+      <button class="authorization__form-btn-facebook">
+        <picture>
+          <source srcset="data:image/webp;base64,UklGRtQAAABXRUJQVlA4WAoAAAAQAAAAEwAAEwAAQUxQSIgAAAABcE7bdh4dhCAEYRAGIQgPoQaNQWswCI1BEYrwahCE+yNfgxARE0Ab7HLpuYzJVDV0Gxya3ju7hvWVpAMw9f0LZEkJvOeRQQ2m/g9I+ZakrQwyJPXLM5MHrn/0neHdeRdq46UTY4AQP2qLNZIyZPUt1DWHtGbAuZJp89xJ33xUE5NWNtjKFmgBVlA4ICYAAADQAgCdASoUABQAPlEkj0WjoiEUBAA4BQS0gAAe0dAAAP78qAAAAA== " type="image/webp" />
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAERSURBVHgBpVIBEcIwDMx2CJgD5gAcgIThoDiYA4oCDgc4AAfgAFCwogAclM/RQa+UpWN/971bmvw+SYkisNYWoAL3YGM/OLuYolQguQLvVkYjCiNhY/tj9UtslVDMzk0kvgnFlCDUgPOgRgc5lX/ZCGJlpCMdcV+M7GuwZcdoT1mWGU+InUzBWZBXgGqEo6Ju3AKxfUfuPMcxpnRMhftJnpDUByX9WoRUiZxjrJAd3ug/xDozvJQLReboPZUHtvxwMd6kzxDXlEetvZ9oIVdxywd2QcNh0Mkud+0saTjWfLBDgii73NL/WLO7t6ATrdu/9MQWtbr9yP0bd8HtG5LBo1o4IzLc9g9g7cXqNuae0BeeH7rsQQrOUgQAAAAASUVORK5CYII=" alt="facebook" />
+        </picture>
+        Войти с помощью Facebook
+      </button>
+      <button class="authorization__form-btn-google">
+        <picture>
+          <source srcset="data:image/webp;base64,UklGRtwBAABXRUJQVlA4WAoAAAAQAAAAFwAAFwAAQUxQSJEAAAABcFXbdtRcCUh4EpCABCREQhyAg+IAHBAnlfBwEAnnI1MHAxExAfrXKd4O7zuMrJmmh64X3bFjo9utFQDyvkjzhZvaDripaqZ2ADB9MAGnPvkAc4W2FwAa4TsPsIx4kYC9Ur2AVEQgW8sAQjFlwK1mDriqK+U5S8uWAUJNR9F7qL33HeoN3sqrBkN64Elx0r8CAFZQOCAkAQAAEAoAnQEqGAAYAD5RII5Eo6IhGAwEADgFBLYATpmTAL/APxy/GanAf4DzAcwxuAP0v/SX3/+hm/gHAAfqr6QH7YfBF+3H63ex8A10n9RVbemqXvRVpfBHMAAA/p0LNiyA5b5tJEai5A+GM/j7pWRu7EbuNifzFmSYNVqwP9TQQVl/H6oP6RtM60MZf7vLHmo//jt8uUZxP9nw7kG67zcsWN8Vt4JToUmADJ/+H2kL7dinWgfvLiI8sqEUh/qDbdTuQvWJ2FEcGf/kimVQtYsI7++sU0rJp6GKRNuGCuzWf6VLlA5G6x21pJrXWiLuP1DSfcAy85iWq3bgjxVcmoHMNKe5KRJmpT4+pkF5Qin9IooQgeUELM3/NpWnb9qujo0u59AAAA== " type="image/webp" />
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAIxSURBVHgB3VXPSxtBFP5matpCW9hTMaXgeiqlYLU9FVrM3lqwsLn0VhrpH2AKxat6KJR6qIEeW9yeC80WSvHULBSrJ43+A64oRr2YwxLE4I5vNyT7I7urq3jQD2Zn8t6875t5vDcBLjpYklPkIOEWL2DPHqadg2SSWw5U6WvCxi/2H9qpBMQzqDTN0pCQDBOHmIoTYjHkn2kqIg1svGPzmAmbeRf5U0ykJm/dQo9yBATo5AW602RoT51sU5R3hf0DcwaRDZH9e4e8Sb5FmiMQSJEY52tYsOXAyRKCqQhk7BNJjD8gICqZAjifxdIh8JdGXYDI+5OCTwJfirjqTo+uAG8zwB2unZXcgXcD45pJv/o6HtseYkqzGg7Ijq8KHA+z9mmg31lwn1RfQDmCPAXk9oLjnOEJCKz7HaLSk8PpYbYXPT6BajtNiwe38a3xIAfMGeFIym1X9/e+X9EYZ288LrHSXvpTZDifr437+GA9xrZ9fex5WZVxDHqLy3KA3D0r63S1rw8k6WPj3tr8QVbyNsKkjlDm8roZS36VV4hG9pk7FRQQcDBSVp1eKIeJSEgTTZT+vNLdyhr5oeYoucO0LG5tKFJtU/H2CoxuTw9okQJu8E91hqxjSIGd2hNsmi8c9lJt+mHgoYx8rukmkzRNIAUs627JeP2l6xWO/cN5WVYLjojwNU0UWOvVGv2d1/UYfzJcIQH1BmsOWsi4ZUx5Xqfyq2aZZezipqbn9TouLY4ACke6p9obI7QAAAAASUVORK5CYII=" alt="google" />
+        </picture>
+        Войти с помощью Google
+      </button>
+      <form action="#" id="authorizationForm">
+        
+          <p class="authorization__form-text">или</p>
 
-    <div class="company-company__wrapper"></div>
+          <div class="authorization__form-input authorization__form-input-mail">
+            <p>E-mail</p>
+
+            <input type="mail" id="authorizationMail" />
+            <p class="authorization__form-validate-text" id="authorizationMailText"></p>
+          </div>
+
+          <div class="authorization__form-input authorization__form-input-password">
+            <div class="authorization__form-input-text">
+              <p>Пароль</p>
+
+              <a href="../../../password_recovery.html">Забыли пароль?</a>
+            </div>
+
+            <input type="password" id="authorizationPassword" />
+
+            <p class="authorization__form-validate-text" id="authorizationPasswordText"></p>
+          </div>
+
+          <div class="authorization__btn-wrapper">
+            <a href="../../../registration.html">
+              <span class="authorization__btn-entry">регистрация</span>
+            </a>
+
+            <button type="submit" class="authorization__btn-registration btn">вход</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <p class="authorization__policy">Политика конфиденциальности</p>
+
+    <p class="authorization__policy">Политика использования</p>
   </div>
 </section>
 
