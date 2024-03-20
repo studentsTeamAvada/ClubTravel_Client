@@ -8,7 +8,15 @@ export class InfoBlock {
     this.totalPrice = $(".tour__total-price");
     this.dropDown = new DropDown(".tour__quantity-drop", ".tour__quantity-tegs");
     this.priceCalculator();
+    this.selecTour()
   }
+
+  selecTour(){
+    $(".tour__setected-select").on("click", () => {
+      window.history.back()
+    })
+  }
+
   priceCalculator() {
     document.addEventListener("myCustomEvent", () => {
       const priceOnePerson = $(".tour__price-sum").data("price");
