@@ -20,10 +20,22 @@ export class Header {
     this.burger();
     this.getSing();
     this.resize();
+    this.delLinkAtHome()
 
     setTimeout(() => {
       this.scroll();
     },300)
+  }
+
+  delLinkAtHome(){
+    const condition = /index.html/g.test(window.location.href)
+
+    if(condition){
+      const link = document.querySelector(".header__logo-link")
+      link?.addEventListener("click", (e) => {
+        e.preventDefault()
+      })
+    }
   }
 
   burger(): void {

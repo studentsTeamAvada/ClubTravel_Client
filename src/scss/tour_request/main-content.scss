@@ -231,6 +231,8 @@ html {
 
     a {
       color: #222;
+      display: flex;
+      align-items: center;
     }
 
     li {
@@ -617,6 +619,7 @@ html {
     }
 
     &-third {
+      pointer-events: none;
       opacity: 0;
       height: 0;
     }
@@ -703,6 +706,7 @@ html {
           }
 
           &-third {
+            pointer-events: unset;
             display: block;
             opacity: 1;
             height: 100%;

@@ -100,7 +100,7 @@ export class Calendar {
 
     function addOne(): void {
       let current = +total.text();
-      if (current < 21) {
+      if (current < 18) {
         const sum = current + 1;
         selectSum(String(sum));
       }

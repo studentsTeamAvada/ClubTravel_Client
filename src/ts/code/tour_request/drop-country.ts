@@ -1,5 +1,4 @@
 import $ from "jquery";
-
 export class DropCountry {
   dropDown: JQuery<HTMLElement>;
   dropMain: JQuery<HTMLElement>;

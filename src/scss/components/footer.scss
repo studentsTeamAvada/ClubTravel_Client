@@ -166,23 +166,23 @@
 }
 
 .pictures {
-
-    &__insta {
-
+  &__insta {
+    display: flex;
+    justify-content: center;
     img {
       margin-right: 15px;
     }
 
-        span{
-            font-weight: 400;
-            font-style: normal;
-            line-height: normal;
-            font-size: 16px;
-            color: #ED3D51;
-        }
-        margin: 2px 0 27px 4px;
-        height: 26px;
-        line-height: 26px;
+    span{
+        font-weight: 400;
+        font-style: normal;
+        line-height: normal;
+        font-size: 16px;
+        color: #ED3D51;
+    }
+    margin: 2px 0 27px 4px;
+    height: 26px;
+    line-height: 26px;
 
     @include media-breakpoint-down(xs) {
       margin: 0 0 22px 11px;

@@ -196,13 +196,15 @@ export class TourRequest {
         $(inputWrap).validate({
             rules: {
                 phone: {
-                min: true,
-                required: true
+                    min: true,
+                    maxlength: 16,
+                    required: true
                 },
             },
             messages: {
             phone: {
-                required: "Введите номер"
+                required: "Введите номер",
+                maxlength: "Слишком длинный номер"
             },
             },
             submitHandler(form) {
@@ -276,27 +278,36 @@ export class TourRequest {
             }
         }, 'Номер должен состоять из 10 цифр');
 
+        $.validator.addMethod("onlyLetters", function(value: string) {
+            return /^[a-za-z]*$/i.test(value);
+        }, 'Введите корректное имя');
+
         $("#form-state-three").validate({
             rules: {
                 phone: {
                     min: true,
+                    maxlength: 16,
                 },
                 email: {
                     laxEmail: true,
                 },
                 name: {
                     required: true,
+                    onlyLetters: true,
                     minlength: 3,
                 },
             },
             messages: {
+                phone: {
+                    maxlength: "Слишком длинный номер"
+                },
                 name: {
                     required: "Введите ваше имя",
                     minlength: "Минимум три символа",
                 }
             },
             submitHandler(form) {
-                alert("Мы скоро с вами свяжемся2")
+                alert("Мы скоро с вами свяжемся")
                 $(form).trigger("reset");
                 context.sendDate.sendDate()
                 context.points(1)
