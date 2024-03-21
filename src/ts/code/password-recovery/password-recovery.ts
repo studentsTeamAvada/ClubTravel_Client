@@ -21,8 +21,8 @@ export class PasswordRecovery {
     sendPasswordResetEmail(this.auth, email)
       .then(() => {
         alert("Password reset email sent. Please check your inbox.");
-        emailInput.value = "";
         window.location.href = 'authorization.html';
+        emailInput.value = "";
       })
       .catch((error) => {
         const errorCode = error.code;

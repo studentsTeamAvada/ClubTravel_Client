@@ -31,6 +31,10 @@
     padding: 32px;
     box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
     background: #fff;
+
+    @include media-breakpoint-down(xxxs) {
+      padding: 12px;
+    }
   }
 
   &__form-title {
@@ -224,6 +228,7 @@
     text-align: center;
     text-decoration: underline;
     color: #fff;
+    font-size: 14px;
     transition: color 0.3s ease;
     cursor: pointer;
 

@@ -223,6 +223,7 @@
     a {
       transition: all 0.2s ease;
       color: #555;
+      cursor: pointer;
     }
 
     svg {
@@ -265,7 +266,7 @@
     padding: 0 2px 10px 2px;
 
     @include media-breakpoint-down(xs) {
-      margin-bottom: 15px;
+      margin-bottom: 0;
     }
   }
   
@@ -354,11 +355,11 @@
     }
 
     @include media-breakpoint-down(xs) {
-      top: 53%;
+      top: 51%;
     }
 
     @include media-breakpoint-down(xxs) {
-      top: 55%;
+      top: 54%;
     }
   }
 

@@ -188,6 +188,7 @@
     a {
       transition: all 0.2s ease;
       color: #555;
+      cursor: pointer;
     }
 
     svg {
@@ -288,6 +289,10 @@
     display: block;
     cursor: pointer;
     z-index: 2;
+
+    @include media-breakpoint-down(xs) {
+      top: 43%;
+    }
 
     svg {
       width: 32px;

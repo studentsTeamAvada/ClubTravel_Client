@@ -70,7 +70,7 @@ export class DirectionProduct {
                 <p class="directions__card-season-start-end">${work[1]}</p>
             </div>
             <svg>
-              <use xlink:href="#directions-calendar"></use>
+              <use xlink:href="#calendar-directions"></use>
             </svg>
         </div>
         <a href="https://club-travel.netlify.app/hotel.html?id=${id}" class="directions__btn btn">Выбрать тур</a>

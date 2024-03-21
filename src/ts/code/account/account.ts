@@ -99,7 +99,7 @@ export class Account {
     const accountRight = document.querySelector('.account__right');
     const accountSettings = document.querySelector('.account__settings');
     const accountLeftWrapper = document.querySelector('.account__left-wrapper');
-
+  
     const setActiveTab = (tab: string) => {
       if (tab === 'settings') {
         buttonSettings?.classList.add('active');
@@ -113,27 +113,39 @@ export class Account {
         accountSettings?.classList.add('active');
       }
     };
-
+  
+    const switchToSettings = () => {
+      setActiveTab('settings');
+      localStorage.setItem('selectedTab', 'settings');
+    };
+  
+    const switchToOrders = () => {
+      setActiveTab('orders');
+      localStorage.setItem('selectedTab', 'orders');
+    };
+  
+    buttonSettings?.addEventListener('click', switchToSettings);
+    buttonOrders?.addEventListener('click', switchToOrders);
+  
     accountLeftWrapper?.addEventListener('click', (e) => {
       const clickElement = e.target as HTMLElement;
       if (clickElement) {
         const clickContent = clickElement.textContent;
         if (clickContent && clickContent.includes('Настройки')) {
-          setActiveTab('settings');
-          localStorage.setItem('selectedTab', 'settings');
+          switchToSettings();
         } else if (clickContent && clickContent.includes('Мои заказы')) {
-          setActiveTab('orders');
-          localStorage.setItem('selectedTab', 'orders');
+          switchToOrders();
         }
       }
     });
-
+  
     const selectedTab = localStorage.getItem('selectedTab');
-
+  
     if (selectedTab) {
       setActiveTab(selectedTab);
     }
   }
+  
 
   isChangeInput() {
     const input = document.querySelector('.account__settings-input input') as HTMLFormElement;
@@ -217,13 +229,13 @@ export class Account {
         <td>${idOrder}</td>
         <td>${price}</td>
         `;
-      if (email.length < 23) {
+      if (email.length < 20) {
         template += `
                 <td>${email}</td>
             `;
       } else {
         template += `
-            <td>${email.slice(0, 23) + '...'}</td>
+            <td>${email.slice(0, 20) + '...'}</td>
         `;
       }
       template += `
